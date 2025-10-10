@@ -1,0 +1,15 @@
+{
+    // Configuración de depuración para VS Code
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Ejecutar factoriales.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/factoriales.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {}
+        }
+    ]
+}

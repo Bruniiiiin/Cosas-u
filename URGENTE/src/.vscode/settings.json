@@ -1,0 +1,5 @@
+{
+    "python.REPL.enableREPLSmartSend": false,
+    // Selecciona el intérprete Python absoluto para este workspace
+    "python.defaultInterpreterPath": "C:\\Users\\bruhs\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+}
