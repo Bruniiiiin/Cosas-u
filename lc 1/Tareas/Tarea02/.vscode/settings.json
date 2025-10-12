@@ -1,0 +1,32 @@
+{
+  "latex-workshop.view.pdf.viewer": "external",
+  "latex-workshop.view.pdf.external.command": "C:\\Program Files\\SumatraPDF\\SumatraPDF.exe",
+  "latex-workshop.view.pdf.external.args": [
+    "-reuse-instance",
+    "%PDF%"
+  ],
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.clean.onBuild": true,
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": ["latexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  "files.associations": {
+    "*.tex": "latex"
+  }
+}
