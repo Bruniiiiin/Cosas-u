@@ -16,7 +16,7 @@ plt.grid()
 plt.show()
 
 #########################
-# ...existing code...
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -47,4 +47,3 @@ plt.ylabel('Aceleración (m/s²)')
 plt.title('Aceleración vs sin(θ)')
 plt.grid()
 plt.show()
-# ...existing code...
