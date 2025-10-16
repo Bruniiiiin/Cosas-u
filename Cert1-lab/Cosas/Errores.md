@@ -55,54 +55,34 @@ Es un digito que aporta informacion a una medicion real, dando precision.
 
 Primero tenemos que:
 
-* Datos: $ (x_i, y_i) \quad ; \quad i = 1, \dots , N $ 
+* Datos: $$ (x_i, y_i) \quad ; \quad i = 1, \dots , N $$ 
 
-* Recta: $ f(x) = a_0 + a_1x $
+* Recta: $$ f(x) = a_0 + a_1x $$
 
 Se define como: 
 
-$
-\begin{align}
-              \chi^2 &= \displaystyle \sum_{i=1}^N (y_i - f(x_i))^2 \\
-    \chi(a_0, a_1)^2 &= \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 \\
-\end{align} 
-$ 
+$\begin{align} \chi^2 &= \displaystyle \sum_{i=1}^N (y_i - f(x_i))^2 \\ \chi(a_0, a_1)^2 &= \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 \\ \end{align}$ 
 
-Ahora a esta funcion $ \chi(a_0, a_1)^2 $ la queremos minimizar utilizando el gradiente y luego igualamos a 0 (optimizacion):
+Ahora a esta funcion $$ \chi(a_0, a_1)^2 $$ la queremos minimizar utilizando el gradiente y luego igualamos a 0 (optimizacion):
 
-$
-\dfrac{\partial \chi^2}{\partial x} = -2 \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 \qquad , \qquad
-\dfrac{\partial \chi^2}{\partial y} = -2 \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 x_i
-$
+$$\dfrac{\partial \chi^2}{\partial x} = -2 \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 \qquad , \qquad \dfrac{\partial \chi^2}{\partial y} = -2 \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 x_i $$
 
 Luego igualando a 0 ambas ecuaciones: 
 
-$
-\displaystyle \sum_{i=1}^N y_i - a_0\sum_{i=1}^N 1 - a_1\left(\sum_{i=1}^N x_i\right) = 0  
-$
+$$\displaystyle \sum_{i=1}^N y_i - a_0\sum_{i=1}^N 1 - a_1\left(\sum_{i=1}^N x_i\right) = 0  $$
 
-$
-\displaystyle \sum_{i=1}^N (y_i) - a_0\left(\displaystyle \sum_{i=1}^N 1\right) - a_1\left(\displaystyle \sum_{i=1}^N (x_i)^2\right) = 0  
-$
+$$ \displaystyle \sum_{i=1}^N (y_i) - a_0\left(\displaystyle \sum_{i=1}^N 1\right) - a_1\left(\displaystyle \sum_{i=1}^N (x_i)^2\right) = 0  $$
 
-Si dividimos todo por el numero de datos y consideramos que $ \dfrac{\displaystyle \sum_{i=0}^N a_i}{N} = \overline{a} $ :
+Si dividimos todo por el numero de datos y consideramos que $$ \dfrac{\displaystyle \sum_{i=0}^N a_i}{N} = \overline{a} $$
 
-$
-\overline{y} - a_0 - a_1\overline{x} = 0
-$
+$$ \overline{y} - a_0 - a_1\overline{x} = 0 $$
 
-$
-\overline{xy} - a_0\overline{x} - a_1\overline{x^2} = 0
-$
+$ \overline{xy} - a_0\overline{x} - a_1\overline{x^2} = 0 $
 
 Luego resolviendo el sistema para encontrar la pendiente y el coef de posicion:
 
-$
-a_1 = \frac{\overline{xy} - \overline{x} \overline{y} }{\overline{x^2} - \overline{y^2} }
-$
+$ a_1 = \frac{\overline{xy} - \overline{x} \overline{y} }{\overline{x^2} - \overline{y^2} } $
 
-$
-a_0 = \overline{y} - a_1 \overline{x}
-$
+$ a_0 = \overline{y} - a_1 \overline{x} $
 
 Gracias a esto podemos calcular el valor de $\chi^2$ y mientras mas se acerque a 0 mejor sera nuestra aproximacion lineal a los datos.
