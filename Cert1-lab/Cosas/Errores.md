@@ -81,7 +81,7 @@ $\overline{xy} - a_0\overline{x} - a_1\overline{x^2} = 0$
 
 Luego resolviendo el sistema para encontrar la pendiente y el coef de posicion:
 
-$a_1 = \dfrac{\overline{xy} - \overline{x} \cdot \overline{y} }{\overline{x^2} - \overline{y^2} }$
+$a_1 = \dfrac{\overline{xy} - \overline{x} \cdot \overline{y} }{\overline{x^2} - \overline{x}^2 }$
 
 $a_0 = \overline{y} - a_1 \overline{x}$
 
