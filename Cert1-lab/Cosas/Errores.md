@@ -55,13 +55,13 @@ Es un digito que aporta informacion a una medicion real, dando precision.
 
 Primero tenemos que:
 
-* Datos: $$ (x_i, y_i) \quad ; \quad i = 1, \dots , N $$ 
+* Datos: $$(x_i, y_i) \quad ; \quad i = 1, \dots , N$$ 
 
-* Recta: $$ f(x) = a_0 + a_1x $$
+* Recta: $$f(x) = a_0 + a_1x$$
 
 Se define como: 
 
-$\begin{align} \chi^2 &= \displaystyle \sum_{i=1}^N (y_i - f(x_i))^2 \\ \chi(a_0, a_1)^2 &= \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 \\ \end{align}$ 
+$$\begin{align}                                                                                         \chi^2 &= \displaystyle \sum_{i=1}^N (y_i - f(x_i))^2 \\                                                \chi(a_0, a_1)^2 &= \displaystyle \sum_{i=1}^N (y_i - a_0 - a_1 x_i)^2 \\                               \end{align}$$
 
 Ahora a esta funcion $$\chi(a_0, a_1)^2$$ la queremos minimizar utilizando el gradiente y luego igualamos a 0 (optimizacion):
 
