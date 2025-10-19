@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  12 OCT 2025 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  19 OCT 2025 19:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -691,27 +691,24 @@ Package hyperref Info: Link coloring OFF on input line 17.
 \@outlinefile=\write4
 \openout4 = `Tarea02.out'.
 
-<img/marcaderecha.png, id=46, 649.42625pt x 255.95625pt>
+<img/marcaderecha.png, id=58, 649.42625pt x 255.95625pt>
 File: img/marcaderecha.png Graphic file (type png)
 <use img/marcaderecha.png>
 Package pdftex.def Info: img/marcaderecha.png  used on input line 22.
 (pdftex.def)             Requested size: 99.58464pt x 39.24709pt.
-<img/logo-cfm.png, id=48, 585.18219pt x 104.3965pt>
+<img/logo-cfm.png, id=60, 585.18219pt x 104.3965pt>
 File: img/logo-cfm.png Graphic file (type png)
 <use img/logo-cfm.png>
 Package pdftex.def Info: img/logo-cfm.png  used on input line 24.
 (pdftex.def)             Requested size: 113.81102pt x 20.30386pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--61
-[]\OT1/cmr/bx/n/12 Circuito Re-sis-ti-vo
- []
-
-
-Overfull \vbox (139.34102pt too high) has occurred while \output is active []
-
  [1
 
-{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>] (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
+{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]\OT1/cmr/bx/n/12 Materiales pa-ra la
+ []
+
+[2] (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -720,20 +717,20 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Tarea02.out' has not changed.
-(rerunfilecheck)             Checksum: 1737ED959359E3AA95851E20F9F80228;1245.
+(rerunfilecheck)             Checksum: 22CCB089CE7FFF9337CD05CED3F9A10D;2605.
  ) 
 Here is how much of TeX's memory you used:
- 49476 strings out of 474486
- 1287492 string characters out of 5743756
- 2016098 words of memory out of 5000000
- 71214 multiletter control sequences out of 15000+600000
- 560958 words of font info for 46 fonts, out of 8000000 for 9000
+ 49504 strings out of 474486
+ 1287931 string characters out of 5743756
+ 2017135 words of memory out of 5000000
+ 71231 multiletter control sequences out of 15000+600000
+ 562093 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,93p,775b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf" (1 page, 463737 bytes).
+ 84i,6n,93p,775b,703s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\bruhs\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on "c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf" (2 pages, 513807 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
- 12 named destinations out of 1000 (max. 500000)
- 103 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 20 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 

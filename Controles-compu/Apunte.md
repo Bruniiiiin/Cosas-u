@@ -18,25 +18,25 @@ Primero calcularemos la expansion en serie de taylor de $f(x +\frac{1}{2}) , f(x
 Entonces:
 
 $\begin{align}
-    f(x + \frac{1}{2}) &= f(x) +\frac{1}{2}f'(x)h + \frac{1}{8}f''(x)h^2 + \frac{1}{48}f'''(x)h^3 + \frac{1}{384}f^{(4)}(x)h^4 + \frac{1}{23040}f^{(5)}(\xi)h^5 \\
+    f(x + \frac{1}{2}h) &= f(x) +\frac{1}{2}f'(x)h + \frac{1}{8}f''(x)h^2 + \frac{1}{48}f'''(x)h^3 + \frac{1}{384}f^{(4)}(x)h^4 + \frac{1}{23040}f^{(5)}(\xi)h^5 \\
     &= f(x) +\frac{1}{2}f'(x)h + \frac{1}{8}f''(x)h^2 + \frac{1}{48}f'''(x)h^3 + \frac{1}{384}f^{(4)}(x)h^4 + O(h^5) \\
 \end{align}
 $
 $
 \begin{align}
-    f(x - \frac{1}{2}) &= f(x) - \frac{1}{2}f'(x)h + \frac{1}{8}f''(x)h^2 - \frac{1}{48}f'''(x)h^3 + \frac{1}{384}f^{(4)}(x)h^4 - \frac{1}{23040}f^{(5)}(\xi)h^5 \\
+    f(x - \frac{1}{2}h) &= f(x) - \frac{1}{2}f'(x)h + \frac{1}{8}f''(x)h^2 - \frac{1}{48}f'''(x)h^3 + \frac{1}{384}f^{(4)}(x)h^4 - \frac{1}{23040}f^{(5)}(\xi)h^5 \\
     &= f(x) - \frac{1}{2}f'(x)h + \frac{1}{8}f''(x)h^2 - \frac{1}{48}f'''(x)h^3 - \frac{1}{384}f^{(4)}(x)h^4 + O(h^5) \\
 \end{align}
 $
 $
 \begin{align}
-    f(x + \frac{3}{2}) &= f(x) +\frac{3}{2}f'(x)h + \frac{9}{8}f''(x)h^2 + \frac{27}{48}f'''(x)h^3 + \frac{81}{384}f^{(4)}(x)h^4 + \frac{243}{23040}f^{(5)}(\xi)h^5 \\
+    f(x + \frac{3}{2}h) &= f(x) +\frac{3}{2}f'(x)h + \frac{9}{8}f''(x)h^2 + \frac{27}{48}f'''(x)h^3 + \frac{81}{384}f^{(4)}(x)h^4 + \frac{243}{23040}f^{(5)}(\xi)h^5 \\
     &= f(x) +\frac{3}{2}f'(x)h + \frac{9}{8}f''(x)h^2 + \frac{27}{48}f'''(x)h^3 + \frac{81}{384}f^{(4)}(x)h^4 + O(h^5) \\
 \end{align}
 $
 $
 \begin{align}
-    f(x - \frac{3}{2}) &= f(x) -\frac{3}{2}f'(x)h + \frac{9}{8}f''(x)h^2 - \frac{27}{48}f'''(x)h^3 + \frac{81}{384}f^{(4)}(x)h^4 - \frac{243}{23040}f^{(5)}(\xi)h^5 \\
+    f(x - \frac{3}{2}h) &= f(x) -\frac{3}{2}f'(x)h + \frac{9}{8}f''(x)h^2 - \frac{27}{48}f'''(x)h^3 + \frac{81}{384}f^{(4)}(x)h^4 - \frac{243}{23040}f^{(5)}(\xi)h^5 \\
     &= f(x) +\frac{3}{2}f'(x)h - \frac{9}{8}f''(x)h^2 + \frac{27}{48}f'''(x)h^3 - \frac{81}{384}f^{(4)}(x)h^4 + O(h^5) \\
 \end{align}$
 
