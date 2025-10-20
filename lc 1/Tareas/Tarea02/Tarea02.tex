@@ -11,6 +11,47 @@
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{accsupp}
+\newcommand{\noncopynumber}[1]{
+    \BeginAccSupp{method=escape,ActualText={}}
+    #1
+    \EndAccSupp{}
+}
+\lstset{
+  language=Python,
+  keepspaces=true,
+  backgroundcolor=\color{Gray!10},
+  basicstyle=\ttfamily\small,
+  identifierstyle=\color{Maroon},
+  keywordstyle=\color{RoyalBlue},
+  commentstyle=\color{OliveGreen!70},
+  stringstyle=\color{BrickRed},
+  showstringspaces=false,
+  % frame=single,
+  columns=fullflexible,
+  numbers=left,
+  numberstyle=\tiny\color{Black}\noncopynumber,
+  numbersep=1pt,
+  literate=%Algunos caracteres acentuados comunes que dan problemas en listings
+         {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+         {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+         {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+         {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+         {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
+
+\lstdefinestyle{terminal}{
+  backgroundcolor=\color{black},
+  basicstyle=\ttfamily\color{white}\footnotesize,
+  frame=single,
+  rulecolor=\color{gray!50},
+  showstringspaces=false,
+  breaklines=true
+}
+
 \title{Laboratorio 1}
 \date{Octubre 2025}
 \pgfplotsset{width=6cm}
@@ -80,19 +121,36 @@ experimentales con los valores teóricos.
                 \item $k$ es la constante elástica del resorte (en Newtons por metro, N/m).
                 \item $\Delta x$ es la elongación del resorte (en metros, m).
             \end{itemize}
-    \subsection{Aceleración de gravedad}
-        La aceleración de gravedad $g$ se puede determinar mediante la medición del tiempo $t$ que tarda 
-        un objeto en caer, en nuestro caso un carrito con ruedas que desprecian el roce, variando angulos
-        de inclinación $\theta$ y conociendo la distancia $d$ recorrida. La relación entre estas variables
-        está dada por la siguiente ecuación\ref{1}:
+        Tambien tendremos que definir la segunda ley de Newton \ref{1}:
 
             \begin{equation}
-                d = \frac{1}{2} a t^2
+                F = m \cdot a
             \end{equation}
 
         Donde:
             \begin{itemize}
-                \item $d$ es la distancia recorrida (en metros, m).
+                \item $F$ es la fuerza neta aplicada al objeto (en Newtons, N).
+                \item $m$ es la masa del objeto (en kilogramos, kg).
+                \item $a$ es la aceleración del objeto (en metros por segundo al cuadrado, m/s²).
+            \end{itemize}
+
+    \subsection{Aceleración de gravedad}
+
+        La aceleración de gravedad $g$ se puede determinar mediante la medición del tiempo $t$ que tarda 
+        un objeto en caer, en nuestro caso un carrito con ruedas que desprecian el roce, variando angulos
+        de inclinación $\theta$ y conociendo la distancia $x$ recorrida. La relación entre estas variables
+        está dada por la siguiente ecuación \ref{1} que sera  :
+
+            \begin{equation}
+                x = x_0 + tv_0 + \frac{1}{2} a t^2
+            \end{equation}
+
+        Donde:
+
+            \begin{itemize}
+                \item $x$ es la posición final (en metros, m).
+                \item $x_0$ es la posición inicial (en metros, m).
+                \item $v_0$ es la velocidad inicial (en metros por segundo, m/s).
                 \item $a$ es la aceleración del objeto (en metros por segundo al cuadrado, m/s²).
                 \item $t$ es el tiempo de caída (en segundos, s).
             \end{itemize}
@@ -107,16 +165,85 @@ experimentales con los valores teóricos.
 \section{Materiales}
 
     \subsection{Materiales para la determinación de la constante elástica de un resorte}
-
+    \begin{itemize}
+        \item Resorte
+        \item Soporte para resorte
+        \item Pesas de masa conocida
+        \item Regla
+    \end{itemize}
     \subsection{Materiales para la determinación de la aceleración de gravedad}
+    \begin{itemize}
+        \item Carrito con ruedas
+        \item Rampa inclinada
+        \item Regla
+        \item Cronómetro
+    \end{itemize}
 
 \section{Procedimiento}
 
 \subsection{Determinación de la constante elástica de un resorte}
 
+    Primero se cuelga el resorte del soporte y se mide su longitud inicial sin ninguna masa colgada.
+    Luego, se cuelgan diferentes masas conocidas al resorte y se mide la elongación del resorte 
+    para cada masa. Se repite este proceso para 14 masas diferentes, registrando 14 elongaciones distintas.
+    \\ Tendremos una tabla con las masas y las elongaciones correspondientes:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Masa (kg) & Elongación (m) \\
+            \hline
+            25.8 & 0.3 \\
+            40.6 & 0.4 \\
+            47.7 & 0.9 \\
+            90.0 & 2.3 \\
+            105.4 & 3.0 \\
+            187.2 & 5.3 \\
+            250.0 & 7.5 \\
+            339.0 & 10.2 \\
+            416.8 & 12.8 \\
+            499.7 & 15.4 \\
+            749.5 & 23.6 \\
+            797.5 & 24.9 \\
+            999.6 & 31.1 \\
+            1122.8 & 35.5 \\
+            \hline
+        \end{tabular}
+    \end{center}
 \subsection{Determinación de la aceleración de gravedad}
 
+    Se coloca la rampa inclinada en un ángulo conocido $\theta$. Se mide una distancia $d$ desde
+    donde comienza el carrito hasta el punto donde se detiene. Se suelta el carrito y se registra
+    el tiempo $t$ que tarda en recorrer la distancia $d$. Este proceso se repite para diferentes
+    ángulos de inclinación. Se varía el ángulo 8 veces y para cada ángulo se registran 10 tiempos,
+    se tomara el promedio de los tiempos para cada ángulo.
+    \\ Tendremos una tabla con los ángulos y los tiempos promedios correspondientes:
+
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Ángulo (Rad) & Promedio Tiempo (s) \\
+            \hline
+            1 & 2.89 \\
+            4 & 1.48 \\
+            6 & 1.15 \\
+            8 & 0.78 \\
+            10 & 0.84 \\
+            12 & 0.81 \\
+            15 & 0.62 \\
+            18 & 0.63 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
 \section{Análisis}
+
+    \subsection{Determinación de la constante elástica de un resorte}
+
+
+
+    \subsection{Determinación de la aceleración de gravedad}
+
+    
 
 \section{Conclusión}
 

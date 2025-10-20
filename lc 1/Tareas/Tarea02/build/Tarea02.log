@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  19 OCT 2025 19:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  20 OCT 2025 18:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -633,47 +633,92 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
 \Hy@SectionHShift=\skip69
+) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count330
+\lst@gtempboxa=\box112
+\lst@token=\toks45
+\lst@length=\count331
+\lst@currlwidth=\dimen311
+\lst@column=\count332
+\lst@pos=\count333
+\lst@lostspace=\dimen312
+\lst@width=\dimen313
+\lst@newlines=\count334
+\lst@lineno=\count335
+\lst@maxwidth=\dimen314
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count336
+\lst@skipnumbers=\count337
+\lst@framebox=\box113
+) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen315
+\ar@mcellbox=\box114
+\extrarowheight=\dimen316
+\NC@list=\toks46
+\extratabsurround=\skip70
+\backup@length=\skip71
+\ar@cellbox=\box115
+)
+\everycr=\toks47
+\minrowclearance=\skip72
+\rownum=\count338
+) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/accsupp\accsupp.sty
+Package: accsupp 2019/12/05 v0.6 Accessibility support by marked content (HO)
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/accsupp\accsupp-pdftex.def
+File: accsupp-pdftex.def 2019/12/05 v0.6 accsupp driver for pdfTeX (HO)
+)) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count330
-\l__pdf_internal_box=\box112
+\l__color_backend_stack_int=\count339
+\l__pdf_internal_box=\box116
 ) (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
 \openout1 = `Tarea02.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
  (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count331
-\scratchdimen=\dimen311
-\scratchbox=\box113
-\nofMPsegments=\count332
-\nofMParguments=\count333
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count334
-\MPscratchDim=\dimen312
-\MPnumerator=\count335
-\makeMPintoPDFobject=\count336
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count340
+\scratchdimen=\dimen317
+\scratchbox=\box117
+\nofMPsegments=\count341
+\nofMParguments=\count342
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count343
+\MPscratchDim=\dimen318
+\MPnumerator=\count344
+\makeMPintoPDFobject=\count345
+\everyMPtoPDFconversion=\toks49
 ) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -682,33 +727,39 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 17.
+ on input line 58.
 
-LaTeX Info: Redefining \. on input line 17.
-LaTeX Info: Redefining \% on input line 17.
-Package hyperref Info: Link coloring OFF on input line 17.
+LaTeX Info: Redefining \. on input line 58.
+LaTeX Info: Redefining \% on input line 58.
+Package hyperref Info: Link coloring OFF on input line 58.
 (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out) (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out)
 \@outlinefile=\write4
 \openout4 = `Tarea02.out'.
 
-<img/marcaderecha.png, id=58, 649.42625pt x 255.95625pt>
+\c@lstlisting=\count346
+<img/marcaderecha.png, id=66, 649.42625pt x 255.95625pt>
 File: img/marcaderecha.png Graphic file (type png)
 <use img/marcaderecha.png>
-Package pdftex.def Info: img/marcaderecha.png  used on input line 22.
+Package pdftex.def Info: img/marcaderecha.png  used on input line 63.
 (pdftex.def)             Requested size: 99.58464pt x 39.24709pt.
-<img/logo-cfm.png, id=60, 585.18219pt x 104.3965pt>
+<img/logo-cfm.png, id=68, 585.18219pt x 104.3965pt>
 File: img/logo-cfm.png Graphic file (type png)
 <use img/logo-cfm.png>
-Package pdftex.def Info: img/logo-cfm.png  used on input line 24.
+Package pdftex.def Info: img/logo-cfm.png  used on input line 65.
 (pdftex.def)             Requested size: 113.81102pt x 20.30386pt.
  [1
 
 {C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 109--109
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
 []\OT1/cmr/bx/n/12 Materiales pa-ra la
  []
 
-[2] (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
+[2]
+Overfull \hbox (11.95032pt too wide) in paragraph at lines 222--236
+ [] 
+ []
+
+[3] (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -717,20 +768,20 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Tarea02.out' has not changed.
-(rerunfilecheck)             Checksum: 22CCB089CE7FFF9337CD05CED3F9A10D;2605.
+(rerunfilecheck)             Checksum: FBBC1D89424746EE1816A0C2720B425E;3244.
  ) 
 Here is how much of TeX's memory you used:
- 49504 strings out of 474486
- 1287931 string characters out of 5743756
- 2017135 words of memory out of 5000000
- 71231 multiletter control sequences out of 15000+600000
- 562093 words of font info for 50 fonts, out of 8000000 for 9000
+ 51655 strings out of 474486
+ 1317650 string characters out of 5743756
+ 2243404 words of memory out of 5000000
+ 73342 multiletter control sequences out of 15000+600000
+ 562428 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,93p,775b,703s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\bruhs\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf" (2 pages, 513807 bytes).
+ 84i,8n,93p,775b,1446s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\bruhs\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on "c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf" (3 pages, 551152 bytes).
 PDF statistics:
- 142 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
