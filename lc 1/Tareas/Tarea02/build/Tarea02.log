@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  22 OCT 2025 00:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  22 OCT 2025 18:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -738,24 +738,24 @@ LaTeX Info: Redefining \% on input line 12.
 )
 \openout1 = `Tarea02.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
  (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count344
@@ -777,43 +777,74 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 50.
+ on input line 51.
 
-LaTeX Info: Redefining \. on input line 50.
-LaTeX Info: Redefining \% on input line 50.
-Package hyperref Info: Link coloring OFF on input line 50.
+LaTeX Info: Redefining \. on input line 51.
+LaTeX Info: Redefining \% on input line 51.
+Package hyperref Info: Link coloring OFF on input line 51.
 (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out) (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out)
 \@outlinefile=\write4
 \openout4 = `Tarea02.out'.
 
 \c@lstlisting=\count350
-<img/marcaderecha.png, id=70, 649.42625pt x 255.95625pt>
+<img/marcaderecha.png, id=6, 649.42625pt x 255.95625pt>
 File: img/marcaderecha.png Graphic file (type png)
 <use img/marcaderecha.png>
-Package pdftex.def Info: img/marcaderecha.png  used on input line 55.
+Package pdftex.def Info: img/marcaderecha.png  used on input line 56.
 (pdftex.def)             Requested size: 99.58464pt x 39.24709pt.
-<img/logo-cfm.png, id=72, 585.18219pt x 104.3965pt>
+<img/logo-cfm.png, id=8, 585.18219pt x 104.3965pt>
 File: img/logo-cfm.png Graphic file (type png)
 <use img/logo-cfm.png>
-Package pdftex.def Info: img/logo-cfm.png  used on input line 57.
+Package pdftex.def Info: img/logo-cfm.png  used on input line 58.
 (pdftex.def)             Requested size: 113.81102pt x 20.30386pt.
  [1
 
-{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]\OT1/cmr/bx/n/12 Materiales pa-ra la
- []
-
-[2] [3]
-Overfull \hbox (83.75027pt too wide) in paragraph at lines 278--296
- [] 
- []
-
-[4
+{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>] [2]
+<img/graf_gravedad.png, id=47, 462.528pt x 346.896pt>
+File: img/graf_gravedad.png Graphic file (type png)
+<use img/graf_gravedad.png>
+Package pdftex.def Info: img/graf_gravedad.png  used on input line 239.
+(pdftex.def)             Requested size: 167.5pt x 125.6235pt.
+ [3
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.309 \end{document}
+l.260 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.260 
+       <./img/graf_gravedad.png>] [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.351 
+      ]
+<img/Cons_elast.png, id=79, 462.528pt x 346.896pt>
+File: img/Cons_elast.png Graphic file (type png)
+<use img/Cons_elast.png>
+Package pdftex.def Info: img/Cons_elast.png  used on input line 384.
+(pdftex.def)             Requested size: 167.5pt x 125.6235pt.
+ [5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.421         \end{equation}
+                             <./img/Cons_elast.png>] [6]
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 553.
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
+File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.577 \end{document}
+                    
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.577 \end{document}
                     ] (c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -823,20 +854,20 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Tarea02.out' has not changed.
-(rerunfilecheck)             Checksum: 65D9221B3DCD7C145E5FB4703D8FA13C;3384.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 52842 strings out of 474486
- 1339096 string characters out of 5743756
- 2383614 words of memory out of 5000000
- 74474 multiletter control sequences out of 15000+600000
- 562728 words of font info for 53 fonts, out of 8000000 for 9000
+ 52972 strings out of 474486
+ 1341324 string characters out of 5743756
+ 2895623 words of memory out of 5000000
+ 74515 multiletter control sequences out of 15000+600000
+ 562724 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,93p,775b,1733s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\bruhs\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf" (4 pages, 556761 bytes).
+ 84i,13n,93p,775b,1839s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\bruhs\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt0800.pk> <C:\Users\bruhs\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on "c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf" (7 pages, 648516 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 288 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

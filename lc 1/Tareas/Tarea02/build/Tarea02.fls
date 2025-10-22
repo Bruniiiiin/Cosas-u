@@ -369,10 +369,10 @@ INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
-OUTPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
 OUTPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
+OUTPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.pdf
 INPUT .\img\marcaderecha.png
 INPUT .\img\marcaderecha.png
 INPUT .\img\marcaderecha.png
@@ -388,7 +388,6 @@ INPUT .\img\logo-cfm.png
 INPUT .\img\logo-cfm.png
 INPUT .\img\logo-cfm.png
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
-INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
@@ -401,13 +400,31 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cme
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
+INPUT .\img\graf_gravedad.png
+INPUT .\img\graf_gravedad.png
+INPUT .\img\graf_gravedad.png
+INPUT .\img\graf_gravedad.png
+INPUT .\img\graf_gravedad.png
+INPUT .\img\graf_gravedad.png
+INPUT .\img\Cons_elast.png
+INPUT .\img\Cons_elast.png
+INPUT .\img\Cons_elast.png
+INPUT .\img\Cons_elast.png
+INPUT .\img\Cons_elast.png
+INPUT .\img\Cons_elast.png
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt8.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\base\ts1cmtt.fd
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\base\ts1cmtt.fd
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\base\ts1cmtt.fd
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tctt0800.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.aux
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
 INPUT c:\Users\bruhs\Cosas U\lc 1\Tareas\Tarea02\build\Tarea02.out
+INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tctt0800.pk
+INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tctt0800.pk
 INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
 INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
@@ -416,8 +433,12 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb

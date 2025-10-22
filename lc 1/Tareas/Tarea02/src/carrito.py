@@ -1,49 +1,27 @@
 import numpy as np
 import matplotlib.pyplot as plt
+plt.style.use("bmh")
 
-datos5 = np.genfromtxt("Tareas\Tarea02\Compl\datos_carrito.txt")
+datos5 = np.genfromtxt("Tareas\Tarea02\Compl\datos_car.txt")
 
-theta = datos5[:,0] 
-t = datos5[:,1]
-l = 0.94 #m
-d = l * np.sin(theta)
-
-plt.scatter(d, t)
-plt.xlabel("ns")
-plt.ylabel("Tiempo (s)")
-plt.title("Comportamiento de un carrito")
-plt.grid()
-plt.show()
-
-#########################
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-datos5 = np.genfromtxt("Tareas\Tarea02\Compl\datos_carrito.txt")
 theta = datos5[:,0]
-t = datos5[:,1]
+t_p = datos5[:,1]
 
-l = 0.94  # m
+coef_polinomios = np.polyfit(theta, t_p, 1)
 
-s = np.sin(theta)
+polinomio = np.poly1d(coef_polinomios)
 
-#aceleración a partir de s = 1/2 a t^2 -> a = 2 s / t^2
-#aquí usamos la distancia recorrida l (constante) proyectada: s = l*sin(theta)
+u = np.linspace(min(theta), max(theta), 100)
 
-a = 2 * (l * s) / (t**2)
+v = polinomio(u)
 
-#ajuste lineal simple a = g * sin(theta)
-coef = np.polyfit(s, a, 1)  # [g, intercept]
-g = coef[0]
+print("Constante aceleracion de gravedad =", coef_polinomios[0], "m/s²S")
 
-# gráfica simple
-plt.figure(figsize=(6,4))
-plt.scatter(s, a, s=50, edgecolor='k', label='datos')
-s_line = np.linspace(s.min(), s.max(), 100)
-plt.plot(s_line, np.polyval(coef, s_line), color='C1', label=f'ajuste: g={g:.3f} m/s²')
-plt.xlabel('sin(θ)')
-plt.ylabel('Aceleración (m/s²)')
-plt.title('Aceleración vs sin(θ)')
+plt.scatter(theta, t_p)
+plt.plot(u, v, "r-", color='green', linewidth=2)
+plt.legend(["Datos experimentales", "Ajuste lineal"])
+plt.xlabel("Ángulo (rad)")
+plt.ylabel("Tiempo promedio (s)")
+plt.title("Comportamiento de un carrito en un plano inclinado")
 plt.grid()
 plt.show()
