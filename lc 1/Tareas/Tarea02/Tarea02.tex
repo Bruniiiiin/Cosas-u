@@ -15,41 +15,33 @@
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{listings}
 \usepackage{accsupp}
+\usepackage{float}
+\usepackage{adjustbox}
 \newcommand{\noncopynumber}[1]{
     \BeginAccSupp{method=escape,ActualText={}}
     #1
     \EndAccSupp{}
 }
-\lstset{
-  language=Python,
-  keepspaces=true,
-  backgroundcolor=\color{Gray!10},
-  basicstyle=\ttfamily\small,
-  identifierstyle=\color{Maroon},
-  keywordstyle=\color{RoyalBlue},
-  commentstyle=\color{OliveGreen!70},
-  stringstyle=\color{BrickRed},
-  showstringspaces=false,
-  % frame=single,
-  columns=fullflexible,
-  numbers=left,
-  numberstyle=\tiny\color{Black}\noncopynumber,
-  numbersep=1pt,
-  literate=%Algunos caracteres acentuados comunes que dan problemas en listings
-         {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-         {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-         {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-         {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-         {ñ}{{\~n}}1 {Ñ}{{\~N}}1
-}
-
-\lstdefinestyle{terminal}{
-  backgroundcolor=\color{black},
-  basicstyle=\ttfamily\color{white}\footnotesize,
-  frame=single,
-  rulecolor=\color{gray!50},
-  showstringspaces=false,
-  breaklines=true
+    \lstset{
+    language=Python,
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=10pt,
+    frame=single,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    morekeywords={np, plt} 
 }
 
 \title{Laboratorio 1}
@@ -138,22 +130,29 @@ experimentales con los valores teóricos.
 
         La aceleración de gravedad $g$ se puede determinar mediante la medición del tiempo $t$ que tarda 
         un objeto en caer, en nuestro caso un carrito con ruedas que desprecian el roce, variando angulos
-        de inclinación $\theta$ y conociendo la distancia $x$ recorrida. La relación entre estas variables
+        de inclinación $\theta$ y conociendo la distancia $d$ recorrida. La relación entre estas variables
         está dada por la siguiente ecuación \ref{1} que sera  :
 
             \begin{equation}
-                x = x_0 + tv_0 + \frac{1}{2} a t^2
+                d = d_0 + tv_0 + \frac{1}{2} a t^2
             \end{equation}
 
         Donde:
 
             \begin{itemize}
-                \item $x$ es la posición final (en metros, m).
-                \item $x_0$ es la posición inicial (en metros, m).
+                \item $d$ es la posición final (en metros, m).
+                \item $d_0$ es la posición inicial (en metros, m).
                 \item $v_0$ es la velocidad inicial (en metros por segundo, m/s).
                 \item $a$ es la aceleración del objeto (en metros por segundo al cuadrado, m/s²).
                 \item $t$ es el tiempo de caída (en segundos, s).
             \end{itemize}
+
+        Pero podemos simplificar la ecuación ya que el carrito parte del reposo y la posición inicial 
+        es cero, quedando de la siguiente forma:
+            
+            \begin{equation}
+                d = \frac{1}{2} a t^2
+            \end{equation}
 
         En el caso de un plano inclinado, la aceleración $a$ está relacionada con la aceleración de 
         gravedad $g$ y el ángulo de inclinación $\theta$ mediante la siguiente relación \ref{1}:
@@ -161,7 +160,7 @@ experimentales con los valores teóricos.
             \begin{equation}
                 a = g \sin(\theta)
             \end{equation}
-        
+
 \section{Materiales}
 
     \subsection{Materiales para la determinación de la constante elástica de un resorte}
@@ -175,7 +174,7 @@ experimentales con los valores teóricos.
     \begin{itemize}
         \item Carrito con ruedas
         \item Rampa inclinada
-        \item Regla
+        \item Transportador de ángulos
         \item Cronómetro
     \end{itemize}
 
@@ -185,12 +184,14 @@ experimentales con los valores teóricos.
 
     Primero se cuelga el resorte del soporte y se mide su longitud inicial sin ninguna masa colgada.
     Luego, se cuelgan diferentes masas conocidas al resorte y se mide la elongación del resorte 
-    para cada masa. Se repite este proceso para 14 masas diferentes, registrando 14 elongaciones distintas.
+    para cada masa. Se repite este proceso para 14 masas diferentes, registrando 14 elongaciones 
+    distintas.
     \\ Tendremos una tabla con las masas y las elongaciones correspondientes:
+
     \begin{center}
         \begin{tabular}{|c|c|}
             \hline
-            Masa (kg) & Elongación (m) \\
+            Masa [kg] & Elongación [m] \\
             \hline
             25.8 & 0.3 \\
             40.6 & 0.4 \\
@@ -209,6 +210,19 @@ experimentales con los valores teóricos.
             \hline
         \end{tabular}
     \end{center}
+    Consideraremos un error instrumental en la medición de la elongación utilizando una regla
+    de:
+    
+    \begin{equation}
+        \Delta d = 0.001 [m]
+    \end{equation}
+    
+    y un error en la medición de la masa utilizando una balanza de: 
+    
+    \begin{equation}
+        \Delta m = 0.001 [kg]
+    \end{equation}
+
 \subsection{Determinación de la aceleración de gravedad}
 
     Se coloca la rampa inclinada en un ángulo conocido $\theta$. Se mide una distancia $d$ desde
@@ -221,19 +235,26 @@ experimentales con los valores teóricos.
     \begin{center}
         \begin{tabular}{|c|c|}
             \hline
-            Ángulo (Rad) & Promedio Tiempo (s) \\
+            Ángulo [Rad] & Prom Tiempo [s] \\
             \hline
-            1 & 2.89 \\
-            4 & 1.48 \\
-            6 & 1.15 \\
-            8 & 0.78 \\
-            10 & 0.84 \\
-            12 & 0.81 \\
-            15 & 0.62 \\
-            18 & 0.63 \\
+            0.02 & 2.89 \\
+            0.07 & 1.48 \\
+            0.10 & 1.15 \\
+            0.14 & 0.78 \\
+            0.17 & 0.84 \\
+            0.21 & 0.81 \\
+            0.26 & 0.62 \\
+            0.31 & 0.63 \\
             \hline
         \end{tabular}
     \end{center}
+
+    Consideraremos un error instrumental en la medición del ángulo utilizando un transformador 
+    de: 
+        
+        \begin{equation}
+            \Delta \theta = 0.005 [Rad]
+        \end{equation}
 
 \section{Análisis}
 
@@ -247,10 +268,41 @@ experimentales con los valores teóricos.
 
 \section{Conclusión}
 
+
+
+\section{Códigos utilizados}
+    A continuación se presentan los códigos utilizados para el análisis de los datos experimentales.
+
+\begin{figure}[H]
+        \begin{center}
+        \begin{adjustbox}{max width=1.5\linewidth}
+        \begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+
+datos4 = np.genfromtxt("Tareas\Tarea02\Compl\datos_resorte.txt")
+
+x = datos4[:,0]
+y = datos4[:,1]
+
+plt.scatter(x, y)
+plt.xlabel("Masa (g)")
+plt.ylabel("Desplazamiento (cm)")
+plt.title("Comportamiento de un resorte")
+plt.grid()
+plt.show()
+        \end{lstlisting}
+        \end{adjustbox}
+        \end{center}
+    \caption{Códigos en python usados para graficar los datos}
+    \label{fig:resorte}
+    \end{figure}
+
 \section{Referencias}
     \begin{enumerate}
     
-        \item \label{1} Resnick, R., Halliday, D., \& Krane, K. (1988). \textit{Physics, Vol. 1} (4th ed.). John Wiley \& Sons. 
+        \item \label{1} Resnick, R., Halliday, D., \& Krane, K. (1988). 
+        \textit{Physics, Vol. 1} (4th ed.). John Wiley \& Sons. 
     
     \end{enumerate}
 \end{multicols}
