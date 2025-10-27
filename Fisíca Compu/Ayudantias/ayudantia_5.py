@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use("dark_background")
 
-m1, m2, l1, l2, g = 1, 2, 3, 1, 9.81
+m1, m2, l1, l2, g = 1, 1, 2, 1, 9.81
 
 def f_vectorial(u, t, m1=m1, m2=m2, l1=l1, l2=l2):
 
@@ -17,9 +17,9 @@ def f_vectorial(u, t, m1=m1, m2=m2, l1=l1, l2=l2):
 
 from Rungekutta import runge_kutta_4
 
-dt = 0.01
-x0 = np.array([np.pi/2, np.pi/2, 0, 0]) #Condiciones iniciales [Theta1, Theta2, Omega1, Omega2]
-t = np.linspace(0, 20, 1000) #Tiempo
+dt = 0.001
+x0 = np.array([np.pi/4, np.pi/4, 0, 0]) #Condiciones iniciales [Theta1, Theta2, Omega1, Omega2]
+t = np.linspace(0, 30, 1000) #Tiempo
 
 runge_kutta_4(f_vectorial, x0, t)
 
@@ -62,7 +62,7 @@ E = K1 + K2 + U
 
 #Grafico de espacio de fase
 
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(6, 6))
 plt.plot(theta1, omega1, label='Péndulo 1')
 plt.plot(theta2, omega2, label='Péndulo 2')
 plt.title('Espacio de Fase del Péndulo Doble')
