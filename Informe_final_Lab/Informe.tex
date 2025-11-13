@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr} 
+\usepackage[bottom, norule]{footmisc}
+\usepackage{multicol}    
+\usepackage{sectsty}    
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[square,numbers,sort&compress]{natbib}
+\bibliographystyle{apsrev4-2}
+
+\title{Informe Laboratorio 03}
+\date{Septiembre 2025}
+\pgfplotsset{compat=1.18}
+\pgfplotsset{width=6cm}
+\begin{document}
+\fancyfoot[C]{}          
+\fancyhead{}    
+\begin{tikzpicture}[remember picture, overlay]
+
+    \node[anchor=north west, xshift=2.6cm, yshift=-0.5cm] at (current page.north west) 
+    {\includegraphics[width=3.5cm]{img/marcaderecha.png}};  
+    \node[anchor=north east, xshift=-2.6cm, yshift=-1cm] at (current page.north east) 
+    {\includegraphics[width=4cm]{img/logo-cfm.png}}; 
+
+\end{tikzpicture}
+
+\begin{center}
+\large Laboratorio 1 \\
+\vspace{0.3cm}
+{\scshape\Huge Bobina Helmholtz y permeabilidad magnética \par}
+\vspace{0.5cm}
+{\scshape\Large Informe final \par}
+\vspace{1.5cm}
+{\large Nombres: Bruno Bustos, Darío Ferrada, Camilo Jordán, Catalina Zamorano}
+\vspace{0.3cm}
+\large 
+\\ 
+\ttfamily{Universidad de Concepción, Facultad de Ciencias Físicas y Matemáticas.}
+\end{center}
+\vspace{1cm}
+
+\begin{abstract}
+
+    En este informe se pretende utilizar una bobina de Helmholtz para medir la permeabilidad magnética del aire. 
+    Se realizará un análisis teórico del campo magnético generado por la bobina, y se compararán los resultados experimentales 
+    con los valores teóricos esperados analizando las posibles fuentes de error y su impacto en las mediciones. 
+
+\end{abstract}
+
+\begin{multicols}{2}
+
+\section*{Introducción}
+
+    Generalmente en problemas de electromagnetismo se utilizan variadas formulas para calcular todo tipo de campos magnéticos,
+    sin embargo es necesario conocer que es lo que contienen estas formulas, en especifico nos interesaremos en la constante
+    de permeabilidad magnética de algun material, la cual es una constante física que describe la capacidad del dicho material
+    para permitir el paso de un campo magnético. Esta constante es fundamental en la teoría del electromagnetismo y aparece en varias
+    ecuaciones importantes, como la ley de Ampère y la ley de Faraday. En este informe se pretende medir la permeabilidad magnética del
+    aire utilizando una bobina de Helmholtz y compararla con el valor teórico conocido.
+
+\newpage
+
+\section*{Modelo Teórico}
+
+    Partiremos con la ecuacion que describe el campo magnético generado por una espira circular de radio $R$ y corriente $I$ en su
+    centro \cite{Griffiths}:
+
+        \begin{equation}
+            aaaa
+        \end{equation}
+
+    Llegando a la ecuacion del campo magnético generado por una bobina de Helmholtz \cite{bobinaHz} cuando se encuentra en su centro:
+
+    \begin{equation}
+        B = \mu_a \frac{NI}{R} \left(\frac{4}{5}\right)^{3/2}
+    \end{equation}
+
+    Donde $B$ es el campo magnético en el centro de la bobina, $\mu_a$ es la permeabilidad magnética del aire, $N$ es el número de 
+    vueltas, $I$ es la corriente que pasa por la bobina y $R$ es el radio de la bobina.
+
+    Podemos encontrar una relación lineal despejando $\mu_a$:
+
+        \begin{equation}
+            \mu_a = \frac{R}{NI} \left(\frac{4}{5}\right)^{-3/2} B
+        \end{equation}
+
+    Podemos decir $\frac{R}{NI} \left(\frac{4}{5}\right)^{-3/2} = H$, por lo que la ecuación queda:
+
+        \begin{equation}
+            \mu_a = H B
+        \end{equation}
+
+\section*{Materiales}
+
+    \begin{itemize}
+        \item Bobina de Helmholtz
+        \item Fuente de alimentación DC
+        \item Dos multímetros
+        \item Sensor de campo magnético
+        \item Cables de conexión
+    \end{itemize}
+
+\section*{Montaje}
+
+
+
+\section*{Análisis}
+
+
+
+\section*{Conclusión}
+
+
+\bibliography{referencias}
+
+
+\end{multicols}
+\end{document}
