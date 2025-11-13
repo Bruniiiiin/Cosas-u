@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{1}%
+\begin{thebibliography}{2}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,13 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Griffiths}(1999)}]{Griffiths}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {Griffiths}},\ }\href@noop {} {\emph {\bibinfo {title} {Introducción a la
+  electrodinámica}}},\ \bibinfo {edition} {3rd}\ ed.\ (\bibinfo  {publisher}
+  {Prentice Hall},\ \bibinfo {address} {Madrid},\ \bibinfo {year}
+  {1999})\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{Wikipedia contributors}}(2025)}]{bobinaHz}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibnamefont {{Wikipedia
