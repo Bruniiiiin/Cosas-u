@@ -72,7 +72,30 @@
     centro \cite{Griffiths}:
 
         \begin{equation}
-            aaaaa
+            B(x) = \frac{\mu I R^2}{2(R^2 + x^2)^{3/2}}
+        \end{equation}
+
+    Consideraremos el punto medio entre las dos bobinas como el origen del sistema de coordenadas, por lo que cada bobina estará
+    ubicada a una distancia $x_1 = R/2$ y $x_2 = -R/2$. Por lo tanto, el campo magnético en el centro de la bobina de Helmholtz
+    será la suma de los campos magnéticos generados por cada bobina evaluados en el origen:
+        
+        \begin{equation}
+            B_{total} = B_1(0) + B_2(0)
+        \end{equation}
+
+    Como ambas son simétricas ambas producen el mismo campo magnético en el centro $B_{total} =2B(x=R/2)$, evaluando tenemos que:
+
+        \begin{align}
+            B(\frac{R}{2})  &= \frac{\mu I R^2}{2(R^2 + (\frac{R}{2})^2)^{3/2}} \\
+                            &= \frac{\mu I R^2}{2(R^2 + \frac{R^2}{4})^{3/2}} \\
+                            &= \frac{\mu I R^2}{2(\frac{5R^2}{4})^{3/2}} \\
+                            &= \frac{1}{2} \frac{\mu I}{R} \left(\frac{4}{5}\right)^{3/2}
+        \end{align}
+
+    Recordando que tenemos dos bobinas, el campo magnético total en el centro de la bobina de Helmholtz es:
+
+        \begin{equation}
+            B_{total} = 2B(\frac{R}{2}) = \mu \frac{NI}{R} \left(\frac{4}{5}\right)^{3/2}
         \end{equation}
 
     Llegando a la ecuacion del campo magnético generado por una bobina de Helmholtz \cite{bobinaHz} cuando se encuentra en su centro:
@@ -96,6 +119,8 @@
             \mu_a = H B
         \end{equation}
 
+    %recordar : que H*E = m*c**2, donde H es el amor
+    
 \section*{Materiales}
 
     \begin{itemize}
