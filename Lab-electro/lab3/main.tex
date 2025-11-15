@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr} 
+\usepackage[bottom, norule]{footmisc}
+\usepackage{multicol}    
+\usepackage{sectsty}    
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\title{Informe Laboratorio 03}
+\date{Septiembre 2025}
+\pgfplotsset{width=6cm}
+\begin{document}
+\fancyfoot[C]{}          
+\fancyhead{}    
+\begin{tikzpicture}[remember picture, overlay]
+
+  \node[anchor=north west, xshift=2.6cm, yshift=-0.5cm] at (current page.north west) 
+  {\includegraphics[width=3.5cm]{marcaderecha.png}};  
+  \node[anchor=north east, xshift=-2.6cm, yshift=-1cm] at (current page.north east) 
+  {\includegraphics[width=4cm]{logo-cfm.png}}; 
+\end{tikzpicture}
+
+\begin{center}
+\large Electromagnetismo 2 \\
+\vspace{0.3cm}
+{\scshape\Huge Laboratorio 03\par}
+\vspace{0.5cm}
+{\scshape\Large Magnetismo \par}
+\vspace{1.5cm}
+{\large Nombres: Bruno Bustos, Darío Ferrada, Camilo Jordán, Catalina Zamorano}
+\vspace{0.3cm}
+\large 
+\\ 
+\ttfamily{Universidad de Concepción, Facultad de Ciencias Físicas y Matemáticas.}
+\end{center}
+\vspace{1cm}
+
+\begin{abstract}
+En este informe se presenta el análisis preliminar del comportamiento transitorio en circuitos de tipo RC, RL y RLC, con el propósito de verificar experimentalmente las ecuaciones teóricas. Se detalla el funcionamiento y la metodología para la medición de voltaje y tiempo utilizando un osciloscopio y un generador de señales. Se realizaron mediciones iniciales de las curvas de voltaje, simulando los procesos de conexión y desconexión con una señal de onda cuadrada. Dado que la etapa de toma de datos aún no ha concluido, el presente avance se centra en la metodología y el análisis cualitativo, quedando la comprobación cuantitativa del modelo pendiente para la entrega final del informe.
+
+\end{abstract}
+
+\begin{multicols}{2}
+
+\section{Introducción}
+En este informe se busca conocer el funcionamiento de un osciloscopio en conjunto a un generador de señales alternas, de modo que se aprenda a medir el voltaje y el tiempo con el osciloscopio. Además, se quiere comprobar experimentalmente las ecuaciones de carga y descarga de un condensador en un circuito RLC, y las ecuaciones de conexión y desconexión de bobinas de autoinducción en un circuito RL. Finalmente, se busca también obtener oscilaciones de carga y medir la frecuencia propia del sistema oscilante para el circuito RLC.
+
+\section{Marco Teórico}
+\begin{itemize}
+  \item Circuito RC
+  \item Circuito RL
+  \item Circuito RLC
+  \item Osciloscopio
+  \item Generador de Señales Alternas
+  \item Ecuaciones de Carga y Descarga de Condensador
+  \item Ecuaciones de Conexión y Desconexión de Bobinas de Autoinducción
+\end{itemize}
+\section{Materiales}
+\begin{itemize}
+    \item 1 osciloscopio con 2 puntas de prueba
+    \item 1 generador de señal
+    \item 1 caja de resistencias décadas
+    \item 1 caja de condensador décadas 
+    \item 1 bobina de 600 vueltas
+    \item 1 transformador de $\frac{200}{6}$ volts
+    \item 6 conexiones
+\end{itemize}
+ 
+\section{Montaje}
+\subsection{Osciloscopio}
+Con ayuda del docente a cargo del laboratorio se puso en funcionamiento el osciloscopio, identificando las diferentes funciones que este ofrece. Para configurar bien la pantalla del osciloscopio (la cual muestra una señal sinusoidal acomodada con el voltaje en el eje y, y el tiempo en el eje x) se debe fijar bien el posicionamiento a través de los controles X-POS e Y-POS, encuadrándolo de modo que no exceda los límites de la pantalla. Esto se realiza por medio de los controles $\frac{Volts}{div}$ de cada canal de entrada (CH1 y CH2). Por último para establecer la estabilidad de la señal y el número de ondas en pantalla se utiliza el control $\frac{Time}{div}$
+\subsection{Circuitos}
+Se realizaron tres circuitos; RC, RL y RLC, los cuales fueron conectados al osciloscopio y a un generador para ver el voltaje en función del tiempo.
+\subsubsection{Circuito RL}
+\includegraphics[width= 0.4\textwidth]{lab3/img/RL.jpg} \label{fig:RL}
+\subsubsection{Circuito RC}
+\includegraphics[width= 0.4 \textwidth]{lab3/img/rc.jpg}
+\subsubsection{Circuito RLC}
+\includegraphics[width= 0.4 \textwidth]{lab3/img/rlc.jpg}
+
+\section{Procedimiento}
+\subsection{Circuito RC}
+Una vez que el osciloscopio quede bien configurado, se realiza el montaje del circuito experimental RC, con la resistencia ($R$) en 1 $K\Omega$, el condensador ($C$) en 0.1 $\mu F$ y el la señal de salida del generador ($v_c(t)$) de 1 $KHz$ 
+
+Para observar el voltaje $v_c(t)$ se conecta CH1 del osciloscopio entre la resitencia y el condensador, ajustando las medidas para la correcta observación del comportamiento en pantalla. Usando un segundo cable conectado a CH2 a la salida del generador de señales pudiendo de este modo comparar la relación causa y efecto, y los valores máximos de $v_c(t)$ con $V_o$ del generador.
+
+\subsection{Circuito RL}
+Se reemplaza el condensador \(C\) del montaje anterior por una bobina de 600 espiras con una autoinducción de \(L = 9\,\text{mH}\). Para lograr un control adecuado y una visualización clara de los voltajes \(v_L(t)\) y \(v_R(t)\), se ajusta la resistencia \(R\) a \(300\,\Omega\) y se utiliza una frecuencia de \(3\,\text{kHz}\) en el generador de señales, realizando los reajustes necesarios en el control de frecuencia para obtener la mejor visualización posible. A continuación, se repiten los pasos del procedimiento anterior, con la diferencia de que ahora se observa el voltaje en la bobina \(v_L(t)\) en lugar del voltaje en el condensador \(v_C(t)\), y la constante de tiempo del circuito se define como \(\tau_L = \frac{L}{R}\).
+
+\subsection{Circuito RLC}
+Se construye el circuito RLC con los valores \(R = 200\,\Omega\), \(C = 0{,}01\,\mu\text{F}\) y \(L = 9\,\text{mH}\) (bobina de 600 espiras). Se conecta únicamente CH1 en el punto \(c\) para visualizar \(v_C(t)\), donde se observarán las oscilaciones. Se ajusta el control de barrido del osciloscopio y la frecuencia del generador de señales hasta lograr una visualización óptima. Si la estabilidad de la señal no es adecuada, se pueden intercambiar las posiciones de \(C\) y \(L\) para observar \(v_L(t)\). Posteriormente, se modifican los valores de \(R\) con el fin de analizar su influencia en el decaimiento de la onda y en el número de oscilaciones observadas; incluso puede eliminarse por completo la resistencia de la caja de décadas. Finalmente, se mide el período de las oscilaciones amortiguadas, \(T'\), para obtener \(\omega' = \tfrac{2\pi}{T'}\), y se compara con el valor teórico dado por \(\omega' = \left(\omega^2 - \left(\tfrac{R}{2L}\right)^2\right)^{\tfrac{1}{2}}\).
+
+
+
+\section{Análisis}
+
+\section{Conclusión}
+
+\section{Referencias}
+\begin{enumerate}
+    
+    \item \label{1} McGrayne, S. B., \& Kashy, E. (s.f.). {Historical survey}. En {Electromagnetism}. Encyclopaedia Britannica. \url{https://www.britannica.com/science/electromagnetism/Historical-survey}
+
+    \item \label{2} Bellis, M. (2025, 2 de mayo). {A Timeline of Events in Electromagnetism}. ThoughtCo. \url{https://www.thoughtco.com/electromagnetism-timeline-1992475}
+
+    \item \label{3} ETSIST UPM. (s.f.). {Electroimán} [Versión imprimible]. Ingeniería TIC, ETSIST UPM. \url{https://www.etsist.upm.es/estaticos/ingeniatic/index.php/tecnologias/item/451-electroim%C3%A1n%3Ftmpl=component&print=1.html}
+    
+    \item \label{4} Eurobalt Ingeniería. (2019, 16 de abril). {Imanes permanentes: sus características, aplicación}. Eurobalt Ingeniería. \url{https://eurobalt.net/es/blog/2019/04/16/permanent-magnet/}
+    
+    \item \label{5} Química.es. (s.f.).{Diamagnetismo}. \url{https://www.quimica.es/enciclopedia/Diamagnetismo.html}
+    
+    \item \label{6} The Editors of Encyclopaedia Britannica. (s.f.). {Diamagnetism}. Encyclopaedia Britannica. \url{https://www.britannica.com/science/diamagnetism}
+    
+    \item \label{7} The Editors of Encyclopaedia Britannica. (2025, 8 de agosto). {Ferromagnetism}. Encyclopaedia Britannica. \url{https://www.britannica.com/science/ferromagnetism}
+\end{enumerate}
+\end{multicols}
+\end{document}
