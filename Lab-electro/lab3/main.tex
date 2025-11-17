@@ -11,6 +11,7 @@
 \usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{hyperref}
+
 \title{Informe Laboratorio 03}
 \date{Septiembre 2025}
 \pgfplotsset{width=6cm}
@@ -20,9 +21,9 @@
 \begin{tikzpicture}[remember picture, overlay]
 
   \node[anchor=north west, xshift=2.6cm, yshift=-0.5cm] at (current page.north west) 
-  {\includegraphics[width=3.5cm]{marcaderecha.png}};  
+  {\includegraphics[width=3.5cm]{img/marcaderecha.png}};  
   \node[anchor=north east, xshift=-2.6cm, yshift=-1cm] at (current page.north east) 
-  {\includegraphics[width=4cm]{logo-cfm.png}}; 
+  {\includegraphics[width=4cm]{img/logo-cfm.png}}; 
 \end{tikzpicture}
 
 \begin{center}
@@ -41,8 +42,7 @@
 \vspace{1cm}
 
 \begin{abstract}
-En este informe se presenta el análisis preliminar del comportamiento transitorio en circuitos de tipo RC, RL y RLC, con el propósito de verificar experimentalmente las ecuaciones teóricas. Se detalla el funcionamiento y la metodología para la medición de voltaje y tiempo utilizando un osciloscopio y un generador de señales. Se realizaron mediciones iniciales de las curvas de voltaje, simulando los procesos de conexión y desconexión con una señal de onda cuadrada. Dado que la etapa de toma de datos aún no ha concluido, el presente avance se centra en la metodología y el análisis cualitativo, quedando la comprobación cuantitativa del modelo pendiente para la entrega final del informe.
-
+En este informe se analiza el comportamiento transitorio en circuitos de tipo RC, RL y RLC, con el propósito de verificar experimentalmente las ecuaciones que describen sus respuestas. Se presenta además el funcionamiento y la metodología para la medición de voltaje y tiempo utilizando un osciloscopio y un generador de señales. Se realizaron mediciones de las curvas de voltaje en los distintos componentes, utilizando una señal de onda cuadrada para simular los procesos de conexión y desconexión. Los resultados obtenidos al comparar los datos experimentales con el modelo teórico arrojaron una discrepancia significativa, ya que con el circuito RC se obtuvo un error porcentual que supera el $400\%$. Por otro lado en los circuitos RL y RLC se validaron las evidencias teóricas.  Con esto, fue posible corroborar el modelo teórico para los circuitos RL y RLC, y se sugiere que en la realización del primer experimento hubo presencia de errores sistemáticos en el montaje, la calibración del equipo o la toma de datos.
 \end{abstract}
 
 \begin{multicols}{2}
@@ -51,15 +51,154 @@ En este informe se presenta el análisis preliminar del comportamiento transitor
 En este informe se busca conocer el funcionamiento de un osciloscopio en conjunto a un generador de señales alternas, de modo que se aprenda a medir el voltaje y el tiempo con el osciloscopio. Además, se quiere comprobar experimentalmente las ecuaciones de carga y descarga de un condensador en un circuito RLC, y las ecuaciones de conexión y desconexión de bobinas de autoinducción en un circuito RL. Finalmente, se busca también obtener oscilaciones de carga y medir la frecuencia propia del sistema oscilante para el circuito RLC.
 
 \section{Marco Teórico}
+
+\subsection{Circuito RC}
+
+Un circuito RC está formado por un resistor (R) y un condensador (C) conectados en serie o en paralelo. Su comportamiento se basa en cómo el condensador almacena y libera energía en forma de carga eléctrica mientras la resistencia limita la corriente que circula. \ref{1}
+
+La dinámica temporal del circuito está gobernada por la constante de tiempo:
+\begin{equation}
+    \tau = RC
+\end{equation}
+
+
+En un circuito RC de carga, el voltaje en el condensador evoluciona como:
+
+\begin{equation}
+    V_C(t) = V_{\text{fuente}}\left(1 - e^{-t/RC}\right)
+\end{equation}
+
+
+En un circuito RC de descarga:
+
+\begin{equation}
+    V_C(t) = V_0 e^{-t/RC}
+\end{equation}
+
+
+
+Estos circuitos se utilizan como filtros, en temporizadores, suavizadores de señal y en aplicaciones analógicas básicas. Su respuesta frecuencial permite definirlos como filtro pasa-bajo o pasa-alto, dependiendo de la configuración.
+
+\subsection{Circuito RL}
+Un circuito RL está compuesto por una resistencia (R) y una inductancia (L) conectadas en serie o en paralelo. Su comportamiento depende de cómo la inductancia se opone a cambios en la corriente, almacenando energía en un campo magnético, mientras la resistencia disipa energía. \ref{1}
+
+La evolución temporal del circuito está gobernada por la constante de tiempo:
+\begin{equation}
+    \tau = \frac{L}{R}
+\end{equation}
+
+
+En un circuito RL de corriente creciente (energización):
+
+\begin{equation}
+    I(t) = I_{\text{max}}\left(1 - e^{-tR/L}\right)
+\end{equation}
+
+
+En un circuito RL de corriente decreciente (desenergización):
+
+\begin{equation}
+    I(t) = I_0 e^{-tR/L}
+\end{equation}
+
+
+Los circuitos RL se usan en filtros de audio, control de motores, etapas de conmutación, y como filtros pasa-bajo o pasa-alto según su configuración. Su respuesta está marcada por la tendencia de la bobina a suavizar variaciones rápidas de corriente.
+
+\subsection{Circuito RLC}
+
+Un circuito RLC tiene tres elementos:
+
 \begin{itemize}
-  \item Circuito RC
-  \item Circuito RL
-  \item Circuito RLC
-  \item Osciloscopio
-  \item Generador de Señales Alternas
-  \item Ecuaciones de Carga y Descarga de Condensador
-  \item Ecuaciones de Conexión y Desconexión de Bobinas de Autoinducción
+    \item R (resistencia): disipa energía.
+    \item L (inductor): se opone a cambios de corriente y almacena energía en un campo magnético.
+    \item C (condensador): almacena energía en un campo eléctrico.
 \end{itemize}
+La combinación de estos tres elementos hace que el circuito pueda oscilar y responder de forma resonante.
+Dependiendo de la relación entre R, L y C, el circuito puede:
+Oscilar y decrecer (subamortiguado), volver rápido sin oscilar (críticamente amortiguado) y volver lento sin oscilar (sobreamortiguado). \ref{1}
+
+
+La resonancia ocurre cuando los efectos de L y C se cancelan. La frecuencia natural del circuito es:
+
+\begin{equation}
+    \omega_0 = \frac{1}{\sqrt{LC}}
+\end{equation}
+
+
+En esta frecuencia, el circuito puede dejar pasar más corriente (RLC serie) o generar mayor voltaje (RLC paralelo).
+
+Se usa en filtros, radios, osciladores, y sistemas donde se necesita seleccionar una frecuencia.
+
+\subsection{Osciloscopio}
+Un osciloscopio es un instrumento que permite observar cómo cambia una señal eléctrica a lo largo del tiempo. En lugar de entregar un valor numérico, muestra una gráfica en pantalla donde el voltaje aparece en el eje vertical y el tiempo en el eje horizontal.
+Gracias a esto, el usuario puede ver la forma real de la señal, detectar ruido, fallas o comportamientos inesperados. \ref{2}
+
+Sus controles principales ajustan la escala de voltaje, la escala de tiempo y el trigger, que estabiliza la imagen para que la onda no se desplace.
+Es una herramienta esencial para analizar y diagnosticar circuitos electrónicos.
+
+\subsection{Generador de señales alternas}
+Es un instrumento que produce señales eléctricas periódicas (AC) de distintas formas: senoidales, cuadradas, triangulares, de diente de sierra, etc. Permite controlar parámetros clave como la frecuencia, la amplitud, el offset (desplazamiento en DC) y la fase. Es muy útil para pruebas, calibraciones, diagnóstico de circuitos y diseño, porque se puede inyectar una señal conocida en un sistema y observar cómo responde.
+
+\subsection{Ecuaciones de carga y descarga de un condensador}
+Cuando un condensador se conecta a un circuito RC, su voltaje no cambia instantáneamente, sino que sigue una evolución exponencial determinada por la constante de tiempo:
+\begin{equation}
+    \tau = RC
+\end{equation}
+
+
+\subsubsection{Ecuación de carga del condensador}
+
+Cuando el condensador se conecta a una fuente de voltaje , su voltaje aumenta según:
+
+\begin{equation}
+   V_C(t) = V_0\left(1 - e^{-t/RC}\right) 
+\end{equation}
+
+La corriente en la carga disminuye con el tiempo:
+\begin{equation}
+    I(t) = \frac{V_0}{R}e^{-t/RC}
+\end{equation}
+
+\subsubsection{Ecuación de descarga del condensador}
+
+Si se desconecta de la fuente y se deja descargando a través de la resistencia:
+\begin{equation}
+    V_C(t) = V_0 e^{-t/RC}
+\end{equation}
+
+
+y la corriente es $I(t) = -\frac{V_0}{R} e^{-t/RC}$.
+
+\subsection{Ecuaciones de conexión y desconexión de bobinas de autoinducción}
+Cuando un inductor se conecta o desconecta en un circuito RL, la corriente no cambia instantáneamente debido a la autoinducción. El inductor se opone a las variaciones bruscas de corriente generando una fuerza electromotriz (fem) inducida.
+
+La evolución temporal está gobernada por la constante de tiempo:
+\begin{equation}
+    \tau = \frac{L}{R}
+\end{equation}
+\subsubsection{Ecuación de conexión del inductor}
+
+Cuando se aplica una fuente de voltaje , la corriente crece gradualmente según:
+\begin{equation}
+    I(t) = \frac{V_0}{R}\left(1 - e^{-tR/L}\right)
+\end{equation}
+
+El voltaje en la bobina es inicialmente máximo y luego disminuye:
+\begin{equation}
+   V_L(t) = V_0 e^{-tR/L} 
+\end{equation}
+
+
+\subsubsection{Ecuación de desconexión del inductor}
+
+
+Al desconectarse la fuente, la corriente no cae de golpe; sigue una caída exponencial:
+\begin{equation}
+   I(t) = I_0 e^{-tR/L} 
+\end{equation}
+
+
+El voltaje inducido se opone al corte brusco de corriente (principio de Lenz).
 \section{Materiales}
 \begin{itemize}
     \item 1 osciloscopio con 2 puntas de prueba
@@ -70,18 +209,18 @@ En este informe se busca conocer el funcionamiento de un osciloscopio en conjunt
     \item 1 transformador de $\frac{200}{6}$ volts
     \item 6 conexiones
 \end{itemize}
- 
+
 \section{Montaje}
 \subsection{Osciloscopio}
 Con ayuda del docente a cargo del laboratorio se puso en funcionamiento el osciloscopio, identificando las diferentes funciones que este ofrece. Para configurar bien la pantalla del osciloscopio (la cual muestra una señal sinusoidal acomodada con el voltaje en el eje y, y el tiempo en el eje x) se debe fijar bien el posicionamiento a través de los controles X-POS e Y-POS, encuadrándolo de modo que no exceda los límites de la pantalla. Esto se realiza por medio de los controles $\frac{Volts}{div}$ de cada canal de entrada (CH1 y CH2). Por último para establecer la estabilidad de la señal y el número de ondas en pantalla se utiliza el control $\frac{Time}{div}$
 \subsection{Circuitos}
 Se realizaron tres circuitos; RC, RL y RLC, los cuales fueron conectados al osciloscopio y a un generador para ver el voltaje en función del tiempo.
 \subsubsection{Circuito RL}
-\includegraphics[width= 0.4\textwidth]{lab3/img/RL.jpg} \label{fig:RL}
+\includegraphics[width= 0.4\textwidth]{img/RL.jpg} \label{fig:RL}
 \subsubsection{Circuito RC}
-\includegraphics[width= 0.4 \textwidth]{lab3/img/rc.jpg}
+\includegraphics[width= 0.4 \textwidth]{img/rc.jpg}
 \subsubsection{Circuito RLC}
-\includegraphics[width= 0.4 \textwidth]{lab3/img/rlc.jpg}
+\includegraphics[width= 0.4 \textwidth]{img/rlc.jpg}
 
 \section{Procedimiento}
 \subsection{Circuito RC}
@@ -95,11 +234,187 @@ Se reemplaza el condensador \(C\) del montaje anterior por una bobina de 600 esp
 \subsection{Circuito RLC}
 Se construye el circuito RLC con los valores \(R = 200\,\Omega\), \(C = 0{,}01\,\mu\text{F}\) y \(L = 9\,\text{mH}\) (bobina de 600 espiras). Se conecta únicamente CH1 en el punto \(c\) para visualizar \(v_C(t)\), donde se observarán las oscilaciones. Se ajusta el control de barrido del osciloscopio y la frecuencia del generador de señales hasta lograr una visualización óptima. Si la estabilidad de la señal no es adecuada, se pueden intercambiar las posiciones de \(C\) y \(L\) para observar \(v_L(t)\). Posteriormente, se modifican los valores de \(R\) con el fin de analizar su influencia en el decaimiento de la onda y en el número de oscilaciones observadas; incluso puede eliminarse por completo la resistencia de la caja de décadas. Finalmente, se mide el período de las oscilaciones amortiguadas, \(T'\), para obtener \(\omega' = \tfrac{2\pi}{T'}\), y se compara con el valor teórico dado por \(\omega' = \left(\omega^2 - \left(\tfrac{R}{2L}\right)^2\right)^{\tfrac{1}{2}}\).
 
-
-
 \section{Análisis}
 
+  \subsection*{Circuito RC}
+    Analizando el grafico obtenido en el osciloscopio para el circuito RC se puede observar que la forma de la curva obtenida es 
+    similar a la esperada teóricamente, presentando una carga y descarga exponencial del condensador.
+
+      \includegraphics[width=0.3\textwidth]{img/circRC.jpg}
+      \label{fig:rclol}
+
+    Recordemos que el circuito fue alimentado con una señal cuadrada de $f = 1kHz$ y $V_0 = 1V$. Ademas de que los componentes 
+    utilizados fueron una resistencia de $R = 1k\Omega$ y un condensador de $C = 0.1 \mu F$. Con estos valores podemos calcular 
+    la constante teorica de tiempo del circuito como:
+
+    \begin{equation}
+      \tau = R \cdot C = 1k\Omega \cdot 0.1 \mu F = 100 ms
+    \end{equation}
+
+    Aunque analizando el grafico podemos observar que la contante de tiempo experimental será:
+
+    \begin{equation}
+      \tau_{exp} = 0.5 \text{div} \cdot 1 \, \text{ms/div} = 500 \mu \text{ms}
+    \end{equation}
+
+    Lo que nos da un error porcentual de:
+
+    \begin{equation}
+      \text{Error \%} = \left| \frac{\tau - \tau_{exp}}{\tau} \right| \cdot 100 = 400 \%
+    \end{equation}
+
+  \subsection*{Circuito RL}
+
+    Para el montaje del circuito RL se utilizó una resistencia de $R = 300 \Omega$ y una bobina de $L = 9 mH$. (600 espiras).
+    El circuito fue alimentado con una señal cuadrada de $f = 3 kHz $ y $V_0 = 3 V$. Por lo que la constante de tiempo
+    teórica del circuito es:
+
+    \begin{equation}
+      \tau_L = \frac{L}{R} = \frac{9 mH}{300 \Omega} = 30 \mu s
+    \end{equation}
+
+    Analizando el grafico obtenido en el osciloscopio para el circuito RL se puede observar que la forma de la curva obtenida es
+    similar a la esperada teóricamente, presentando una subida y bajada exponencial del voltaje en la bobina.
+
+      \includegraphics[width=0.3\textwidth]{img/circRL.jpg}
+      \label{fig:rclol2}
+
+    Tambien podemos notar que se confirma la relacion de carga y descarga de la bobina, donde al
+    conectar la bobina el voltaje sube exponencialmente y al desconectarla baja exponencialmente.
+
+    Analizando el grafico podemos observar que la contante de tiempo experimental será:
+
+    \begin{equation}
+      \tau_{L, exp} = 0.3 \text{div} \cdot 0.1 \, \text{ms/div} = 30 \mu \text{s}
+    \end{equation}
+
+    El error porcentual en este caso es:
+
+    \begin{equation}
+      \text{Error \%} = \left| \frac{\tau_L - \tau_{L, exp}}{\tau_L} \right| \cdot 100 = 0 \%
+    \end{equation}
+
+  \subsection*{Circuito RLC}
+
+    El circuito RLC fue montado con los siguientes valores:
+\[
+R = 200\,\Omega\]
+\[
+L = 9\,\text{mH} 
+\]
+\[
+C = 0.01\,\mu\text{F}.
+\]
+
+Para este sistema la frecuencia natural no amortiguada está dada por
+\[
+\omega_0 = \frac{1}{\sqrt{LC}},
+\]
+y el coeficiente de amortiguamiento por
+\[
+\alpha = \frac{R}{2L}.
+\]
+
+Con los valores utilizados se obtiene
+\[
+LC = 9.0\times10^{-11}\]
+\[
+\omega_0 = 1.0541\times 10^{5} \,\text{rad/s},
+\]
+
+\[\alpha = 1.11\times10^{4}\,\text{rad/s}.
+\]
+
+La frecuencia angular amortiguada viene dada por
+\[
+\omega' = \sqrt{\omega_0^{2} - \alpha^{2}},
+\]
+lo que numéricamente produce
+\[
+\omega' = 1.0487\times10^{5}\,\text{rad/s}.
+\]
+
+El período de las oscilaciones amortiguadas es
+\[
+T' = \frac{2\pi}{\omega'} \approx 5.99\times10^{-5}\,\text{s}
+= 59.9\,\mu\text{s}.
+\]
+
+Por otro lado, la razón de decaimiento exponencial está determinada por la constante
+\[
+\tau_{\mathrm{env}} = \frac{1}{\alpha}
+= \frac{2L}{R}
+\approx 90\,\mu\text{s}.
+\]
+
+Esto implica que el cociente entre la duración del envolvente y el período es aproximadamente
+\[
+\frac{\tau_{\mathrm{env}}}{T'} \approx 1.5,
+\]
+de modo que sólo deben observarse entre 1 y 3 oscilaciones de amplitud significativa antes de que la señal se atenúe casi completamente. 
+
+
+      \includegraphics[width=0.4\textwidth]{img/circLRC.jpg}
+      \label{fig:rclol3}
+
+
+Esto coincide con la traza observada en el osciloscopio, donde se aprecia un tren corto de oscilaciones amortiguadas después de la excitación del circuito.
+
+A partir de la traza registrada en el osciloscopio se utilizó \(\text{Time/div}=0.1\ \text{ms/div}=100\,\mu\text{s/div}\). Midiendo visualmente la separación entre máximos consecutivos en la imagen se obtuvo una separación de aproximadamente \(0.6\) divisiones, por lo que:
+
+\[
+T'_{\text{exp}}\approx 0.6\ \text{div}\times 100\,\mu\text{s/div} = 60\,\mu\text{s}.
+\]
+
+De esto se obtiene
+\begin{align*}
+\omega'_{\text{exp}}&=\frac{2\pi}{T'_{\text{exp}}}\\
+&= 1.0472\times10^{5}\,\text{rad/s}. \\
+\end{align*}
+
+Comparando con el valor teórico:
+
+\begin{align*}
+\%\text{error}_{\omega'} 
+&= 100\cdot\frac{\omega'_{\text{exp}}-\omega'_{\text{teo}}}{\omega'_{\text{teo}}} \\[4pt]
+&\approx 0.14\%.
+\end{align*}
+
+
+Para estimar la constante de decaimiento del envolvente se midió el tiempo (en la misma escala) desde el primer pico hasta el instante en que la amplitud se reduce a aproximadamente \(1/e\) de su valor inicial; visualmente esto corresponde a cerca de \(0.9\) divisiones, es decir:
+
+\[
+\tau_{\mathrm{env,exp}} \approx 0.9\ \text{div}\times 100\,\mu\text{s/div} \approx 90\,\mu\text{s},
+\]
+lo que da
+\begin{align*}
+\alpha_{\text{exp}} 
+&= \frac{1}{\tau_{\mathrm{env,exp}}} \\[4pt]
+&\approx \frac{1}{90\times10^{-6}} \\[4pt]
+&\approx 1.11\times10^{4}\,\text{rad/s}.
+\end{align*}
+coincidiendo con el valor teórico dentro de la resolución de la medida.
+
 \section{Conclusión}
+
+En este laboratorio se estudiaron experimentalmente las respuestas transitorias de los circuitos RC, RL y RLC, empleando un generador 
+de funciones y un osciloscopio digital. Los resultados obtenidos permitieron contrastar directamente las predicciones teóricas con el 
+comportamiento real de cada uno de los sistemas.
+
+En el circuito RC se observó la carga y descarga exponencial del condensador ante una señal cuadrada. La constante de tiempo estimada 
+experimentalmente no con el valor teórico $\tau = RC$ dentro de la resolución del instrumento, destacando la importancia de 
+seleccionar adecuadamente la escala temporal y de comparar $v_C(t)$ con la señal de entrada para interpretar correctamente la dinámica 
+del sistema.
+
+En el circuito RL la respuesta del inductor mostró un pulso inicial de voltaje seguido de un decaimiento exponencial, asociado a la
+autoinducción. La constante de tiempo $\tau_L = L/R$ medida en el osciloscopio coincidió con el valor teórico, verificando el modelo 
+transitorio. Además, la observación de $v_R(t)$ permitió visualizar la evolución temporal de la corriente mediante la relación 
+$v_R = iR$.
+
+Finalmente, en el circuito RLC se registraron oscilaciones amortiguadas características de un régimen subamortiguado. El período 
+experimental $T'_{\text{exp}}$ y la frecuencia amortiguada obtenidos a partir de la traza fueron consistentes con los valores teóricos 
+calculados. Asimismo, la duración del envolvente observada coincidió con la constante de decaimiento $\tau_{\mathrm{env}} = 1/\alpha$, 
+confirmando la relación entre el amortiguamiento y el número de oscilaciones apreciables.
 
 \section{Referencias}
 \begin{enumerate}

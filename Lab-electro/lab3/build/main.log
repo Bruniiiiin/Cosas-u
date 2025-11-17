@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  15 NOV 2025 11:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  16 NOV 2025 22:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -637,29 +637,31 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count330
 \l__pdf_internal_box=\box112
+) (c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
 )
-No file main.aux.
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-(C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count331
 \scratchdimen=\dimen311
@@ -680,193 +682,168 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 17.
+ on input line 18.
 
-LaTeX Info: Redefining \. on input line 17.
-LaTeX Info: Redefining \% on input line 17.
-Package hyperref Info: Link coloring OFF on input line 17.
+LaTeX Info: Redefining \. on input line 18.
+LaTeX Info: Redefining \% on input line 18.
+Package hyperref Info: Link coloring OFF on input line 18.
+(c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out) (c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
+<img/marcaderecha.png, id=114, 649.42625pt x 255.95625pt>
+File: img/marcaderecha.png Graphic file (type png)
+<use img/marcaderecha.png>
+Package pdftex.def Info: img/marcaderecha.png  used on input line 24.
+(pdftex.def)             Requested size: 99.58464pt x 39.24709pt.
+<img/logo-cfm.png, id=116, 585.18219pt x 104.3965pt>
+File: img/logo-cfm.png Graphic file (type png)
+<use img/logo-cfm.png>
+Package pdftex.def Info: img/logo-cfm.png  used on input line 26.
+(pdftex.def)             Requested size: 113.81102pt x 20.30386pt.
+ [1
 
-LaTeX Warning: File `marcaderecha.png' not found on input line 23.
+{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+[]\OT1/cmr/m/n/10 C (con-den-sa-dor): al-ma-ce-na
+ []
 
-
-c:/Users/bruhs/Cosas U/Lab-electro/lab3/main.tex:23: Package pdftex.def Error: File `marcaderecha.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.23 ...udegraphics[width=3.5cm]{marcaderecha.png}
-                                                  };
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `logo-cfm.png' not found on input line 25.
-
-
-c:/Users/bruhs/Cosas U/Lab-electro/lab3/main.tex:25: Package pdftex.def Error: File `logo-cfm.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.25   {\includegraphics[width=4cm]{logo-cfm.png}
-                                                 };
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[1
-
-{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-
-LaTeX Warning: File `lab3/img/RL.jpg' not found on input line 80.
-
-
-c:/Users/bruhs/Cosas U/Lab-electro/lab3/main.tex:80: Package pdftex.def Error: File `lab3/img/RL.jpg' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.80 ...ics[width= 0.4\textwidth]{lab3/img/RL.jpg}
-                                                   \label{fig:RL}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `lab3/img/rc.jpg' not found on input line 82.
-
-
-c:/Users/bruhs/Cosas U/Lab-electro/lab3/main.tex:82: Package pdftex.def Error: File `lab3/img/rc.jpg' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.82 ...cs[width= 0.4 \textwidth]{lab3/img/rc.jpg}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `lab3/img/rlc.jpg' not found on input line 84.
-
-
-c:/Users/bruhs/Cosas U/Lab-electro/lab3/main.tex:84: Package pdftex.def Error: File `lab3/img/rlc.jpg' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.84 ...s[width= 0.4 \textwidth]{lab3/img/rlc.jpg}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+[2] [3]
+<img/RL.jpg, id=164, 1204.5pt x 1606.0pt>
+File: img/RL.jpg Graphic file (type jpg)
+<use img/RL.jpg>
+Package pdftex.def Info: img/RL.jpg  used on input line 219.
+(pdftex.def)             Requested size: 137.9979pt x 183.9877pt.
+ [4]
+<img/rc.jpg, id=173, 1204.5pt x 1606.0pt>
+File: img/rc.jpg Graphic file (type jpg)
+<use img/rc.jpg>
+Package pdftex.def Info: img/rc.jpg  used on input line 221.
+(pdftex.def)             Requested size: 137.9979pt x 183.9877pt.
+<img/rlc.jpg, id=174, 1204.5pt x 1606.0pt>
+File: img/rlc.jpg Graphic file (type jpg)
+<use img/rlc.jpg>
+Package pdftex.def Info: img/rlc.jpg  used on input line 223.
+(pdftex.def)             Requested size: 137.9979pt x 183.9877pt.
+ [5 <./img/RL.jpg> <./img/rc.jpg> <./img/rlc.jpg>]
+<img/circRC.jpg, id=179, 904.37875pt x 1606.0pt>
+File: img/circRC.jpg Graphic file (type jpg)
+<use img/circRC.jpg>
+Package pdftex.def Info: img/circRC.jpg  used on input line 243.
+(pdftex.def)             Requested size: 103.50105pt x 183.79166pt.
+ [6 <./img/circRC.jpg>]
+<img/circRL.jpg, id=188, 1604.99625pt x 902.37125pt>
+File: img/circRL.jpg Graphic file (type jpg)
+<use img/circRL.jpg>
+Package pdftex.def Info: img/circRL.jpg  used on input line 279.
+(pdftex.def)             Requested size: 103.50105pt x 58.18803pt.
+ [7 <./img/circRL.jpg>]
+<img/circLRC.jpg, id=200, 1604.99625pt x 902.37125pt>
+File: img/circLRC.jpg Graphic file (type jpg)
+<use img/circLRC.jpg>
+Package pdftex.def Info: img/circLRC.jpg  used on input line 357.
+(pdftex.def)             Requested size: 137.9979pt x 77.57487pt.
+ [8 <./img/circLRC.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 \OT1/cmr/m/n/10 E. (s.f.). His-to-ri-cal sur-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 \OT1/cmr/m/n/10 vey. En Elec-tro-mag-ne-tism.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 \OT1/cmr/m/n/10 Ency-clo-pae-dia Bri-tan-ni-ca.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 []$\OT1/cmtt/m/n/10 https : / / www . britannica . com /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 \OT1/cmtt/m/n/10 science / electromagnetism /
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 []$\OT1/cmtt/m/n/10 https : / / www . thoughtco . com /
  []
 
 
-Overfull \hbox (31.74852pt too wide) in paragraph at lines 109--110
+Overfull \hbox (31.74852pt too wide) in paragraph at lines 424--425
 \OT1/cmtt/m/n/10 electromagnetism-[]timeline-[]1992475$[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 []$\OT1/cmtt/m/n/10 https : / / www . etsist . upm .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 \OT1/cmtt/m/n/10 es / estaticos / ingeniatic /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 \OT1/cmtt/m/n/10 index . php / tecnologias /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 \OT1/cmtt/m/n/10 item / 451-[]electroim % C3 % A1n %
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 \OT1/cmtt/m/n/10 3Ftmpl = component & print = 1 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
 \OT1/cmtt/m/n/10 eurobalt . net / es / blog / 2019 /
  []
 
 
-Overfull \hbox (3.92368pt too wide) in paragraph at lines 115--116
+Overfull \hbox (3.92368pt too wide) in paragraph at lines 430--431
 []\OT1/cmr/m/n/10 Qu^^S^^Pmi-ca.es. (s.f.).Diamagnetismo.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 []$\OT1/cmtt/m/n/10 https : / / www . quimica . es /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 \OT1/cmtt/m/n/10 enciclopedia / Diamagnetismo .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
 \OT1/cmr/m/n/10 Bri-tan-ni-ca. (s.f.). Dia-mag-ne-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
 []$\OT1/cmtt/m/n/10 https : / / www . britannica . com /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
 \OT1/cmr/m/n/10 pae-dia Bri-tan-ni-ca. []$\OT1/cmtt/m/n/10 https : / /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
 \OT1/cmtt/m/n/10 www . britannica . com / science /
  []
 
-[4] (c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
+[9] (c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -874,31 +851,21 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  A4A19502855446E4A285396084B01593;1735.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 316B5625771EAD6951D3E3F2E5C58861;4179.
  ) 
 Here is how much of TeX's memory you used:
- 49631 strings out of 474486
- 1290695 string characters out of 5743756
- 2014986 words of memory out of 5000000
- 71356 multiletter control sequences out of 15000+600000
- 561888 words of font info for 50 fonts, out of 8000000 for 9000
+ 49642 strings out of 474486
+ 1289852 string characters out of 5743756
+ 2017484 words of memory out of 5000000
+ 71315 multiletter control sequences out of 15000+600000
+ 563864 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,6n,93p,1068b,712s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.pdf" (4 pages, 216744 bytes).
+ 84i,12n,93p,1108b,657s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on "c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.pdf" (9 pages, 1596366 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 68 named destinations out of 1000 (max. 500000)
+ 269 words of extra memory for PDF output out of 10000 (max. 10000000)
 

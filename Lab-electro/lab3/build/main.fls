@@ -306,6 +306,9 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uni
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
 OUTPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -315,9 +318,28 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstop
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-OUTPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
 OUTPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.pdf
-INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+OUTPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
+INPUT .\img\marcaderecha.png
+INPUT .\img\marcaderecha.png
+INPUT .\img\marcaderecha.png
+INPUT .\img\marcaderecha.png
+INPUT .\img\marcaderecha.png
+INPUT .\img\marcaderecha.png
+INPUT .\img\marcaderecha.png
+INPUT .\img\logo-cfm.png
+INPUT .\img\logo-cfm.png
+INPUT .\img\logo-cfm.png
+INPUT .\img\logo-cfm.png
+INPUT .\img\logo-cfm.png
+INPUT .\img\logo-cfm.png
+INPUT .\img\logo-cfm.png
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
@@ -325,13 +347,63 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.t
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT .\img\RL.jpg
+INPUT .\img\RL.jpg
+INPUT .\img\RL.jpg
+INPUT .\img\RL.jpg
+INPUT .\img\RL.jpg
+INPUT .\img\RL.jpg
+INPUT .\img\RL.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\rlc.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRC.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circRL.jpg
+INPUT .\img\circLRC.jpg
+INPUT .\img\circLRC.jpg
+INPUT .\img\circLRC.jpg
+INPUT .\img\circLRC.jpg
+INPUT .\img\circLRC.jpg
+INPUT .\img\circLRC.jpg
+INPUT .\img\circLRC.jpg
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.aux
 INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
 INPUT c:\Users\bruhs\Cosas U\Lab-electro\lab3\build\main.out
@@ -353,6 +425,8 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
