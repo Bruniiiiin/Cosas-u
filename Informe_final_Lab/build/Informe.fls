@@ -306,6 +306,10 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uni
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\natbib\natbib.sty
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\natbib\natbib.sty
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\caption\caption.sty
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\caption\caption.sty
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\caption\caption3.sty
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\caption\caption3.sty
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.aux
@@ -317,8 +321,6 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pd
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstopdf-base.sty
-INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\grfext\grfext.sty
-INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\grfext\grfext.sty
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
@@ -356,6 +358,40 @@ INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tf
 INPUT C:\Users\bruhs\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT .\img\tiks.png
+INPUT .\img\tiks.png
+INPUT .\img\tiks.png
+INPUT .\img\tiks.png
+INPUT .\img\tiks.png
+INPUT .\img\tiks.png
+INPUT .\img\tiks.png
+INPUT .\img\bobina.jpg
+INPUT .\img\bobina.jpg
+INPUT .\img\bobina.jpg
+INPUT .\img\bobina.jpg
+INPUT .\img\bobina.jpg
+INPUT .\img\bobina.jpg
+INPUT .\img\bobina.jpg
+INPUT .\img\circuito.jpg
+INPUT .\img\circuito.jpg
+INPUT .\img\circuito.jpg
+INPUT .\img\circuito.jpg
+INPUT .\img\circuito.jpg
+INPUT .\img\circuito.jpg
+INPUT .\img\circuito.jpg
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
+INPUT C:\Users\bruhs\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT .\img\BI.pdf
+INPUT .\img\BI.pdf
+INPUT .\img\BI.pdf
+INPUT .\img\BI.pdf
+INPUT .\img\BI.pdf
+INPUT .\img\BI.pdf
 INPUT c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.bbl
 INPUT c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.bbl
 INPUT c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.bbl

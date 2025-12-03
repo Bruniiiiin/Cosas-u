@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  2 DEC 2025 13:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.9.9)  2 DEC 2025 22:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -639,9 +639,26 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip71
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count330
+) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen311
+\captionmargin=\dimen312
+\caption@leftmargin=\dimen313
+\caption@rightmargin=\dimen314
+\caption@width=\dimen315
+\caption@indent=\dimen316
+\caption@parindent=\dimen317
+\caption@hangindent=\dimen318
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count331
+\c@continuedfloat=\count332
+Package caption Info: hyperref package is loaded.
 ) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count331
+\l__color_backend_stack_int=\count333
 \l__pdf_internal_box=\box112
 ) (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.aux
 LaTeX Info: Redefining \. on input line 12.
@@ -649,71 +666,94 @@ LaTeX Info: Redefining \% on input line 12.
 )
 \openout1 = `Informe.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
  (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count332
-\scratchdimen=\dimen311
+\scratchcounter=\count334
+\scratchdimen=\dimen319
 \scratchbox=\box113
-\nofMPsegments=\count333
-\nofMParguments=\count334
+\nofMPsegments=\count335
+\nofMParguments=\count336
 \everyMPshowfont=\toks45
-\MPscratchCnt=\count335
-\MPscratchDim=\dimen312
-\MPnumerator=\count336
-\makeMPintoPDFobject=\count337
+\MPscratchCnt=\count337
+\MPscratchDim=\dimen320
+\MPnumerator=\count338
+\makeMPintoPDFobject=\count339
 \everyMPtoPDFconversion=\toks46
 ) (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
- (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
  (C:\Users\bruhs\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-LaTeX Info: Redefining \. on input line 21.
-LaTeX Info: Redefining \% on input line 21.
-Package hyperref Info: Link coloring OFF on input line 21.
+LaTeX Info: Redefining \. on input line 22.
+LaTeX Info: Redefining \% on input line 22.
+Package hyperref Info: Link coloring OFF on input line 22.
 (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.out) (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.out)
 \@outlinefile=\write4
 \openout4 = `Informe.out'.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 <img/marcaderecha.png, id=6, 649.42625pt x 255.95625pt>
 File: img/marcaderecha.png Graphic file (type png)
 <use img/marcaderecha.png>
-Package pdftex.def Info: img/marcaderecha.png  used on input line 27.
+Package pdftex.def Info: img/marcaderecha.png  used on input line 28.
 (pdftex.def)             Requested size: 99.58464pt x 39.24709pt.
 <img/logo-cfm.png, id=8, 585.18219pt x 104.3965pt>
 File: img/logo-cfm.png Graphic file (type png)
 <use img/logo-cfm.png>
-Package pdftex.def Info: img/logo-cfm.png  used on input line 29.
+Package pdftex.def Info: img/logo-cfm.png  used on input line 30.
 (pdftex.def)             Requested size: 113.81102pt x 20.30386pt.
  [1
 
-{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>] [2] (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.bbl
+{C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./img/marcaderecha.png> <./img/logo-cfm.png>] [2]
+<img/tiks.png, id=51, 733.23938pt x 535.2497pt>
+File: img/tiks.png Graphic file (type png)
+<use img/tiks.png>
+Package pdftex.def Info: img/tiks.png  used on input line 149.
+(pdftex.def)             Requested size: 117.24948pt x 85.58452pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--159
+[]\OT1/cmr/m/n/10 Se co-nec-tan dos bo-bi-nas de
+ []
+
+<img/bobina.jpg, id=52, 904.37875pt x 1606.0pt>
+File: img/bobina.jpg Graphic file (type jpg)
+<use img/bobina.jpg>
+Package pdftex.def Info: img/bobina.jpg  used on input line 162.
+(pdftex.def)             Requested size: 117.24948pt x 208.19919pt.
+<img/circuito.jpg, id=53, 1606.0pt x 1208.515pt>
+File: img/circuito.jpg Graphic file (type jpg)
+<use img/circuito.jpg>
+Package pdftex.def Info: img/circuito.jpg  used on input line 169.
+(pdftex.def)             Requested size: 117.24948pt x 88.21901pt.
+[3 <./img/tiks.png> <./img/bobina.jpg> <./img/circuito.jpg>]
+<img/BI.pdf, id=64, 462.52798pt x 346.89601pt>
+File: img/BI.pdf Graphic file (type pdf)
+<use img/BI.pdf>
+Package pdftex.def Info: img/BI.pdf  used on input line 231.
+(pdftex.def)             Requested size: 167.5pt x 125.6235pt.
+ (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 63--68
 \OT1/cmtt/m/n/10 org / wiki / Helmholtz _ coil$[]
  []
@@ -723,7 +763,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--68
 \OT1/cmr/m/n/10 (2025), [On-li-ne; ac-ces-sed 13-
  []
 
-) [3] (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.aux
+) [4 <./img/BI.pdf>] (c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 )
@@ -735,17 +775,17 @@ Package rerunfilecheck Info: File `Informe.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 49903 strings out of 474486
- 1293540 string characters out of 5743756
- 2031420 words of memory out of 5000000
- 71615 multiletter control sequences out of 15000+600000
- 561619 words of font info for 49 fonts, out of 8000000 for 9000
+ 51230 strings out of 474486
+ 1318958 string characters out of 5743756
+ 2058003 words of memory out of 5000000
+ 72927 multiletter control sequences out of 15000+600000
+ 563595 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,9n,93p,769b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,93p,769b,800s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.pdf" (3 pages, 564704 bytes).
+Output written on "c:\Users\bruhs\Cosas U\Informe_final_Lab\build\Informe.pdf" (4 pages, 929295 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 

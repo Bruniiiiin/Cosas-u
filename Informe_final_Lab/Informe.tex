@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage[square,numbers,sort&compress]{natbib}
+\usepackage[hypcap=false]{caption}
 \bibliographystyle{apsrev4-2}
 
 \title{Informe Laboratorio 03}
@@ -136,18 +137,101 @@
         \item Sensor de campo magnético
         \item Cables de conexión
         \item Gaussómetro
+        \item UNILAB Magnetic flux density unit
     \end{itemize}
 
 \section*{Montaje}
 
-    Se conectan ambas bobinas en paralelo a una fuente de alimentación DC mediante cables de conexión. Se ajusta el sensor de campo
-    magnético para medir el campo en el centro de la bobina de Helmholtz. Se conecta un multimetro para medir el voltaje aplicado a las
-    bobinas. Mediante el uso del gaussómetro se mide el campo magnético generado en el centro de la bobina para diferentes valores de 
-    voltaje aplicados. 
+    Primero se realiza un boceto del montaje experimental, el cual se muestra en la figura.
+
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=0.7\columnwidth]{img/tiks.png}
+        \caption{Montaje experimental}
+        \label{fig:montaje}
+        \end{center}
+
+    Se conectan dos bobinas de Helmholtz que tienen $N=77$ vueltas cada una, además de una resistencia total de 
+    $R_t = 0.8 \Omega$ ya que están en paralelo. Se conecta la fuente de alimentación DC a las bobinas y se utiliza un multímetro 
+    para medir el voltaje aplicado. En el centro de las bobinas a un radio de $R = 0.2 [m]$ se coloca un sensor de campo magnético 
+    para medir el campo $B$ generado por las bobinas al variar el voltaje aplicado. Mediante el uso del UNILAB Magnetic flux density 
+    unit se calibra el sensor de campo magnético para obtener mediciones precisas.
+
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=0.7\columnwidth]{img/bobina.jpg}
+        \caption{Bobina en configuración de Helmholtz}
+        \label{fig:bobina}
+        \end{center}
+        
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=0.7\columnwidth]{img/circuito.jpg}
+        \caption{Circuito del montaje experimental}
+        \label{fig:circuito}
+        \end{center}
+
+\section*{Resultados}
+
+    A continuación se presentan los datos obtenidos durante el experimento, donde se midió el campo magnético $B$ función de la 
+    corriente utilizando ley de Ohm para relacionar el voltaje aplicado y la corriente en la bobina.
+
+    \begin{center}
+\small
+\begin{tabular}{ccc}
+\hline
+\textbf{V [V]} & \textbf{I [A]} & \textbf{B [mT]} \\
+\hline
+0.115 & 0.144 & 0.0200 \\
+0.230 & 0.288 & 0.0450 \\
+0.340 & 0.425 & 0.0615 \\
+0.461 & 0.576 & 0.0750 \\
+0.569 & 0.711 & 0.1000 \\
+0.674 & 0.843 & 0.1150 \\
+0.787 & 0.984 & 0.1250 \\
+0.885 & 1.106 & 0.1500 \\
+1.008 & 1.260 & 0.1600 \\
+1.109 & 1.386 & 0.1800 \\
+1.222 & 1.527 & 0.1950 \\
+1.325 & 1.656 & 0.2150 \\
+1.435 & 1.794 & 0.2250 \\
+1.550 & 1.938 & 0.2500 \\
+1.659 & 2.074 & 0.2650 \\
+1.774 & 2.218 & 0.2850 \\
+1.864 & 2.330 & 0.3000 \\
+1.984 & 2.480 & 0.3150 \\
+2.097 & 2.621 & 0.3350 \\
+2.203 & 2.754 & 0.3500 \\
+2.320 & 2.900 & 0.3650 \\
+2.425 & 3.031 & 0.3850 \\
+2.558 & 3.198 & 0.4000 \\
+2.650 & 3.313 & 0.4150 \\
+2.750 & 3.438 & 0.4300 \\
+2.873 & 3.591 & 0.4500 \\
+2.990 & 3.738 & 0.4700 \\
+3.075 & 3.844 & 0.4850 \\
+3.210 & 4.013 & 0.5000 \\
+3.322 & 4.153 & 0.5250 \\
+3.659 & 4.574 & 0.5750 \\
+3.767 & 4.709 & 0.5850 \\
+3.880 & 4.850 & 0.6000 \\
+\hline
+\end{tabular}
+
+\captionof{table}{Voltaje, corriente y campo magnético.}
+\end{center}
+
 
 \section*{Análisis}
 
-
+    A partir de los datos obtenidos se realizara un grafico de $B$ vs $I$ para obtener la pendiente $\alpha$ y así calcular la 
+    permeabilidad magnética del aire. 
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=1\columnwidth]{img/BI.pdf}
+        \caption{Gráfico de campo magnético $B$ vs corriente $I$.}
+        \label{fig:graficoBI}
+        \end{center}
 
 \section*{Conclusión}
 
