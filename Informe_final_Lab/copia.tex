@@ -15,8 +15,8 @@
 \usepackage[hypcap=false]{caption}
 \bibliographystyle{apsrev4-2}
 
-\title{Informe Laboratorio 03}
-\date{Septiembre 2025}
+\title{Informe Laboratorio}
+\date{Diciembre 2025}
 \pgfplotsset{compat=1.18}
 \pgfplotsset{width=6cm}
 \begin{document}
@@ -69,8 +69,7 @@
 
 \section*{Modelo Teórico}
 
-    Partiremos con la ecuacion que describe el campo magnético generado por una espira circular de radio $R$ y corriente $I$ en su
-    centro \cite{Griffiths}:
+    Partiremos con la ecuacion que describe el campo magnético generado por una espira circular de radio $R$ y corriente $I$ en su centro \cite{Griffiths}:
 
         \begin{equation}
             B(x) = \frac{\mu I R^2}{2(R^2 + x^2)^{3/2}}
@@ -239,23 +238,23 @@
     Considerando esos datos se puede trabajar algebráicamente:
 
     \begin{equation}
-        \mu_0 \cdot \frac{77}{20} \cdot \frac{4}{5}^{3/4} = \alpha
+        \mu_0 \cdot \frac{77}{20} \cdot \frac{4}{5}^{3/4} = 0.193
     \end{equation}
 
     \begin{equation}
-        \mu_0 \cdot \frac{77}{20} \cdot \frac{4}{5}^{3/4} = 1.232 \times 10^{-4}
+        \mu_0 \cdot \frac{77}{20} \cdot \frac{4}{5}^{3/4} = 0.193
     \end{equation}
 
     \begin{equation}
-        \mu_0 \cdot 2.750 \cdot 0.846 = 1.232 \times 10^{-4}
+        \mu_0 \cdot 2.750 \cdot 0.846 = 0.193
     \end{equation}
 
     \begin{equation}
-        \mu_0 = 4.472741 \times 10^{-7} \text{H/m}
+        \mu_0 = 0.083
     \end{equation}
 
     Además, al modelo elegido se observó cuál es su residuo con respecto a los datos tomados para ver si existía algún error sistemático o si existe un modelo mejor que pueda representar nuestros datos.
-        \begin{center}
+     \begin{center}
         \captionsetup{type=figure}
         \includegraphics[width=1\columnwidth]{img/residuo.png}
         \caption{Residuos del Modelo.}
@@ -278,6 +277,8 @@
 \section*{Predicción}
 Dado nuestro modelo y considerando los errores que este tiene, podemos realizar una predicción respecto a un campo magnético mucho más grande de los que trabajamos.
 
+
+\section*{Conclusión}
 
 \bibliography{referencias.bib}
 
