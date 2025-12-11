@@ -1,0 +1,338 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr} 
+\usepackage[bottom, norule]{footmisc}
+\usepackage{multicol}    
+\usepackage{sectsty}    
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage[hypcap=false]{caption}
+\bibliographystyle{apsrev4-2}
+
+\title{Informe Laboratorio 03}
+\date{Septiembre 2025}
+\pgfplotsset{compat=1.18}
+\pgfplotsset{width=6cm}
+\begin{document}
+\fancyfoot[C]{}          
+\fancyhead{}    
+\begin{tikzpicture}[remember picture, overlay]
+
+    \node[anchor=north west, xshift=2.6cm, yshift=-0.5cm] at (current page.north west) 
+    {\includegraphics[width=3.5cm]{img/marcaderecha.png}};  
+    \node[anchor=north east, xshift=-2.6cm, yshift=-1cm] at (current page.north east) 
+    {\includegraphics[width=4cm]{img/logo-cfm.png}}; 
+
+\end{tikzpicture}
+
+\begin{center}
+\large Laboratorio I \\
+\vspace{0.3cm}
+{\scshape\Huge Bobina Helmholtz y permeabilidad magnética \par}
+\vspace{0.5cm}
+{\scshape\Large Informe final \par}
+\vspace{1.5cm}
+{\large Nombres: Bruno Bustos, Darío Ferrada, Camilo Jordán, Catalina Zamorano}
+\vspace{0.3cm}
+\large 
+\\ 
+\ttfamily{Universidad de Concepción, Facultad de Ciencias Físicas y Matemáticas.}
+\end{center}
+\vspace{1cm}
+
+\begin{abstract}
+
+    En este informe se pretende utilizar una bobina de Helmholtz para medir la permeabilidad magnética del aire. 
+    Se realizará un análisis teórico del campo magnético generado por la bobina, y se compararán los resultados experimentales 
+    con los valores teóricos esperados, analizando las posibles fuentes de error y su impacto en las mediciones. 
+
+\end{abstract}
+
+\begin{multicols}{2}
+
+\section*{Introducción}
+
+    Generalmente en problemas de electromagnetismo se utilizan variadas fórmulas para calcular todo tipo de campos magnéticos,
+    sin embargo es necesario conocer qué es lo que contienen estas fórmulas, en específico nos interesaremos en la constante
+    de permeabilidad magnética de algún material, la cual es una constante física que describe la capacidad de dicho material
+    para permitir el paso de un campo magnético. Esta constante es fundamental en la teoría del electromagnetismo y aparece en varias
+    ecuaciones importantes, como la ley de Ampère y la ley de Faraday. En este informe se pretende medir la permeabilidad magnética del
+    aire utilizando una bobina de Helmholtz para luego comparar los resultados obtenidos con el valor teórico conocido.
+
+\newpage
+
+\section*{Modelo Teórico}
+
+    Partiremos con la ecuación que describe el campo magnético generado por una espira circular de radio $R$ y corriente $I$ en su
+    centro \cite{Griffiths}:
+
+        \begin{equation}
+            B(x) = \frac{\mu I R^2}{2(R^2 + x^2)^{3/2}}
+        \end{equation}
+
+    Consideraremos el punto medio entre las dos bobinas como el origen del sistema de coordenadas, por lo que cada bobina estará
+    ubicada a una distancia $x_1 = R/2$ y $x_2 = -R/2$. Por lo tanto, el campo magnético en el centro de la bobina de Helmholtz
+    será la suma de los campos magnéticos generados por cada bobina, evaluados en el origen:
+        
+        \begin{equation}
+            B_{\text{total}} = B_1(0) + B_2(0)
+        \end{equation}
+
+        Como ambas bobinas son simétricas, producen el mismo campo magnético en el centro, esto es $B_{\text{total}} =2B(x=R/2)$. Evaluando tenemos que:
+
+        \begin{align}
+            B(\frac{R}{2})  &= \frac{\mu I R^2}{2(R^2 + (\frac{R}{2})^2)^{3/2}}, \\
+                            &= \frac{\mu I R^2}{2(R^2 + \frac{R^2}{4})^{3/2}}, \\
+                            &= \frac{\mu I R^2}{2(\frac{5R^2}{4})^{3/2}}, \\
+                            &= \frac{1}{2} \frac{\mu I}{R} \left(\frac{4}{5}\right)^{3/2}.
+        \end{align}
+
+    Recordando que tenemos dos bobinas, el campo magnético total en el centro de la bobina de Helmholtz es:
+
+        \begin{equation}
+            B_{\text{total}} = 2B(\frac{R}{2}) = \mu \frac{NI}{R} \left(\frac{4}{5}\right)^{3/2}
+        \end{equation}
+
+    Llegando a la expresión del campo magnético generado por una bobina de Helmholtz \cite{bobinaHz} cuando se encuentra en su centro:
+
+    \begin{equation}
+        B = \mu_\text{a} \frac{NI}{R} \left(\frac{4}{5}\right)^{3/2}.
+    \end{equation}
+
+    Donde $B$ es el campo magnético en el centro de la bobina, $\mu_\text{a}$ es la permeabilidad magnética del aire, $N$ es el número de 
+    vueltas, $I$ es la corriente que pasa por la bobina y $R$ es el radio de la bobina.
+
+    Podemos encontrar una relación lineal entre la corriente $I$ y el campo magnético $B$:
+
+        \begin{equation}\label{eq:alpha}
+            B = \alpha I , \quad \alpha = \mu_a \frac{N}{R} \left(\frac{4}{5}\right)^{3/2}.
+        \end{equation}
+
+    Siendo $\alpha$ la pendiente de la ecuación de $B$. También se utilizará la ley de Ohm para relacionar la corriente $I$ con el voltaje $V$ aplicado a la bobina:
+
+        \begin{equation}
+            I = \frac{V}{R_{b}}.
+        \end{equation}
+
+    Además, la corriente $I$ en paralelo se suma de la siguiente manera:
+
+        \begin{equation}
+            I = I_1 + I_2 + ... + I_n.
+        \end{equation}
+
+%recordar : que H*E = m*c**2, donde H es el amor 
+    
+\section*{Materiales}
+
+    \begin{itemize}
+        \item Bobina de Helmholtz
+        \item Fuente de alimentación DC
+        \item Multímetro
+        \item Sensor de campo magnético
+        \item Cables de conexión
+        \item Magnetómetro
+    \end{itemize}
+
+\section*{Montaje}
+
+    Se conectan dos bobinas de Helmholtz que tienen $N=77$ vueltas cada una, además de una resistencia total de 
+    $R_\text{t} = 0.8 \Omega$ ya que están en paralelo. Se conecta la fuente de alimentación DC a las bobinas y se utiliza un multímetro 
+    para medir el voltaje aplicado. En el centro de las bobinas, a un radio de $R = 0.2 m$, se coloca un sensor de campo magnético 
+    para medir el campo $B$ generado por las bobinas al variar el voltaje aplicado. Mediante el uso del magnetómetro se calibra el sensor de campo magnético para obtener mediciones precisas.
+
+
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=0.7\columnwidth]{img/bobina.jpg}
+        \caption{Bobina en configuración de Helmholtz}
+        \label{fig:bobina}
+        \end{center}
+
+\section*{Resultados}
+
+    A continuación se presentan los datos obtenidos durante el experimento, donde se midió el campo magnético $B$ en función de la 
+    corriente, utilizando la ley de Ohm para relacionar el voltaje aplicado y la corriente en la bobina. Notar que el voltaje, la 
+    corriente y el campo magnético tienen errores instrumentales de:
+
+    \begin{equation}
+        V_{ei} = 0.0005~\text[V],
+    \end{equation}
+
+    \begin{equation}
+        I_{ei} = 0.0005~\text[A],
+    \end{equation}
+
+    \begin{equation}
+        B_{ei} = 0.00001~\text[mT].
+    \end{equation}
+    
+\begin{center}
+\small
+\centering
+\label{tab:datos}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{V [V]} & \textbf{I Total [A]} & \textbf{I Bobina [A]} & \textbf{B [mT]} \\
+\hline
+0.115 & 0.144 & 0.072 & 0.0200 \\ \hline
+0.230 & 0.288 & 0.144 & 0.0450 \\ \hline
+0.340 & 0.425 & 0.213 & 0.0615 \\ \hline
+0.461 & 0.576 & 0.288 & 0.0750 \\ \hline
+0.569 & 0.711 & 0.356 & 0.1000 \\ \hline
+0.674 & 0.843 & 0.422 & 0.1150 \\ \hline
+0.787 & 0.984 & 0.492 & 0.1250 \\ \hline
+0.885 & 1.106 & 0.553 & 0.1500 \\ \hline
+1.008 & 1.260 & 0.630 & 0.1600 \\ \hline
+1.109 & 1.386 & 0.693 & 0.1800 \\ \hline
+1.222 & 1.527 & 0.764 & 0.1950 \\ \hline
+1.325 & 1.656 & 0.828 & 0.2150 \\ \hline
+1.435 & 1.794 & 0.897 & 0.2250 \\ \hline
+1.550 & 1.938 & 0.969 & 0.2500 \\ \hline
+1.659 & 2.074 & 1.037 & 0.2650 \\ \hline
+1.774 & 2.218 & 1.109 & 0.2850 \\ \hline
+1.864 & 2.330 & 1.165 & 0.3000 \\ \hline
+1.984 & 2.480 & 1.240 & 0.3150 \\ \hline
+2.097 & 2.621 & 1.311 & 0.3350 \\ \hline
+2.203 & 2.754 & 1.377 & 0.3500 \\ \hline
+2.320 & 2.900 & 1.450 & 0.3650 \\ \hline
+2.425 & 3.031 & 1.516 & 0.3850 \\ \hline
+2.558 & 3.198 & 1.599 & 0.4000 \\ \hline
+2.650 & 3.313 & 1.657 & 0.4150 \\ \hline
+2.750 & 3.438 & 1.719 & 0.4300 \\ \hline
+2.873 & 3.591 & 1.796 & 0.4500 \\ \hline
+2.990 & 3.738 & 1.869 & 0.4700 \\ \hline
+3.075 & 3.844 & 1.922 & 0.4850 \\ \hline
+3.210 & 4.013 & 2.007 & 0.5000 \\ \hline
+3.322 & 4.153 & 2.077 & 0.5250 \\ \hline
+3.659 & 4.574 & 2.287 & 0.5750 \\ \hline
+3.767 & 4.709 & 2.355 & 0.5850 \\ \hline
+3.880 & 4.850 & 2.425 & 0.6000 \\ \hline
+\end{tabular}
+
+\captionof{table}{Voltaje, corriente y campo magnético. }
+\end{center}
+
+
+\section*{Análisis}
+
+    A partir de los datos obtenidos se realizará un gráfico de $B$ vs $I$ para obtener la pendiente $\alpha$ y así calcular la 
+    permeabilidad magnética del aire. 
+    Se grafican además los residuos de este modelo respecto a los datos para ver si los errores presentes son sistemáticos de modo que se deba mejorar el modelo.
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=1\columnwidth]{img/cosawena.png}
+        \caption{Gráfico de campo magnético versus corriente.}
+        \label{fig:graficoBI}
+        \end{center}
+    
+        \begin{center}
+        \captionsetup{type=figure}
+        \includegraphics[width=1\columnwidth]{img/residuoslol.png}
+        \caption{Gráfico de campo magnético versus corriente.}
+        \label{fig:graficoBI}
+        \end{center}
+
+    Utilizando \ref{eq:alpha} y con algunos despejes algebraicos, podemos obtener el valor de la permeabilidad magnética del aire:
+
+    \begin{equation}
+        \mu_0 \cdot \frac{77}{0.2} \cdot  \left( \frac{4}{5} \right)^{3/2} = 2.464 \times 10^{-4}~\text{T/A},
+    \end{equation}
+
+    \begin{equation}
+        \mu_0 \cdot 2.750 \cdot 0.846 =  2.464 \times 10^{-4}~\text{T/A},
+    \end{equation}
+
+    \begin{equation}
+        \mu_0 = 8.945 \times 10^{-7} \text{H/m}.
+    \end{equation}
+
+    Como se puede observar en la figura \ref{fig:graficoBI}, los puntos se distribuyen de manera aleatoria. Además, analizando el error que nos entrega el modelo elegido, nos queda que la desviación estándar del coeficiente de posición y de la pendiente son:
+
+    \begin{equation*}
+        \sigma_{\text{pos}} =0.002 ~\text{mT/A}
+    \end{equation*}
+
+    \begin{equation*}
+        \sigma_{\text{pend}} =0.001 ~\text{mT/A}
+    \end{equation*}
+
+    Notar que el modelo no tiene coeficiente de posición, así que su desviación estándar puede indicar a perturbaciones de campos magnéticos externos al sistema propuesto.
+
+    Ademas al comparar el valor obtenido con el valor teórico de la permeabilidad magnética del aire, que es $\mu_0 = 4\pi \times 10^{-7} \text{H/m}$,
+    se puede observar que existe una discrepancia entre ambos valores. Esta discrepancia puede deberse a varios factores, como errores experimentales,
+    imprecisiones en la medición del campo magnético, o incluso a la presencia de otros materiales en el entorno que puedan afectar las mediciones.
+    El error porcentual entre el valor teórico y el valor experimental se calcula de la siguiente manera:
+
+    \begin{align}
+    \% \text{Error} &= \left| \frac{\mu_{0} - \mu_{exp}}{\mu_{exp}} \right| \times 100 \\
+    &= \left| \frac{3.61 \times 10^{-7}}{1.257 \times 10^{-6}} \right| \times 100 \\
+    &= 28.7 \%
+    \end{align}
+
+\section*{Predicción}
+
+Para $I=7.0$ A, considerando los errores insrumentales:
+
+\[
+I = 7.0~\text{A},
+\]
+
+\[
+\alpha = 1.232 \times 10^{-4}~\text{T/A},
+\]
+
+\[
+\sigma_\alpha = 1.0 \times 10^{-7}~\text{T/A},
+\]
+
+\[
+\sigma_I = 0.0005~\text{A},
+\]
+
+\[
+\sigma_{\text{pos}} = 2.0 \times 10^{-6}~\text{T},
+\]
+
+\[
+\sigma_{B,\text{ei}} = 1.0 \times 10^{-8}~\text{T}.
+\]
+
+Reemplazando
+
+\begin{align}
+    B   &= 2.464 \times 10^{-4} \cdot 7.0   \\
+        &= 1.7248 \times 10^{-3}\ \text{T} \\
+        &= 1.725\ \text{mT}.
+\end{align}
+
+Siendo este el campo magnético con una corriente de $7.0$ A.
+
+\
+
+Ahora veremos el error del campo magnético calculado. La incertidumbre se propaga como:
+\[
+\sigma_B = \sqrt{(I\sigma_\alpha)^2 + (\alpha\sigma_I)^2 + \sigma_{\text{pos}}^2 + \sigma_{B\,\text{ei}}^2}
+\]
+
+Sustituyendo valores:
+\[
+\sigma_B \approx 0.0021\ \text{mT}.
+\]
+
+Por lo tanto, el campo magnético con su error asociado es:
+\[
+B(7.0\ \text{A}) = 1.725 \pm 0.002\ \text{mT}.
+\]
+
+
+
+\bibliography{referencias.bib}
+
+\end{multicols}
+\end{document}

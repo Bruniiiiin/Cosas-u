@@ -6,7 +6,7 @@ v = datos[:, 0]
 b = datos[:, 1]
 res = 1.25
 
-i = v / res
+i = v /(2 *res)
 
 c = np.polyfit(i, b, 1)
 m = np.poly1d(c)
@@ -27,3 +27,16 @@ plt.show()
 mu = c[0] * 0.20 / 154 * (4 / 5) ** (-3 / 2)
 
 print(mu)
+
+
+#Residuos
+
+b_ajustado = m(i)
+residuos = b - b_ajustado
+plt.plot(i, residuos, "o")
+plt.axhline(0, color="red", linestyle="--")
+plt.xlabel("Corriente (I)")
+plt.ylabel("Residuos")
+plt.title("Residuos del Ajuste Lineal")
+plt.grid()
+plt.show()

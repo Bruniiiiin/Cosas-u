@@ -1,0 +1,28 @@
+## Inicio
+
+Explicar el modelo y ley de kirchhoff para el circuito. (importante para el valor final de mu0)
+
+## Desarrollo Experimental
+
+Explicar el montaje experimental y la forma de medición. 
+
+## Resultados y Análisis
+
+Explicar la tabla y los datos, decir que es importante el utilizar la corriente de solo una bobina no la total It = Ia + Ib pero  Ia = Ib por lo que It/2 = Ia
+
+### Gráfico de B vs I
+
+Se grafica B vs I y se ajusta una recta, se obtiene la pendiente y el intercepto. dentro de la pendiente se encuentra la permeabilidad magnética del aire.
+
+### Residuos del ajuste
+
+Podemos notar que son aleatorios y no presentan un patrón definido, lo que indica que el modelo lineal es adecuado para describir la relación entre B e I en este experimento.
+
+### Cálculo de la permeabilidad magnética del aire
+
+se calcula la permeabilidad magnética del aire a partir de la pendiente obtenida en el ajuste lineal.
+y nos da un valor bastante cercano al valor teórico. Difiere en un 28.7% respecto al valor teórico.
+
+### Analisis de errores
+
+Error del modelo, error sistemático (debido a la calibración del gaussmetro) y tenemos un valor de la incertidumbre total. Expopner el valor final con su incertidumbre analizado paa un valor de corriente de 7.0 A.

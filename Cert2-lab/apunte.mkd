@@ -1,0 +1,157 @@
+# Apunte Maestro: Errores, Ajustes y Análisis de Datos
+
+## I. Teoría de Errores
+*En física experimental, ninguna medición es exacta. Siempre existe una incertidumbre asociada.*
+
+
+
+### 1. Clasificación de Errores
+Es vital distinguir el origen del error para saber cómo tratarlo.
+
+#### A. Errores Sistemáticos (Sesgo)
+*Se repiten constantemente en la misma dirección (siempre miden de más o siempre de menos). Afectan la **Exactitud**.*
+* **Error Instrumental:** Defecto en el instrumento o mala calibración.
+    * *Ej: Una balanza que marca 0.5g sin nada encima.*
+    * *Corrección:* Se puede corregir matemáticamente si se conoce la desviación.
+* **Error del Modelo (Teórico):** Ocurre cuando la fórmula física es una aproximación y no considera todas las variables reales.
+    * *Ej: Usar la fórmula de caída libre $h = \frac{1}{2}gt^2$ despreciando la resistencia del aire.*
+* **Error de Método/Personal:** Mala postura del observador (Paralaje) o tiempo de reacción lento al usar un cronómetro.
+
+#### B. Errores Aleatorios (Estocásticos)
+*Fluctuaciones impredecibles en ambos sentidos. Afectan la **Precisión**.*
+* **Origen:** Variaciones ambientales (temperatura, viento), ruido electrónico, fluctuaciones de voltaje.
+* **Tratamiento:** No se pueden eliminar, pero se minimizan aumentando el número de mediciones ($N$) y usando estadística (promedios).
+
+#### C. Otros Conceptos
+* **Incertidumbre Instrumental:** La mínima división de la escala del instrumento (usualmente $\pm \frac{1}{2}$ de la mínima división en análogos o $\pm 1$ dígito en digitales).
+
+---
+
+## II. Estadística de Dispersión
+
+### 1. Desviación Estándar ($\sigma$ o $s$)
+Mide qué tan dispersos están los datos alrededor del promedio.
+* **Fórmula (Muestral):**
+    $$s = \sqrt{\frac{\sum_{i=1}^{N} (x_i - \bar{x})^2}{N}}$$
+    *(Nota el $N-1$: se usa cuando es una muestra, no toda la población).*
+* **Interpretación:**
+    * $\sigma$ pequeña $\rightarrow$ Datos muy agrupados (Alta precisión).
+    * $\sigma$ grande $\rightarrow$ Datos muy dispersos (Baja precisión, mucho ruido).
+
+### 2. Error Estándar del Promedio (SEM)
+Indica qué tan lejos está el promedio de tu muestra del promedio "real" de la población.
+$$\sigma_{\bar{x}} = \frac{s}{\sqrt{N}}$$
+
+---
+
+## III. Ajuste de Modelos (Curve Fitting)
+
+
+
+### 1. Método de Mínimos Cuadrados
+Es la técnica matemática para encontrar la "mejor línea" (o curva) que pasa por tus puntos experimentales.
+* **Objetivo:** Minimizar la suma de los cuadrados de las diferencias (residuos) entre el dato medido ($y_i$) y el dato predicho por el modelo ($f(x_i)$).
+    $$S = \sum (y_i - f(x_i))^2 \rightarrow \text{Mínimo}$$
+
+### 2. Tipos de Ajuste
+* **Regresión Lineal:** Cuando buscas una relación de tipo $y = mx + n$.
+    * Útil para calibraciones o leyes proporcionales (Ley de Ohm, Ley de Hooke).
+* **Curve Fit (Ajuste no lineal):** Para cualquier función física (exponencial, logarítmica, polinómica).
+    * *Ej: Decaimiento radioactivo, carga de un condensador.*
+
+### 3. Calidad del Ajuste ($R^2$ y $\chi^2$)
+* **Coeficiente de Determinación ($R^2$):** Va de 0 a 1.
+    * $R^2 \approx 1$: El modelo se ajusta perfecto a los datos.
+    * $R^2 < 0.8$: El modelo es pobre o los datos tienen mucho ruido.
+
+---
+
+## IV. Snippets de Código (Python) para el Examen
+
+### 1. Desviación Estándar y Promedio (Numpy)
+```python
+import numpy as np
+
+datos = np.array([10.1, 10.3, 9.8, 10.2, 9.9])
+
+promedio = np.mean(datos)
+std_dev = np.std(datos, ddof=1) # ddof=1 es para usar N-1 (Muestral)
+
+print(f"Promedio: {promedio} ± {std_dev}")
+
+import numpy as np
+from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
+
+# 1. Definir los datos (Ejemplo)
+x_data = np.array([0, 1, 2, 3, 4, 5])
+y_data = np.array([0, 2.1, 3.9, 6.2, 8.1, 10.5])
+
+# 2. Definir la función del modelo (Ej: Lineal y = mx + b)
+def modelo(x, m, b):
+    return m * x + b
+
+# 3. Hacer el ajuste (popt son los parámetros optimos, pcov es la covarianza)
+popt, pcov = curve_fit(modelo, x_data, y_data)
+
+m_optimo, b_optimo = popt
+error_parametros = np.sqrt(np.diag(pcov)) # Error de m y b
+
+print(f"Pendiente (m): {m_optimo} ± {error_parametros[0]}")
+print(f"Intercepto (b): {b_optimo} ± {error_parametros[1]}")
+
+# 4. Graficar
+plt.scatter(x_data, y_data, label='Datos')
+plt.plot(x_data, modelo(x_data, *popt), color='red', label='Ajuste')
+plt.legend()
+plt.show()
+
+```
+## IV. Análisis de Residuos
+*Objetivo: Verificar si el modelo matemático elegido es el correcto.*
+
+El residuo es la diferencia entre el valor real medido y el valor que predice tu ajuste:
+$$e_i = y_{medido} - y_{modelo}$$
+
+
+
+### 1. ¿Cómo interpretar un Gráfico de Residuos?
+Después de hacer el `curve_fit`, debes graficar los residuos en el eje Y vs. la variable independiente en el eje X.
+
+* **Caso A: Nube Aleatoria (Ruido Blanco)**
+    * **Visual:** Los puntos están dispersos sin orden alrededor de la línea cero (arriba y abajo).
+    * **Conclusión:** ✅ **Buen ajuste.** El modelo describe bien el fenómeno. Los errores son puramente aleatorios.
+
+* **Caso B: Patrón Definido (Estructura)**
+    * **Visual:** Los puntos forman una "U", una parábola, o una línea recta inclinada.
+    * **Conclusión:** ❌ **Mal modelo.** Hay un **Error Sistemático del Modelo**.
+    * *Ejemplo:* Intentaste ajustar una línea recta a un fenómeno que en realidad es curvo.
+
+* **Caso C: Embudo (Heterocedasticidad)**
+    * **Visual:** Los residuos son pequeños al principio y se hacen gigantes al final (o viceversa).
+    * **Conclusión:** ⚠️ **Cuidado.** La varianza del error no es constante. Los datos tienen más ruido en ciertos rangos. El ajuste por Mínimos Cuadrados tradicional pierde validez.
+
+---
+
+### 2. Snippet de Código: Graficar Residuos (Python)
+*Añade esto a tu script después de calcular `popt` con `curve_fit`.*
+
+```python
+# --- Paso 1: Calcular los valores predichos por el modelo ---
+y_predichos = modelo(x_data, *popt)
+
+# --- Paso 2: Calcular los residuos ---
+residuos = y_data - y_predichos
+
+# --- Paso 3: Graficar ---
+plt.figure(figsize=(8, 4))
+plt.scatter(x_data, residuos, color='blue', label='Residuos')
+
+# Línea de referencia en Cero
+plt.axhline(y=0, color='r', linestyle='--') 
+
+plt.xlabel('Variable Independiente (x)')
+plt.ylabel('Residuos (y_real - y_modelo)')
+plt.title('Gráfico de Residuos')
+plt.legend()
+plt.show()
