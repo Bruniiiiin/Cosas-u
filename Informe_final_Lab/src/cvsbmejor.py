@@ -46,7 +46,6 @@ plt.plot(i, residuos * 1e3, "o")  # residuos en mT
 plt.axhline(0, color="red", linestyle="--")
 plt.xlabel("Corriente (I) [A]")
 plt.ylabel("Residuos [mT]")
-plt.title("Residuos del Ajuste Lineal")
 plt.grid()
 plt.show()
 
