@@ -36,8 +36,6 @@
 \vspace{0.3cm}
 {\scshape\Huge Bobina Helmholtz y permeabilidad magnética \par}
 \vspace{0.5cm}
-{\scshape\Large Informe final \par}
-\vspace{1.5cm}
 {\large Nombres: Bruno Bustos, Darío Ferrada, Camilo Jordán, Catalina Zamorano}
 \vspace{0.3cm}
 \large 
@@ -73,7 +71,7 @@
     centro \cite{Griffiths}:
 
         \begin{equation}
-            B(x) = \frac{\mu I R^2}{2(R^2 + x^2)^{3/2}}
+            B(x) = \frac{\mu I R^2}{2(R^2 + x^2)^{3/2}}.
         \end{equation}
 
     Consideraremos el punto medio entre las dos bobinas como el origen del sistema de coordenadas, por lo que cada bobina estará
@@ -81,7 +79,7 @@
     será la suma de los campos magnéticos generados por cada bobina, evaluados en el origen:
         
         \begin{equation}
-            B_{\text{total}} = B_1(0) + B_2(0)
+            B_{\text{total}} = B_1(0) + B_2(0).
         \end{equation}
 
         Como ambas bobinas son simétricas, producen el mismo campo magnético en el centro, esto es $B_{\text{total}} =2B(x=R/2)$. Evaluando tenemos que:
@@ -96,7 +94,7 @@
     Recordando que tenemos dos bobinas, el campo magnético total en el centro de la bobina de Helmholtz es:
 
         \begin{equation}
-            B_{\text{total}} = 2B(\frac{R}{2}) = \mu \frac{NI}{R} \left(\frac{4}{5}\right)^{3/2}
+            B_{\text{total}} = 2B(\frac{R}{2}) = \mu \frac{NI}{R} \left(\frac{4}{5}\right)^{3/2}.
         \end{equation}
 
     Llegando a la expresión del campo magnético generado por una bobina de Helmholtz \cite{bobinaHz} cuando se encuentra en su centro:
@@ -134,7 +132,6 @@
         \item Bobina de Helmholtz
         \item Fuente de alimentación DC
         \item Multímetro
-        \item Sensor de campo magnético
         \item Cables de conexión
         \item Magnetómetro
     \end{itemize}
@@ -161,15 +158,15 @@
     corriente y el campo magnético tienen errores instrumentales de:
 
     \begin{equation}
-        V_{ei} = 0.0005~\text[V],
+        V_{ei} = 5 \times 10^{-4}~\text{V},
     \end{equation}
 
     \begin{equation}
-        I_{ei} = 0.0005~\text[A],
+        I_{ei} = 5 \times 10^{-4}~\text{A},
     \end{equation}
 
     \begin{equation}
-        B_{ei} = 0.00001~\text[mT].
+        B_{ei} = 1 \times 10^{-5}~\text{mT}.
     \end{equation}
     
 \begin{center}
@@ -178,7 +175,7 @@
 \label{tab:datos}
 \begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{V [V]} & \textbf{I Total [A]} & \textbf{I Bobina [A]} & \textbf{B [mT]} \\
+\textbf{Vol V} & \textbf{I Total A} & \textbf{I Bobina A} & \textbf{B mT} \\
 \hline
 0.115 & 0.144 & 0.072 & 0.0200 \\ \hline
 0.230 & 0.288 & 0.144 & 0.0450 \\ \hline
@@ -255,24 +252,24 @@
     Como se puede observar en la figura \ref{fig:graficoBI}, los puntos se distribuyen de manera aleatoria. Además, analizando el error que nos entrega el modelo elegido, nos queda que la desviación estándar del coeficiente de posición y de la pendiente son:
 
     \begin{equation*}
-        \sigma_{\text{pos}} =0.002 ~\text{mT/A}
+        \sigma_{\text{pos}} =0.002 ~\text{mT/A},
     \end{equation*}
 
     \begin{equation*}
-        \sigma_{\text{pend}} =0.001 ~\text{mT/A}
+        \sigma_{\text{pend}} =0.001 ~\text{mT/A}.
     \end{equation*}
 
     Notar que el modelo no tiene coeficiente de posición, así que su desviación estándar puede indicar a perturbaciones de campos magnéticos externos al sistema propuesto.
 
-    Ademas al comparar el valor obtenido con el valor teórico de la permeabilidad magnética del aire, que es $\mu_0 = 4\pi \times 10^{-7} \text{H/m}$,
+    Ademas al comparar el valor obtenido con el valor teórico de la permeabilidad magnética del aire \cite{Griffiths} , que es $\mu_0 = 4\pi \times 10^{-7} \text{H/m}$,
     se puede observar que existe una discrepancia entre ambos valores. Esta discrepancia puede deberse a varios factores, como errores experimentales,
     imprecisiones en la medición del campo magnético, o incluso a la presencia de otros materiales en el entorno que puedan afectar las mediciones.
-    El error porcentual entre el valor teórico y el valor experimental se calcula de la siguiente manera:
+    El error relativo entre el valor teórico y el valor experimental se calcula de la siguiente manera:
 
     \begin{align}
-    \% \text{Error} &= \left| \frac{\mu_{0} - \mu_{exp}}{\mu_{exp}} \right| \times 100 \\
-    &= \left| \frac{3.61 \times 10^{-7}}{1.257 \times 10^{-6}} \right| \times 100 \\
-    &= 28.7 \%
+    \varepsilon_r &= \left| \frac{\mu_{0} - \mu_{exp}}{\mu_{exp}} \right| \times \% 100 ,\\
+    &= \left| \frac{3.61 \times 10^{-7}}{1.257 \times 10^{-6}} \right| \times \% 100 ,\\
+    &= 28.7 \%.
     \end{align}
 
 \section*{Predicción}
@@ -284,7 +281,7 @@ I = 7.0~\text{A},
 \]
 
 \[
-\alpha = 1.232 \times 10^{-4}~\text{T/A},
+\alpha = 2.464 \times 10^{-4}~\text{T/A},
 \]
 
 \[
@@ -292,7 +289,7 @@ I = 7.0~\text{A},
 \]
 
 \[
-\sigma_I = 0.0005~\text{A},
+\sigma_I = 5 \times 10^{-4}~\text{A},
 \]
 
 \[
@@ -303,11 +300,10 @@ I = 7.0~\text{A},
 \sigma_{B,\text{ei}} = 1.0 \times 10^{-8}~\text{T}.
 \]
 
-Reemplazando
 
 \begin{align}
-    B   &= 2.464 \times 10^{-4} \cdot 7.0   \\
-        &= 1.7248 \times 10^{-3}\ \text{T} \\
+    B   &= 2.464 \times 10^{-4} \cdot 7.0 ,  \\
+        &= 1.7248 \times 10^{-3}\ \text{T}, \\
         &= 1.725\ \text{mT}.
 \end{align}
 
@@ -317,7 +313,7 @@ Siendo este el campo magnético con una corriente de $7.0$ A.
 
 Ahora veremos el error del campo magnético calculado. La incertidumbre se propaga como:
 \[
-\sigma_B = \sqrt{(I\sigma_\alpha)^2 + (\alpha\sigma_I)^2 + \sigma_{\text{pos}}^2 + \sigma_{B\,\text{ei}}^2}
+\sigma_B = \sqrt{(I\sigma_\alpha)^2 + (\alpha\sigma_I)^2 + \sigma_{\text{pos}}^2 + \sigma_{B,\text{ei}}^2}.
 \]
 
 Sustituyendo valores:
@@ -330,7 +326,33 @@ Por lo tanto, el campo magnético con su error asociado es:
 B(7.0\ \text{A}) = 1.725 \pm 0.002\ \text{mT}.
 \]
 
+    Para determinar la incertidumbre experimental de la permeabilidad magnética ($\sigma_{\mu}$), se utiliza la propagación de errores considerando la incertidumbre de la pendiente obtenida del ajuste lineal ($\sigma_{\alpha}$) y la incertidumbre en la medición del radio ($\sigma_R \approx 5$ mm).
 
+\begin{equation}
+    \sigma_{\mu} = \mu_{exp} \sqrt{ \left( \frac{\sigma_{\alpha}}{\alpha} \right)^2 + \left( \frac{\sigma_R}{R} \right)^2 }
+\end{equation}
+
+Usando los valores del ajuste ($\alpha = 2.464 \times 10^{-4}$ T/A, $\sigma_{\alpha} = 1 \times 10^{-7}$ T/A) y la geometría ($R=0.2$ m):
+
+\begin{align*}
+    \sigma_{\mu} &\approx (8.945 \times 10^{-7}) \cdot 0.00643 \\
+    \sigma_{\mu} &\approx 5.8 \times 10^{-9} \, \text{H/m}
+\end{align*}
+
+Por lo tanto, el resultado experimental se reporta como:
+
+\begin{equation}
+    \mu_{exp} = (8.95 \pm 0.06) \times 10^{-7} \, \text{H/m}
+\end{equation}
+
+
+\section*{Conclusiones}
+
+    En este informe se ha logrado medir la permeabilidad magnética del aire utilizando una bobina de Helmholtz y compararla con el valor teórico conocido.
+    A través del análisis de los datos experimentales, se obtuvo un valor de la permeabilidad magnética del aire que difiere del valor teórico en un 28.7\%.
+    Esta discrepancia puede atribuirse a diversos factores, incluyendo errores experimentales y perturbaciones externas.
+    A pesar de estas diferencias, el experimento proporciona una comprensión valiosa sobre el comportamiento del campo magnético generado por una bobina de Helmholtz
+    y la importancia de la permeabilidad magnética en el electromagnetismo. 
 
 \bibliography{referencias.bib}
 

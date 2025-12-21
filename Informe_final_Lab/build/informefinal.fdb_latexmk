@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex build/informefinal"] 1765455270.16941 "build/informefinal.aux" "build/informefinal.bbl" "build/informefinal" 1765456087.54998 0
+["bibtex build/informefinal"] 1765466725.47853 "build/informefinal.aux" "build/informefinal.bbl" "build/informefinal" 1765468336.87461 0
   "./referencias.bib" 1764692284 564 50e5b7f587ee444e82375d65507effee ""
   "C:/Users/bruhs/AppData/Local/Programs/MiKTeX/bibtex/bst/revtex/apsrev4-2.bst" 1685674058 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "build/informefinal.aux" 1765456086 1622 0afb30ad1e2a3162776372ce0526a1f3 "pdflatex"
+  "build/informefinal.aux" 1765468336 1643 3d6497d7d751cf46246060f94eb8ae2c "pdflatex"
   (generated)
   "build/informefinal.bbl"
   "build/informefinal.blg"
   (rewritten before read)
-["pdflatex"] 1765456080.92286 "c:/Users/bruhs/Cosas U/Informe_final_Lab/informefinal.tex" "build/informefinal.pdf" "informefinal" 1765456087.55105 0
+["pdflatex"] 1765468333.74024 "c:/Users/bruhs/Cosas U/Informe_final_Lab/informefinal.tex" "build/informefinal.pdf" "informefinal" 1765468336.87509 0
   "C:/Users/bruhs/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1764692333 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/bruhs/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1757468033 24225045 6dd08ac921f626b91251acfb08d0a6de ""
   "C:/Users/bruhs/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -230,16 +230,16 @@
   "C:/Users/bruhs/AppData/Local/Programs/MiKTeX/tex/latex/tools/multicol.sty" 1700599895 32515 51caec75eda9c8890135f12f1a4eddc3 ""
   "C:/Users/bruhs/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/bruhs/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "build/informefinal.aux" 1765456086 1622 0afb30ad1e2a3162776372ce0526a1f3 "pdflatex"
-  "build/informefinal.bbl" 1765455270 2907 342c48f32422aef250b55d61565ced62 "bibtex build/informefinal"
-  "build/informefinal.out" 1765456083 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "c:/Users/bruhs/Cosas U/Informe_final_Lab/informefinal.tex" 1765456082 12763 130d5cb4c90caece6cf6587d39dce05c ""
+  "build/informefinal.aux" 1765468336 1643 3d6497d7d751cf46246060f94eb8ae2c "pdflatex"
+  "build/informefinal.bbl" 1765466725 2907 342c48f32422aef250b55d61565ced62 "bibtex build/informefinal"
+  "build/informefinal.out" 1765468334 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "c:/Users/bruhs/Cosas U/Informe_final_Lab/informefinal.tex" 1765468333 14359 9ded84243e3afd2fd9bbd0f2301c34bb ""
   "img/bobina.jpg" 1764717535 118281 6a4807b8aa3078a64a12816b26e3336b ""
   "img/cosawena.png" 1765455067 27151 7df2f9d3e05d1a554ab5193abcb17802 ""
   "img/logo-cfm.png" 1763056836 339406 e3894d1307e96bc65158a9c394b523b5 ""
   "img/marcaderecha.png" 1763056822 93569 c913265d06509732b7401b377b3576fc ""
   "img/residuoslol.png" 1765455148 21657 ad88012ac6a25b04f35f2cb9ebe70465 ""
-  "informefinal.tex" 1765456082 12763 130d5cb4c90caece6cf6587d39dce05c ""
+  "informefinal.tex" 1765468333 14359 9ded84243e3afd2fd9bbd0f2301c34bb ""
   (generated)
   "build/informefinal.aux"
   "build/informefinal.log"
