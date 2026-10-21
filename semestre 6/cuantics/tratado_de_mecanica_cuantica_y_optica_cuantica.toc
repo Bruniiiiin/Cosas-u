@@ -1,0 +1,47 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Fundamentos Matemáticos y Formalismo de Dirac}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Espacios de Hilbert y Notación Bra-Ket}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Operadores Lineales, Hermiticidad y Unitariedad}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Álgebra de Conmutadores y Relaciones de Incertidumbre}{7}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Operador Densidad, Estados Puros y Estados Mezcla}{8}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Los Postulados de la Mecánica Cuántica}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Postulado I: Descripción del Estado Cuántico}{10}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Postulado II: Observables Físicos y Operadores Autoadjuntos}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Postulado III: Cuantización de los Resultados de una Medición}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Postulado IV: Regla Probabilística de Born}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Postulado V: Reducción del Paquete de Ondas (Colapso de von Neumann-Lüders)}{13}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Postulado VI: Evolución Temporal Unitaria (Ecuación de Schrödinger)}{14}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Imágenes de Evolución Dinámica y Teorema de Ehrenfest}{15}{section.2.7}%
+\contentsline {chapter}{\numberline {3}Sistemas Compuestos, Entrelazamiento y Desigualdades de Bell}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Producto Tensorial de Espacios de Hilbert y Estados Entrelazados}{16}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Traza Parcial, Descomposición de Schmidt y Entropía de Entrelazamiento}{17}{section.3.2}%
+\contentsline {section}{\numberline {3.3}La Paradoja EPR (Einstein-Podolsky-Rosen) y Variables Ocultas Locales}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Teorema de Bell y la Desigualdad CHSH: Deducción Completa}{19}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Formulación del Modelo de Variables Ocultas Locales (LHV)}{19}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Demostración del Teorema de Bell-CHSH}{19}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Violación Cuántica de la Desigualdad de Bell y Cota de Tsirelson}{20}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5}El Estado GHZ (Greenberger-Horne-Zeilinger): Contradicción No Estadística}{21}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Óptica Cuántica I: Cuantización del Campo Electromagnético y Estados de la Luz}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Cuantización Canónica del Campo Electromagnético Libre}{23}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Ecuaciones de Maxwell en el Gauge de Coulomb y Descomposición Modal}{23}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Variables Canónicas de Cuadratura y Operadores de Creación y Aniquilación Fotónicos}{24}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Estados Número o Estados de Fock $\left | n \right \rangle $}{25}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Estados Coherentes de Glauber $\left | \alpha \right \rangle $}{26}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Expansión en la Base de Fock y Estadística Fotónica de Poisson}{26}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Sobrecompletitud y No-Ortogonalidad de los Estados Coherentes}{27}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Estados Comprimidos (\textit {Squeezed States}) de la Luz}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Estados Térmicos (Caóticos) y Estadística de Bose-Einstein}{28}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Óptica Cuántica II: Coherencia Cuántica, Espacio de Fases e Interacción Luz-Materia}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Teoría Cuántica de la Coherencia Óptica y Efecto Hong-Ou-Mandel}{29}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Funciones de Correlación de Primer y Segundo Orden $g^{(1)}(\tau )$ y $g^{(2)}(\tau )$}{29}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Transformación Cuántica de un Divisor de Haz y el Efecto Hong-Ou-Mandel (HOM)}{30}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Distribuciones Cuasiprobabilísticas en el Espacio de Fases: $P$, $W$ y $Q$}{31}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Electrodinámica Cuántica de Cavidades: El Modelo de Jaynes-Cummings}{32}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Deducción del Hamiltoniano de Rabi y Aproximación de Onda Rotante (RWA)}{32}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Diagonalización Exacta: Estados Vestidos (\textit {Dressed States}) y Colapsos y Resurgimientos}{33}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Sistemas Cuánticos Abiertos: Ecuación Maestra de Lindblad y Decoherencia}{34}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Literatura Complementaria y Guía de Estudio Avanzado}{36}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Mecánica Cuántica: Formalismo y Fundamentos Matemáticos}{36}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Entrelazamiento, Teorema de Bell e Información Cuántica}{37}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Óptica Cuántica, Fotónica Cuántica y Sistemas Abiertos}{37}{section.6.3}%
+\contentsline {chapter}{Bibliografía}{39}{chapter*.2}%

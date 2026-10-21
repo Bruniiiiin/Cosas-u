@@ -1,0 +1,53 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Campos eléctricos en la materia}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Polarización, Cargas Ligadas y Campo Eléctrico Macroscópico}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Desplazamiento eléctrico y ley de Gauss}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Problemas de frontera con dieléctricos}{10}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Magnetostática}{13}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Fuerza de Lorentz, Corrientes y Ley de Biot-Savart}{13}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Ley de Ampère y potencial vectorial}{15}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Campos magnéticos en la materia}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Magnetización y campo auxiliar}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Problemas de Contorno en Medios Magnéticos Lineales}{20}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Electrodinámica}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Fuerza Electromotriz Motriz y Ley de Faraday}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Inductancia y Energía Magnética}{26}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Corriente de Desplazamiento de Maxwell}{28}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Leyes de conservación}{31}{chapter.5}%
+\contentsline {section}{\numberline {5.1}El Teorema de Poynting y el Flujo de Energía Electromagnética}{31}{section.5.1}%
+\contentsline {section}{\numberline {5.2}El Tensor de Esfuerzos de Maxwell}{32}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Momento Lineal y Momento Angular del Campo Electromagnético}{34}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Ondas electromagnéticas}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Reflexión y transmisión en dieléctricos}{37}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Ondas Electromagnéticas en Conductores y Efecto Pelicular (Skin Depth)}{39}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Guías de Onda Metálicas}{41}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Potenciales Dinámicos y Campos de Cargas en Movimiento}{45}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Gauge y potenciales retardados}{45}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Potenciales de Liénard-Wiechert}{47}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Radiación Electromagnética}{51}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Radiación de Dipolo Eléctrico y Dipolo Magnético}{51}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Radiación de cargas aceleradas}{52}{section.8.2}%
+\contentsline {chapter}{\numberline {9}Electrodinámica y Relatividad Especial}{55}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Cinemática y dinámica relativista}{55}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Transformación de Lorentz de los Campos $\bm {E}$ y $\bm {B}$}{56}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Formulación Covariante: El Tensor de Campo Electromagnético $F^{\mu \nu }$}{58}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Descomposición Modal en una Cavidad y Osciladores Armónicos Desacoplados}{59}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Cuantización Canónica del Campo Electromagnético y el Concepto de Fotón}{60}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Estados Cuánticos de la Luz}{61}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}Estados Número o Estados de Fock $|n\rangle $}{61}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}Estados coherentes de Glauber}{62}{subsection.9.6.2}%
+\contentsline {subsection}{\numberline {9.6.3}Estados comprimidos}{63}{subsection.9.6.3}%
+\contentsline {subsection}{\numberline {9.6.4}Estados Térmicos (Luz Caótica o de Cuerpo Negro)}{63}{subsection.9.6.4}%
+\contentsline {section}{\numberline {9.7}Representaciones cuánticas de fase}{64}{section.9.7}%
+\contentsline {section}{\numberline {9.8}Coherencia cuántica y fotoconteo}{64}{section.9.8}%
+\contentsline {section}{\numberline {9.9}Efecto Hong-Ou-Mandel}{66}{section.9.9}%
+\contentsline {section}{\numberline {9.10}Interacción radiación-materia}{66}{section.9.10}%
+\contentsline {section}{\numberline {9.11}Sistemas abiertos y decoherencia}{68}{section.9.11}%
+\contentsline {chapter}{\numberline {10}Entrelazamiento cuántico}{69}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Paradoja EPR y realismo local}{69}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Formalismo del entrelazamiento}{70}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Teorema de Bell y desigualdad CHSH}{71}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Violación Cuántica de la Desigualdad CHSH y la Cota de Tsirelson}{72}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Implementación óptica y cierre de resquicios}{73}{subsection.10.3.2}%
+\contentsline {section}{\numberline {10.4}Teorema GHZ y no-localidad}{73}{section.10.4}%
+\contentsline {chapter}{Guía Comentada de Literatura Complementaria}{77}{chapter*.3}%

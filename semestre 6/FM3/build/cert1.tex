@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[utf8]{utf8}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Prerrequisitos para Operadores de Proyección, Hermiticidad y Bases Ortonormales}
+\author{Tutor de Física y Matemáticas}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Para comprender adecuadamente los \textbf{operadores de proyección}, \textbf{demostrar la hermiticidad de un operador} y \textbf{construir una base ortonormal}, es necesario dominar los siguientes conceptos del álgebra lineal y la notación de Dirac (braket):
+
+\section{Prerrequisitos para Operadores de Proyección}
+
+Para entender cómo opera un proyector (por ejemplo, $P = \sum_{i} |e_i\rangle\langle e_i|$) sobre un espacio vectorial, se requiere dominar:
+
+\begin{itemize}
+    \item \textbf{Propiedad de Idempotencia}: Comprender la condición estructural:
+    \[
+    P^2 = P
+    \]
+    \item \textbf{Notación Braket (Representación de Operadores)}:
+    \begin{itemize}
+
+        \item Entender el \textbf{producto exterior} $|u\rangle\langle v|$, el cual actúa sobre un ket $|x\rangle$ mediante la contracción $\langle v|x\rangle$, produciendo un nuevo ket proporcional a $|u\rangle$.
+        \item La \textbf{relación de clausura o cierre}:
+        \[
+        \sum_i |e_i\rangle\langle e_i| = I
+        \]
+        necesaria para expresar el operador identidad o proyectores sobre subespacios.
+    \end{itemize}
+    \item \textbf{Descomposición en Suma Directa y Ortogonalidad}:
+    \begin{itemize}
+        \item Descomposición de un espacio $V$ como suma directa $V = M \oplus M^\perp$.
+        \item Saber separar un vector en sus componentes pertenecientes a un subespacio $M$ y a su complemento ortogonal $M^\perp$:
+        \[
+        |v\rangle = P|v\rangle + (I - P)|v\rangle
+        \]
+    \end{itemize}
+\end{itemize}
+
+\section{Prerrequisitos para Demostrar que un Operador es Hermítico}
+
+Para demostrar que un operador $A$ cumple $A^\dagger = A$, se debe conocer:
+
+\begin{itemize}
+    \item \textbf{Reglas de la Operación Adjunta ($\dagger$) en Notación Braket}:
+    \begin{itemize}
+        \item Cambiar kets por bras y viceversa: $(|v\rangle)^\dagger = \langle v|$ y $(\langle w|)^\dagger = |w\rangle$.
+        \item Conjugación de escalares: $(c|v\rangle)^\dagger = c^*\langle v|$.
+        \item Inversión del orden en los productos: $(AB)^\dagger = B^\dagger A^\dagger$ y $(|u\rangle\langle v|)^\dagger = |v\rangle\langle u|$.
+    \end{itemize}
+    \item \textbf{Propiedades del Producto Escalar Hermítico}:
+    \begin{itemize}
+        \item Hermiticidad: $\langle u|v\rangle = \langle v|u\rangle^*$.
+        \item Definición del adjunto vía producto escalar:
+        \[
+        \langle w|A^\dagger|v\rangle = \langle Aw|v\rangle = \langle v|A|w\rangle^*
+        \]
+    \end{itemize}
+    \item \textbf{Identidades de Conmutación y Álgebra de Operadores}:
+    \begin{itemize}
+        \item Propiedades del conmutador:
+        \[
+        [A, B] = AB - BA
+        \]
+    \end{itemize}
+\end{itemize}
+
+\section{Prerrequisitos para Crear una Base Ortonormal}
+
+Para construir o verificar una base ortonormal $\{|u_i\rangle\}$, se necesita saber:
+
+\begin{itemize}
+    \item \textbf{Independencia Lineal y Concepto de Base}: Comprobar si un conjunto de vectores es linealmente independiente.
+    \item \textbf{Condición de Ortonormalidad}:
+    \begin{itemize}
+        \item Delta de Kronecker:
+        \[
+        \langle u_i|u_j\rangle = \delta_{ij} = 
+        \begin{cases} 
+        1 & \text{si } i = j \\ 
+        0 & \text{si } i \neq j 
+        \end{cases}
+        \]
+    \end{itemize}
+    \item \textbf{Algoritmo de Ortonormalización de Gram-Schmidt}:
+    \begin{itemize}
+        \item Saber cómo sustraer recursivamente las proyecciones sobre los vectores previa y ortonormalizados:
+        \[
+        |w_n\rangle = |v_n\rangle - \sum_{j=1}^{n-1} \langle u_j|v_n\rangle |u_j\rangle, \quad |u_n\rangle = \frac{|w_n\rangle}{\||w_n\rangle\|}
+        \]
+    \end{itemize}
+    \item \textbf{Normalización de Vectores}:
+    \begin{itemize}
+        \item Cálculo de la norma a partir del producto escalar:
+        \[
+        \|v\| = \sqrt{\langle v|v\rangle}
+        \]
+    \end{itemize}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,1456 @@
+\documentclass[11pt,a4paper,twoside]{report}
+
+% ============================================================================
+% PAQUETES FUNDAMENTALES Y CODIFICACIÓN
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper, margin=2.5cm, headheight=28pt]{geometry}
+
+% ============================================================================
+% PAQUETES MATEMÁTICOS Y FÍSICOS
+% ============================================================================
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+% ============================================================================
+% CONFIGURACIÓN DE HIPERVÍNCULOS Y ENCABEZADOS
+% ============================================================================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    citecolor=green!50!black,
+    urlcolor=blue!70!black,
+    pdftitle={Tratado de Mecánica Cuántica, Entrelazamiento y Óptica Cuántica},
+    pdfauthor={Departamento de Física Teórica y Óptica Cuántica}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ============================================================================
+% ENTORNOS MATEMÁTICOS PERSONALIZADOS
+% ============================================================================
+\theoremstyle{definition}
+\newtheorem{definicion}{Definición}[chapter]
+\newtheorem{postulado}{Postulado}[chapter]
+\newtheorem{ejemplo}{Ejemplo Resuelto}[chapter]
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{lema}{Lema}[chapter]
+\newtheorem{corolario}{Corolario}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{observacion}{Observación Física}[chapter]
+
+% ============================================================================
+% MACROS DE NOTACIÓN DE DIRAC Y OPERADORES CUÁNTICOS
+% ============================================================================
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\bra}[1]{\left\langle #1 \right|}
+\newcommand{\braket}[2]{\left\langle #1 \middle| #2 \right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \right\rangle\!\left\langle #2 \right|}
+\newcommand{\mel}[3]{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}
+\newcommand{\expval}[1]{\left\langle #1 \right\rangle}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\comm}[2]{\left[ #1, #2 \right]}
+\newcommand{\acomm}[2]{\left\{ #1, #2 \right\}}
+\newcommand{\Hil}{\mathcal{H}}
+\newcommand{\op}[1]{\hat{#1}}
+\newcommand{\ident}{\hat{\mathbb{I}}}
+\newcommand{\daggerop}[1]{\hat{#1}^{\dagger}}
+
+% ============================================================================
+% TÍTULO DEL DOCUMENTO
+% ============================================================================
+\title{
+    \vspace{-1.5cm}
+    \rule{\linewidth}{1.5pt}\\[0.4cm]
+    {\Huge \textbf{Tratado Exhaustivo de Mecánica Cuántica y Óptica Cuántica}}\\[0.3cm]
+    {\Large Formalismo Axiomático, Teoría de la Medición, No-Localidad de Bell, Cuantización del Campo Electromagnético e Interacción Materia-Radiación}\\[0.2cm]
+    \rule{\linewidth}{1.5pt}
+}
+\author{\textbf{Monografía Avanzada de Física Teórica}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Este documento constituye un tratado riguroso y autocontenido sobre los fundamentos matemáticos y físicos de la Mecánica Cuántica no relativista, la teoría moderna de la información y el entrelazamiento cuántico, y la formulación completa de la Óptica Cuántica. En la primera parte se establece la estructura del espacio de Hilbert, el cálculo de operadores hermíticos y unitarios, el formalismo del operador densidad para ensambles estadísticos y los seis postulados fundamentales de la teoría, cada uno acompañado de problemas y ejemplos íntegramente resueltos. En la segunda parte se analiza la estructura de sistemas compuestos mediante productos tensoriales, la descomposición de Schmidt, la paradoja de Einstein-Podolsky-Rosen (EPR) y la deducción completa del Teorema de Bell en su formulación CHSH, demostrando la violación cuántica del realismo local hasta la cota de Tsirelson. Finalmente, en la tercera y cuarta parte se desarrolla extensamente la Óptica Cuántica: la cuantización canónica del campo electromagnético libre, el estudio detallado de los estados de Fock, estados coherentes de Glauber, estados comprimidos (\textit{squeezed states}) y estados térmicos, las funciones de correlación de primer y segundo orden $g^{(1)}(\tau)$ y $g^{(2)}(\tau)$, el efecto Hong-Ou-Mandel en divisores de haz, las distribuciones cuasiprobabilísticas en el espacio de fases ($P$, $W$ de Wigner y $Q$ de Husimi), el modelo de Jaynes-Cummings para la electrodinámica cuántica de cavidades (CQED) y la ecuación maestra de Lindblad para sistemas cuánticos abiertos con disipación y decoherencia.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================================
+% CAPÍTULO 1: FUNDAMENTOS MATEMÁTICOS Y DEFINICIONES
+% ============================================================================
+\chapter{Fundamentos Matemáticos y Formalismo de Dirac}
+
+La mecánica cuántica abandona la descripción clásica del estado físico en términos de coordenadas canónicas puntuales $(q_i, p_i)$ en el espacio de fases $\Gamma$, reemplazándola por una formulación algebraica y funcional sobre espacios vectoriales complejos dotados de producto interno. A continuación establecemos con precisión cada uno de los objetos matemáticos que sustentan la teoría, ilustrando cada concepto con un ejemplo detallado.
+
+\section{Espacios de Hilbert y Notación Bra-Ket}
+
+\begin{definicion}[Espacio de Hilbert $\Hil$]
+Un espacio de Hilbert $\Hil$ sobre el cuerpo de los números complejos $\mathbb{C}$ es un espacio vectorial lineal dotado de un producto interno (o producto escalar) $\braket{\cdot}{\cdot}: \Hil \times \Hil \to \mathbb{C}$ que es completo respecto a la métrica inducida por su norma $\|\ket{\psi}\| = \sqrt{\braket{\psi}{\psi}}$. Para cualesquiera vectores $\ket{\psi}, \ket{\phi}, \ket{\chi} \in \Hil$ y escalares $c_1, c_2 \in \mathbb{C}$, el producto interno satisface:
+\begin{enumerate}[label=\roman*)]
+    \item \textbf{Conjugación simétrica (Hermiticidad):} $\braket{\phi}{\psi} = \braket{\psi}{\phi}^*$.
+    \item \textbf{Linealidad en el segundo argumento (y antilinealidad en el primero):}
+    \begin{equation}
+        \braket{\phi}{c_1 \psi + c_2 \chi} = c_1 \braket{\phi}{\psi} + c_2 \braket{\phi}{\chi}, \qquad \braket{c_1 \phi + c_2 \chi}{\psi} = c_1^* \braket{\phi}{\psi} + c_2^* \braket{\chi}{\psi}.
+    \end{equation}
+    \item \textbf{Positividad definida:} $\braket{\psi}{\psi} \ge 0$, cumpliéndose la igualdad $\braket{\psi}{\psi} = 0$ si y solo si $\ket{\psi} = 0$ (vector nulo).
+\end{enumerate}
+En la notación introducida por Paul Dirac, los elementos de $\Hil$ se denominan vectores \textit{ket} y se denotan por $\ket{\psi}$.
+\end{definicion}
+
+\begin{ejemplo}[Espacio de Hilbert de dimensión finita $\mathbb{C}^2$ y el espacio funcional $L^2(\mathbb{R})$]
+Consideremos primero el sistema cuántico no trivial más simple: una partícula de espín $s = 1/2$ (o un bit cuántico, \textit{qubit}). Su espacio de Hilbert es isomorfo a $\Hil = \mathbb{C}^2$. Dados dos estados arbitrarios representados en la base canónica como vectores columna:
+\begin{equation}
+    \ket{\psi} = \begin{pmatrix} \frac{1}{\sqrt{3}} \\ \sqrt{\frac{2}{3}}\, e^{i\pi/4} \end{pmatrix}, \qquad \ket{\phi} = \begin{pmatrix} \frac{i}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix},
+\end{equation}
+su producto interno se calcula tomando el transpuesto conjugado del primer vector:
+\begin{equation}
+    \braket{\phi}{\psi} = \begin{pmatrix} -\frac{i}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix} \begin{pmatrix} \frac{1}{\sqrt{3}} \\ \sqrt{\frac{2}{3}}\, e^{i\pi/4} \end{pmatrix} = -\frac{i}{\sqrt{6}} + \frac{1}{\sqrt{3}}\left(\frac{1+i}{\sqrt{2}}\right) = \frac{1}{\sqrt{6}} + \frac{i - i}{\sqrt{6}} = \frac{1}{\sqrt{6}}.
+\end{equation}
+Por otra parte, para una partícula sin espín moviéndose en una dimensión sobre el eje real, el espacio de Hilbert es el espacio de funciones de cuadrado integrable en el sentido de Lebesgue, $\Hil = L^2(\mathbb{R})$, donde el producto interno entre dos funciones de onda $\psi(x)$ y $\phi(x)$ viene dado por:
+\begin{equation}
+    \braket{\phi}{\psi} = \int_{-\infty}^{+\infty} \phi^*(x)\psi(x)\,dx.
+\end{equation}
+Si tomamos un paquete gaussiano $\psi(x) = (\pi \sigma^2)^{-1/4} \exp(-x^2/(2\sigma^2))$, verificamos inmediatamente su normalización:
+\begin{equation}
+    \braket{\psi}{\psi} = \frac{1}{\sqrt{\pi \sigma^2}} \int_{-\infty}^{+\infty} e^{-x^2/\sigma^2}\,dx = \frac{1}{\sqrt{\pi \sigma^2}} \sqrt{\pi \sigma^2} = 1.
+\end{equation}
+\end{ejemplo}
+
+\begin{definicion}[Espacio Dual $\Hil^*$ y Vectores Bra]
+El espacio dual topológico $\Hil^*$ de un espacio de Hilbert $\Hil$ es el conjunto de todos los funcionales lineales continuos $F: \Hil \to \mathbb{C}$. Por el \textbf{Teorema de Representación de Riesz}, existe un isomorfismo antilineal biyectivo entre $\Hil$ y $\Hil^*$: para todo funcional lineal acotado $F \in \Hil^*$, existe un único vector $\ket{\phi} \in \Hil$ tal que $F(\ket{\psi}) = \braket{\phi}{\psi}$ para todo $\ket{\psi} \in \Hil$. A dicho funcional se le denomina vector \textit{bra} y se denota por $\bra{\phi} \in \Hil^*$. La correspondencia adjunta satisface:
+\begin{equation}
+    c_1 \ket{\psi_1} + c_2 \ket{\psi_2} \quad \longleftrightarrow \quad c_1^* \bra{\psi_1} + c_2^* \bra{\psi_2}.
+\end{equation}
+\end{definicion}
+
+\begin{ejemplo}[Acción de un Bra como funcional lineal y Operador de Rango Uno]
+Sea $\Hil = \mathbb{C}^2$ con base ortonormal $\{\ket{0}, \ket{1}\}$. Si definimos el estado $\ket{\psi} = \frac{3}{5}\ket{0} + \frac{4i}{5}\ket{1}$, el vector bra asociado en $\Hil^*$ es:
+\begin{equation}
+    \bra{\psi} = \frac{3}{5}\bra{0} - \frac{4i}{5}\bra{1}.
+\end{equation}
+Cuando $\bra{\psi}$ actúa por la izquierda sobre el vector $\ket{\chi} = \ket{0} + \ket{1}$, produce el número complejo:
+\begin{equation}
+    \braket{\psi}{\chi} = \left(\frac{3}{5}\bra{0} - \frac{4i}{5}\bra{1}\right)\left(\ket{0} + \ket{1}\right) = \frac{3}{5}\braket{0}{0} + \frac{3}{5}\braket{0}{1} - \frac{4i}{5}\braket{1}{0} - \frac{4i}{5}\braket{1}{1} = \frac{3 - 4i}{5}.
+\end{equation}
+En contraste, el producto exterior $\ketbra{\psi}{\chi}$ es un operador lineal sobre $\Hil$ cuya representación matricial en la base $\{\ket{0}, \ket{1}\}$ es:
+\begin{equation}
+    \ketbra{\psi}{\chi} = \begin{pmatrix} 3/5 \\ 4i/5 \end{pmatrix} \begin{pmatrix} 1 & 1 \end{pmatrix} = \begin{pmatrix} 3/5 & 3/5 \\ 4i/5 & 4i/5 \end{pmatrix}.
+\end{equation}
+\end{ejemplo}
+
+\section{Operadores Lineales, Hermiticidad y Unitariedad}
+
+\begin{definicion}[Operador Lineal y Adjunto Hermítico]
+Un operador lineal $\op{A}: \mathcal{D}(\op{A}) \subset \Hil \to \Hil$ es una aplicación que preserva combinaciones lineales: $\op{A}(c_1\ket{\psi_1} + c_2\ket{\psi_2}) = c_1\op{A}\ket{\psi_1} + c_2\op{A}\ket{\psi_2}$. Si $\mathcal{D}(\op{A})$ es denso en $\Hil$, el \textbf{operador adjunto} (o conjugado hermítico) $\op{A}^\dagger$ se define mediante la relación de dualidad:
+\begin{equation}
+    \braket{\phi}{\op{A}\psi} = \braket{\op{A}^\dagger \phi}{\psi}, \qquad \forall \ket{\psi} \in \mathcal{D}(\op{A}),\; \forall \ket{\phi} \in \mathcal{D}(\op{A}^\dagger).
+\end{equation}
+En notación de Dirac, el elemento de matriz se escribe indistintamente como $\mel{\phi}{\op{A}}{\psi} \equiv \braket{\phi}{\op{A}\psi} = \mel{\psi}{\op{A}^\dagger}{\phi}^*$.
+\end{definicion}
+
+\begin{definicion}[Operador Autoadjunto o Hermítico]
+Un operador lineal $\op{A}$ se dice \textbf{hermítico} (o simétrico) si $\mel{\phi}{\op{A}}{\psi} = \mel{\psi}{\op{A}}{\phi}^*$ para todo par de vectores en su dominio, y \textbf{autoadjunto} si además $\mathcal{D}(\op{A}) = \mathcal{D}(\op{A}^\dagger)$, lo que escribimos como $\op{A} = \op{A}^\dagger$. Los operadores autoadjuntos poseen tres propiedades espectrales fundamentales:
+\begin{enumerate}[label=\arabic*.]
+    \item Todos sus autovalores son estrictamente reales ($\lambda_n \in \mathbb{R}$).
+    \item Autovectores correspondientes a autovalores distintos son mutuamente ortogonales: si $\op{A}\ket{a_n} = a_n\ket{a_n}$ y $\op{A}\ket{a_m} = a_m\ket{a_m}$ con $a_n \neq a_m$, entonces $\braket{a_m}{a_n} = 0$.
+    \item El conjunto de sus autovectores genera una base ortonormal completa (discreta, continua o mixta) del espacio de Hilbert $\Hil$ (\textbf{Teorema Espectral}).
+\end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}[Verificación de autoadjunción del operador momento lineal $\op{p}_x = -i\hbar \frac{d}{dx}$]
+Consideremos el operador momento lineal $\op{p}_x = -i\hbar \frac{d}{dx}$ actuando sobre funciones diferenciables en $L^2(\mathbb{R})$ que decaen rápidamente en el infinito ($\lim_{x\to\pm\infty} \psi(x) = 0$). Calculemos el producto interno $\braket{\phi}{\op{p}_x \psi}$ e integremos por partes:
+\begin{align}
+    \braket{\phi}{\op{p}_x \psi} &= \int_{-\infty}^{+\infty} \phi^*(x) \left( -i\hbar \frac{d\psi(x)}{dx} \right) dx \nonumber \\
+    &= \Big[ -i\hbar \phi^*(x)\psi(x) \Big]_{-\infty}^{+\infty} + i\hbar \int_{-\infty}^{+\infty} \frac{d\phi^*(x)}{dx} \psi(x)\,dx \nonumber \\
+    &= 0 + \int_{-\infty}^{+\infty} \left( -i\hbar \frac{d\phi(x)}{dx} \right)^* \psi(x)\,dx = \braket{\op{p}_x \phi}{\psi}.
+\end{align}
+Dado que el término de frontera se anula gracias a las condiciones de contorno en el infinito, concluimos que $\op{p}_x^\dagger = \op{p}_x$, demostrando que el operador momento es autoadjunto en su dominio natural.
+\end{ejemplo}
+
+\begin{definicion}[Operador de Proyección y Relación de Clausura]
+Un operador lineal $\op{P}$ es un \textbf{proyector ortogonal} si es simultáneamente hermítico e idempotente:
+\begin{equation}
+    \op{P}^\dagger = \op{P}, \qquad \op{P}^2 = \op{P}.
+\end{equation}
+Si $\{\ket{u_n}\}$ es una base ortonormal discreta ($\braket{u_n}{u_m} = \delta_{nm}$) y $\{\ket{\xi}\}$ una base continua ($\braket{\xi}{\xi'} = \delta(\xi - \xi')$), los proyectores elementales $\op{P}_n = \ketbra{u_n}{u_n}$ satisfacen la \textbf{relación de completitud o clausura}:
+\begin{equation}
+    \sum_n \ketbra{u_n}{u_n} = \ident, \qquad \int d\xi\, \ketbra{\xi}{\xi} = \ident.
+\end{equation}
+\end{definicion}
+
+\begin{ejemplo}[Construcción de proyectores espectrales para el espín en dirección arbitraria]
+Sea la matriz de Pauli $\op{\sigma}_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. Sus autovalores son $\lambda_\pm = \pm 1$ con autovectores normalizados $\ket{\pm_x} = \frac{1}{\sqrt{2}}(\ket{0} \pm \ket{1})$. Los proyectores sobre los subespacios propios son:
+\begin{equation}
+    \op{P}_+ = \ketbra{+_x}{+_x} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}, \qquad \op{P}_- = \ketbra{-_x}{-_x} = \frac{1}{2}\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}.
+\end{equation}
+Se verifica de inmediato que $\op{P}_\pm^2 = \op{P}_\pm$, $\op{P}_+\op{P}_- = 0$, la relación de clausura $\op{P}_+ + \op{P}_- = \ident_2$, y la descomposición espectral del operador: $\op{\sigma}_x = (+1)\op{P}_+ + (-1)\op{P}_-$.
+\end{ejemplo}
+
+\begin{definicion}[Operador Unitario]
+Un operador lineal $\op{U}: \Hil \to \Hil$ es \textbf{unitario} si su adjunto coincide con su inverso:
+\begin{equation}
+    \op{U}^\dagger \op{U} = \op{U} \op{U}^\dagger = \ident \quad \Longleftrightarrow \quad \op{U}^\dagger = \op{U}^{-1}.
+\end{equation}
+Los operadores unitarios son isometrías sobreyectivas que preservan el producto interno y la norma entre cualesquiera dos estados: $\braket{\op{U}\phi}{\op{U}\psi} = \mel{\phi}{\op{U}^\dagger \op{U}}{\psi} = \braket{\phi}{\psi}$. Por el \textbf{Teorema de Stone}, todo grupo continuo monoparamétrico de operadores unitarios $\op{U}(s)$ se puede expresar como la exponencial de un generador autoadjunto $\op{G} = \op{G}^\dagger$:
+\begin{equation}
+    \op{U}(s) = \exp(-i s \op{G}).
+\end{equation}
+\end{definicion}
+
+\begin{ejemplo}[El operador de traslación espacial finita como operador unitario]
+Definamos el operador $\op{T}(a) = \exp\left(-\frac{i}{\hbar} a \op{p}_x\right)$, donde $a \in \mathbb{R}$ es un desplazamiento espacial y $\op{p}_x = -i\hbar \frac{d}{dx}$ es hermítico. Como $\op{p}_x^\dagger = \op{p}_x$, se cumple $\op{T}^\dagger(a) = \exp\left(+\frac{i}{\hbar} a \op{p}_x\right) = \op{T}(-a) = \op{T}^{-1}(a)$, por lo que $\op{T}(a)$ es unitario. Al actuar sobre una función de onda analítica $\psi(x) = \braket{x}{\psi}$, expandiendo la serie de Taylor obtenemos:
+\begin{equation}
+    \op{T}(a)\psi(x) = \exp\left(-a \frac{d}{dx}\right)\psi(x) = \sum_{n=0}^{\infty} \frac{(-a)^n}{n!} \frac{d^n \psi(x)}{dx^n} = \psi(x - a).
+\end{equation}
+Esto demuestra que el momento lineal $\op{p}_x$ es el generador infinitesimal de las traslaciones espaciales.
+\end{ejemplo}
+
+\section{Álgebra de Conmutadores y Relaciones de Incertidumbre}
+
+\begin{definicion}[Conmutador y Anticonmutador]
+Dados dos operadores lineales $\op{A}$ y $\op{B}$, se define su \textbf{conmutador} $\comm{\op{A}}{\op{B}}$ y su \textbf{anticonmutador} $\acomm{\op{A}}{\op{B}}$ como:
+\begin{equation}
+    \comm{\op{A}}{\op{B}} \equiv \op{A}\op{B} - \op{B}\op{A}, \qquad \acomm{\op{A}}{\op{B}} \equiv \op{A}\op{B} + \op{B}\op{A}.
+\end{equation}
+El conmutador satisface antisimetría ($\comm{\op{A}}{\op{B}} = -\comm{\op{B}}{\op{A}}$), linealidad en ambos argumentos, la regla de Leibniz $\comm{\op{A}}{\op{B}\op{C}} = \comm{\op{A}}{\op{B}}\op{C} + \op{B}\comm{\op{A}}{\op{C}}$ y la \textbf{Identidad de Jacobi}:
+\begin{equation}
+    \comm{\op{A}}{\comm{\op{B}}{\op{C}}} + \comm{\op{B}}{\comm{\op{C}}{\op{A}}} + \comm{\op{C}}{\comm{\op{A}}{\op{B}}} = 0.
+\end{equation}
+Dos observables autoadjuntos $\op{A}$ y $\op{B}$ se dicen \textbf{compatibles} si y solo si $\comm{\op{A}}{\op{B}} = 0$, en cuyo caso existe una base ortonormal común de autovectores simultáneos para ambos operadores.
+\end{definicion}
+
+\begin{ejemplo}[Cálculo de la relación de conmutación canónica de Born-Jordan]
+Evaluemos el conmutador $\comm{\op{x}}{\op{p}_x}$ en la representación de posición aplicando el operador sobre una función de prueba arbitraria $\psi(x) \in \mathcal{S}(\mathbb{R})$:
+\begin{align}
+    \comm{\op{x}}{\op{p}_x}\psi(x) &= \left( x \left(-i\hbar \frac{d}{dx}\right) - \left(-i\hbar \frac{d}{dx}\right) x \right)\psi(x) \nonumber \\
+    &= -i\hbar x \frac{d\psi(x)}{dx} + i\hbar \frac{d}{dx}\big(x\psi(x)\big) \nonumber \\
+    &= -i\hbar x \frac{d\psi(x)}{dx} + i\hbar \psi(x) + i\hbar x \frac{d\psi(x)}{dx} = i\hbar \psi(x).
+\end{align}
+Como esta identidad es válida para toda función de prueba $\psi(x)$, se obtiene la relación algebraica fundamental entre operadores:
+\begin{equation}
+    \comm{\op{x}}{\op{p}_x} = i\hbar \ident.
+\end{equation}
+\end{ejemplo}
+
+\begin{teorema}[Desigualdad de Incertidumbre Generalizada de Robertson-Schrödinger]
+Sean $\op{A}$ y $\op{B}$ dos observables autoadjuntos y sea $\ket{\psi}$ un estado cuántico normalizado arbitrario. Definamos la desviación estándar (o incertidumbre) de un operador $\op{A}$ en el estado $\ket{\psi}$ como $\Delta A \equiv \sqrt{\expval{(\op{A} - \expval{\op{A}}\ident)^2}} = \sqrt{\expval{\op{A}^2} - \expval{\op{A}}^2}$. Entonces se cumple rigurosamente que:
+\begin{equation}
+    (\Delta A)^2 (\Delta B)^2 \ge \frac{1}{4}\left| \expval{\comm{\op{A}}{\op{B}}} \right|^2 + \frac{1}{4}\left| \expval{\acomm{\op{A}-\expval{\op{A}}}{\op{B}-\expval{\op{B}}}} \right|^2,
+\end{equation}
+lo cual implica la forma habitual de Robertson:
+\begin{equation}
+    \Delta A \, \Delta B \ge \frac{1}{2} \left| \expval{\comm{\op{A}}{\op{B}}} \right|.
+\end{equation}
+\end{teorema}
+
+\begin{proof}
+Definamos los operadores hermíticos centrados $\delta\op{A} = \op{A} - \expval{\op{A}}\ident$ y $\delta\op{B} = \op{B} - \expval{\op{B}}\ident$, y los vectores $\ket{f} = \delta\op{A}\ket{\psi}$ y $\ket{g} = \delta\op{B}\ket{\psi}$. Por la desigualdad de Cauchy-Schwarz en el espacio de Hilbert $\Hil$:
+\begin{equation}
+    \braket{f}{f}\braket{g}{g} \ge |\braket{f}{g}|^2 \quad \Longrightarrow \quad (\Delta A)^2 (\Delta B)^2 \ge |\expval{\delta\op{A}\,\delta\op{B}}|^2.
+\end{equation}
+Todo producto de operadores puede descomponerse en su parte hermítica (simétrica) y antihermítica (antisimétrica):
+\begin{equation}
+    \delta\op{A}\,\delta\op{B} = \frac{1}{2}\acomm{\delta\op{A}}{\delta\op{B}} + \frac{1}{2}\comm{\delta\op{A}}{\delta\op{B}} = \frac{1}{2}\acomm{\delta\op{A}}{\delta\op{B}} + \frac{1}{2}\comm{\op{A}}{\op{B}}.
+\end{equation}
+Como el conmutador de dos operadores hermíticos es antihermítico, podemos escribir $\comm{\op{A}}{\op{B}} = i\op{C}$ con $\op{C} = \op{C}^\dagger$. Por tanto, el valor esperado $\expval{\delta\op{A}\,\delta\op{B}} = \frac{1}{2}\expval{\acomm{\delta\op{A}}{\delta\op{B}}} + \frac{i}{2}\expval{\op{C}}$ es un número complejo cuya parte real e imaginaria están explícitamente separadas. Tomando el módulo al cuadrado $|x + iy|^2 = x^2 + y^2$, se obtiene directamente el resultado del teorema.
+\end{proof}
+
+\begin{ejemplo}[Incertidumbre de Heisenberg para el estado fundamental del oscilador armónico]
+Para los operadores canónicos $\op{x}$ y $\op{p}_x$, dado que $\comm{\op{x}}{\op{p}_x} = i\hbar\ident$, la relación de Robertson arroja la célebre \textbf{Desigualdad de Heisenberg}:
+\begin{equation}
+    \Delta x \, \Delta p_x \ge \frac{\hbar}{2}.
+\end{equation}
+En el estado fundamental $\ket{0}$ de un oscilador armónico de masa $m$ y frecuencia $\omega$, la función de onda es $\psi_0(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4} e^{-m\omega x^2/(2\hbar)}$. Por paridad, $\expval{\op{x}} = 0$ y $\expval{\op{p}_x} = 0$. Calculando los segundos momentos mediante integrales gaussianas se obtiene:
+\begin{equation}
+    (\Delta x)^2 = \expval{\op{x}^2} = \frac{\hbar}{2m\omega}, \qquad (\Delta p_x)^2 = \expval{\op{p}_x^2} = \frac{m\hbar\omega}{2}.
+\end{equation}
+Multiplicando ambas desviaciones estándar:
+\begin{equation}
+    \Delta x \, \Delta p_x = \sqrt{\frac{\hbar}{2m\omega}} \sqrt{\frac{m\hbar\omega}{2}} = \frac{\hbar}{2},
+\end{equation}
+verificando que el estado fundamental gaussiano es un \textbf{estado de mínima incertidumbre} que satura exactamente la cota inferior cuántica.
+\end{ejemplo}
+
+\section{Operador Densidad, Estados Puros y Estados Mezcla}
+
+Cuando un sistema cuántico no se encuentra preparado en un único vector de estado conocido con certeza, sino en un ensamble estadístico $\{p_k, \ket{\psi_k}\}$ (o cuando forma parte de un sistema compuesto mayor con el cual está entrelazado), el formalismo de vectores en $\Hil$ resulta insuficiente y debemos recurrir al operador densidad de von Neumann.
+
+\begin{definicion}[Operador Densidad $\op{\rho}$ y Propiedades Fundamentales]
+Dado un ensamble estadístico en el que el sistema se encuentra en el estado normalizado $\ket{\psi_k}$ con probabilidad clásica $p_k \ge 0$ ($\sum_k p_k = 1$), se define el \textbf{operador densidad} (o matriz densidad) como:
+\begin{equation}
+    \op{\rho} \equiv \sum_k p_k \ketbra{\psi_k}{\psi_k}.
+\end{equation}
+Todo operador densidad físico $\op{\rho}$ sobre $\Hil$ está caracterizado por tres propiedades necesarias y suficientes:
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Hermiticidad:} $\op{\rho}^\dagger = \op{\rho}$.
+    \item \textbf{Semidefinición positiva:} $\mel{\phi}{\op{\rho}}{\phi} \ge 0$ para todo $\ket{\phi} \in \Hil$ (sus autovalores satisfacen $\lambda_i \ge 0$).
+    \item \textbf{Normalización de traza unidad:} $\tr(\op{\rho}) = 1$.
+\end{enumerate}
+Además, la \textbf{pureza} del estado se cuantifica mediante $\gamma \equiv \tr(\op{\rho}^2)$, cumpliéndose que:
+\begin{equation}
+    \frac{1}{d} \le \tr(\op{\rho}^2) \le 1 \quad (\text{donde } d = \dim\Hil),
+\end{equation}
+siendo $\tr(\op{\rho}^2) = 1$ ($\op{\rho}^2 = \op{\rho}$) si y solo si el estado es un \textbf{estado puro} ($\op{\rho} = \ketbra{\psi}{\psi}$), y $\tr(\op{\rho}^2) < 1$ si y solo si es un \textbf{estado mezcla} estadístico. El valor esperado de cualquier observable $\op{A}$ viene dado por la fórmula de von Neumann:
+\begin{equation}
+    \expval{\op{A}} = \tr(\op{\rho}\op{A}).
+\end{equation}
+\end{definicion}
+
+\begin{ejemplo}[Distinción experimental y matemática entre superposición coherente y mezcla estadística]
+Comparemos dos preparaciones radicalmente distintas de un sistema de dos niveles ($\Hil = \mathbb{C}^2$):
+\begin{itemize}
+    \item \textbf{Caso A (Estado puro en superposición coherente):} El sistema se prepara en el estado $\ket{+} = \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})$. Su matriz densidad en la base $\{\ket{0}, \ket{1}\}$ es:
+    \begin{equation}
+        \op{\rho}_A = \ketbra{+}{+} = \frac{1}{2}\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}.
+    \end{equation}
+    Los elementos fuera de la diagonal ($\rho_{01} = \rho_{10} = 1/2$) se denominan \textbf{coherencias cuánticas}. Su pureza es $\tr(\op{\rho}_A^2) = \tr(\op{\rho}_A) = 1$. Si medimos el observable $\op{\sigma}_x$, obtenemos:
+    \begin{equation}
+        \expval{\op{\sigma}_x}_A = \tr(\op{\rho}_A \op{\sigma}_x) = \frac{1}{2}\tr\left[\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\right] = \frac{1}{2}\tr\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} = 1.
+    \end{equation}
+    \item \textbf{Caso B (Mezcla estadística incoherente 50/50):} Un generador aleatorio produce el estado $\ket{0}$ con probabilidad $p_0 = 1/2$ y el estado $\ket{1}$ con probabilidad $p_1 = 1/2$. Su matriz densidad es:
+    \begin{equation}
+        \op{\rho}_B = \frac{1}{2}\ketbra{0}{0} + \frac{1}{2}\ketbra{1}{1} = \frac{1}{2}\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \frac{1}{2}\ident_2.
+    \end{equation}
+    Aquí las coherencias fuera de la diagonal son nulas ($\rho_{01} = 0$). La pureza es $\tr(\op{\rho}_B^2) = \frac{1}{4}\tr(\ident_2) = \frac{1}{2} < 1$ (estado máximamente mezclado). Aunque una medición en la base $\{\ket{0}, \ket{1}\}$ arroja idénticas probabilidades ($50\%$ para cada resultado) en ambos casos, al medir $\op{\sigma}_x$ en el Caso B obtenemos:
+    \begin{equation}
+        \expval{\op{\sigma}_x}_B = \tr(\op{\rho}_B \op{\sigma}_x) = \frac{1}{2}\tr(\op{\sigma}_x) = 0,
+    \end{equation}
+    lo que permite distinguir experimentalmente una superposición cuántica de una mezcla estadística clásica mediante interferometría o mediciones en bases conjugadas.
+\end{itemize}
+\end{ejemplo}
+
+% ============================================================================
+% CAPÍTULO 2: LOS POSTULADOS DE LA MECÁNICA CUÁNTICA
+% ============================================================================
+\chapter{Los Postulados de la Mecánica Cuántica}
+
+La estructura lógica de la Mecánica Cuántica descansa sobre un conjunto reducido de axiomas o postulados que vinculan el formalismo matemático del espacio de Hilbert con los resultados empíricos obtenidos en el laboratorio. A continuación enunciamos de manera exhaustiva los seis postulados fundamentales y desarrollamos un ejemplo completo para cada uno de ellos.
+
+\section{Postulado I: Descripción del Estado Cuántico}
+
+\begin{postulado}[Representación del Estado Físico]
+A todo sistema físico aislado se le asocia un espacio de Hilbert complejo separable $\Hil$. El estado físico completo del sistema en un instante de tiempo fijo $t_0$ queda completamente descrito por un rayo unidad en $\Hil$, representado por un vector de estado normalizado $\ket{\psi(t_0)} \in \Hil$ que satisface $\braket{\psi(t_0)}{\psi(t_0)} = 1$ (o, de manera más general para sistemas abiertos o ensambles, por un operador densidad $\op{\rho}(t_0)$ en el espacio de operadores de clase traza sobre $\Hil$). Dos vectores que difieren únicamente en un factor de fase global, $\ket{\psi'} = e^{i\theta}\ket{\psi}$ con $\theta \in \mathbb{R}$, representan exactamente el mismo estado físico. Inversamente, por el \textbf{Principio de Superposición Cuántica}, si $\ket{\psi_1}$ y $\ket{\psi_2}$ son estados físicamente posibles del sistema, cualquier combinación lineal normalizada $\ket{\psi} = c_1\ket{\psi_1} + c_2\ket{\psi_2}$ ($c_1, c_2 \in \mathbb{C}$) es también un estado físico válido.
+\end{postulado}
+
+\begin{ejemplo}[Normalización, fases relativas y representación en la Esfera de Bloch]
+Consideremos un sistema de espín $1/2$ preparado en el estado no normalizado:
+\begin{equation}
+    \ket{\tilde{\psi}} = (1 + i)\ket{0} + \sqrt{2}\,e^{i\pi/3}\ket{1}.
+\end{equation}
+Para hallar el vector de estado físico $\ket{\psi} = N\ket{\tilde{\psi}}$, imponemos la condición de normalización $\braket{\psi}{\psi} = 1$:
+\begin{equation}
+    |N|^2 \braket{\tilde{\psi}}{\tilde{\psi}} = |N|^2 \left( |1+i|^2 + |\sqrt{2}\,e^{i\pi/3}|^2 \right) = |N|^2 (2 + 2) = 4|N|^2 = 1 \quad \Longrightarrow \quad N = \frac{1}{2}.
+\end{equation}
+Como $1 + i = \sqrt{2}\,e^{i\pi/4}$, el estado normalizado es:
+\begin{equation}
+    \ket{\psi} = \frac{1}{\sqrt{2}}e^{i\pi/4}\ket{0} + \frac{1}{\sqrt{2}}e^{i\pi/3}\ket{1}.
+\end{equation}
+Factorizando la fase global $e^{i\pi/4}$ (que carece de consecuencias observables según el Postulado I), obtenemos la parametrización canónica en la esfera de Bloch $\ket{\psi} \cong \cos(\theta/2)\ket{0} + e^{i\phi}\sin(\theta/2)\ket{1}$:
+\begin{equation}
+    \ket{\psi} \cong \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}e^{i(\pi/3 - \pi/4)}\ket{1} = \cos\left(\frac{\pi/2}{2}\right)\ket{0} + e^{i\pi/12}\sin\left(\frac{\pi/2}{2}\right)\ket{1}.
+\end{equation}
+Así, este estado corresponde al punto sobre el ecuador de la esfera de Bloch con ángulo polar $\theta = \pi/2$ y ángulo azimutal (fase relativa cuántica) $\phi = \pi/12 = 15^\circ$.
+\end{ejemplo}
+
+\section{Postulado II: Observables Físicos y Operadores Autoadjuntos}
+
+\begin{postulado}[Correspondencia entre Observables y Operadores]
+Toda magnitud física medible (observable dinámico $\mathcal{A}$, tal como la posición, el momento lineal, la energía, el momento angular o la polarización) está representada matemáticamente por un operador lineal autoadjunto $\op{A} = \op{A}^\dagger$ que actúa sobre el espacio de Hilbert $\Hil$ del sistema. Para sistemas con análogo clásico, los operadores cuánticos se construyen mediante la regla de cuantización canónica de Dirac, promoviendo las variables canónicas clásicas a operadores que satisfacen:
+\begin{equation}
+    \comm{\op{q}_j}{\op{q}_k} = 0, \qquad \comm{\op{p}_j}{\op{p}_k} = 0, \qquad \comm{\op{q}_j}{\op{p}_k} = i\hbar \delta_{jk}\ident,
+\end{equation}
+y simetrizando los productos de operadores no conmutativos (regla de ordenamiento de Weyl) para garantizar la autoadjunción.
+\end{postulado}
+
+\begin{ejemplo}[Construcción de un observable cuántico simetrizado y el Hamiltoniano armónico]
+Supongamos que en mecánica clásica tenemos la magnitud dinámica $W_{\text{cl}} = x p_x$ (generador de dilataciones). Si intentáramos promoverla directamente al operador $\op{x}\op{p}_x$, comprobamos que NO es hermítico:
+\begin{equation}
+    (\op{x}\op{p}_x)^\dagger = \op{p}_x^\dagger \op{x}^\dagger = \op{p}_x \op{x} = \op{x}\op{p}_x - \comm{\op{x}}{\op{p}_x} = \op{x}\op{p}_x - i\hbar\ident \neq \op{x}\op{p}_x.
+\end{equation}
+Aplicando el Postulado II, debemos simetrizar el producto para obtener un observable autoadjunto válido:
+\begin{equation}
+    \op{W} = \frac{1}{2}(\op{x}\op{p}_x + \op{p}_x\op{x}) = \op{x}\op{p}_x - \frac{i\hbar}{2}\ident,
+\end{equation}
+el cual cumple inmediatamente $\op{W}^\dagger = \op{W}$. Análogamente, el Hamiltoniano del oscilador armónico unidimensional clásico $H_{\text{cl}} = \frac{p_x^2}{2m} + \frac{1}{2}m\omega^2 x^2$ se cuantiza como el operador autoadjunto:
+\begin{equation}
+    \op{H} = \frac{\op{p}_x^2}{2m} + \frac{1}{2}m\omega^2 \op{x}^2 = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + \frac{1}{2}m\omega^2 x^2.
+\end{equation}
+\end{ejemplo}
+
+\section{Postulado III: Cuantización de los Resultados de una Medición}
+
+\begin{postulado}[Espectro de Valores Medibles]
+En cualquier medición individual de una magnitud física $\mathcal{A}$ sobre un sistema cuántico, los únicos resultados numéricos que pueden obtenerse experimentalmente son los autovalores reales $a_n$ (en el caso de espectro discreto) o $a(\xi)$ (en el caso de espectro continuo) del operador autoadjunto asociado $\op{A}$, definidos por la ecuación secular de autovalores:
+\begin{equation}
+    \op{A}\ket{a_{n,k}} = a_n \ket{a_{n,k}}, \qquad k = 1, 2, \dots, g_n,
+\end{equation}
+donde $g_n$ denota el grado de degeneración del autovalor $a_n$. Esto es cierto con independencia absoluta del estado $\ket{\psi}$ en que se encuentre el sistema antes de la medición.
+\end{postulado}
+
+\begin{ejemplo}[Espectro de resultados al medir la componente del espín en una dirección arbitraria $\bm{\hat{n}}$]
+Consideremos una partícula de espín $1/2$ cuyo operador vector de espín es $\bm{\op{S}} = \frac{\hbar}{2}\bm{\op{\sigma}} = \frac{\hbar}{2}(\op{\sigma}_x \bm{\hat{i}} + \op{\sigma}_y \bm{\hat{j}} + \op{\sigma}_z \bm{\hat{k}})$. Si orientamos un aparato de Stern-Gerlach a lo largo de un vector unitario arbitrario $\bm{\hat{n}} = (\sin\theta\cos\phi, \sin\theta\sin\phi, \cos\theta)$, el observable que medimos es la proyección $\op{S}_{\bm{\hat{n}}} = \bm{\op{S}}\cdot \bm{\hat{n}}$:
+\begin{equation}
+    \op{S}_{\bm{\hat{n}}} = \frac{\hbar}{2}\begin{pmatrix} \cos\theta & e^{-i\phi}\sin\theta \\ e^{i\phi}\sin\theta & -\cos\theta \end{pmatrix}.
+\end{equation}
+Para conocer los posibles resultados de la medición según el Postulado III, resolvemos el polinomio característico $\det(\op{S}_{\bm{\hat{n}}} - \lambda \ident_2) = 0$:
+\begin{equation}
+    \det\begin{pmatrix} \frac{\hbar}{2}\cos\theta - \lambda & \frac{\hbar}{2}e^{-i\phi}\sin\theta \\ \frac{\hbar}{2}e^{i\phi}\sin\theta & -\frac{\hbar}{2}\cos\theta - \lambda \end{pmatrix} = \lambda^2 - \frac{\hbar^2}{4}(\cos^2\theta + \sin^2\theta) = \lambda^2 - \frac{\hbar^2}{4} = 0.
+\end{equation}
+Por consiguiente, sin importar la orientación espacial $(\theta, \phi)$ del imán de Stern-Gerlach ni el estado inicial de la partícula, una medición individual de $\op{S}_{\bm{\hat{n}}}$ jamás arrojará un valor continuo como $\frac{\hbar}{2}\cos\theta$, sino exclusivamente uno de los dos valores cuantizados:
+\begin{equation}
+    \lambda_+ = +\frac{\hbar}{2} \quad \text{o bien} \quad \lambda_- = -\frac{\hbar}{2},
+\end{equation}
+cuyos autovectores respectivos son $\ket{+_{\bm{\hat{n}}}} = \cos(\theta/2)\ket{0} + e^{i\phi}\sin(\theta/2)\ket{1}$ y $\ket{-_{\bm{\hat{n}}}} = -\sin(\theta/2)\ket{0} + e^{i\phi}\cos(\theta/2)\ket{1}$.
+\end{ejemplo}
+
+\section{Postulado IV: Regla Probabilística de Born}
+
+\begin{postulado}[Regla de Born para Distribuciones de Probabilidad]
+Cuando se realiza una medición del observable $\op{A}$ sobre un sistema preparado en el estado normalizado $\ket{\psi}$, la teoría predice la probabilidad de obtener cada uno de los autovalores posibles de acuerdo con la naturaleza de su espectro:
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Espectro discreto no degenerado:} Si $\op{A}\ket{a_n} = a_n\ket{a_n}$ con $\braket{a_m}{a_n} = \delta_{mn}$, la probabilidad de obtener el resultado $a_n$ es:
+    \begin{equation}
+        \mathcal{P}(a_n) = |\braket{a_n}{\psi}|^2 = \mel{\psi}{\op{P}_n}{\psi}, \qquad \text{donde } \op{P}_n = \ketbra{a_n}{a_n}.
+    \end{equation}
+    \item \textbf{Espectro discreto degenerado:} Si el autovalor $a_n$ tiene degeneración $g_n$ con subespacio propio $\Hil_n = \operatorname{span}\{\ket{a_{n,1}}, \dots, \ket{a_{n,g_n}}\}$, la probabilidad de medir $a_n$ es:
+    \begin{equation}
+        \mathcal{P}(a_n) = \sum_{k=1}^{g_n} |\braket{a_{n,k}}{\psi}|^2 = \mel{\psi}{\op{P}_n}{\psi}, \qquad \text{donde } \op{P}_n = \sum_{k=1}^{g_n} \ketbra{a_{n,k}}{a_{n,k}}.
+    \end{equation}
+    \item \textbf{Espectro continuo:} Si $\op{A}\ket{\xi} = a(\xi)\ket{\xi}$ con $\braket{\xi'}{\xi} = \delta(\xi' - \xi)$, la probabilidad infinitesimal de que el resultado pertenezca al intervalo $[\xi, \xi + d\xi]$ es:
+    \begin{equation}
+        d\mathcal{P}(\xi) = \rho(\xi)\,d\xi = |\braket{\xi}{\psi}|^2\,d\xi.
+    \end{equation}
+\end{enumerate}
+En todos los casos, el valor esperado (promedio estadístico sobre un número infinito de mediciones idénticamente preparadas) viene dado por:
+\begin{equation}
+    \expval{\op{A}}_\psi = \sum_n a_n \mathcal{P}(a_n) = \mel{\psi}{\op{A}}{\psi}.
+\end{equation}
+\end{postulado}
+
+\begin{ejemplo}[Cálculo de probabilidades de energía y valor esperado para una partícula en un pozo infinito]
+Consideremos una partícula de masa $m$ confinada en un pozo de potencial infinito unidimensional en el intervalo $x \in [0, L]$. Los autoestados del Hamiltoniano $\op{H}$ son $\phi_n(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)$ con energías propias $E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2} = n^2 E_1$ ($n = 1, 2, 3, \dots$). Supongamos que en $t = 0$ preparamos la partícula en la función de onda parabólica:
+\begin{equation}
+    \psi(x) = \sqrt{\frac{30}{L^5}}\, x(L - x), \qquad 0 \le x \le L.
+\end{equation}
+Aplicando el Postulado IV, la amplitud de probabilidad $c_n = \braket{\phi_n}{\psi}$ para medir la energía $E_n$ es:
+\begin{equation}
+    c_n = \int_0^L \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right) \sqrt{\frac{30}{L^5}}\,x(L - x)\,dx = \frac{2\sqrt{15}}{L^3} \left[ \frac{2L^3}{n^3\pi^3}\big(1 - (-1)^n\big) \right].
+\end{equation}
+Por lo tanto, $c_n = 0$ para todo $n$ par, y $c_n = \frac{8\sqrt{15}}{n^3 \pi^3}$ para $n$ impar. La probabilidad de medir el nivel fundamental $E_1$ ($n=1$) es:
+\begin{equation}
+    \mathcal{P}(E_1) = |c_1|^2 = \frac{64 \times 15}{\pi^6} = \frac{960}{\pi^6} \approx \frac{960}{961.389} \approx 0.99855 \quad (99.855\%),
+\end{equation}
+mientras que para el tercer nivel $E_3$ ($n=3$) es $\mathcal{P}(E_3) = |c_3|^2 = \frac{960}{3^6 \pi^6} \approx 0.00137$ ($0.137\%$). El valor esperado de la energía se obtiene tanto sumando la serie como evaluando $\mel{\psi}{\op{H}}{\psi}$:
+\begin{equation}
+    \expval{\op{H}} = \sum_{n \text{ impar}} n^2 E_1 \frac{960}{n^6 \pi^6} = \frac{960 E_1}{\pi^6} \sum_{k=0}^{\infty} \frac{1}{(2k+1)^4} = \frac{960 E_1}{\pi^6} \left(\frac{\pi^4}{96}\right) = \frac{10}{\pi^2} E_1 \approx 1.0132\, E_1.
+\end{equation}
+\end{ejemplo}
+
+\section{Postulado V: Reducción del Paquete de Ondas (Colapso de von Neumann-Lüders)}
+
+\begin{postulado}[Colapso del Estado tras una Medición Ideal]
+Si una medición proyectiva ideal (no destructiva y repetible de primera especie) de un observable $\op{A}$ sobre un sistema en el estado $\ket{\psi}$ arroja como resultado el autovalor $a_n$, el estado del sistema inmediatamente después del proceso de medición sufre una discontinuidad no unitaria (colapso o reducción del paquete de ondas), proyectándose sobre el subespacio propio asociado a $a_n$ según la regla de von Neumann-Lüders:
+\begin{equation}
+    \ket{\psi} \quad \xrightarrow{\text{medición } a_n} \quad \ket{\psi_{\text{post}}} = \frac{\op{P}_n \ket{\psi}}{\sqrt{\mel{\psi}{\op{P}_n}{\psi}}}.
+\end{equation}
+En el formalismo del operador densidad, una medición proyectiva selectiva que registra el resultado $a_n$ transforma $\op{\rho}$ según:
+\begin{equation}
+    \op{\rho} \quad \xrightarrow{\text{resultado } a_n} \quad \op{\rho}_n = \frac{\op{P}_n \op{\rho} \op{P}_n}{\tr(\op{\rho}\op{P}_n)}.
+\end{equation}
+De manera más general, cualquier medición cuántica (incluyendo mediciones débiles o indirectas mediante sondas auxiliares) queda descrita por un conjunto de operadores de medición de Kraus $\{\op{M}_m\}$ que satisfacen $\sum_m \op{M}_m^\dagger \op{M}_m = \ident$, donde $\mathcal{P}(m) = \tr(\op{M}_m \op{\rho} \op{M}_m^\dagger)$ y el estado post-medición es $\op{\rho}_m = \op{M}_m \op{\rho} \op{M}_m^\dagger / \mathcal{P}(m)$ (formalismo POVM).
+\end{postulado}
+
+\begin{ejemplo}[Mediciones secuenciales de operadores incompatibles y el Efecto Zenón Cuántico]
+Consideremos una partícula de espín $1/2$ inicialmente en el estado $\ket{\psi_0} = \ket{+_z} = \ket{0}$.
+\begin{enumerate}[label=\arabic*.]
+    \item Si medimos directamente $\op{S}_z$, obtenemos $+\hbar/2$ con probabilidad $1$ y jamás obtenemos $-\hbar/2$.
+    \item Supongamos en cambio que realizamos una medición intermedia de $\op{S}_x$ antes de medir $\op{S}_z$. Como $\ket{0} = \frac{1}{\sqrt{2}}(\ket{+_x} + \ket{-_x})$, al medir $\op{S}_x$ obtenemos $+\hbar/2$ con probabilidad $1/2$. Si seleccionamos los sistemas que dieron $+\hbar/2$, por el Postulado V el estado colapsa a:
+    \begin{equation}
+        \ket{\psi_1} = \frac{\ketbra{+_x}{+_x}\ket{0}}{\sqrt{1/2}} = \ket{+_x} = \frac{1}{\sqrt{2}}\big(\ket{0} + \ket{1}\big).
+    \end{equation}
+    Si inmediatamente después medimos $\op{S}_z$ sobre este estado colapsado $\ket{\psi_1}$, la probabilidad de obtener ahora $-\hbar/2$ (correspondiente al estado $\ket{1}$) es $|\braket{1}{\psi_1}|^2 = 1/2 \neq 0$. ¡La medición intermedia de $\op{S}_x$ ha destruido la información previa sobre $\op{S}_z$ porque $\comm{\op{S}_x}{\op{S}_z} \neq 0$!
+    \item Por el contrario, si rotamos el detector gradualmente mediante $N$ mediciones proyectivas sucesivas en ángulos $\theta_k = \frac{k\pi}{2N}$ ($k = 1, 2, \dots, N$), en cada paso la probabilidad de mantenerse en el autoestado positivo del nuevo eje es $\cos^2\left(\frac{\pi}{4N}\right)$. La probabilidad de superar las $N$ etapas es:
+    \begin{equation}
+        \mathcal{P}_{\text{total}}(N) = \left[ \cos^2\left(\frac{\pi}{4N}\right) \right]^N \approx \left( 1 - \frac{\pi^2}{16 N^2} \right)^N \xrightarrow{N \to \infty} 1.
+    \end{equation}
+    Este fenómeno, en el cual una sucesión densa de mediciones proyectivas guía o congela la evolución del estado cuántico a través del Postulado V, constituye la base del \textbf{Efecto Zenón Cuántico}.
+\end{enumerate}
+\end{ejemplo}
+
+\section{Postulado VI: Evolución Temporal Unitaria (Ecuación de Schrödinger)}
+
+\begin{postulado}[Dinámica Unitaria de Sistemas Cerrados]
+La evolución en el tiempo del vector de estado $\ket{\psi(t)}$ de todo sistema cuántico cerrado (que no está siendo sometido a una medición) está gobernada por la \textbf{Ecuación de Schrödinger dependiente del tiempo}:
+\begin{equation}
+    i\hbar \frac{d}{dt}\ket{\psi(t)} = \op{H}(t)\ket{\psi(t)},
+\end{equation}
+donde $\op{H}(t) = \op{H}^\dagger(t)$ es el operador autoadjunto Hamiltoniano que representa la energía total del sistema. De forma equivalente, el estado en el instante $t$ se obtiene aplicando un operador de evolución temporal unitario $\op{U}(t, t_0)$: $\ket{\psi(t)} = \op{U}(t, t_0)\ket{\psi(t_0)}$. Si el Hamiltoniano es independiente del tiempo ($\partial\op{H}/\partial t = 0$), el propagador toma la forma explícita:
+\begin{equation}
+    \op{U}(t, t_0) = \exp\left( -\frac{i}{\hbar}\op{H}(t - t_0) \right).
+\end{equation}
+Para un operador densidad $\op{\rho}(t)$, este postulado equivale a la \textbf{Ecuación de Liouville-von Neumann}:
+\begin{equation}
+    i\hbar \frac{d\op{\rho}(t)}{dt} = \comm{\op{H}(t)}{\op{\rho}(t)}.
+\end{equation}
+\end{postulado}
+
+\begin{ejemplo}[Precesión de Larmor de un espín $1/2$ en un campo magnético uniforme]
+Sea un electrón estacionario sumergido en un campo magnético uniforme $\bm{B} = B_0 \bm{\hat{k}}$ orientado a lo largo del eje $z$. El Hamiltoniano de interacción Zeeman es:
+\begin{equation}
+    \op{H} = -\bm{\op{\mu}}\cdot \bm{B} = \omega_0 \op{S}_z = \frac{\hbar\omega_0}{2}\op{\sigma}_z = \begin{pmatrix} \hbar\omega_0/2 & 0 \\ 0 & -\hbar\omega_0/2 \end{pmatrix},
+\end{equation}
+donde $\omega_0 = |e|B_0/m_e$ es la frecuencia de Larmor. Supongamos que en $t = 0$ el espín apunta en una dirección arbitraria definida por los ángulos $(\theta, \phi)$:
+\begin{equation}
+    \ket{\psi(0)} = \cos\left(\frac{\theta}{2}\right)\ket{0} + e^{i\phi}\sin\left(\frac{\theta}{2}\right)\ket{1}.
+\end{equation}
+Aplicando el Postulado VI, dado que $\ket{0}$ y $\ket{1}$ son autoestados de $\op{H}$ con energías $E_0 = +\hbar\omega_0/2$ y $E_1 = -\hbar\omega_0/2$, el estado evolucionado en el instante $t$ es:
+\begin{align}
+    \ket{\psi(t)} &= e^{-i\op{H}t/\hbar}\ket{\psi(0)} = e^{-i\omega_0 t/2}\cos\left(\frac{\theta}{2}\right)\ket{0} + e^{+i\omega_0 t/2}e^{i\phi}\sin\left(\frac{\theta}{2}\right)\ket{1} \nonumber \\
+    &= e^{-i\omega_0 t/2} \left[ \cos\left(\frac{\theta}{2}\right)\ket{0} + e^{i(\phi + \omega_0 t)}\sin\left(\frac{\theta}{2}\right)\ket{1} \right].
+\end{align}
+Calculando los valores esperados de las tres componentes del espín en función del tiempo:
+\begin{align}
+    \expval{\op{S}_x(t)} &= \mel{\psi(t)}{\frac{\hbar}{2}\op{\sigma}_x}{\psi(t)} = \frac{\hbar}{2}\sin\theta \cos(\phi + \omega_0 t), \\
+    \expval{\op{S}_y(t)} &= \mel{\psi(t)}{\frac{\hbar}{2}\op{\sigma}_y}{\psi(t)} = \frac{\hbar}{2}\sin\theta \sin(\phi + \omega_0 t), \\
+    \expval{\op{S}_z(t)} &= \mel{\psi(t)}{\frac{\hbar}{2}\op{\sigma}_z}{\psi(t)} = \frac{\hbar}{2}\cos\theta.
+\end{align}
+Vemos que el vector de espín esperado $\expval{\bm{\op{S}}(t)}$ describe una precesión continua alrededor del eje del campo magnético $z$ con ángulo polar constante $\theta$ y velocidad angular constante $\dot{\phi}(t) = \omega_0$.
+\end{ejemplo}
+
+\section{Imágenes de Evolución Dinámica y Teorema de Ehrenfest}
+
+La física de las predicciones cuánticas reside en los elementos de matriz $\mel{\phi(t)}{\op{A}}{\psi(t)}$, los cuales son invariantes bajo transformaciones unitarias simultáneas de estados y operadores. Esto permite formular tres representaciones dinámicas equivalentes:
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Imagen Dinámica} & \textbf{Vector de Estado} & \textbf{Operador Observable} & \textbf{Ecuación de Movimiento} \\ \midrule
+\textbf{Schrödinger (S)} & $\ket{\psi_S(t)} = \op{U}(t)\ket{\psi(0)}$ & $\op{A}_S$ (fijo) & $i\hbar\frac{d}{dt}\ket{\psi_S(t)} = \op{H}\ket{\psi_S(t)}$ \\
+\textbf{Heisenberg (H)} & $\ket{\psi_H} = \ket{\psi_S(0)}$ (fijo) & $\op{A}_H(t) = \op{U}^\dagger(t)\op{A}_S\op{U}(t)$ & $\frac{d\op{A}_H}{dt} = \frac{1}{i\hbar}\comm{\op{A}_H}{\op{H}_H} + \left(\frac{\partial\op{A}_S}{\partial t}\right)_H$ \\
+\textbf{Interacción (I)} & $\ket{\psi_I(t)} = e^{i\op{H}_0 t/\hbar}\ket{\psi_S(t)}$ & $\op{A}_I(t) = e^{i\op{H}_0 t/\hbar}\op{A}_S e^{-i\op{H}_0 t/\hbar}$ & $i\hbar\frac{d}{dt}\ket{\psi_I(t)} = \op{V}_I(t)\ket{\psi_I(t)}$ \\ \bottomrule
+\end{tabular}
+}%
+\caption{Comparación de las imágenes de Schrödinger, Heisenberg e Interacción (Dirac), donde $\op{H} = \op{H}_0 + \op{V}$.}
+\end{table}
+
+Tomando el valor esperado de la ecuación de movimiento de Heisenberg para una partícula de masa $m$ en un potencial escalar $V(\op{\bm{r}})$, se obtiene de inmediato el \textbf{Teorema de Ehrenfest}:
+\begin{equation}
+    \frac{d}{dt}\expval{\op{\bm{r}}} = \frac{1}{m}\expval{\op{\bm{p}}}, \qquad \frac{d}{dt}\expval{\op{\bm{p}}} = \expval{-\nabla V(\op{\bm{r}})},
+\end{equation}
+el cual establece que los valores esperados cuánticos obedecen una estructura formal análoga a las ecuaciones clásicas de Hamilton-Newton siempre que las fluctuaciones del paquete de ondas sean lo suficientemente estrechas como para aproximar $\expval{\nabla V(\op{\bm{r}})} \approx \nabla V(\expval{\op{\bm{r}}})$.
+
+% ============================================================================
+% CAPÍTULO 3: ENTRELAZAMIENTO, PARADOJA EPR Y DESIGUALDADES DE BELL
+% ============================================================================
+\chapter{Sistemas Compuestos, Entrelazamiento y Desigualdades de Bell}
+
+Uno de los rasgos más profundos y revolucionarios de la Mecánica Cuántica aparece al describir sistemas formados por dos o más subsistemas interactuantes (como un par de fotones emitidos en cascada atómica o conversión paramétrica espontánea). La estructura lineal del producto tensorial da lugar al fenómeno del \textbf{entrelazamiento cuántico} (\textit{Verschränkung}, término acuñado por Erwin Schrödinger en 1935), el cual es incompatible con cualquier teoría física basada en el realismo local.
+
+\section{Producto Tensorial de Espacios de Hilbert y Estados Entrelazados}
+
+\begin{definicion}[Espacio de Hilbert Compuesto y Producto Tensorial]
+Dados dos subsistemas cuánticos $A$ y $B$ cuyos espacios de Hilbert individuales son $\Hil_A$ (con base ortonormal $\{\ket{u_i}_A\}$) y $\Hil_B$ (con base ortonormal $\{\ket{v_j}_B\}$), el espacio de Hilbert del sistema bipartito conjunto $AB$ es el \textbf{producto tensorial} $\Hil_{AB} = \Hil_A \otimes \Hil_B$, cuya dimensión es $\dim(\Hil_{AB}) = \dim(\Hil_A)\times \dim(\Hil_B)$ y cuya base ortonormal está formada por todos los pares $\ket{u_i}_A \otimes \ket{v_j}_B \equiv \ket{u_i, v_j}$. Si $\op{A}$ actúa sobre $\Hil_A$ y $\op{B}$ sobre $\Hil_B$, el operador producto tensorial $\op{A} \otimes \op{B}$ actúa sobre los vectores factorizables según:
+\begin{equation}
+    (\op{A} \otimes \op{B})\big(\ket{\psi}_A \otimes \ket{\phi}_B\big) = \big(\op{A}\ket{\psi}_A\big) \otimes \big(\op{B}\ket{\phi}_B\big),
+\end{equation}
+extendiéndose por linealidad a todo $\Hil_{AB}$.
+\end{definicion}
+
+\begin{definicion}[Estados Separables y Estados Entrelazados]
+Un estado puro bipartito $\ket{\Psi}_{AB} \in \Hil_A \otimes \Hil_B$ se denomina \textbf{separable} (o estado producto) si y solo si existen estados individuales $\ket{\psi}_A \in \Hil_A$ y $\ket{\phi}_B \in \Hil_B$ tales que:
+\begin{equation}
+    \ket{\Psi}_{AB} = \ket{\psi}_A \otimes \ket{\phi}_B.
+\end{equation}
+Si un estado $\ket{\Psi}_{AB}$ \emph{no} puede escribirse como un producto tensorial simple de estados de cada subsistema, se dice que el estado es \textbf{entrelazado} (\textit{entangled}). Para estados generales descritos por matrices densidad $\op{\rho}_{AB}$, el estado es separable si y solo si puede expresarse como una combinación convexa de estados producto (definición de Werner):
+\begin{equation}
+    \op{\rho}_{AB}^{\text{sep}} = \sum_k p_k \, \op{\rho}_A^{(k)} \otimes \op{\rho}_B^{(k)}, \qquad p_k \ge 0,\; \sum_k p_k = 1.
+\end{equation}
+En caso contrario, $\op{\rho}_{AB}$ es un estado entrelazado.
+\end{definicion}
+
+\begin{definicion}[La Base de Estados de Bell]
+En el espacio bipartito de dos qubits $\Hil = \mathbb{C}^2 \otimes \mathbb{C}^2$ ($\dim\Hil = 4$), existe una base ortonormal canónica compuesta íntegramente por cuatro estados puros máximamente entrelazados, denominados \textbf{Estados de Bell} (o pares EPR):
+\begin{align}
+    \ket{\Phi^+} &= \frac{1}{\sqrt{2}}\big(\ket{0}_A\ket{0}_B + \ket{1}_A\ket{1}_B\big), & \ket{\Phi^-} &= \frac{1}{\sqrt{2}}\big(\ket{0}_A\ket{0}_B - \ket{1}_A\ket{1}_B\big), \\
+    \ket{\Psi^+} &= \frac{1}{\sqrt{2}}\big(\ket{0}_A\ket{1}_B + \ket{1}_A\ket{0}_B\big), & \ket{\Psi^-} &= \frac{1}{\sqrt{2}}\big(\ket{0}_A\ket{1}_B - \ket{1}_A\ket{0}_B\big).
+\end{align}
+El estado $\ket{\Psi^-}$ se conoce como \textbf{estado singlete} de espín total $S = 0$, el cual posee la notable propiedad de ser invariante rotacional (salvo fase global) bajo transformaciones unitarias idénticas $\op{U} \otimes \op{U}$ en ambos subsistemas: para cualquier base ortonormal $\{\ket{\bm{\hat{n}}_+}, \ket{\bm{\hat{n}}_-}\}$, se cumple $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{\bm{\hat{n}}_+}_A\ket{\bm{\hat{n}}_-}_B - \ket{\bm{\hat{n}}_-}_A\ket{\bm{\hat{n}}_+}_B)$.
+\end{definicion}
+
+\section{Traza Parcial, Descomposición de Schmidt y Entropía de Entrelazamiento}
+
+\begin{definicion}[Operador Densidad Reducido y Traza Parcial]
+Dado un sistema compuesto $AB$ en el estado $\op{\rho}_{AB}$, todas las predicciones estadísticas para mediciones locales realizadas exclusivamente sobre el subsistema $A$ (representadas por operadores de la forma $\op{O}_A \otimes \ident_B$) quedan completamente determinadas por el \textbf{operador densidad reducido} $\op{\rho}_A$, definido mediante la \textbf{traza parcial} sobre los grados de libertad del subsistema $B$:
+\begin{equation}
+    \op{\rho}_A \equiv \tr_B(\op{\rho}_{AB}) = \sum_{j} \big(\ident_A \otimes \bra{v_j}_B\big) \, \op{\rho}_{AB} \, \big(\ident_A \otimes \ket{v_j}_B\big).
+\end{equation}
+Esto garantiza que $\tr_A(\op{\rho}_A \op{O}_A) = \tr_{AB}\big[\op{\rho}_{AB}(\op{O}_A \otimes \ident_B)\big]$.
+\end{definicion}
+
+\begin{teorema}[Descomposición de Schmidt y Criterio de Entrelazamiento]
+Sea $\ket{\Psi}_{AB} \in \Hil_A \otimes \Hil_B$ un estado puro bipartito arbitrario. Entonces existen bases ortonormales $\{\ket{\alpha_i}_A\} \subset \Hil_A$ y $\{\ket{\beta_i}_B\} \subset \Hil_B$ tales que $\ket{\Psi}_{AB}$ puede expresarse como una suma con un único índice:
+\begin{equation}
+    \ket{\Psi}_{AB} = \sum_{i=1}^{r} \sqrt{\lambda_i}\, \ket{\alpha_i}_A \otimes \ket{\beta_i}_B,
+\end{equation}
+donde los coeficientes $\lambda_i > 0$ satisfacen $\sum_{i=1}^r \lambda_i = 1$ y el entero $r \le \min(\dim\Hil_A, \dim\Hil_B)$ se denomina \textbf{rango de Schmidt} (o número de Schmidt). Los operadores densidad reducidos de ambos subsistemas son:
+\begin{equation}
+    \op{\rho}_A = \sum_{i=1}^r \lambda_i \ketbra{\alpha_i}{\alpha_i}_A, \qquad \op{\rho}_B = \sum_{i=1}^r \lambda_i \ketbra{\beta_i}{\beta_i}_B,
+\end{equation}
+teniendo exactamente el mismo espectro no nulo $\{\lambda_i\}$. El estado puro $\ket{\Psi}_{AB}$ es separable si y solo si su rango de Schmidt es $r = 1$ (es decir, $\op{\rho}_A$ es puro, $\tr(\op{\rho}_A^2) = 1$), y es entrelazado si y solo si $r \ge 2$ (es decir, $\op{\rho}_A$ es un estado mezcla, $\tr(\op{\rho}_A^2) < 1$). El grado de entrelazamiento de un estado puro bipartito se cuantifica unívocamente mediante la \textbf{Entropía de Entrelazamiento de von Neumann}:
+\begin{equation}
+    S(\op{\rho}_A) = S(\op{\rho}_B) = -\tr(\op{\rho}_A \log_2 \op{\rho}_A) = -\sum_{i=1}^r \lambda_i \log_2 \lambda_i.
+\end{equation}
+\end{teorema}
+
+\begin{ejemplo}[Cálculo de la traza parcial y entropía de entrelazamiento de un estado de Bell]
+Consideremos el estado singlete $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{0}_A\ket{1}_B - \ket{1}_A\ket{0}_B)$. Su operador densidad global es el estado puro $\op{\rho}_{AB} = \ketbra{\Psi^-}{\Psi^-}$:
+\begin{equation}
+    \op{\rho}_{AB} = \frac{1}{2}\Big( \ketbra{0}{0}_A \otimes \ketbra{1}{1}_B - \ketbra{0}{1}_A \otimes \ketbra{1}{0}_B - \ketbra{1}{0}_A \otimes \ketbra{0}{1}_B + \ketbra{1}{1}_A \otimes \ketbra{0}{0}_B \Big).
+\end{equation}
+Tomemos la traza parcial respecto del subsistema $B$ usando que $\mel{0}{1}{0}_B = 0$ y $\braket{0}{0}_B = \braket{1}{1}_B = 1$:
+\begin{align}
+    \op{\rho}_A = \tr_B(\op{\rho}_{AB}) &= \frac{1}{2}\Big( \ketbra{0}{0}_A \underbrace{\tr(\ketbra{1}{1}_B)}_{1} - \ketbra{0}{1}_A \underbrace{\tr(\ketbra{1}{0}_B)}_{0} \nonumber \\
+    &\qquad - \ketbra{1}{0}_A \underbrace{\tr(\ketbra{0}{1}_B)}_{0} + \ketbra{1}{1}_A \underbrace{\tr(\ketbra{0}{0}_B)}_{1} \Big) \nonumber \\
+    &= \frac{1}{2}\ketbra{0}{0}_A + \frac{1}{2}\ketbra{1}{1}_A = \frac{1}{2}\ident_A.
+\end{align}
+Observamos un resultado extraordinario: aunque el sistema conjunto $AB$ se encuentra en un estado puro de conocimiento máximo ($S(\op{\rho}_{AB}) = 0$), el subsistema local $A$ por sí solo se encuentra en el estado máximamente mezclado $\op{\rho}_A = \frac{1}{2}\ident_A$, cuyos coeficientes de Schmidt son $\lambda_1 = \lambda_2 = 1/2$ ($r = 2$). Su entropía de entrelazamiento alcanza el valor máximo posible para dos qubits:
+\begin{equation}
+    S(\op{\rho}_A) = -\left(\frac{1}{2}\log_2\frac{1}{2} + \frac{1}{2}\log_2\frac{1}{2}\right) = 1\text{ ebit (bit de entrelazamiento)}.
+\end{equation}
+\end{ejemplo}
+
+\section{La Paradoja EPR (Einstein-Podolsky-Rosen) y Variables Ocultas Locales}
+
+En 1935, Albert Einstein, Boris Podolsky y Nathan Rosen publicaron su célebre artículo \textit{``Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?''}, cuestionando la completitud de la mecánica cuántica a partir de tres premisas filosóficas y físicas:
+\begin{enumerate}[label=\textbf{P\arabic*.}]
+    \item \textbf{Criterio de Realidad Física (Realismo):} \textit{``Si, sin perturbar en modo alguno un sistema, podemos predecir con certeza (es decir, con probabilidad igual a la unidad) el valor de una cantidad física, entonces existe un elemento de realidad física correspondiente a esta cantidad física.''}
+    \item \textbf{Principio de Localidad Relativista:} Si dos subsistemas $A$ y $B$ están espacialmente separados (a una distancia tipo-espacio en el sentido de Minkowski), ninguna acción o medición realizada en $A$ puede causar una perturbación física instantánea sobre el estado real del sistema $B$.
+    \item \textbf{Criterio de Completitud:} Una teoría física es completa solo si cada elemento de la realidad física tiene su contrapartida en la teoría.
+\end{enumerate}
+
+En la versión formulada por David Bohm (1951), dos partículas de espín $1/2$ se preparan en el estado singlete $\ket{\Psi^-}$ y vuelan hacia dos observadores distantes, Alice ($A$) y Bob ($B$).
+\begin{itemize}
+    \item Si Alice decide medir $\op{\sigma}_z^{(A)}$ y obtiene $+1$, sabe con certeza del $100\%$ que Bob obtendrá $-1$ al medir $\op{\sigma}_z^{(B)}$. Por localidad (la medición de Alice no perturba a $B$) y realismo, el valor de $\sigma_z^{(B)}$ debe ser un elemento de realidad preexistente en la partícula de Bob.
+    \item Pero Alice podría haber elegido medir $\op{\sigma}_x^{(A)}$; como $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{+_x}_A\ket{-_x}_B - \ket{-_x}_A\ket{+_x}_B)$, de nuevo puede predecir con certeza absoluta el valor de $\sigma_x^{(B)}$ sin perturbar a Bob. Por tanto, $\sigma_x^{(B)}$ también tendría que ser un elemento de realidad simultáneamente preexistente.
+\end{itemize}
+Sin embargo, como $\comm{\op{\sigma}_z^{(B)}}{\op{\sigma}_x^{(B)}} = 2i\op{\sigma}_y^{(B)} \neq 0$, la mecánica cuántica prohíbe la existencia de un estado en $\Hil_B$ que posea valores simultáneamente definidos para ambas componentes. EPR concluyeron que la mecánica cuántica era estadísticamente correcta pero \textbf{incompleta}, y que debía ser suplementada mediante parámetros adicionales (hoy llamados \textbf{variables ocultas locales} $\lambda$) que determinaran de antemano los resultados de cualquier medición posible.
+
+\section{Teorema de Bell y la Desigualdad CHSH: Deducción Completa}
+
+Durante casi treinta años el debate entre Einstein y Bohr se consideró una cuestión meramente interpretativa. Sin embargo, en 1964 John Stewart Bell demostró matemáticamente que las predicciones estadísticas de cualquier teoría de variables ocultas locales (LHV, \textit{Local Hidden Variables}) están sujetas a desigualdades algebraicas estrictas que las correlaciones cuánticas violan de manera contundente.
+
+Presentamos a continuación la deducción rigurosa de la versión experimentalmente más robusta del teorema de Bell, debida a John Clauser, Michael Horne, Abner Shimony y Richard Holt (1969), conocida como la \textbf{Desigualdad CHSH}.
+
+\subsection{Formulación del Modelo de Variables Ocultas Locales (LHV)}
+
+Consideremos una fuente que emite pares de partículas hacia dos estaciones espacialmente separadas, Alice ($A$) y Bob ($B$).
+\begin{itemize}
+    \item Alice puede elegir libremente orientar su detector a lo largo de uno de dos vectores unitarios: $\bm{a}$ o $\bm{a}'$.
+    \item Bob puede elegir libremente orientar su detector a lo largo de uno de dos vectores unitarios: $\bm{b}$ o $\bm{b}'$.
+    \item Cada medición individual arroja un resultado dicotómico que toma valores $\pm 1$.
+\end{itemize}
+
+En una teoría realista y local general, asumimos que cada par emitido porta un conjunto de variables ocultas $\lambda \in \Lambda$ (que puede ser un escalar, un vector o incluso un conjunto infinito de funciones) extraído de un espacio de probabilidad con densidad normalizada $\rho(\lambda)$:
+\begin{equation}
+    \rho(\lambda) \ge 0, \qquad \int_{\Lambda} \rho(\lambda)\,d\lambda = 1.
+\end{equation}
+\begin{enumerate}
+    \item \textbf{Hipótesis de Realismo:} Los resultados de las mediciones están determinados por funciones $A(\bm{a}, \lambda) = \pm 1$ y $B(\bm{b}, \lambda) = \pm 1$ (o promedios locales acotados $|A(\bm{a},\lambda)| \le 1$, $|B(\bm{b},\lambda)| \le 1$).
+    \item \textbf{Hipótesis de Localidad de Bell (Factorizabilidad):} El resultado $A(\bm{a}, \lambda)$ en la estación de Alice depende de su orientación local $\bm{a}$ y de $\lambda$, pero es \emph{independiente} de la orientación $\bm{b}$ elegida por Bob en la estación distante; y recíprocamente, $B(\bm{b}, \lambda)$ no depende de $\bm{a}$. Asimismo, la distribución de la fuente $\rho(\lambda)$ no depende de las elecciones futuras de los detectores ($\bm{a}, \bm{b}$) (\textit{libertad de elección} o ausencia de superdeterminismo).
+\end{enumerate}
+
+Bajo estas hipótesis, la función de correlación estadística entre las mediciones de Alice y Bob se define como el valor esperado del producto de sus resultados:
+\begin{equation}
+    E(\bm{a}, \bm{b}) \equiv \expval{A(\bm{a})B(\bm{b})}_{\text{LHV}} = \int_{\Lambda} A(\bm{a}, \lambda)\, B(\bm{b}, \lambda)\, \rho(\lambda)\, d\lambda.
+\end{equation}
+
+\subsection{Demostración del Teorema de Bell-CHSH}
+
+\begin{teorema}[Desigualdad de Bell-CHSH]
+En cualquier teoría física que satisfaga el realismo y la localidad (LHV), el parámetro de correlación combinado de cuatro orientaciones $S_{\text{CHSH}}$, definido por:
+\begin{equation}
+    S_{\text{CHSH}} \equiv E(\bm{a}, \bm{b}) - E(\bm{a}, \bm{b}') + E(\bm{a}', \bm{b}) + E(\bm{a}', \bm{b}'),
+\end{equation}
+satisface rigurosamente la cota superior absoluta:
+\begin{equation}
+    |S_{\text{CHSH}}| \le 2.
+\end{equation}
+\end{teorema}
+
+\begin{proof}
+Para cada realización individual de la variable oculta $\lambda \in \Lambda$, consideremos la combinación algebraica de las funciones respuesta locales:
+\begin{align}
+    s(\lambda) &\equiv A(\bm{a}, \lambda)B(\bm{b}, \lambda) - A(\bm{a}, \lambda)B(\bm{b}', \lambda) + A(\bm{a}', \lambda)B(\bm{b}, \lambda) + A(\bm{a}', \lambda)B(\bm{b}', \lambda) \nonumber \\
+    &= A(\bm{a}, \lambda)\Big[ B(\bm{b}, \lambda) - B(\bm{b}', \lambda) \Big] + A(\bm{a}', \lambda)\Big[ B(\bm{b}, \lambda) + B(\bm{b}', \lambda) \Big].
+\end{align}
+Como para un $\lambda$ fijo las cantidades $B(\bm{b}, \lambda)$ y $B(\bm{b}', \lambda)$ solo pueden tomar los valores $+1$ o $-1$, existen únicamente dos casos posibles:
+\begin{itemize}
+    \item \textbf{Caso 1:} $B(\bm{b}, \lambda) = B(\bm{b}', \lambda) = \pm 1$. Entonces $B(\bm{b}, \lambda) - B(\bm{b}', \lambda) = 0$ y $B(\bm{b}, \lambda) + B(\bm{b}', \lambda) = \pm 2$. Como $A(\bm{a}', \lambda) = \pm 1$, resulta $s(\lambda) = (\pm 1)(\pm 2) = \pm 2$.
+    \item \textbf{Caso 2:} $B(\bm{b}, \lambda) = -B(\bm{b}', \lambda) = \pm 1$. Entonces $B(\bm{b}, \lambda) + B(\bm{b}', \lambda) = 0$ y $B(\bm{b}, \lambda) - B(\bm{b}', \lambda) = \pm 2$. Como $A(\bm{a}, \lambda) = \pm 1$, resulta nuevamente $s(\lambda) = (\pm 1)(\pm 2) = \pm 2$.
+\end{itemize}
+(Incluso para teorías estocásticas donde $|A|, |B| \le 1$, por desigualdad triangular $|s(\lambda)| \le |B(\bm{b},\lambda) - B(\bm{b}',\lambda)| + |B(\bm{b},\lambda) + B(\bm{b}',\lambda)| = 2$). En consecuencia, $|s(\lambda)| \le 2$ para todo $\lambda \in \Lambda$. Integrando sobre el espacio $\Lambda$ con la medida de probabilidad positiva $\rho(\lambda)$:
+\begin{align}
+    |S_{\text{CHSH}}| &= \left| \int_{\Lambda} s(\lambda)\,\rho(\lambda)\,d\lambda \right| \le \int_{\Lambda} |s(\lambda)|\,\rho(\lambda)\,d\lambda \le 2 \int_{\Lambda} \rho(\lambda)\,d\lambda = 2.
+\end{align}
+Queda así demostrada la desigualdad $|S_{\text{CHSH}}| \le 2$.
+\end{proof}
+
+\subsection{Violación Cuántica de la Desigualdad de Bell y Cota de Tsirelson}
+
+Calculemos ahora la predicción de la Mecánica Cuántica para este mismo experimento cuando el par de partículas se prepara en el estado singlete de Bell $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{0}_A\ket{1}_B - \ket{1}_A\ket{0}_B)$. Los observables dicotómicos (con autovalores $\pm 1$) medidos por Alice y Bob son $\op{A}(\bm{a}) = \bm{\op{\sigma}}^{(A)}\cdot \bm{a}$ y $\op{B}(\bm{b}) = \bm{\op{\sigma}}^{(B)}\cdot \bm{b}$.
+
+\begin{lema}[Función de Correlación Cuántica en el Estado Singlete]
+Para el estado singlete $\ket{\Psi^-}$, el correlador cuántico entre las orientaciones unitarias $\bm{a}$ y $\bm{b}$ viene dado por:
+\begin{equation}
+    E_{\text{QM}}(\bm{a}, \bm{b}) = \mel{\Psi^-}{\big(\bm{\op{\sigma}}^{(A)}\cdot \bm{a}\big) \otimes \big(\bm{\op{\sigma}}^{(B)}\cdot \bm{b}\big)}{\Psi^-} = -\bm{a}\cdot \bm{b} = -\cos\theta_{ab},
+\end{equation}
+donde $\theta_{ab}$ es el ángulo entre los vectores $\bm{a}$ y $\bm{b}$.
+\end{lema}
+
+\begin{proof}
+Por la invariancia rotacional del estado singlete $\ket{\Psi^-}$, podemos elegir sin pérdida de generalidad nuestro sistema de coordenadas de modo que el eje $z$ coincida con el vector $\bm{a}$, es decir, $\bm{a} = (0,0,1)$, y que el vector $\bm{b}$ se encuentre en el plano $xz$: $\bm{b} = (\sin\theta_{ab}, 0, \cos\theta_{ab})$. Entonces $\bm{\op{\sigma}}^{(A)}\cdot \bm{a} = \op{\sigma}_z^{(A)}$. Haciendo actuar $\op{\sigma}_z^{(A)} \otimes \ident_B$ sobre $\ket{\Psi^-}$:
+\begin{equation}
+    \big(\op{\sigma}_z^{(A)} \otimes \ident_B\big)\ket{\Psi^-} = \frac{1}{\sqrt{2}}\big(\ket{0}_A\ket{1}_B + \ket{1}_A\ket{0}_B\big) = \ket{\Psi^+}.
+\end{equation}
+Por otra parte, la acción de $\ident_A \otimes \big(\bm{\op{\sigma}}^{(B)}\cdot \bm{b}\big) = \ident_A \otimes (\sin\theta_{ab}\,\op{\sigma}_x^{(B)} + \cos\theta_{ab}\,\op{\sigma}_z^{(B)})$ sobre $\ket{\Psi^-}$ es:
+\begin{align}
+    \big(\ident_A \otimes \bm{\op{\sigma}}^{(B)}\cdot \bm{b}\big)\ket{\Psi^-} &= \frac{\sin\theta_{ab}}{\sqrt{2}}\big(\ket{0}_A\ket{0}_B - \ket{1}_A\ket{1}_B\big) + \frac{\cos\theta_{ab}}{\sqrt{2}}\big(-\ket{0}_A\ket{1}_B - \ket{1}_A\ket{0}_B\big) \nonumber \\
+    &= \sin\theta_{ab}\ket{\Phi^-} - \cos\theta_{ab}\ket{\Psi^+}.
+\end{align}
+Como los estados de la base de Bell son ortonormales ($\braket{\Psi^+}{\Phi^-} = 0$ y $\braket{\Psi^+}{\Psi^+} = 1$), el producto interno arroja inmediatamente:
+\begin{equation}
+    E_{\text{QM}}(\bm{a}, \bm{b}) = \braket{\Psi^+}{\sin\theta_{ab}\Phi^- - \cos\theta_{ab}\Psi^+} = -\cos\theta_{ab} = -\bm{a}\cdot \bm{b}.
+\end{equation}
+\end{proof}
+
+\begin{ejemplo}[Violación máxima de Bell-CHSH con ángulos coplanares óptimos]
+Elijamos cuatro vectores unitarios coplanares $\bm{a}, \bm{b}, \bm{a}', \bm{b}'$ dispuestos secuencialmente con ángulos relativos de $45^\circ$ ($\pi/4$ radianes):
+\begin{equation}
+    \theta_{a} = 0, \qquad \theta_{b} = \frac{\pi}{4}, \qquad \theta_{a'} = \frac{\pi}{2}, \qquad \theta_{b'} = \frac{3\pi}{4}.
+\end{equation}
+Los ángulos entre pares de detectores son:
+\begin{equation}
+    \theta_{ab} = \frac{\pi}{4}, \qquad \theta_{a'b} = \frac{\pi}{4}, \qquad \theta_{a'b'} = \frac{\pi}{4}, \qquad \theta_{ab'} = \frac{3\pi}{4}.
+\end{equation}
+Sustituyendo $E_{\text{QM}}(\bm{u}, \bm{v}) = -\cos\theta_{uv}$ en el parámetro $S_{\text{CHSH}}$:
+\begin{align}
+    S_{\text{QM}} &= E_{\text{QM}}(\bm{a}, \bm{b}) - E_{\text{QM}}(\bm{a}, \bm{b}') + E_{\text{QM}}(\bm{a}', \bm{b}) + E_{\text{QM}}(\bm{a}', \bm{b}') \nonumber \\
+    &= -\cos\left(\frac{\pi}{4}\right) + \cos\left(\frac{3\pi}{4}\right) - \cos\left(\frac{\pi}{4}\right) - \cos\left(\frac{\pi}{4}\right) \nonumber \\
+    &= -\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} = -2\sqrt{2}.
+\end{align}
+Tomando el valor absoluto obtenemos:
+\begin{equation}
+    |S_{\text{QM}}| = 2\sqrt{2} \approx 2.8284 > 2.
+\end{equation}
+Esta contradicción matemática flagrante ($2\sqrt{2} \not\le 2$) demuestra el \textbf{Teorema de Bell}: \emph{ninguna teoría física que satisfaga simultáneamente el realismo y la localidad puede reproducir todas las predicciones estadísticas de la Mecánica Cuántica}. Además, por el \textbf{Teorema de Tsirelson} (1980), dado que el operador de Bell $\op{\mathcal{B}} = \op{A}\otimes(\op{B}-\op{B}') + \op{A}'\otimes(\op{B}+\op{B}')$ satisface la identidad algebraica de Landau:
+\begin{equation}
+    \op{\mathcal{B}}^2 = 4\ident_{AB} - \comm{\op{A}}{\op{A}'} \otimes \comm{\op{B}}{\op{B}'},
+\end{equation}
+y dado que $\|\comm{\op{A}}{\op{A}'}\| \le 2\|\op{A}\|\|\op{A}'\| = 2$, la norma operatorial cumple $\|\op{\mathcal{B}}^2\| \le 4 + 2\times 2 = 8$, lo que demuestra que $2\sqrt{2}$ es la cota superior absoluta para cualquier estado cuántico (Cota de Tsirelson).
+
+Esta violación ha sido confirmada experimentalmente con precisión extraordinaria utilizando pares de fotones entrelazados en polarización (experimentos pioneros de Freedman-Clauser en 1972, Aspect-Grangier-Roger en 1981-1982 con conmutadores acústico-ópticos rápidos, Weihs-Zeilinger en 1998, y los experimentos definitivos libres de lagunas o \textit{loophole-free} de Hensen et al., Giustina et al. y Shalm et al. en 2015, laureados con el Premio Nobel de Física en 2022).
+\end{ejemplo}
+
+\section{El Estado GHZ (Greenberger-Horne-Zeilinger): Contradicción No Estadística}
+
+Mientras que el teorema de Bell para dos partículas requiere evaluar desigualdades estadísticas sobre promedios de muchas mediciones, en 1989 Daniel Greenberger, Michael Horne y Anton Zeilinger demostraron que para sistemas de \textbf{tres partículas entrelazadas} la contradicción entre la mecánica cuántica y el realismo local ocurre en una sola medición perfecta ($100\%$ de probabilidad).
+
+Consideremos tres qubits ($A, B, C$) preparados en el \textbf{estado GHZ}:
+\begin{equation}
+    \ket{\text{GHZ}} = \frac{1}{\sqrt{2}}\big(\ket{0}_A\ket{0}_B\ket{0}_C + \ket{1}_A\ket{1}_B\ket{1}_C\big).
+\end{equation}
+Definamos los tres operadores tripartitos mutuamente conmutativos:
+\begin{equation}
+    \op{\Sigma}_1 = \op{\sigma}_x^{(A)} \otimes \op{\sigma}_y^{(B)} \otimes \op{\sigma}_y^{(C)}, \qquad \op{\Sigma}_2 = \op{\sigma}_y^{(A)} \otimes \op{\sigma}_x^{(B)} \otimes \op{\sigma}_y^{(C)}, \qquad \op{\Sigma}_3 = \op{\sigma}_y^{(A)} \otimes \op{\sigma}_y^{(B)} \otimes \op{\sigma}_x^{(C)}.
+\end{equation}
+Usando que $\op{\sigma}_x\ket{0} = \ket{1}$, $\op{\sigma}_x\ket{1} = \ket{0}$, $\op{\sigma}_y\ket{0} = i\ket{1}$ y $\op{\sigma}_y\ket{1} = -i\ket{0}$, verificamos que $\ket{\text{GHZ}}$ es un autoestado exacto de $\op{\Sigma}_1, \op{\Sigma}_2, \op{\Sigma}_3$ con autovalor $-1$:
+\begin{equation}
+    \op{\Sigma}_1\ket{\text{GHZ}} = -\ket{\text{GHZ}}, \qquad \op{\Sigma}_2\ket{\text{GHZ}} = -\ket{\text{GHZ}}, \qquad \op{\Sigma}_3\ket{\text{GHZ}} = -\ket{\text{GHZ}}.
+\end{equation}
+Ahora consideremos el operador $\op{\Sigma}_0 = \op{\sigma}_x^{(A)} \otimes \op{\sigma}_x^{(B)} \otimes \op{\sigma}_x^{(C)}$. Su acción sobre $\ket{\text{GHZ}}$ simplemente intercambia $\ket{000} \leftrightarrow \ket{111}$, por lo que:
+\begin{equation}
+    \op{\Sigma}_0\ket{\text{GHZ}} = +\ket{\text{GHZ}} \quad (\text{autovalor } +1 \text{ con certeza absoluta}).
+\end{equation}
+Intentemos asignar valores realistas locales predeterminados $x_i, y_i \in \{+1, -1\}$ ($i = A, B, C$) a estas componentes de espín. Las tres primeras ecuaciones exigen que:
+\begin{equation}
+    x_A y_B y_C = -1, \qquad y_A x_B y_C = -1, \qquad y_A y_B x_C = -1.
+\end{equation}
+Multiplicando las tres ecuaciones miembro a miembro y recordando que $y_i^2 = (\pm 1)^2 = +1$, cualquier teoría realista local predice obligatoriamente que:
+\begin{equation}
+    (x_A x_B x_C)(y_A^2 y_B^2 y_C^2) = x_A x_B x_C = (-1)(-1)(-1) = -1,
+\end{equation}
+mientras que la mecánica cuántica predice con probabilidad $1$ el resultado opuesto: $+1$.
+
+% ============================================================================
+% CAPÍTULO 4: ÓPTICA CUÁNTICA I: CUANTIZACIÓN DEL CAMPO Y ESTADOS DE LA LUZ
+% ============================================================================
+\chapter{Óptica Cuántica I: Cuantización del Campo Electromagnético y Estados de la Luz}
+
+La Óptica Cuántica estudia los fenómenos en los cuales la naturaleza cuántica del campo electromagnético se manifiesta de forma esencial: fluctuaciones del vacío, estadística sub-poissoniana y antibunching de fotones, estados coherentes y comprimidos, e interferencia cuántica de pocos fotones. En este capítulo desarrollamos desde primeros principios la cuantización canónica del campo de radiación y caracterizamos exhaustivamente la jerarquía de estados cuánticos de la luz.
+
+\section{Cuantización Canónica del Campo Electromagnético Libre}
+
+\subsection{Ecuaciones de Maxwell en el Gauge de Coulomb y Descomposición Modal}
+
+En una región del espacio libre de cargas y corrientes ($\rho = 0$, $\bm{J} = \bm{0}$), el campo eléctrico $\bm{E}(\bm{r},t)$ y el campo magnético $\bm{B}(\bm{r},t)$ satisfacen las ecuaciones de Maxwell en el vacío ($\varepsilon_0 \mu_0 = 1/c^2$). Expresando los campos en términos del potencial vectorial $\bm{A}(\bm{r},t)$ y el potencial escalar $\Phi(\bm{r},t)$, imponemos la condición del \textbf{Gauge de Coulomb} (o gauge de radiación transversal):
+\begin{equation}
+    \nabla \cdot \bm{A}(\bm{r},t) = 0, \qquad \Phi(\bm{r},t) = 0.
+\end{equation}
+En este gauge, los campos transversales vienen dados exclusivamente por $\bm{A}(\bm{r},t)$:
+\begin{equation}
+    \bm{E}(\bm{r},t) = -\frac{\partial \bm{A}(\bm{r},t)}{\partial t}, \qquad \bm{B}(\bm{r},t) = \nabla \times \bm{A}(\bm{r},t),
+\end{equation}
+donde $\bm{A}(\bm{r},t)$ obedece la ecuación de ondas homogénea d'Alembertiana:
+\begin{equation}
+    \nabla^2 \bm{A}(\bm{r},t) - \frac{1}{c^2}\frac{\partial^2 \bm{A}(\bm{r},t)}{\partial t^2} = \bm{0}.
+\end{equation}
+
+Confinemos el campo en una cavidad cúbica de volumen $V = L^3$ con condiciones de contorno periódicas de Born-von Karman. Los vectores de onda permitidos son $\bm{k} = \frac{2\pi}{L}(n_x, n_y, n_z)$ con $n_i \in \mathbb{Z}$ y frecuencias angulares $\omega_k = c|\bm{k}|$. Para cada vector de onda $\bm{k}$, la condición de transversalidad $\nabla \cdot \bm{A} = 0$ implica que existen dos vectores unitarios de polarización mutuamente ortogonales $\bm{\epsilon}_{\bm{k},s}$ ($s = 1, 2$) tales que:
+\begin{equation}
+    \bm{k} \cdot \bm{\epsilon}_{\bm{k},s} = 0, \qquad \bm{\epsilon}_{\bm{k},s}^* \cdot \bm{\epsilon}_{\bm{k},s'} = \delta_{ss'}, \qquad \bm{\epsilon}_{\bm{k},1} \times \bm{\epsilon}_{\bm{k},2} = \frac{\bm{k}}{|\bm{k}|}.
+\end{equation}
+Expandimos el potencial vectorial clásico en serie de Fourier modal:
+\begin{equation}
+    \bm{A}(\bm{r},t) = \sum_{\bm{k}, s} \sqrt{\frac{\hbar}{2\varepsilon_0 V \omega_k}} \left[ \alpha_{\bm{k},s}(t)\,\bm{\epsilon}_{\bm{k},s} e^{i\bm{k}\cdot\bm{r}} + \alpha_{\bm{k},s}^*(t)\,\bm{\epsilon}_{\bm{k},s}^* e^{-i\bm{k}\cdot\bm{r}} \right],
+\end{equation}
+donde las amplitudes normales adimensionales evolucionan armónicamente según $\alpha_{\bm{k},s}(t) = \alpha_{\bm{k},s}(0)e^{-i\omega_k t}$. Sustituyendo esta expansión en la energía electromagnética total clásica (Hamiltoniano de Poynting) e integrando sobre el volumen $V$ usando la ortogonalidad $\int_V e^{i(\bm{k}-\bm{k}')\cdot\bm{r}}d^3r = V\delta_{\bm{k},\bm{k}'}$, obtenemos:
+\begin{equation}
+    H_{\text{cl}} = \frac{1}{2}\int_V \left( \varepsilon_0 \bm{E}^2 + \frac{1}{\mu_0}\bm{B}^2 \right) d^3r = \frac{1}{2}\sum_{\bm{k},s} \hbar\omega_k \left( \alpha_{\bm{k},s}^* \alpha_{\bm{k},s} + \alpha_{\bm{k},s}\alpha_{\bm{k},s}^* \right).
+\end{equation}
+
+\subsection{Variables Canónicas de Cuadratura y Operadores de Creación y Aniquilación Fotónicos}
+
+Introduzcamos las coordenadas y momentos canónicos reales para cada modo normal $(\bm{k},s)$:
+\begin{equation}
+    Q_{\bm{k},s} = \sqrt{\frac{\hbar}{2\omega_k}}\big(\alpha_{\bm{k},s} + \alpha_{\bm{k},s}^*\big), \qquad P_{\bm{k},s} = -i\sqrt{\frac{\hbar\omega_k}{2}}\big(\alpha_{\bm{k},s} - \alpha_{\bm{k},s}^*\big),
+\end{equation}
+en términos de los cuales el Hamiltoniano del campo electromagnético se escribe exactamente como una suma de osciladores armónicos mecánicos independientes (Teorema de Jeans):
+\begin{equation}
+    H_{\text{cl}} = \sum_{\bm{k},s} \frac{1}{2}\left( P_{\bm{k},s}^2 + \omega_k^2 Q_{\bm{k},s}^2 \right).
+\end{equation}
+Aplicando el Postulado II de cuantización canónica, promovemos $Q_{\bm{k},s} \to \op{Q}_{\bm{k},s}$ y $P_{\bm{k},s} \to \op{P}_{\bm{k},s}$ imponiendo $\comm{\op{Q}_{\bm{k},s}}{\op{P}_{\bm{k}',s'}} = i\hbar\delta_{\bm{k},\bm{k}'}\delta_{ss'}\ident$. Esto equivale a promover las amplitudes modales a los \textbf{operadores de aniquilación y creación fotónicos} $\alpha_{\bm{k},s} \to \op{a}_{\bm{k},s}$ y $\alpha_{\bm{k},s}^* \to \op{a}_{\bm{k},s}^\dagger$:
+\begin{equation}
+    \op{a}_{\bm{k},s} = \frac{1}{\sqrt{2\hbar\omega_k}}\left(\omega_k \op{Q}_{\bm{k},s} + i\op{P}_{\bm{k},s}\right), \qquad \op{a}_{\bm{k},s}^\dagger = \frac{1}{\sqrt{2\hbar\omega_k}}\left(\omega_k \op{Q}_{\bm{k},s} - i\op{P}_{\bm{k},s}\right),
+\end{equation}
+los cuales satisfacen las \textbf{relaciones de conmutación bosónicas fundamentales}:
+\begin{equation}
+    \comm{\op{a}_{\bm{k},s}}{\op{a}_{\bm{k}',s'}} = 0, \qquad \comm{\op{a}_{\bm{k},s}^\dagger}{\op{a}_{\bm{k}',s'}^\dagger} = 0, \qquad \comm{\op{a}_{\bm{k},s}}{\op{a}_{\bm{k}',s'}^\dagger} = \delta_{\bm{k},\bm{k}'}\delta_{ss'}\ident.
+\end{equation}
+
+El Hamiltoniano cuántico del campo electromagnético libre resulta ser:
+\begin{equation}
+    \op{H}_{\text{EM}} = \sum_{\bm{k},s} \frac{1}{2}\hbar\omega_k \left( \op{a}_{\bm{k},s}^\dagger \op{a}_{\bm{k},s} + \op{a}_{\bm{k},s} \op{a}_{\bm{k},s}^\dagger \right) = \sum_{\bm{k},s} \hbar\omega_k \left( \op{n}_{\bm{k},s} + \frac{1}{2}\ident \right),
+\end{equation}
+donde $\op{n}_{\bm{k},s} \equiv \op{a}_{\bm{k},s}^\dagger \op{a}_{\bm{k},s}$ es el \textbf{operador número de fotones} en el modo $(\bm{k},s)$. Asimismo, los operadores cuánticos del campo eléctrico y magnético en la imagen de Heisenberg se descomponen en sus partes de frecuencia positiva $\bm{\op{E}}^{(+)}$ (aniquilación) y frecuencia negativa $\bm{\op{E}}^{(-)} = \big[\bm{\op{E}}^{(+)}\big]^\dagger$ (creación):
+\begin{align}
+    \bm{\op{E}}(\bm{r},t) &= \bm{\op{E}}^{(+)}(\bm{r},t) + \bm{\op{E}}^{(-)}(\bm{r},t) \nonumber \\
+    &= i\sum_{\bm{k},s} \mathcal{E}_k \left[ \op{a}_{\bm{k},s} \bm{\epsilon}_{\bm{k},s} e^{i(\bm{k}\cdot\bm{r} - \omega_k t)} - \op{a}_{\bm{k},s}^\dagger \bm{\epsilon}_{\bm{k},s}^* e^{-i(\bm{k}\cdot\bm{r} - \omega_k t)} \right], \\
+    \bm{\op{B}}(\bm{r},t) &= i\sum_{\bm{k},s} \frac{\mathcal{E}_k}{\omega_k} \left[ \op{a}_{\bm{k},s} (\bm{k}\times\bm{\epsilon}_{\bm{k},s}) e^{i(\bm{k}\cdot\bm{r} - \omega_k t)} - \op{a}_{\bm{k},s}^\dagger (\bm{k}\times\bm{\epsilon}_{\bm{k},s}^*) e^{-i(\bm{k}\cdot\bm{r} - \omega_k t)} \right],
+\end{align}
+donde la amplitud del campo eléctrico por fotón es $\mathcal{E}_k \equiv \sqrt{\frac{\hbar\omega_k}{2\varepsilon_0 V}}$.
+
+\begin{observacion}[Fluctuaciones del Vacío Cuántico y Efecto Casimir]
+En el estado de vacío electromagnético $\ket{0} = \bigotimes_{\bm{k},s} \ket{0_{\bm{k},s}}$ (definido por $\op{a}_{\bm{k},s}\ket{0} = 0$ para todo modo), el valor medio del campo eléctrico es nulo: $\mel{0}{\bm{\op{E}}(\bm{r},t)}{0} = \bm{0}$. Sin embargo, la varianza del campo eléctrico en el vacío NO es cero:
+\begin{equation}
+    \mel{0}{\bm{\op{E}}^2(\bm{r},t)}{0} = \sum_{\bm{k},s} \mathcal{E}_k^2 \mel{0}{\op{a}_{\bm{k},s}\op{a}_{\bm{k},s}^\dagger}{0} = \sum_{\bm{k},s} \frac{\hbar\omega_k}{2\varepsilon_0 V}.
+\end{equation}
+Estas fluctuaciones de punto cero ($\frac{1}{2}\hbar\omega_k$ por modo) son directamente responsables de fenómenos físicos medibles fundamentales: la \textbf{emisión espontánea} de átomos excitados, el \textbf{desplazamiento de Lamb} (\textit{Lamb shift}) de los niveles atómicos del hidrógeno y la \textbf{fuerza atractiva de Casimir} por unidad de área $F/A = -\frac{\pi^2 \hbar c}{240 d^4}$ entre dos placas conductoras paralelas descargadas separadas por una distancia $d$.
+\end{observacion}
+
+\section{\texorpdfstring{Estados Número o Estados de Fock $\ket{n}$}{Estados Número o Estados de Fock (n)}}
+
+Consideremos un único modo del campo electromagnético de frecuencia $\omega$ con operadores $\op{a}$ y $\op{a}^\dagger$ tales que $\comm{\op{a}}{\op{a}^\dagger} = \ident$, y operador de cuadratura adimensional posición $\op{X}_1 = \frac{1}{2}(\op{a} + \op{a}^\dagger)$ y cuadratura momento $\op{X}_2 = \frac{1}{2i}(\op{a} - \op{a}^\dagger)$, que satisfacen $\comm{\op{X}_1}{\op{X}_2} = \frac{i}{2}\ident$ y $\Delta X_1 \Delta X_2 \ge \frac{1}{4}$.
+
+\begin{definicion}[Estados de Fock]
+Los \textbf{estados de Fock} (o estados número) $\ket{n}$ ($n = 0, 1, 2, \dots$) son los autoestados ortonormales del operador número de fotones $\op{n} = \op{a}^\dagger \op{a}$:
+\begin{equation}
+    \op{n}\ket{n} = n\ket{n}, \qquad \braket{m}{n} = \delta_{mn}, \qquad \sum_{n=0}^{\infty} \ketbra{n}{n} = \ident.
+\end{equation}
+A partir del estado de vacío $\ket{0}$, cualquier estado de $n$ fotones se construye algebraicamente mediante la aplicación reiterada del operador de creación:
+\begin{equation}
+    \ket{n} = \frac{(\op{a}^\dagger)^n}{\sqrt{n!}}\ket{0}, \qquad \op{a}\ket{n} = \sqrt{n}\ket{n-1}, \qquad \op{a}^\dagger\ket{n} = \sqrt{n+1}\ket{n+1}.
+\end{equation}
+\end{definicion}
+
+\begin{ejemplo}[Propiedades estadísticas y fluctuaciones de campo en un Estado de Fock $\ket{n}$]
+En un estado puro de Fock $\ket{n}$:
+\begin{enumerate}[label=\arabic*.]
+    \item El número de fotones está determinado con precisión absoluta: $\expval{\op{n}} = n$ y la varianza en el número de fotones es nula:
+    \begin{equation}
+        (\Delta n)^2 = \mel{n}{\op{n}^2}{n} - \mel{n}{\op{n}}{n}^2 = n^2 - n^2 = 0.
+    \end{equation}
+    \item Sin embargo, el valor esperado del campo eléctrico monomodo $\op{E}(t) = i\mathcal{E}_0(\op{a}e^{-i\omega t} - \op{a}^\dagger e^{i\omega t})$ es idénticamente nulo para cualquier número de fotones $n$:
+    \begin{equation}
+        \mel{n}{\op{E}(t)}{n} = i\mathcal{E}_0 \big( \sqrt{n}\braket{n}{n-1}e^{-i\omega t} - \sqrt{n+1}\braket{n}{n+1}e^{i\omega t} \big) = 0,
+    \end{equation}
+    debido a que la fase óptica del campo es completamente indeterminada ($\Delta \phi = 2\pi$).
+    \item Evaluando las incertidumbres de las cuadraturas $\op{X}_1$ y $\op{X}_2$ en $\ket{n}$:
+    \begin{equation}
+        (\Delta X_1)^2 = (\Delta X_2)^2 = \frac{1}{4}\mel{n}{\op{a}\op{a}^\dagger + \op{a}^\dagger\op{a}}{n} = \frac{1}{4}(2n + 1) \quad \Longrightarrow \quad \Delta X_1 \Delta X_2 = \frac{2n+1}{4},
+    \end{equation}
+    que crece linealmente con el número de fotones y solo satura el límite mínimo cuántico $1/4$ para el estado de vacío $n = 0$.
+\end{enumerate}
+\end{ejemplo}
+
+\section{\texorpdfstring{Estados Coherentes de Glauber $\ket{\alpha}$}{Estados Coherentes de Glauber (alpha)}}
+
+Un estado de Fock con $n \gg 1$ no reproduce una onda electromagnética monocromática clásica $\bm{E}_{\text{cl}}\cos(\bm{k}\cdot\bm{r}-\omega t + \phi)$ porque $\mel{n}{\op{E}}{n} = 0$. En 1963, Roy J. Glauber (Premio Nobel de Física 2005) introdujo y formalizó los \textbf{estados coherentes} $\ket{\alpha}$, que constituyen los estados cuánticos más cercanos al límite clásico de un láser ideal estabilizado.
+
+\begin{definicion}[Definiciones Equivalentes de un Estado Coherente $\ket{\alpha}$]
+Para todo número complejo $\alpha = |\alpha|e^{i\theta} \in \mathbb{C}$, el estado coherente $\ket{\alpha}$ se define mediante cualquiera de las tres propiedades equivalentes siguientes:
+\begin{enumerate}[label=\textbf{D\arabic*.}]
+    \item \textbf{Autoestado del operador de aniquilación:}
+    \begin{equation}
+        \op{a}\ket{\alpha} = \alpha\ket{\alpha}, \qquad \bra{\alpha}\op{a}^\dagger = \bra{\alpha}\alpha^*.
+    \end{equation}
+    \item \textbf{Vacío desplazado en el espacio de fases:} Se obtiene aplicando el \textbf{operador unitario de desplazamiento de Weyl-Glauber} $\op{D}(\alpha)$ sobre el estado de vacío $\ket{0}$:
+    \begin{equation}
+        \ket{\alpha} = \op{D}(\alpha)\ket{0}, \qquad \text{donde} \qquad \op{D}(\alpha) \equiv \exp\left(\alpha\op{a}^\dagger - \alpha^*\op{a}\right).
+    \end{equation}
+    \item \textbf{Estado de mínima incertidumbre simétrica en cuadraturas:} Satisface $\Delta X_1 = \Delta X_2 = \frac{1}{2}$, saturando la relación de incertidumbre $\Delta X_1 \Delta X_2 = \frac{1}{4}$ en todo instante.
+\end{enumerate}
+\end{definicion}
+
+\subsection{Expansión en la Base de Fock y Estadística Fotónica de Poisson}
+
+Para expresar $\ket{\alpha}$ en la base de Fock $\{\ket{n}\}$, utilizamos la identidad de Baker-Campbell-Hausdorff (BCH) $\exp(\op{A}+\op{B}) = \exp(-\frac{1}{2}\comm{\op{A}}{\op{B}})\exp(\op{A})\exp(\op{B})$, válida cuando $\comm{\op{A}}{\comm{\op{A}}{\op{B}}} = \comm{\op{B}}{\comm{\op{A}}{\op{B}}} = 0$. Tomando $\op{A} = \alpha\op{a}^\dagger$ y $\op{B} = -\alpha^*\op{a}$, tenemos $\comm{\op{A}}{\op{B}} = -|\alpha|^2\comm{\op{a}^\dagger}{\op{a}} = |\alpha|^2\ident$. Por tanto, el operador de desplazamiento en orden normal es:
+\begin{equation}
+    \op{D}(\alpha) = e^{-|\alpha|^2/2} e^{\alpha\op{a}^\dagger} e^{-\alpha^*\op{a}}.
+\end{equation}
+Haciendo actuar $\op{D}(\alpha)$ sobre el vacío $\ket{0}$ (y notando que $e^{-\alpha^*\op{a}}\ket{0} = \ket{0}$):
+\begin{equation}
+    \ket{\alpha} = e^{-|\alpha|^2/2} e^{\alpha\op{a}^\dagger}\ket{0} = e^{-|\alpha|^2/2} \sum_{n=0}^{\infty} \frac{\alpha^n (\op{a}^\dagger)^n}{n!}\ket{0} = e^{-|\alpha|^2/2} \sum_{n=0}^{\infty} \frac{\alpha^n}{\sqrt{n!}}\ket{n}.
+\end{equation}
+
+Aplicando la regla de Born (Postulado IV), la probabilidad de detectar exactamente $n$ fotones en un estado coherente $\ket{\alpha}$ sigue una \textbf{Distribución de Poisson}:
+\begin{equation}
+    \mathcal{P}(n) = |\braket{n}{\alpha}|^2 = e^{-|\alpha|^2}\frac{|\alpha|^{2n}}{n!} = e^{-\bar{n}}\frac{\bar{n}^n}{n!},
+\end{equation}
+donde el número medio de fotones y su varianza coinciden:
+\begin{align}
+    \bar{n} \equiv \expval{\op{n}}_\alpha &= \mel{\alpha}{\op{a}^\dagger\op{a}}{\alpha} = |\alpha|^2, \\
+    (\Delta n)^2_\alpha &= \mel{\alpha}{(\op{a}^\dagger\op{a})^2}{\alpha} - \bar{n}^2 = \mel{\alpha}{\op{a}^\dagger(\op{a}^\dagger\op{a} + 1)\op{a}}{\alpha} - |\alpha|^4 = |\alpha|^4 + |\alpha|^2 - |\alpha|^4 = |\alpha|^2 = \bar{n}.
+\end{align}
+La fluctuación relativa del número de fotones es $\frac{\Delta n}{\bar{n}} = \frac{1}{\sqrt{\bar{n}}}$, que tiende a cero en el límite macroscópico $\bar{n} \to \infty$ (ruido de disparo o \textit{shot noise} cuántico).
+
+\subsection{Sobrecompletitud y No-Ortogonalidad de los Estados Coherentes}
+
+Dado que el operador de aniquilación $\op{a}$ no es hermítico, sus autoestados $\ket{\alpha}$ no son mutuamente ortogonales. Para cualesquiera $\alpha, \beta \in \mathbb{C}$:
+\begin{equation}
+    \braket{\beta}{\alpha} = e^{-(|\alpha|^2 + |\beta|^2)/2}\sum_{n=0}^{\infty}\frac{(\beta^*\alpha)^n}{n!} = \exp\left(-\frac{1}{2}|\alpha|^2 - \frac{1}{2}|\beta|^2 + \beta^*\alpha\right),
+\end{equation}
+cuyo módulo al cuadrado es:
+\begin{equation}
+    |\braket{\beta}{\alpha}|^2 = \exp\left(-|\alpha - \beta|^2\right) > 0.
+\end{equation}
+Además, el conjunto de todos los estados coherentes en el plano complejo forma una base \textbf{sobrecompleta} que satisface la resolución de la identidad:
+\begin{equation}
+    \frac{1}{\pi}\int_{\mathbb{C}} d^2\alpha \, \ketbra{\alpha}{\alpha} = \ident, \qquad \text{donde } d^2\alpha \equiv d(\operatorname{Re}\alpha)\,d(\operatorname{Im}\alpha).
+\end{equation}
+
+\section{Estados Comprimidos (\textit{Squeezed States}) de la Luz}
+
+Mientras que los estados coherentes distribuyen el ruido cuántico de punto cero de forma isotrópica entre ambas cuadraturas ($\Delta X_1 = \Delta X_2 = 1/2$), las leyes de la mecánica cuántica solo exigen que el producto cumpla $\Delta X_1 \Delta X_2 \ge 1/4$. Es perfectamente posible reducir la fluctuación de una cuadratura por debajo del límite de vacío ($\Delta X_1 < 1/2$) a expensas de incrementar la fluctuación en la cuadratura conjugada ($\Delta X_2 > 1/2$). Estos estados no clásicos se denominan \textbf{estados comprimidos} (\textit{squeezed states}) y constituyen la herramienta clave en los interferómetros gravitacionales modernos como LIGO y Virgo para superar el límite cuántico estándar.
+
+\begin{definicion}[Operador de Compresión (\textit{Squeezing}) y Vacío Comprimido]
+Dado el parámetro complejo de compresión $\xi = r e^{i\theta}$ (con factor de compresión $r \ge 0$ y ángulo de orientación $\theta \in [0, 2\pi)$), se define el \textbf{operador unitario de compresión} $\op{S}(\xi)$ como:
+\begin{equation}
+    \op{S}(\xi) \equiv \exp\left[ \frac{1}{2}\left( \xi^* \op{a}^2 - \xi (\op{a}^\dagger)^2 \right) \right], \qquad \op{S}^\dagger(\xi) = \op{S}^{-1}(\xi) = \op{S}(-\xi).
+\end{equation}
+El operador de compresión transforma los operadores de creación y aniquilación mediante la \textbf{Transformación de Bogoliubov}:
+\begin{align}
+    \op{S}^\dagger(\xi)\, \op{a}\, \op{S}(\xi) &= \op{a}\cosh r - \op{a}^\dagger e^{i\theta}\sinh r, \\
+    \op{S}^\dagger(\xi)\, \op{a}^\dagger\, \op{S}(\xi) &= \op{a}^\dagger\cosh r - \op{a} e^{-i\theta}\sinh r.
+\end{align}
+Un \textbf{estado coherente comprimido} general se define como $\ket{\alpha, \xi} = \op{D}(\alpha)\op{S}(\xi)\ket{0}$. Cuando $\alpha = 0$, obtenemos el \textbf{estado de vacío comprimido} $\ket{\xi} = \op{S}(\xi)\ket{0}$, cuya expansión en la base de Fock contiene exclusivamente números \emph{pares} de fotones (debido a la generación paramétrica de pares fotónicos a través del término $(\op{a}^\dagger)^2$):
+\begin{equation}
+    \ket{\xi} = \frac{1}{\sqrt{\cosh r}}\sum_{m=0}^{\infty} (-1)^m \frac{\sqrt{(2m)!}}{2^m m!} e^{im\theta} (\tanh r)^m \ket{2m}.
+\end{equation}
+\end{definicion}
+
+\begin{ejemplo}[Cálculo de la reducción de ruido en cuadraturas y número medio de fotones en $\ket{\xi}$]
+Definamos las cuadraturas rotadas por el ángulo $\theta/2$: $\op{Y}_1 + i\op{Y}_2 = (\op{X}_1 + i\op{X}_2)e^{-i\theta/2}$. Aplicando las transformaciones de Bogoliubov, comprobamos que:
+\begin{equation}
+    \op{S}^\dagger(\xi)\op{Y}_1\op{S}(\xi) = e^{-r}\op{Y}_1, \qquad \op{S}^\dagger(\xi)\op{Y}_2\op{S}(\xi) = e^{+r}\op{Y}_2.
+\end{equation}
+Por consiguiente, en cualquier estado comprimido $\ket{\alpha, \xi}$, las varianzas de las cuadraturas son:
+\begin{equation}
+    (\Delta Y_1)^2 = \frac{1}{4}e^{-2r} < \frac{1}{4}, \qquad (\Delta Y_2)^2 = \frac{1}{4}e^{+2r} > \frac{1}{4},
+\end{equation}
+verificando que el producto sigue saturando la desigualdad de Heisenberg: $\Delta Y_1 \Delta Y_2 = \frac{1}{4}e^{-r}e^{+r} = \frac{1}{4}$. En unidades logarítmicas (decibelios de compresión debajo del nivel de vacío o \textit{shot noise}), la reducción de ruido es $\text{dB} = -10\log_{10}(e^{-2r}) \approx 8.686\,r\text{ dB}$. Por su parte, el número medio de fotones en el vacío comprimido $\ket{\xi}$ es:
+\begin{align}
+    \expval{\op{n}}_\xi &= \mel{0}{\op{S}^\dagger(\xi)\op{a}^\dagger\op{a}\op{S}(\xi)}{0} \nonumber \\
+    &= \mel{0}{\big(\op{a}^\dagger\cosh r - \op{a}e^{-i\theta}\sinh r\big)\big(\op{a}\cosh r - \op{a}^\dagger e^{i\theta}\sinh r\big)}{0} = \sinh^2 r.
+\end{align}
+\end{ejemplo}
+
+\section{Estados Térmicos (Caóticos) y Estadística de Bose-Einstein}
+
+La radiación emitida por una fuente térmica en equilibrio termodinámico a temperatura absoluta $T$ (como una cavidad de cuerpo negro o una lámpara incandescente filtrada espectralmente) no es un estado puro, sino una mezcla estadística incoherente maximizadora de la entropía de von Neumann.
+
+\begin{definicion}[Operador Densidad de un Estado Térmico Monomodo]
+En el ensamble canónico a temperatura $T$, el operador densidad de un modo de frecuencia $\omega$ con Hamiltoniano $\op{H} = \hbar\omega\op{n}$ viene dado por la distribución de Boltzmann-Gibbs:
+\begin{equation}
+    \op{\rho}_{\text{th}} = \frac{e^{-\beta\op{H}}}{\tr\left(e^{-\beta\op{H}}\right)} = \big(1 - e^{-\beta\hbar\omega}\big)\sum_{n=0}^{\infty} e^{-n\beta\hbar\omega}\ketbra{n}{n}, \qquad \beta \equiv \frac{1}{k_B T}.
+\end{equation}
+El número medio de fotones térmicos viene dado por la distribución de Planck / Bose-Einstein:
+\begin{equation}
+    \bar{n} = \tr(\op{\rho}_{\text{th}}\op{n}) = \frac{1}{e^{\hbar\omega/(k_B T)} - 1}.
+\end{equation}
+Invirtiendo esta relación ($e^{-\beta\hbar\omega} = \frac{\bar{n}}{1+\bar{n}}$), la distribución de probabilidad del número de fotones $P_{\text{th}}(n) = \mel{n}{\op{\rho}_{\text{th}}}{n}$ toma la forma geométrica de \textbf{Bose-Einstein}:
+\begin{equation}
+    \mathcal{P}_{\text{th}}(n) = \frac{1}{1 + \bar{n}}\left(\frac{\bar{n}}{1 + \bar{n}}\right)^n = \frac{\bar{n}^n}{(1 + \bar{n})^{n+1}}.
+\end{equation}
+\end{definicion}
+
+A diferencia de la distribución de Poisson de un láser ($\mathcal{P}(n)$ con un pico en $n \approx \bar{n}$), en la luz térmica el estado más probable es siempre el vacío $n = 0$ ($\mathcal{P}_{\text{th}}(0) = \frac{1}{1+\bar{n}}$), y la varianza del número de fotones es:
+\begin{equation}
+    (\Delta n)^2_{\text{th}} = \bar{n}^2 + \bar{n} = \bar{n}(\bar{n} + 1) > \bar{n},
+\end{equation}
+mostrando fluctuaciones intensas super-poissonianas debidas al agrupamiento bosónico de los fotones (\textit{photon bunching}).
+
+% ============================================================================
+% CAPÍTULO 5: ÓPTICA CUÁNTICA II: COHERENCIA, ESPACIO DE FASES Y CQED
+% ============================================================================
+\chapter{Óptica Cuántica II: Coherencia Cuántica, Espacio de Fases e Interacción Luz-Materia}
+
+Para distinguir experimentalmente los diferentes estados cuánticos del campo electromagnético y describir su interacción con átomos y cavidades resonantes, la óptica cuántica se apoya en tres pilares teóricos fundamentales: la teoría cuántica de la coherencia óptica de Glauber, las funciones de distribución cuasiprobabilísticas en el espacio de fases y la electrodinámica cuántica de cavidades (modelo de Jaynes-Cummings y ecuación maestra de Lindblad).
+
+\section{Teoría Cuántica de la Coherencia Óptica y Efecto Hong-Ou-Mandel}
+
+\subsection{\texorpdfstring{Funciones de Correlación de Primer y Segundo Orden $g^{(1)}(\tau)$ y $g^{(2)}(\tau)$}{Funciones de Correlación de Primer y Segundo Orden g(1)(tau) y g(2)(tau)}}
+
+Los fotodetectores ópticos operan mediante absorción de fotones (efecto fotoeléctrico), por lo que la señal registrada es proporcional a las correlaciones normalmente ordenadas de los operadores de campo $\op{E}^{(-)}$ y $\op{E}^{(+)}$. Para un campo estacionario monomodo o cuasimonocromático en una posición fija:
+
+\begin{definicion}[Grado de Coherencia de Primer Orden $g^{(1)}(\tau)$]
+La función de correlación normalizada de primer orden (o visibilidad interferométrica de amplitud, medida en interferómetros de Michelson o Mach-Zehnder) se define como:
+\begin{equation}
+    g^{(1)}(\tau) \equiv \frac{\expval{\op{E}^{(-)}(t)\op{E}^{(+)}(t+\tau)}}{\sqrt{\expval{\op{E}^{(-)}(t)\op{E}^{(+)}(t)}\expval{\op{E}^{(-)}(t+\tau)\op{E}^{(+)}(t+\tau)}}} = \frac{\expval{\op{a}^\dagger(t)\op{a}(t+\tau)}}{\expval{\op{a}^\dagger(t)\op{a}(t)}}.
+\end{equation}
+El espectro de potencias óptico $S(\omega)$ es, por el \textbf{Teorema de Wiener-Khinchin}, la transformada de Fourier de $g^{(1)}(\tau)$. Para un estado con ancho de línea Lorentziano $\Delta\omega = 1/\tau_c$ (tiempo de coherencia $\tau_c$), se cumple $|g^{(1)}(\tau)| = e^{-|\tau|/\tau_c}$, mientras que para un modo monocromático ideal $|g^{(1)}(\tau)| = 1$.
+\end{definicion}
+
+Sin embargo, $g^{(1)}(\tau)$ solo mide la coherencia espectral de primer orden y es incapaz de distinguir un láser coherente de un haz de luz térmica filtrado con el mismo ancho de banda. La distinción crucial surge en las correlaciones de intensidad (experimento de Hanbury Brown y Twiss, 1956):
+
+\begin{definicion}[Grado de Coherencia de Segundo Orden $g^{(2)}(\tau)$ y Parámetro de Mandel $Q_M$]
+La función de correlación normalizada de segundo orden (correlación intensidad-intensidad con retardo temporal $\tau$) se define como:
+\begin{equation}
+    g^{(2)}(\tau) \equiv \frac{\expval{\op{E}^{(-)}(t)\op{E}^{(-)}(t+\tau)\op{E}^{(+)}(t+\tau)\op{E}^{(+)}(t)}}{\expval{\op{E}^{(-)}(t)\op{E}^{(+)}(t)}^2}.
+\end{equation}
+A retardo nulo ($\tau = 0$), para un único modo descrito por el operador $\op{a}$, usando $\op{a}^\dagger\op{a}^\dagger\op{a}\op{a} = \op{a}^\dagger(\op{a}\op{a}^\dagger - 1)\op{a} = \op{n}(\op{n}-1)$, obtenemos la expresión fundamental:
+\begin{equation}
+    g^{(2)}(0) = \frac{\expval{\op{a}^\dagger\op{a}^\dagger\op{a}\op{a}}}{\expval{\op{a}^\dagger\op{a}}^2} = \frac{\expval{\op{n}(\op{n}-1)}}{\expval{\op{n}}^2} = 1 + \frac{(\Delta n)^2 - \expval{\op{n}}}{\expval{\op{n}}^2} = 1 + \frac{Q_M}{\expval{\op{n}}},
+\end{equation}
+donde $Q_M \equiv \frac{(\Delta n)^2 - \expval{\op{n}}}{\expval{\op{n}}}$ es el \textbf{Parámetro de Mandel}.
+\end{definicion}
+
+Para cualquier campo electromagnético clásico con intensidad fluctuante estocástica $I(t) \ge 0$, la desigualdad de Cauchy-Schwarz exige obligatoriamente que:
+\begin{equation}
+    g^{(2)}_{\text{cl}}(0) = \frac{\expval{I^2}}{\expval{I}^2} \ge 1 \qquad \text{y} \qquad g^{(2)}_{\text{cl}}(0) \ge g^{(2)}_{\text{cl}}(\tau).
+\end{equation}
+Por tanto, la observación experimental de $g^{(2)}(0) < 1$ (estadística \textbf{sub-poissoniana}, $Q_M < 0$) o de $g^{(2)}(0) < g^{(2)}(\tau)$ (\textbf{antibunching de fotones}, observado por primera vez por Kimble, Dagenais y Mandel en 1977 en fluorescencia resonante de un solo átomo de sodio) constituye una firma inequívoca y estrictamente cuántica de la luz, imposible de explicar mediante ondas clásicas.
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Estado del Campo} & \textbf{Varianza $(\Delta n)^2$} & \textbf{Parámetro $Q_M$} & \textbf{Valor de $g^{(2)}(0)$} & \textbf{Régimen Estadístico} \\ \midrule
+Estado Térmico $\op{\rho}_{\text{th}}$ & $\bar{n}(\bar{n}+1)$ & $\bar{n} > 0$ & $2$ & Super-poissoniano (\textit{Bunching}) \\
+Estado Coherente $\ket{\alpha}$ & $\bar{n}$ & $0$ & $1$ & Poissoniano (Láser ideal) \\
+Estado de Fock $\ket{n}$ ($n\ge 1$) & $0$ & $-1$ & $1 - \frac{1}{n} < 1$ & Sub-poissoniano (\textit{Antibunching}) \\
+Fotón Único $\ket{1}$ & $0$ & $-1$ & $0$ & Antibunching perfecto \\ \bottomrule
+\end{tabular}
+}%
+\caption{Clasificación cuántica de los estados de la luz según sus fluctuaciones en número de fotones y la función de correlación de segundo orden $g^{(2)}(0)$.}
+\end{table}
+
+\subsection{Transformación Cuántica de un Divisor de Haz y el Efecto Hong-Ou-Mandel (HOM)}
+
+Consideremos un divisor de haz óptico sin pérdidas (\textit{beam splitter}, BS) con dos puertos de entrada cuyos modos están descritos por los operadores bosónicos $\op{a}_1, \op{a}_2$, y dos puertos de salida descritos por $\op{b}_1, \op{b}_2$. Para preservar las relaciones de conmutación $\comm{\op{b}_i}{\op{b}_j^\dagger} = \delta_{ij}$, la matriz de dispersión debe ser unitaria en $\operatorname{SU}(2)$. Para un divisor de haz simétrico balanceado ($50:50$, reflectancia $R = 1/2$ y transmitancia $T = 1/2$), eligiendo un desfase de $\pi/2$ (factor $i$) en la reflexión respecto de la transmisión:
+\begin{equation}
+    \begin{pmatrix} \op{b}_1 \\ \op{b}_2 \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix}\begin{pmatrix} \op{a}_1 \\ \op{a}_2 \end{pmatrix} \quad \Longleftrightarrow \quad \begin{cases} \op{a}_1^\dagger = \frac{1}{\sqrt{2}}(\op{b}_1^\dagger - i\op{b}_2^\dagger), \\[4pt] \op{a}_2^\dagger = \frac{1}{\sqrt{2}}(-i\op{b}_1^\dagger + \op{b}_2^\dagger). \end{cases}
+\end{equation}
+
+\begin{ejemplo}[Deducción completa del Efecto Hong-Ou-Mandel de interferencia de dos fotones]
+Supongamos que inyectamos simultáneamente dos fotones indistinguibles, uno por cada puerto de entrada del divisor de haz $50:50$: el estado inicial de entrada es $\ket{\psi_{\text{in}}} = \ket{1_1, 1_2} = \op{a}_1^\dagger \op{a}_2^\dagger \ket{0_1, 0_2}$. Expresando los operadores de entrada en términos de los operadores de salida:
+\begin{align}
+    \ket{\psi_{\text{out}}} &= \frac{1}{2}\big(\op{b}_1^\dagger - i\op{b}_2^\dagger\big)\big(-i\op{b}_1^\dagger + \op{b}_2^\dagger\big)\ket{0_1, 0_2} \nonumber \\
+    &= \frac{1}{2}\Big[ -i(\op{b}_1^\dagger)^2 + \op{b}_1^\dagger\op{b}_2^\dagger - (-i)(i)\op{b}_2^\dagger\op{b}_1^\dagger - i(\op{b}_2^\dagger)^2 \Big]\ket{0_1, 0_2}.
+\end{align}
+Dado que los operadores de modos distintos conmutan ($\comm{\op{b}_1^\dagger}{\op{b}_2^\dagger} = 0$, es decir, $\op{b}_1^\dagger\op{b}_2^\dagger = \op{b}_2^\dagger\op{b}_1^\dagger$), los dos caminos en los que ambos fotones se transmiten ($+\op{b}_1^\dagger\op{b}_2^\dagger$) o ambos se reflejan ($-\op{b}_2^\dagger\op{b}_1^\dagger$) sufren \textbf{interferencia cuántica destructiva exacta} y se cancelan mutuamente:
+\begin{equation}
+    \ket{\psi_{\text{out}}} = -\frac{i}{2}\Big[ (\op{b}_1^\dagger)^2 + (\op{b}_2^\dagger)^2 \Big]\ket{0_1, 0_2} = -\frac{i}{\sqrt{2}}\big(\ket{2_1, 0_2} + \ket{0_1, 2_2}\big).
+\end{equation}
+Este es el célebre \textbf{Efecto Hong-Ou-Mandel} (1987): cuando dos fotones idénticos inciden simultáneamente en un divisor de haz $50:50$, la probabilidad de detectar una coincidencia $\ket{1_1, 1_2}$ entre los dos detectores de salida cae exactamente a cero (el característico \textit{HOM dip}), y ambos fotones emergen siempre juntos como un estado entrelazado de número de fotones NOON ($N=2$) por el mismo brazo de salida.
+\end{ejemplo}
+
+\section{\texorpdfstring{Distribuciones Cuasiprobabilísticas en el Espacio de Fases: $P$, $W$ y $Q$}{Distribuciones Cuasiprobabilísticas en el Espacio de Fases: P, W y Q}}
+
+En mecánica cuántica, debido a la no conmutatividad $\comm{\op{a}}{\op{a}^\dagger} = \ident$, no existe una densidad de probabilidad conjunta genuina en el espacio de fases $(\operatorname{Re}\alpha, \operatorname{Im}\alpha)$. Sin embargo, existen tres distribuciones de cuasiprobabilidad asociadas a los tres órdenes de operadores (normal, simétrico de Weyl y antinormal):
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{Representación $P$ de Glauber-Sudarshan (Orden Normal):} Expresa cualquier operador densidad $\op{\rho}$ como una integral diagonal sobre estados coherentes:
+    \begin{equation}
+        \op{\rho} = \int_{\mathbb{C}} P(\alpha)\, \ketbra{\alpha}{\alpha}\, d^2\alpha, \qquad \int_{\mathbb{C}} P(\alpha)\,d^2\alpha = 1.
+    \end{equation}
+    Para un estado coherente $\ket{\alpha_0}$, $P(\alpha) = \delta^{(2)}(\alpha - \alpha_0)$; para un estado térmico, $P(\alpha) = \frac{1}{\pi\bar{n}}e^{-|\alpha|^2/\bar{n}} \ge 0$. Sin embargo, para estados no clásicos (como estados de Fock o estados comprimidos), $P(\alpha)$ toma valores negativos o se vuelve más singular que una delta de Dirac (derivadas de orden superior de $\delta$), lo que define formalmente la \textbf{no-clasicidad óptica}.
+
+    \item \textbf{Función $Q$ de Husimi-Kano (Orden Antinormal):} Se define como el elemento diagonal de $\op{\rho}$ en la base de estados coherentes:
+    \begin{equation}
+        Q(\alpha) \equiv \frac{1}{\pi}\mel{\alpha}{\op{\rho}}{\alpha}.
+    \end{equation}
+    La función $Q(\alpha)$ es siempre acotada, suave e infinitamente diferenciable, y estrictamente no negativa ($0 \le Q(\alpha) \le \frac{1}{\pi}$) para cualquier estado cuántico.
+
+    \item \textbf{Función de Wigner $W(\alpha)$ (Orden Simétrico de Weyl):} Se define como la transformada de Fourier bidimensional de la función característica simétrica $\chi_W(\lambda) = \tr\big[\op{\rho}\op{D}(\lambda)\big]$ (o equivalentemente usando el operador de paridad $\op{\Pi} = (-1)^{\op{n}}$):
+    \begin{equation}
+        W(\alpha) = \frac{1}{\pi^2}\int_{\mathbb{C}} \tr\big[\op{\rho}\,\op{D}(\lambda)\big] e^{\alpha\lambda^* - \alpha^*\lambda}\,d^2\lambda = \frac{2}{\pi}\tr\Big[ \op{\rho}\,\op{D}(\alpha)(-1)^{\op{n}}\op{D}^\dagger(\alpha) \Big].
+    \end{equation}
+    La función de Wigner es siempre real, sus integrales marginales reproducen exactamente las distribuciones de probabilidad de cualquier cuadratura, y la traza de dos operadores se calcula como un solapamiento en el espacio de fases: $\tr(\op{\rho}_1\op{\rho}_2) = \pi\int W_1(\alpha)W_2(\alpha)d^2\alpha$. La presencia de regiones donde $W(\alpha) < 0$ (negatividad de Wigner) es un indicador directo de interferencia cuántica en el espacio de fases.
+\end{enumerate}
+
+\begin{ejemplo}[Cálculo de $Q(\alpha)$ y de la Función de Wigner $W(\alpha)$ para un fotón único $\ket{1}$]
+Para el estado de Fock de un solo fotón $\op{\rho} = \ketbra{1}{1}$:
+\begin{itemize}
+    \item \textbf{Función $Q$ de Husimi:} Usando $\braket{1}{\alpha} = \alpha e^{-|\alpha|^2/2}$, obtenemos una distribución anular con un cero en el origen:
+    \begin{equation}
+        Q_{\ket{1}}(\alpha) = \frac{1}{\pi}|\braket{1}{\alpha}|^2 = \frac{|\alpha|^2}{\pi}e^{-|\alpha|^2} \ge 0.
+    \end{equation}
+    \item \textbf{Función de Wigner $W(\alpha)$:} Evaluando el elemento de matriz del operador de paridad desplazado para $\ket{n}$, se obtiene en general $W_{\ket{n}}(\alpha) = \frac{2}{\pi}(-1)^n e^{-2|\alpha|^2} L_n(4|\alpha|^2)$, donde $L_n(x)$ es el polinomio de Laguerre de grado $n$. Para $n = 1$, como $L_1(x) = 1 - x$:
+    \begin{equation}
+        W_{\ket{1}}(\alpha) = \frac{2}{\pi}\big(4|\alpha|^2 - 1\big)e^{-2|\alpha|^2}.
+    \end{equation}
+    En el origen del espacio de fases ($\alpha = 0$), la función de Wigner alcanza su valor mínimo negativo:
+    \begin{equation}
+        W_{\ket{1}}(0) = -\frac{2}{\pi} < 0,
+    \end{equation}
+    lo que demuestra de manera palpable el carácter no clásico del estado de un solo fotón.
+\end{itemize}
+\end{ejemplo}
+
+\section{Electrodinámica Cuántica de Cavidades: El Modelo de Jaynes-Cummings}
+
+El modelo fundamental que describe la interacción totalmente cuántica entre un átomo de dos niveles y un modo cuantizado del campo electromagnético dentro de una cavidad óptica de alta reflectividad fue formulado por Edwin Jaynes y Fred Cummings en 1963.
+
+\subsection{Deducción del Hamiltoniano de Rabi y Aproximación de Onda Rotante (RWA)}
+
+Consideremos un átomo de dos niveles con estado fundamental $\ket{g}$ (energía $-\frac{1}{2}\hbar\omega_a$) y estado excitado $\ket{e}$ (energía $+\frac{1}{2}\hbar\omega_a$), separados por la frecuencia de transición atómica $\omega_a$. Definimos los operadores atómicos de subida, bajada e inversión:
+\begin{equation}
+    \op{\sigma}_+ = \ketbra{e}{g}, \qquad \op{\sigma}_- = \ketbra{g}{e}, \qquad \op{\sigma}_z = \ketbra{e}{e} - \ketbra{g}{g},
+\end{equation}
+que satisfacen $\comm{\op{\sigma}_+}{\op{\sigma}_-} = \op{\sigma}_z$ y $\comm{\op{\sigma}_z}{\op{\sigma}_\pm} = \pm 2\op{\sigma}_\pm$. El operador momento dipolar eléctrico atómico (que por paridad tiene elementos diagonales nulos) se escribe como $\bm{\op{d}} = \bm{d}_{eg}\op{\sigma}_+ + \bm{d}_{eg}^*\op{\sigma}_-$. En la aproximación dipolar eléctrica ($\bm{k}\cdot\bm{r} \ll 1$), el Hamiltoniano de interacción $\op{H}_{\text{int}} = -\bm{\op{d}}\cdot\bm{\op{E}}$ con un modo de cavidad de frecuencia $\omega_c$ da lugar al \textbf{Hamiltoniano de Rabi Cuántico}:
+\begin{equation}
+    \op{H}_{\text{Rabi}} = \hbar\omega_c \op{a}^\dagger\op{a} + \frac{1}{2}\hbar\omega_a \op{\sigma}_z + \hbar g\big(\op{\sigma}_+ + \op{\sigma}_-\big)\big(\op{a} + \op{a}^\dagger\big),
+\end{equation}
+donde $g = -\frac{\bm{d}_{eg}\cdot\bm{\epsilon}}{\hbar}\sqrt{\frac{\hbar\omega_c}{2\varepsilon_0 V}}$ es la constante de acoplamiento vacío-átomo (mitad de la frecuencia de Rabi de vacío). En la imagen de interacción respecto del Hamiltoniano libre $\op{H}_0 = \hbar\omega_c\op{a}^\dagger\op{a} + \frac{1}{2}\hbar\omega_a\op{\sigma}_z$, los cuatro términos de interacción evolucionan como:
+\begin{itemize}
+    \item $\op{\sigma}_+\op{a}\, e^{i(\omega_a - \omega_c)t}$ (absorción de un fotón y excitación del átomo, conserva la energía cerca de resonancia $\omega_a \approx \omega_c$).
+    \item $\op{\sigma}_-\op{a}^\dagger\, e^{-i(\omega_a - \omega_c)t}$ (desexcitación del átomo y emisión de un fotón en la cavidad).
+    \item $\op{\sigma}_+\op{a}^\dagger\, e^{i(\omega_a + \omega_c)t}$ y $\op{\sigma}_-\op{a}\, e^{-i(\omega_a + \omega_c)t}$ (términos contrarrotantes que oscilan muy rápido a la suma de frecuencias $\omega_a + \omega_c$ y cuyo promedio temporal se anula cuando $g \ll \omega_a, \omega_c$ y $|\omega_a - \omega_c| \ll \omega_a + \omega_c$).
+\end{itemize}
+
+Despreciando los términos contrarrotantes (\textbf{Aproximación de Onda Rotante}, RWA), obtenemos el \textbf{Hamiltoniano de Jaynes-Cummings}:
+\begin{equation}
+    \op{H}_{\text{JC}} = \hbar\omega_c \op{a}^\dagger\op{a} + \frac{1}{2}\hbar\omega_a \op{\sigma}_z + \hbar g\left( \op{\sigma}_+ \op{a} + \op{\sigma}_- \op{a}^\dagger \right).
+\end{equation}
+
+\subsection{Diagonalización Exacta: Estados Vestidos (\textit{Dressed States}) y Colapsos y Resurgimientos}
+
+El operador número total de excitaciones $\op{N}_{\text{exc}} = \op{a}^\dagger\op{a} + \ketbra{e}{e}$ conmuta exactamente con $\op{H}_{\text{JC}}$: $\comm{\op{H}_{\text{JC}}}{\op{N}_{\text{exc}}} = 0$. Por consiguiente, el espacio de Hilbert $\Hil_{\text{átomo}} \otimes \Hil_{\text{campo}}$ se desacopla en una suma directa de subespacios invariantes bidimensionales $\Hil^{(n)} = \operatorname{span}\{\ket{e, n}, \ket{g, n+1}\}$ para cada $n \ge 0$ (además del estado fundamental no acoplado $\ket{g, 0}$).
+
+En la base $\{\ket{e, n}, \ket{g, n+1}\}$, se cumplen las relaciones
+\begin{align*}
+    \op{\sigma}_+\op{a}\ket{g, n+1} &= \sqrt{n+1}\ket{e, n}, &
+    \op{\sigma}_-\op{a}^\dagger\ket{e, n} &= \sqrt{n+1}\ket{g, n+1}.
+\end{align*}
+Por tanto, el bloque matricial $2\times 2$ del Hamiltoniano es:
+\begin{equation}
+    \op{H}_{\text{JC}}^{(n)} = \hbar\left(n + \frac{1}{2}\right)\omega_c \ident_2 + \frac{\hbar}{2}\begin{pmatrix} \Delta & 2g\sqrt{n+1} \\ 2g\sqrt{n+1} & -\Delta \end{pmatrix},
+\end{equation}
+donde $\Delta \equiv \omega_a - \omega_c$ es la desintonía (\textit{detuning}) átomo-cavidad. Diagonalizando esta matriz obtenemos las autoenergías exactas:
+\begin{equation}
+    E_{\pm, n} = \hbar\left(n + \frac{1}{2}\right)\omega_c \pm \frac{\hbar}{2}\Omega_n(\Delta), \qquad \Omega_n(\Delta) \equiv \sqrt{\Delta^2 + 4g^2(n+1)},
+\end{equation}
+donde $\Omega_n(\Delta)$ es la \textbf{frecuencia de Rabi cuántica generalizada} para $n$ fotones, y los autoestados son los \textbf{estados vestidos} (\textit{dressed states}) entrelazados átomo-fotón:
+\begin{align}
+    \ket{+, n} &= \cos\theta_n \ket{e, n} + \sin\theta_n \ket{g, n+1}, \\
+    \ket{-, n} &= -\sin\theta_n \ket{e, n} + \cos\theta_n \ket{g, n+1}, \qquad \tan(2\theta_n) = \frac{2g\sqrt{n+1}}{\Delta}.
+\end{align}
+En resonancia exacta ($\Delta = 0$), incluso en ausencia inicial de fotones ($n = 0$), un átomo excitado $\ket{e, 0}$ intercambia reversiblemente su energía con el vacío de la cavidad a la frecuencia de Rabi de vacío $\Omega_0 = 2g$ (\textbf{oscilaciones de Rabi de vacío} y desdoblamiento espectral de $\pm\hbar g$, demostrado experimentalmente por Haroche y colaboradores en cavidades superconductoras de microondas, Premio Nobel de Física 2012).
+
+\begin{ejemplo}[Colapsos y Resurgimientos Cuánticos (\textit{Collapses and Revivals}) con un Estado Coherente]
+Supongamos que en $t = 0$ el átomo ingresa en su estado excitado $\ket{e}$ dentro de una cavidad resonante ($\Delta = 0$) preparada en un estado coherente $\ket{\alpha} = \sum_{n=0}^{\infty} c_n \ket{n}$ con $|c_n|^2 = e^{-\bar{n}}\bar{n}^n / n!$. El estado conjunto evoluciona en el tiempo según:
+\begin{equation}
+    \ket{\Psi(t)} = \sum_{n=0}^{\infty} c_n \Big[ \cos\left(gt\sqrt{n+1}\right)\ket{e, n} - i\sin\left(gt\sqrt{n+1}\right)\ket{g, n+1} \Big].
+\end{equation}
+Calculando la inversión de población atómica $W(t) \equiv \expval{\op{\sigma}_z(t)} = P_e(t) - P_g(t)$:
+\begin{equation}
+    W(t) = \sum_{n=0}^{\infty} |c_n|^2 \cos\left(2gt\sqrt{n+1}\right) = e^{-\bar{n}}\sum_{n=0}^{\infty} \frac{\bar{n}^n}{n!} \cos\left(2gt\sqrt{n+1}\right).
+\end{equation}
+Esta suma discreta exhibe una firma cuántica espectacular que prueba directamente la cuantización granular de la energía del campo en fotones discretos:
+\begin{enumerate}[label=\alph*)]
+    \item Como las distintas componentes de Fock oscilan con frecuencias inconmensurables $\Omega_n = 2g\sqrt{n+1}$ alrededor de $\bar{n}$ (con anchura $\Delta n = \sqrt{\bar{n}}$), se desfasan destructivamente en el \textbf{tiempo de colapso} $t_c \sim \frac{1}{2g}$, haciendo que $W(t)$ caiga a cero.
+    \item Sin embargo, debido a que el espectro de números de fotones $n$ es un conjunto de \emph{enteros discretos}, cuando la diferencia de fase entre términos vecinos $\ket{\bar{n}}$ y $\ket{\bar{n}+1}$ alcanza un múltiplo entero de $2\pi$:
+    \begin{equation}
+        2gt_R\left(\sqrt{\bar{n}+1} - \sqrt{\bar{n}}\right) \approx \frac{gt_R}{\sqrt{\bar{n}}} = 2\pi k \quad \Longrightarrow \quad t_R = \frac{2\pi\sqrt{\bar{n}}}{g}\,k \quad (k = 1, 2, \dots),
+    \end{equation}
+    todas las componentes vuelven a ponerse en fase constructiva, produciendo los \textbf{resurgimientos cuánticos} (\textit{quantum revivals}) de las oscilaciones de Rabi en tiempos múltiplos de $t_R$. Si la distribución de intensidades fuera continua (teoría semiclásica), la integral de Fourier decaería permanentemente y jamás existirían resurgimientos.
+\end{enumerate}
+\end{ejemplo}
+
+\section{Sistemas Cuánticos Abiertos: Ecuación Maestra de Lindblad y Decoherencia}
+
+Ninguna cavidad óptica ni átomo real está perfectamente aislado de su entorno electromagnético externo (reservorio o baño térmico $R$). Cuando trazamos sobre los grados de libertad del reservorio ($\op{\rho}_S(t) = \tr_R[\op{\rho}_{SR}(t)]$) bajo la aproximación de acoplamiento débil y memoria corta (\textbf{Aproximación de Born-Markov}), la evolución del operador densidad reducido del sistema $\op{\rho}$ deja de ser unitaria y pasa a estar gobernada por un semigrupo dinámico completamente positivo y preservador de la traza, cuyo generador fue demostrado en toda generalidad por Goran Lindblad y por Vittorio Gorini, Andrzej Kossakowski y Ennackal Sudarshan (1976).
+
+\begin{teorema}[Ecuación Maestra de Gorini-Kossakowski-Sudarshan-Lindblad (GKSL)]
+La ecuación diferencial más general que preserva la hermiticidad, la traza unidad y la completa positividad del operador densidad $\op{\rho}(t)$ de un sistema cuántico abierto markoviano tiene la forma:
+\begin{equation}
+    \frac{d\op{\rho}}{dt} = -\frac{i}{\hbar}\comm{\op{H}}{\op{\rho}} + \sum_{k} \gamma_k \left( \op{L}_k \op{\rho} \op{L}_k^\dagger - \frac{1}{2}\acomm{\op{L}_k^\dagger \op{L}_k}{\op{\rho}} \right) \equiv \mathcal{L}[\op{\rho}],
+\end{equation}
+donde $\op{H}$ es el Hamiltoniano efectivo del sistema, $\gamma_k \ge 0$ son las tasas de relajación o amortiguamiento, $\op{L}_k$ son los \textbf{operadores de salto de Lindblad} (\textit{jump operators}) que describen los canales disipativos, y el superoperador $\mathcal{D}[\op{L}]\op{\rho} \equiv \op{L}\op{\rho}\op{L}^\dagger - \frac{1}{2}\big(\op{L}^\dagger\op{L}\op{\rho} + \op{\rho}\op{L}^\dagger\op{L}\big)$ se denomina \textbf{disipador de Lindblad}.
+\end{teorema}
+
+En óptica cuántica, los procesos disipativos fundamentales se modelan mediante operadores de salto específicos:
+\begin{itemize}
+    \item \textbf{Pérdida de fotones de una cavidad a temperatura $T=0$:} $\op{L}_1 = \op{a}$ con tasa $\kappa$ (decaimiento de la cavidad):
+    \begin{equation}
+        \left(\frac{d\op{\rho}}{dt}\right)_{\text{cav}} = \frac{\kappa}{2}(1 + \bar{n}_{\text{th}})\big(2\op{a}\op{\rho}\op{a}^\dagger - \op{a}^\dagger\op{a}\op{\rho} - \op{\rho}\op{a}^\dagger\op{a}\big) + \frac{\kappa}{2}\bar{n}_{\text{th}}\big(2\op{a}^\dagger\op{\rho}\op{a} - \op{a}\op{a}^\dagger\op{\rho} - \op{\rho}\op{a}\op{a}^\dagger\big).
+    \end{equation}
+    \item \textbf{Emisión espontánea atómica:} $\op{L}_2 = \op{\sigma}_-$ con tasa de Einstein $\Gamma$ (anchura natural de línea).
+    \item \textbf{Desfase puro (\textit{Pure Dephasing}):} $\op{L}_3 = \op{\sigma}_z$ con tasa $\gamma_\phi / 2$ (colisiones elásticas o fluctuaciones de fase sin pérdida de energía).
+\end{itemize}
+
+\begin{ejemplo}[Resolución de las Ecuaciones Ópticas de Bloch para el decaimiento radiativo y decoherencia de un átomo]
+Consideremos un átomo de dos niveles en el espacio libre a $T=0$ sujeto simultáneamente a emisión espontánea (tasa $\Gamma$, operador $\op{L}_1 = \op{\sigma}_-$) y desfase puro (tasa $\gamma_\phi/2$, operador $\op{L}_2 = \op{\sigma}_z$). Su ecuación maestra en el marco rotante con el átomo ($\op{H} = 0$) es:
+\begin{equation}
+    \frac{d\op{\rho}}{dt} = \Gamma\left(\op{\sigma}_-\op{\rho}\op{\sigma}_+ - \frac{1}{2}\acomm{\op{\sigma}_+\op{\sigma}_-}{\op{\rho}}\right) + \frac{\gamma_\phi}{2}\left(\op{\sigma}_z\op{\rho}\op{\sigma}_z - \op{\rho}\right).
+\end{equation}
+Escribiendo $\op{\rho}(t) = \begin{pmatrix} \rho_{ee}(t) & \rho_{eg}(t) \\ \rho_{ge}(t) & \rho_{gg}(t) \end{pmatrix}$ y usando que $\op{\sigma}_+\op{\sigma}_- = \ketbra{e}{e}$, proyectamos la ecuación maestra sobre los elementos de matriz:
+\begin{align}
+    \frac{d\rho_{ee}}{dt} &= -\Gamma \rho_{ee}(t), \qquad \frac{d\rho_{gg}}{dt} = +\Gamma \rho_{ee}(t), \\
+    \frac{d\rho_{eg}}{dt} &= -\left(\frac{\Gamma}{2} + \gamma_\phi\right)\rho_{eg}(t).
+\end{align}
+Integrando el sistema diferencial se obtienen las leyes de relajación longitudinal ($T_1$) y transversal ($T_2$, \textbf{decoherencia}):
+\begin{equation}
+    \rho_{ee}(t) = \rho_{ee}(0)e^{-t/T_1}, \qquad \rho_{eg}(t) = \rho_{eg}(0)e^{-t/T_2},
+\end{equation}
+donde el tiempo de relajación de energía es $T_1 = \frac{1}{\Gamma}$ y el tiempo de decoherencia de fase obedece la relación fundamental de la espectroscopía óptica y de resonancia magnética:
+\begin{equation}
+    \frac{1}{T_2} = \frac{1}{2T_1} + \gamma_\phi \quad \Longrightarrow \quad T_2 \le 2T_1.
+\end{equation}
+\end{ejemplo}
+
+% ============================================================================
+% CAPÍTULO 6: GUÍA DE LITERATURA COMPLEMENTARIA COMENTADA
+% ============================================================================
+\chapter{Literatura Complementaria y Guía de Estudio Avanzado}
+
+Con el propósito de facilitar la profundización en cada una de las ramas abordadas en este tratado, se presenta a continuación una selección estructurada y comentada de obras de referencia divididas por áreas temáticas y niveles de especialización.
+
+\section{Mecánica Cuántica: Formalismo y Fundamentos Matemáticos}
+
+\begin{enumerate}
+    \item \textbf{P. A. M. Dirac, \textit{The Principles of Quantum Mechanics} (4th Edition, Oxford University Press, 1958).}
+    \begin{quote}
+        \textit{Comentario:} La obra fundacional escrita por el creador de la notación bra-ket y de la electrodinámica cuántica. Su exposición de la teoría de representaciones, transformaciones canónicas y cuantización del campo sigue siendo un modelo insuperable de elegancia y claridad conceptual.
+    \end{quote}
+
+    \item \textbf{C. Cohen-Tannoudji, B. Diu y F. Laloë, \textit{Quantum Mechanics, Volumes I, II \& III} (Wiley-VCH, 2019).}
+    \begin{quote}
+        \textit{Comentario:} El tratado pedagógico más completo disponible. Su estructura modular de capítulos base seguidos de ``Complementos'' desarrolla todos los cálculos paso a paso. El Volumen III incorpora una presentación moderna y exhaustiva del entrelazamiento, segundas cuantizaciones, estados coherentes y enfriamiento láser.
+    \end{quote}
+
+    \item \textbf{J. J. Sakurai y J. Napolitano, \textit{Modern Quantum Mechanics} (3rd Edition, Cambridge University Press, 2020).}
+    \begin{quote}
+        \textit{Comentario:} Texto estándar de posgrado que introduce desde la primera página la estructura del espacio de Hilbert mediante experimentos de Stern-Gerlach secuenciales, desarrollando con maestría la teoría de simetrías, rotaciones en $\operatorname{SU}(2)$, integrales de camino de Feynman y desigualdades de Bell.
+    \end{quote}
+
+    \item \textbf{L. E. Ballentine, \textit{Quantum Mechanics: A Modern Development} (2nd Edition, World Scientific, 2014).}
+    \begin{quote}
+        \textit{Comentario:} Recomendado para quienes buscan máximo rigor matemático (espacios de Hilbert equipados o \textit{rigged Hilbert spaces} para espectros continuos, teorema de Gleason, teorema de Kochen-Specker y formulación estadística de ensambles).
+    \end{quote}
+
+    \item \textbf{A. Peres, \textit{Quantum Theory: Concepts and Methods} (Kluwer Academic Publishers, 1995).}
+    \begin{quote}
+        \textit{Comentario:} Una joya sobre la teoría cuántica de la medición, operadores POVM, contextualidad cuántica, geometría de proyectores y análisis operacional de pruebas de no-localidad.
+    \end{quote}
+\end{enumerate}
+
+\section{Entrelazamiento, Teorema de Bell e Información Cuántica}
+
+\begin{enumerate}
+    \item \textbf{J. S. Bell, \textit{Speakable and Unspeakable in Quantum Mechanics} (2nd Edition, Cambridge University Press, 2004).}
+    \begin{quote}
+        \textit{Comentario:} Recopilación íntegra de todos los artículos originales de John Stewart Bell sobre fundamentos cuánticos, incluyendo su histórico artículo de 1964, su análisis de los calcetines de Bertlmann (\textit{Bertlmann's socks and the nature of reality}) y la teoría de beables locales. Lectura indispensable para todo físico.
+    \end{quote}
+
+    \item \textbf{M. A. Nielsen e I. L. Chuang, \textit{Quantum Computation and Quantum Information} (10th Anniversary Edition, Cambridge University Press, 2010).}
+    \begin{quote}
+        \textit{Comentario:} Conocido universalmente como ``Mike \& Ike'', es la biblia de la información cuántica. Sus capítulos sobre el formalismo del operador densidad, descomposiciones de Schmidt, operaciones cuánticas (representación de suma de operadores de Kraus), entropía de von Neumann y desigualdades CHSH son extraordinariamente claros.
+    \end{quote}
+
+    \item \textbf{N. Brunner, D. Cavalcanti, S. Pironio, V. Scarani y S. Wehner, \textit{``Bell nonlocality''}, Reviews of Modern Physics 86, 419--478 (2014).}
+    \begin{quote}
+        \textit{Comentario:} El artículo de revisión definitivo sobre desigualdades de Bell modernas, politopos de correlación local, cota de Tsirelson, cajas de Popescu-Rohrlich (PR-boxes) y aplicaciones en criptografía cuántica independiente de dispositivos (\textit{device-independent QKD}).
+    \end{quote}
+
+    \item \textbf{R. Horodecki, P. Horodecki, M. Horodecki y K. Horodecki, \textit{``Quantum entanglement''}, Reviews of Modern Physics 81, 865--942 (2009).}
+    \begin{quote}
+        \textit{Comentario:} Tratado enciclopédico sobre criterios de separabilidad (criterio de transposición parcial positiva de Peres-Horodecki PPT), testigos de entrelazamiento (\textit{entanglement witnesses}), destilación de entrelazamiento y medidas de entrelazamiento multipartito.
+    \end{quote}
+\end{enumerate}
+
+\section{Óptica Cuántica, Fotónica Cuántica y Sistemas Abiertos}
+
+\begin{enumerate}
+    \item \textbf{M. O. Scully y M. S. Zubairy, \textit{Quantum Optics} (Cambridge University Press, 1997).}
+    \begin{quote}
+        \textit{Comentario:} Uno de los textos más completos de óptica cuántica teórica. Cubre con sumo detalle la cuantización del campo, estados coherentes y comprimidos, funciones de coherencia de Glauber, teoría cuántica del láser, modelo de Jaynes-Cummings, transparencia inducida electromagnéticamente (EIT), láseres sin inversión y borrador cuántico (\textit{quantum eraser}).
+    \end{quote}
+
+    \item \textbf{C. Gerry y P. Knight, \textit{Introductory Quantum Optics} (2nd Edition, Cambridge University Press, 2023).}
+    \begin{quote}
+        \textit{Comentario:} El mejor libro para iniciarse y dominar los cálculos prácticos en óptica cuántica. Desarrolla con total claridad las funciones $P, Q, W$, estados gato de Schrödinger ópticos, interferometría cuántica de Mach-Zehnder, efecto Hong-Ou-Mandel y pruebas ópticas de las desigualdades de Bell.
+    \end{quote}
+
+    \item \textbf{L. Mandel y E. Wolf, \textit{Optical Coherence and Quantum Optics} (Cambridge University Press, 1995).}
+    \begin{quote}
+        \textit{Comentario:} La obra monumental de más de 1100 páginas que conecta rigurosamente la teoría estadística de la óptica clásica con la electrodinámica cuántica, la teoría de fotodetección continua y los experimentos de correlación de fotones.
+    \end{quote}
+
+    \item \textbf{D. F. Walls y G. J. Milburn, \textit{Quantum Optics} (2nd Edition, Springer, 2008).}
+    \begin{quote}
+        \textit{Comentario:} Destaca por su tratamiento de las ecuaciones de Fokker-Planck asociadas a las distribuciones en el espacio de fases, generación paramétrica óptica, biestabilidad óptica y mediciones cuánticas de no demolición (QND).
+    \end{quote}
+
+    \item \textbf{S. Haroche y J.-M. Raimond, \textit{Exploring the Quantum: Atoms, Cavities, and Photons} (Oxford University Press, 2006).}
+    \begin{quote}
+        \textit{Comentario:} Escrito por el Premio Nobel Serge Haroche, combina de manera magistral la teoría cuántica de sistemas abiertos, decoherencia de estados mesoscópicos y el modelo de Jaynes-Cummings con los experimentos reales de átomos de Rydberg y cavidades superconductoras.
+    \end{quote}
+
+    \item \textbf{H.-P. Breuer y F. Petruccione, \textit{The Theory of Open Quantum Systems} (Oxford University Press, 2002).}
+    \begin{quote}
+        \textit{Comentario:} La referencia estándar para el estudio riguroso de la deducción microscópica de la ecuación maestra de Lindblad-GKSL, trayectorias cuánticas estocásticas (método de salto cuántico de Monte Carlo) y dinámica no markoviana.
+    \end{quote}
+\end{enumerate}
+
+% ============================================================================
+% BIBLIOGRAFÍA FORMAL CITADA
+% ============================================================================
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{Bibliografía}
+
+\bibitem{Dirac1958}
+P.~A.~M. Dirac, \textit{The Principles of Quantum Mechanics}, 4th ed. Oxford: Clarendon Press, 1958.
+
+\bibitem{VonNeumann1932}
+J. von Neumann, \textit{Mathematische Grundlagen der Quantenmechanik}. Berlín: Julius Springer, 1932. (Trad. inglesa: \textit{Mathematical Foundations of Quantum Mechanics}, Princeton University Press, 1955).
+
+\bibitem{Sakurai2020}
+J.~J. Sakurai y J. Napolitano, \textit{Modern Quantum Mechanics}, 3rd ed. Cambridge: Cambridge University Press, 2020.
+
+\bibitem{CohenTannoudji2019}
+C. Cohen-Tannoudji, B. Diu y F. Laloë, \textit{Quantum Mechanics}, Vols. I--III. Weinheim: Wiley-VCH, 2019.
+
+\bibitem{Robertson1929}
+H.~P. Robertson, ``The Uncertainty Principle'', \textit{Physical Review}, vol.~34, no.~1, pp.~163--164, 1929.
+
+\bibitem{EPR1935}
+A. Einstein, B. Podolsky y N. Rosen, ``Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?'', \textit{Physical Review}, vol.~47, no.~10, pp.~777--780, 1935.
+
+\bibitem{Schrodinger1935}
+E. Schrödinger, ``Discussion of Probability Relations between Separated Systems'', \textit{Mathematical Proceedings of the Cambridge Philosophical Society}, vol.~31, no.~4, pp.~555--563, 1935.
+
+\bibitem{Bell1964}
+J.~S. Bell, ``On the Einstein Podolsky Rosen Paradox'', \textit{Physics Physique Fizika}, vol.~1, no.~3, pp.~195--200, 1964.
+
+\bibitem{CHSH1969}
+J.~F. Clauser, M.~A. Horne, A. Shimony y R.~A. Holt, ``Proposed Experiment to Test Local Hidden-Variable Theories'', \textit{Physical Review Letters}, vol.~23, no.~15, pp.~880--884, 1969.
+
+\bibitem{Tsirelson1980}
+B.~S. Cirel'son (Tsirelson), ``Quantum Generalizations of Bell's Inequality'', \textit{Letters in Mathematical Physics}, vol.~4, no.~2, pp.~93--100, 1980.
+
+\bibitem{Aspect1982}
+A. Aspect, J. Dalibard y G. Roger, ``Experimental Test of Bell's Inequalities Using Time-Varying Analyzers'', \textit{Physical Review Letters}, vol.~49, no.~25, pp.~1804--1807, 1982.
+
+\bibitem{GHZ1989}
+D.~M. Greenberger, M.~A. Horne y A. Zeilinger, ``Going Beyond Bell's Theorem'', en \textit{Bell's Theorem, Quantum Theory and Conceptions of the Universe}, M. Kafatos, Ed. Dordrecht: Kluwer Academic, 1989, pp.~69--72.
+
+\bibitem{Hensen2015}
+B. Hensen \textit{et al.}, ``Loophole-free Bell inequality violation using electron spins separated by 1.3 kilometres'', \textit{Nature}, vol.~526, pp.~682--686, 2015.
+
+\bibitem{Glauber1963a}
+R.~J. Glauber, ``The Quantum Theory of Optical Coherence'', \textit{Physical Review}, vol.~130, no.~6, pp.~2529--2539, 1963.
+
+\bibitem{Glauber1963b}
+R.~J. Glauber, ``Coherent and Incoherent States of the Radiation Field'', \textit{Physical Review}, vol.~131, no.~6, pp.~2766--2788, 1963.
+
+\bibitem{Sudarshan1963}
+E.~C.~G. Sudarshan, ``Equivalence of Semiclassical and Quantum Mechanical Descriptions of Statistical Light Beams'', \textit{Physical Review Letters}, vol.~10, no.~7, pp.~277--279, 1963.
+
+\bibitem{Wigner1932}
+E. Wigner, ``On the Quantum Correction For Thermodynamic Equilibrium'', \textit{Physical Review}, vol.~40, no.~5, pp.~749--759, 1932.
+
+\bibitem{Husimi1940}
+K. Husimi, ``Some Formal Properties of the Density Matrix'', \textit{Proceedings of the Physico-Mathematical Society of Japan}, vol.~22, no.~4, pp.~264--314, 1940.
+
+\bibitem{Kimble1977}
+H.~J. Kimble, M. Dagenais y L. Mandel, ``Photon Antibunching in Resonance Fluorescence'', \textit{Physical Review Letters}, vol.~39, no.~11, pp.~691--695, 1977.
+
+\bibitem{HOM1987}
+C.~K. Hong, Z.~Y. Ou y L. Mandel, ``Measurement of subpicosecond time intervals between two photons by interference'', \textit{Physical Review Letters}, vol.~59, no.~18, pp.~2044--2046, 1987.
+
+\bibitem{JaynesCummings1963}
+E.~T. Jaynes y F.~W. Cummings, ``Comparison of quantum and semiclassical radiation theories with application to the beam maser'', \textit{Proceedings of the IEEE}, vol.~51, no.~1, pp.~89--109, 1963.
+
+\bibitem{Eberly1980}
+J.~H. Eberly, N.~B. Narozhny y J.~J. Sanchez-Mondragon, ``Periodic Spontaneous Collapse and Revival in a Simple Quantum Model'', \textit{Physical Review Letters}, vol.~44, no.~20, pp.~1323--1326, 1980.
+
+\bibitem{Lindblad1976}
+G. Lindblad, ``On the generators of quantum dynamical semigroups'', \textit{Communications in Mathematical Physics}, vol.~48, no.~2, pp.~119--130, 1976.
+
+\bibitem{GKS1976}
+V. Gorini, A. Kossakowski y E.~C.~G. Sudarshan, ``Completely positive dynamical semigroups of N-level systems'', \textit{Journal of Mathematical Physics}, vol.~17, no.~5, pp.~821--825, 1976.
+
+\bibitem{ScullyZubairy1997}
+M.~O. Scully y M.~S. Zubairy, \textit{Quantum Optics}. Cambridge: Cambridge University Press, 1997.
+
+\bibitem{GerryKnight2023}
+C.~C. Gerry y P.~L. Knight, \textit{Introductory Quantum Optics}, 2nd ed. Cambridge: Cambridge University Press, 2023.
+
+\bibitem{HarocheRaimond2006}
+S. Haroche y J.-M. Raimond, \textit{Exploring the Quantum: Atoms, Cavities, and Photons}. Oxford: Oxford University Press, 2006.
+
+\end{thebibliography}
+
+\end{document}
