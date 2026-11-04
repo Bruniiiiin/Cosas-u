@@ -1,0 +1,319 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+
+\definecolor{primary}{HTML}{1E3A8A}
+\definecolor{secondary}{HTML}{475569}
+\definecolor{lightbg}{HTML}{F8FAFC}
+
+\pagestyle{plain}
+
+\begin{document}
+
+% ==========================================
+% PÁGINA 1: ENUNCIADOS DEL CERTAMEN
+% ==========================================
+\begin{center}
+    {\Large \textbf{\textcolor{primary}{FÍSICA MATEMÁTICA III}}}\\[4pt]
+    {\large \textbf{Certamen de Práctica: Teoría de Grupos y Representaciones}}\\[6pt]
+    {\small \textcolor{secondary}{Tiempo estimado: 90 minutos \quad | \quad Puntaje total: 100 puntos (25 pts c/u)}}
+\end{center}
+\vspace{2mm}
+\hrule height 1pt
+\vspace{4mm}
+
+\noindent \textbf{Instrucciones:} Justifique rigurosamente cada uno de sus desarrollos citando los axiomas, teoremas o propiedades correspondientes. Las soluciones completas y las referencias exactas a las páginas del apunte se encuentran a partir de la página 2.
+
+\vspace{4mm}
+
+\subsection*{\textcolor{primary}{Pregunta 1: Axiomas de Grupo y Aritmética Modular (25 puntos)}}
+Analice si los siguientes conjuntos dotados de las leyes de composición interna indicadas poseen o no la estructura algebraica de \textbf{grupo} (verificando cierre G1, asociatividad G2, existencia de elemento unidad único G3 y existencia de elemento inverso único G4). En caso de serlo, indique su orden y si es abeliano; en caso contrario, demuestre qué propiedad falla:
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item El conjunto de matrices reales de $2\times 2$ definido por:
+    \[
+    G = \left\{ M(a,b) = \begin{pmatrix} a & b \\ 0 & 1 \end{pmatrix} \;\middle|\; a, b \in \mathbb{R}, \, a \neq 0 \right\}
+    \]
+    bajo la operación de multiplicación matricial habitual.
+    \item El conjunto cociente de restos módulo $4$, $\mathbb{Z}_4 = \{(0)_4, (1)_4, (2)_4, (3)_4\}$, bajo el producto modular $(a)_4 \cdot (b)_4 = (a \cdot b)_4$.
+    \item El subconjunto de restos no nulos módulo $5$, $\mathbb{Z}_5^* = \{(1)_5, (2)_5, (3)_5, (4)_5\}$, bajo el producto modular $(a)_5 \cdot (b)_5 = (a \cdot b)_5$. Construya su tabla de Cayley e identifique a qué grupo cíclico $C_n$ es isomorfo.
+\end{enumerate}
+
+\subsection*{\textcolor{primary}{Pregunta 2: Homomorfismos, Subgrupos Normales y Teorema del Isomorfismo (25 puntos)}}
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item Sea $f: G \to H$ un homomorfismo entre dos grupos $G$ y $H$. Demuestre formalmente que el núcleo del homomorfismo, $\ker f = \{x \in G \mid f(x) = e_H\}$, es un \textbf{subgrupo normal} de $G$, y que la imagen $\operatorname{Im} f = f(G)$ es un \textbf{subgrupo} de $H$.
+    \item Considere el grupo lineal general $G = GL(N, \mathbb{C})$ y el grupo multiplicativo de los números complejos no nulos $H = \mathbb{C} \setminus \{0\}$. Sea la aplicación determinante $\det : GL(N, \mathbb{C}) \to \mathbb{C} \setminus \{0\}$. Sabiendo que $\det(AB) = \det(A)\det(B)$, determine el núcleo de esta aplicación (conocido como el grupo especial lineal $SL(N, \mathbb{C})$) y aplique el \textbf{Teorema del Isomorfismo} para caracterizar el grupo cociente $GL(N, \mathbb{C}) / SL(N, \mathbb{C})$.
+\end{enumerate}
+
+\subsection*{\textcolor{primary}{Pregunta 3: El Grupo Simétrico $S_n$, Estructura en Ciclos y Diagramas de Young (25 puntos)}}
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item Dadas las siguientes permutaciones en $S_7$ escritas en notación de ciclos:
+    \[
+    \pi_1 = (634)(1257), \qquad \pi_2 = (157)(234)
+    \]
+    Exprese el producto $\pi_3 = \pi_1 \pi_2$ en notación de ciclos disjuntos y también en su forma canónica matricial. Descomponga $\pi_3$ en producto de transposiciones, determine su paridad e indique si pertenece al grupo alternante $A_7$. Finalmente, calcule el orden del elemento $\pi_3$.
+    \item Para el grupo simétrico $S_4$ ($n=4$): encuentre todas las particiones ordenadas de $n=4$, determine el número de clases de conjugación y calcule el número de elementos ($O_\alpha$) en cada clase. Dibuje los \textbf{diagramas de Young} asociados a todas las representaciones irreducibles (irreps) de $S_4$, calcule la dimensión $d_a$ de cada irrep usando la \textbf{regla de los ganchos} y compruebe que satisfacen $\sum_a d_a^2 = O(S_4)$.
+\end{enumerate}
+
+\subsection*{\textcolor{primary}{Pregunta 4: Teoría de Representaciones, Caracteres y Serie de Clebsch-Gordan (25 puntos)}}
+Considere el grupo diédrico $D_3$ (isomorfo a $S_3$, el grupo de simetrías del triángulo equilátero no direccional) de orden $O(D_3) = 6$, cuyas $3$ clases de conjugación son $K_1 = \{e\}$ ($k_1 = 1$), $K_2 = \{c, c^2\}$ ($k_2 = 2$, rotaciones de $2\pi/3$ y $4\pi/3$) y $K_3 = \{h_1, h_2, h_3\}$ ($k_3 = 3$, reflexiones especulares).
+\begin{enumerate}[label=\textbf{\alph*)}]
+    \item Utilizando las propiedades de la tabla de caracteres y las relaciones de ortogonalidad de filas y columnas, deduzca las dimensiones de las representaciones irreducibles de $D_3$ y construya paso a paso su \textbf{tabla de caracteres} completa $\{D^{(1)}, D^{(2)}, D^{(3)}\}$.
+    \item Considere la representación geométrica tridimensional $D: D_3 \to GL(\mathbb{R}^3)$ donde los elementos actúan sobre las coordenadas $(x,y,z)$ dejando el eje $z$ invariante para las rotaciones en el plano $xy$ (como en el Ejemplo 51 del apunte) y donde una reflexión $h_1$ invierte el eje $x$ ($x \to -x, y \to y, z \to z$). Determine los caracteres $\chi_D$ para cada clase de conjugación, compruebe mediante el criterio de irreducibilidad $\langle \chi_D | \chi_D \rangle$ si $D$ es reducible o irreducible, y encuentre su descomposición en suma directa de irreps $D = \bigoplus_a n_a D^{(a)}$.
+    \item Calcule los caracteres de la representación producto tensorial $D^{(3)} \otimes D^{(3)}$ (donde $D^{(3)}$ es la irrep bidimensional de $D_3$) y obtenga su \textbf{Serie de Clebsch-Gordan}.
+\end{enumerate}
+
+\newpage
+
+% ==========================================
+% PÁGINA 2+: SOLUCIONARIO Y REFERENCIAS AL APUNTE
+% ==========================================
+\begin{center}
+    {\Large \textbf{\textcolor{primary}{SOLUCIONARIO DETALLADO Y REFERENCIAS AL APUNTE}}}
+\end{center}
+\vspace{1mm}
+\hrule height 1pt
+\vspace{3mm}
+
+\noindent \textit{Nota sobre la numeración de páginas:} Todas las referencias remiten a la sección \textbf{Teoría de grupos} (páginas 1 a 20 del capítulo 1) y \textbf{Teoría de representaciones} (páginas 21 a 43 del capítulo 2) de tu apunte del curso.
+
+\subsection*{\textcolor{primary}{Solución Pregunta 1: Axiomas de Grupo y Aritmética Modular}}
+\textbf{Páginas del apunte utilizadas:}
+\begin{itemize}
+    \item \textbf{Páginas 1, 2 y 3 (Sección 1.1 y 1.1.2):} Definición 1 (axiomas de grupo G1--G4), Definición 2 (Tabla de Cayley), Definición 3 (Orden de un grupo) y subsección 1.1.2 (Ejemplos y contraejemplos, grupo lineal $GL(N,K)$).
+    \item \textbf{Páginas 10, 11 y 12 (Sección 1.4.1 y 1.4.2):} Definición 24 y 26 (Congruencias y conjunto cociente $\mathbb{Z}_m$), propiedades del producto en $\mathbb{Z}_m$ y Definición 29 (Grupo cíclico $C_n$).
+\end{itemize}
+
+\noindent \textbf{Desarrollo parte a):} Evaluamos las cuatro propiedades de la \textbf{Definición 1 (pág. 1)} sobre el conjunto $G$:
+\begin{enumerate}[label=\textbf{G\arabic*.}]
+    \item \textbf{Cierre:} Sean $M(a_1, b_1), M(a_2, b_2) \in G$ con $a_1 \neq 0$ y $a_2 \neq 0$. Su producto matricial es:
+    \[
+    M(a_1, b_1) M(a_2, b_2) = \begin{pmatrix} a_1 & b_1 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} a_2 & b_2 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a_1 a_2 & a_1 b_2 + b_1 \\ 0 & 1 \end{pmatrix} = M(a_1 a_2, a_1 b_2 + b_1)
+    \]
+    Como $a_1, a_2, b_1, b_2 \in \mathbb{R}$ y $a_1 \neq 0, a_2 \neq 0 \implies a_1 a_2 \in \mathbb{R}$ con $a_1 a_2 \neq 0$, y $a_1 b_2 + b_1 \in \mathbb{R}$. Por lo tanto, $M(a_1 a_2, a_1 b_2 + b_1) \in G$. Se cumple el cierre.
+    \item \textbf{Asociatividad:} El producto de matrices en $M_{2\times 2}(\mathbb{R})$ es asociativo por propiedad heredada del álgebra de matrices, cumpliéndose $(M_1 M_2) M_3 = M_1 (M_2 M_3)$.
+    \item \textbf{Existencia del elemento unidad:} Buscamos $E = M(e_1, e_2) \in G$ tal que $M(a,b) M(e_1, e_2) = M(a,b)$. Esto exige $a e_1 = a \implies e_1 = 1 \neq 0$ y $a e_2 + b = b \implies a e_2 = 0 \implies e_2 = 0$. La matriz identidad $I = M(1,0) = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \in G$ cumple $M(a,b)I = IM(a,b) = M(a,b)$ y es única.
+    \item \textbf{Existencia del elemento inverso:} Para cada $M(a,b) \in G$, buscamos $M(a', b') \in G$ tal que $M(a,b)M(a',b') = M(1,0)$. De la regla de producto obtenemos:
+    \[
+    a a' = 1 \implies a' = \frac{1}{a} \neq 0 \quad (\text{existe pues } a \neq 0), \qquad a b' + b = 0 \implies b' = -\frac{b}{a} \in \mathbb{R}
+    \]
+    Así, $M(a,b)^{-1} = M(a^{-1}, -b/a) \in G$, que también cumple ser inverso por la izquierda.
+\end{enumerate}
+\textbf{Conclusión a):} $G$ \textbf{sí forma un grupo} de orden infinito no numerable. \textbf{No es abeliano}, pues en general $a_1 b_2 + b_1 \neq a_2 b_1 + b_2$ (por ejemplo, $M(2,0)M(1,1) = M(2,2) \neq M(1,1)M(2,0) = M(2,1)$).
+
+\vspace{2mm}
+\noindent \textbf{Desarrollo parte b):} Tal como se explica al final de la \textbf{página 12 (Sección 1.4.1)}, $(\mathbb{Z}_m, \cdot)$ satisface cierre, asociatividad y posee elemento neutro $(1)_m$, pero no asegura la existencia de inverso para todos sus elementos. En $\mathbb{Z}_4$, el elemento neutro multiplicativo es $e = (1)_4$. Sin embargo:
+\begin{itemize}
+    \item Para $(0)_4$: $(0)_4 \cdot (x)_4 = (0)_4 \neq (1)_4$ para todo $(x)_4 \in \mathbb{Z}_4$. No tiene inverso.
+    \item Incluso excluyendo al cero, el elemento $(2)_4$ tampoco posee inverso multiplicativo en $\mathbb{Z}_4$, ya que $(2)_4 \cdot (0)_4 = (0)_4$, $(2)_4 \cdot (1)_4 = (2)_4$, $(2)_4 \cdot (2)_4 = (4)_4 = (0)_4$ y $(2)_4 \cdot (3)_4 = (6)_4 = (2)_4$. Ningún producto da $(1)_4$.
+\end{itemize}
+\textbf{Conclusión b):} $(\mathbb{Z}_4, \cdot)$ \textbf{no es un grupo} porque falla el axioma \textbf{G4} (existencia del elemento inverso).
+
+\vspace{2mm}
+\noindent \textbf{Desarrollo parte c):} En $\mathbb{Z}_5^* = \{(1)_5, (2)_5, (3)_5, (4)_5\}$, al ser $5$ un número primo, el producto de dos restos no nulos nunca es múltiplo de $5$. Construimos su \textbf{Tabla de Cayley (Definición 2, pág. 2)}:
+\begin{center}
+\begin{tabular}{c|cccc}
+\toprule
+$\cdot \pmod 5$ & $(1)_5$ & $(2)_5$ & $(3)_5$ & $(4)_5$ \\
+\midrule
+$(1)_5$ & $(1)_5$ & $(2)_5$ & $(3)_5$ & $(4)_5$ \\
+$(2)_5$ & $(2)_5$ & $(4)_5$ & $(1)_5$ & $(3)_5$ \\
+$(3)_5$ & $(3)_5$ & $(1)_5$ & $(4)_5$ & $(2)_5$ \\
+$(4)_5$ & $(4)_5$ & $(3)_5$ & $(2)_5$ & $(1)_5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+De la tabla verificamos: \textbf{G1 (Cierre)} todos los resultados pertenecen a $\mathbb{Z}_5^*$; \textbf{G2 (Asociatividad)} heredada de la multiplicación en $\mathbb{Z}$ (Ejercicio 27, pág. 11); \textbf{G3 (Unidad)} $e = (1)_5$; \textbf{G4 (Inversos)} cada fila y columna contiene a $(1)_5$ exactamente una vez: $(1)_5^{-1} = (1)_5$, $(2)_5^{-1} = (3)_5$, $(3)_5^{-1} = (2)_5$ y $(4)_5^{-1} = (4)_5$.
+Es un \textbf{grupo finito abeliano} de orden $O(\mathbb{Z}_5^*) = 4$. Calculando las potencias de $g = (2)_5$: $g^1 = (2)_5$, $g^2 = (4)_5$, $g^3 = (3)_5$, $g^4 = (1)_5 = e$. Según la \textbf{Definición 29 (pág. 12)}, $(2)_5$ es un generador de orden $4$, por lo que $\mathbb{Z}_5^*$ es isomorfo al grupo cíclico $C_4 = |\{e, g\}; g^4 = e|$.
+
+\vspace{4mm}
+\hrule
+\vspace{4mm}
+
+\subsection*{\textcolor{primary}{Solución Pregunta 2: Homomorfismos, Subgrupos Normales y Teorema del Isomorfismo}}
+\textbf{Páginas del apunte utilizadas:}
+\begin{itemize}
+    \item \textbf{Páginas 3 y 4 (Sección 1.2):} Definición 5 (Homomorfismo e Isomorfismo), Definición 7 ($\ker f$) y Definición 8 ($\operatorname{Im} f$).
+    \item \textbf{Páginas 6, 7, 8 y 9 (Sección 1.3.2 y 1.3.3):} Definición 12 (Subgrupo), Ejercicio 13 ($\operatorname{Im} f$ es subgrupo), Definición 14 (Subgrupo normal), Definición 21 (Grupo cociente) y \textbf{Teorema 22 (Teorema del isomorfismo, págs. 8--9)}.
+\end{itemize}
+
+\noindent \textbf{Desarrollo parte a):}
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{$\ker f$ es subgrupo normal de $G$ (Demostración del Teorema 22, págs. 8--9):}
+    \begin{itemize}
+        \item \textit{Cierre:} Sean $a, b \in \ker f$, entonces $f(a) = e_H$ y $f(b) = e_H$. Como $f$ es homomorfismo (Ec. 1.5), $f(ab) = f(a)f(b) = e_H e_H = e_H$ (Ec. 1.21). Luego $ab \in \ker f$.
+        \item \textit{Elemento neutro:} Para todo $x \in G$, $f(x)f(e_G) = f(xe_G) = f(x)$ (Ec. 1.22). Multiplicando a la izquierda por $[f(x)]^{-1}$ en $H$, se obtiene $f(e_G) = e_H$, por lo que $e_G \in \ker f$.
+        \item \textit{Elemento inverso:} Si $x \in \ker f$, entonces $f(x) = e_H$. Evaluando $f(x)f(x^{-1}) = f(xx^{-1}) = f(e_G) = e_H \implies e_H f(x^{-1}) = e_H \implies f(x^{-1}) = e_H$ (Ec. 1.23). Así, $x^{-1} \in \ker f$. (La asociatividad se hereda de $G$).
+        \item \textit{Normalidad (Definición 14, Ec. 1.11):} Sean $g \in G$ arbitrario y $x \in \ker f$. Evaluamos $f(gxg^{-1})$ usando la propiedad de homomorfismo (Ec. 1.24):
+        \[
+        f(gxg^{-1}) = f(g)f(x)f(g^{-1}) = f(g) e_H f(g^{-1}) = f(g)f(g^{-1}) = f(gg^{-1}) = f(e_G) = e_H
+        \]
+        Por lo tanto, $gxg^{-1} \in \ker f$ para todo $g \in G$, demostrando que $\ker f$ es un subgrupo normal de $G$.
+    \end{itemize}
+    \item \textbf{$\operatorname{Im} f$ es subgrupo de $H$ (Resolución del Ejercicio 13, pág. 6):}
+    \begin{itemize}
+        \item \textit{Cierre:} Sean $y_1, y_2 \in \operatorname{Im} f$. Existen $x_1, x_2 \in G$ tales que $y_1 = f(x_1)$ e $y_2 = f(x_2)$. Entonces $y_1 y_2 = f(x_1)f(x_2) = f(x_1 x_2)$. Como $x_1 x_2 \in G$, se tiene $y_1 y_2 \in \operatorname{Im} f$.
+        \item \textit{Unidad:} Como $e_G \in G$ y ya probamos que $f(e_G) = e_H$, entonces $e_H \in \operatorname{Im} f$.
+        \item \textit{Inverso:} Sea $y = f(x) \in \operatorname{Im} f$. Como $x^{-1} \in G$, el elemento $f(x^{-1}) \in \operatorname{Im} f$ verifica $y f(x^{-1}) = f(x)f(x^{-1}) = f(e_G) = e_H$, luego $y^{-1} = f(x^{-1}) \in \operatorname{Im} f$.
+    \end{itemize}
+\end{enumerate}
+
+\noindent \textbf{Desarrollo parte b):}
+La aplicación $\det : GL(N, \mathbb{C}) \to \mathbb{C} \setminus \{0\}$ cumple $\det(AB) = \det(A)\det(B)$, por lo que es un homomorfismo de grupos.
+\begin{itemize}
+    \item \textbf{Núcleo:} El elemento neutro de $H = \mathbb{C} \setminus \{0\}$ bajo la multiplicación es $1$. Por la \textbf{Definición 7 (pág. 4)}:
+    \[
+    \ker(\det) = \{ A \in GL(N, \mathbb{C}) \mid \det(A) = 1 \} \equiv SL(N, \mathbb{C})
+    \]
+    Por la parte a), $SL(N, \mathbb{C})$ es inmediatamente un \textbf{subgrupo normal} de $GL(N, \mathbb{C})$.
+    \item \textbf{Imagen e Isomorfismo:} Para cualquier complejo no nulo $z \in \mathbb{C} \setminus \{0\}$, la matriz diagonal $A_z = \operatorname{diag}(z, 1, \dots, 1) \in GL(N, \mathbb{C})$ cumple $\det(A_z) = z$. Por tanto, el homomorfismo es sobreyectivo: $\operatorname{Im}(\det) = \mathbb{C} \setminus \{0\}$. Aplicando el \textbf{Teorema 22 (Teorema del Isomorfismo, pág. 8)}, el grupo cociente $G / \ker f$ es isomorfo a $\operatorname{Im} f$:
+    \[
+    GL(N, \mathbb{C}) / SL(N, \mathbb{C}) \cong \mathbb{C} \setminus \{0\}
+    \]
+    En este grupo cociente, cada clase lateral está formada por todas las matrices de $GL(N, \mathbb{C})$ que comparten el mismo determinante complejo $z$.
+\end{itemize}
+
+\newpage
+
+\subsection*{\textcolor{primary}{Solución Pregunta 3: El Grupo Simétrico $S_n$, Estructura en Ciclos y Diagramas de Young}}
+\textbf{Páginas del apunte utilizadas:}
+\begin{itemize}
+    \item \textbf{Páginas 15, 16, 17 y 18 (Sección 1.5.1):} Definición 36 (Ciclo), Ejemplo 40 y 41 (multiplicación de ciclos de derecha a izquierda), Proposición 43 (descomposición en $r-1$ transposiciones) y Definición 44 y 45 (Paridad y grupo alternante $A_n$).
+    \item \textbf{Páginas 19 y 20 (Sección 1.5.2):} Clases de conjugación de $S_n$, estructura en ciclos $[l_1^{\nu_1} \dots l_r^{\nu_r}]$ y Ecuación (1.92) para el orden de cada clase $O_\alpha$.
+    \item \textbf{Páginas 40 y 41 (Sección 2.7):} Definición 77 (Diagramas de Young) y Definición 79 (Regla de los ganchos, Ec. 2.136).
+\end{itemize}
+
+\noindent \textbf{Desarrollo parte a):}
+Queremos calcular $\pi_3 = \pi_1 \pi_2 = (634)(1257)(157)(234)$. Siguiendo el método del \textbf{Ejemplo 41 (págs. 17--18)}, operamos de derecha a izquierda sobre cada índice $\{1,2,3,4,5,6,7\}$:
+\begin{itemize}
+    \item $1 \xrightarrow{(157)} 5 \xrightarrow{(1257)} 7 \implies 1 \to 7$.
+    \item $7 \xrightarrow{(157)} 1 \xrightarrow{(1257)} 2 \implies 7 \to 2$.
+    \item $2 \xrightarrow{(234)} 3 \xrightarrow{(634)} 4 \implies 2 \to 4$.
+    \item $4 \xrightarrow{(234)} 2 \xrightarrow{(1257)} 5 \implies 4 \to 5$.
+    \item $5 \xrightarrow{(157)} 7 \xrightarrow{(1257)} 1 \implies 5 \to 1$ (se cierra el primer ciclo: $(17245)$).
+    \item Continuamos con el índice $3$: $3 \xrightarrow{(234)} 4 \xrightarrow{(634)} 6 \implies 3 \to 6$.
+    \item $6 \xrightarrow{\text{fijo}} 6 \xrightarrow{(634)} 3 \implies 6 \to 3$ (se cierra el segundo ciclo: $(36)$).
+\end{itemize}
+Por lo tanto, en notación de ciclos disjuntos y en su forma canónica (\textbf{Definición 32, pág. 13}):
+\[
+\pi_3 = (17245)(36) = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ 7 & 4 & 6 & 5 & 1 & 3 & 2 \end{pmatrix}
+\]
+Aplicando la \textbf{Proposición 43 (Ec. 1.80, pág. 18)}, todo ciclo de longitud $r$ se escribe como producto de $r-1$ transposiciones:
+\[
+(17245) = (15)(14)(12)(17) \quad (4 \text{ transposiciones}), \qquad (36) = (36) \quad (1 \text{ transposición})
+\]
+Luego $\pi_3 = (15)(14)(12)(17)(36)$ se descompone en $4 + 1 = 5$ transposiciones. Como $5$ es impar, $\pi_3$ es una \textbf{permutación impar} (\textbf{Definición 44}) y \textbf{no pertenece} al grupo alternante $A_7$ (\textbf{Definición 45}). Como los ciclos disjuntos conmutan, $\pi_3^k = (17245)^k (36)^k = e$ cuando $k$ es el mínimo común múltiplo de las longitudes de sus ciclos: $\operatorname{mcm}(5, 2) = 10$. El orden de $\pi_3$ es $r = 10$.
+
+\vspace{2mm}
+\noindent \textbf{Desarrollo parte b):}
+Para $S_4$, $O(S_4) = 4! = 24$. Las particiones ordenadas de $n=4$ ($\lambda_1 \ge \lambda_2 \ge \dots$, pág. 40) son $5$, lo que indica que existen $s = 5$ clases de conjugación y $r = 5$ irreps. Usamos la \textbf{Ecuación (1.92) de la página 20} para el tamaño de cada clase, $O_\alpha = \frac{n!}{\prod_k \nu_k! l_k^{\nu_k}}$, y la \textbf{Regla de los ganchos (Definición 79, Ec. 2.136, pág. 41)}, $d = \frac{n!}{\prod_i L_i}$, para las dimensiones:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Partición ordenada} & \textbf{Estructura $[l_k^{\nu_k}]$} & \textbf{Elementos en clase $O_\alpha$} & \textbf{Longitudes de gancho $L_i$} & \textbf{Dimensión $d_a = \frac{24}{\prod L_i}$} \\
+\midrule
+$(4)$ & $[4^1]$ & $\dfrac{24}{1! \cdot 4^1} = 6$ & \begin{tabular}{|c|c|c|c|} \hline 4 & 3 & 2 & 1 \\ \hline \end{tabular} & $\dfrac{24}{4 \cdot 3 \cdot 2 \cdot 1} = 1$ \\[8pt]
+$(3,1)$ & $[1^1 3^1]$ & $\dfrac{24}{(1! 1^1)(1! 3^1)} = 8$ & \begin{tabular}{|c|c|c|} \hline 4 & 2 & 1 \\ \hline 1 & \multicolumn{2}{c}{} \\ \cline{1-1} \end{tabular} & $\dfrac{24}{4 \cdot 2 \cdot 1 \cdot 1} = 3$ \\[14pt]
+$(2,2) \equiv (2^2)$ & $[2^2]$ & $\dfrac{24}{2! \cdot 2^2} = 3$ & \begin{tabular}{|c|c|} \hline 3 & 2 \\ \hline 2 & 1 \\ \hline \end{tabular} & $\dfrac{24}{3 \cdot 2 \cdot 2 \cdot 1} = 2$ \\[14pt]
+$(2,1,1) \equiv (2,1^2)$ & $[1^2 2^1]$ & $\dfrac{24}{(2! 1^2)(1! 2^1)} = 6$ & \begin{tabular}{|c|c|} \hline 4 & 1 \\ \hline 2 & \multicolumn{1}{c}{} \\ \cline{1-1} 1 & \multicolumn{1}{c}{} \\ \cline{1-1} \end{tabular} & $\dfrac{24}{4 \cdot 1 \cdot 2 \cdot 1} = 3$ \\[20pt]
+$(1,1,1,1) \equiv (1^4)$ & $[1^4]$ & $\dfrac{24}{4! \cdot 1^4} = 1$ & $\begin{array}{|c|} \hline 4 \\ \hline 3 \\ \hline 2 \\ \hline 1 \\ \hline \end{array}$ & $\dfrac{24}{4 \cdot 3 \cdot 2 \cdot 1} = 1$ \\
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\textbf{Verificación de suma de clases y dimensiones (Ec. 2.76, pág. 32):}
+\[
+\sum_{\alpha=1}^5 O_\alpha = 6 + 8 + 3 + 6 + 1 = 24 = O(S_4), \qquad \sum_{a=1}^5 d_a^2 = 1^2 + 3^2 + 2^2 + 3^2 + 1^2 = 1 + 9 + 4 + 9 + 1 = 24 = O(S_4).
+\]
+
+\newpage
+
+\subsection*{\textcolor{primary}{Solución Pregunta 4: Teoría de Representaciones, Caracteres y Serie de Clebsch-Gordan}}
+\textbf{Páginas del apunte utilizadas:}
+\begin{itemize}
+    \item \textbf{Páginas 22 y 23 (Sección 2.1):} Ejemplo 51 (matrices 3D de rotación) y Definición 54--55 (Representaciones completamente reducibles e irreducibles).
+    \item \textbf{Páginas 29, 30, 31 y 32 (Sección 2.3 y 2.4):} Definición 65 (Carácter), Teorema 66 (Ortogonalidad de caracteres, Ec. 2.56), Ecuación (2.65) para multiplicidades $n_a = \langle \chi^{(a)} | \chi \rangle$, Proposición 67 (criterio $\langle \chi | \chi \rangle = 1$) y Ecuación (2.76) $\sum d_a^2 = O(G)$.
+    \item \textbf{Páginas 37, 38 y 39 (Sección 2.5 y 2.6):} Teorema 70 ($r=s$), Definición 71 (reglas 1--5 para construir la tabla de caracteres, Ecs. 2.113--2.117), Proposición 73 ($\chi_{T\otimes S} = \chi_T \chi_S$) y Definición 74 (Serie de Clebsch-Gordan, Ecs. 2.127--2.128).
+\end{itemize}
+
+\noindent \textbf{Desarrollo parte a): Construcción de la tabla de caracteres de $D_3$}
+Aplicamos las reglas de la \textbf{Definición 71 (págs. 37--38)}:
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Número de irreps (Regla 1, Teorema 70):} Como hay $s = 3$ clases de conjugación ($K_1, K_2, K_3$), existen exactamente $r = 3$ representaciones irreducibles no equivalentes: $D^{(1)}, D^{(2)}, D^{(3)}$.
+    \item \textbf{Dimensiones de las irreps (Regla 3, Ec. 2.114):} Se debe cumplir $d_1^2 + d_2^2 + d_3^2 = O(D_3) = 6$. Dado que $d_a \in \mathbb{N}$ y siempre existe la irrep trivial $d_1 = 1$, la única solución entera posible (salvo orden) es $1^2 + 1^2 + 2^2 = 6 \implies d_1 = 1, \, d_2 = 1, \, d_3 = 2$. Estos valores corresponden a la primera columna $\chi^{(a)}(e) = d_a$.
+    \item \textbf{Irrep trivial $D^{(1)}$ (Regla 2):} Todos los caracteres son iguales a $1$: $\chi^{(1)} = (1, 1, 1)$.
+    \item \textbf{Segunda irrep unidimensional $D^{(2)}$ (Reglas 4 y 5):} Para $g \in K_2$ ($c^3 = e$, orden $m=3$) y $h \in K_3$ ($h^2 = e$, orden $m=2$), como $D^{(2)}$ tiene dimensión $1$ y las reflexiones cumplen $c h = h c^2$, aplicando $D^{(2)}$ en un grupo unidimensional (abeliano) obtenemos $\chi^{(2)}(c) = \chi^{(2)}(c^2)$ y además $(\chi^{(2)}(c))^2 = \chi^{(2)}(c) \implies \chi^{(2)}(c) = 1$. Imponiendo ortogonalidad de filas con $D^{(1)}$ (\textbf{Ec. 2.116}):
+    \[
+    \sum_{\alpha=1}^3 k_\alpha \chi_\alpha^{*(1)} \chi_\alpha^{(2)} = 1(1)(1) + 2(1)(1) + 3(1)\chi_3^{(2)} = 0 \implies 3 + 3\chi_3^{(2)} = 0 \implies \chi_3^{(2)} = -1.
+    \]
+    Así, $\chi^{(2)} = (1, 1, -1)$ (que corresponde a la representación de paridad o signo en $S_3$).
+    \item \textbf{Irrep bidimensional $D^{(3)}$ (Regla 3, Ec. 2.115):} Usamos la relación de la representación regular $\sum_{a=1}^3 d_a \chi_\alpha^{(a)} = 6 \delta_{\alpha, 1}$ (o equivalentemente ortogonalidad de columnas, \textbf{Ec. 2.117}):
+    \begin{itemize}
+        \item Para $\alpha = 2$ ($K_2$): $1(1) + 1(1) + 2\chi_2^{(3)} = 0 \implies \chi_2^{(3)} = -1$.
+        \item Para $\alpha = 3$ ($K_3$): $1(1) + 1(-1) + 2\chi_3^{(3)} = 0 \implies \chi_3^{(3)} = 0$.
+    \end{itemize}
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{c|ccc}
+\toprule
+$D_3 \cong S_3$ & $K_1 = \{e\}$ ($k_1=1$) & $K_2 = \{c, c^2\}$ ($k_2=2$) & $K_3 = \{h_1, h_2, h_3\}$ ($k_3=3$) \\
+\midrule
+$D^{(1)}$ & $1$ & $1$ & $1$ \\
+$D^{(2)}$ & $1$ & $1$ & $-1$ \\
+$D^{(3)}$ & $2$ & $-1$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Desarrollo parte b): Análisis de la representación geométrica 3D}
+Del \textbf{Ejemplo 51 (pág. 22, Ec. 2.6)} y el enunciado para la reflexión $h_1$, las matrices representativas de cada clase son:
+\[
+D(e) = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \qquad D(c) = \begin{pmatrix} -1/2 & -\sqrt{3}/2 & 0 \\ \sqrt{3}/2 & -1/2 & 0 \\ 0 & 0 & 1 \end{pmatrix}, \qquad D(h_1) = \begin{pmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+\]
+Calculando las trazas (\textbf{Definición 65, Ec. 2.52, pág. 29}) para cada clase de conjugación:
+\[
+\chi_D(K_1) = \operatorname{Tr} D(e) = 3, \qquad \chi_D(K_2) = \operatorname{Tr} D(c) = -\frac{1}{2} - \frac{1}{2} + 1 = 0, \qquad \chi_D(K_3) = \operatorname{Tr} D(h_1) = -1 + 1 + 1 = 1.
+\]
+Por lo tanto, el vector de caracteres es $\chi_D = (3, 0, 1)$. Evaluamos el criterio de irreducibilidad de la \textbf{Proposición 67 (Ec. 2.66, pág. 31)}:
+\[
+\langle \chi_D | \chi_D \rangle = \frac{1}{O(D_3)} \sum_{\alpha=1}^3 k_\alpha |\chi_D(K_\alpha)|^2 = \frac{1}{6} \left[ 1 \cdot (3)^2 + 2 \cdot (0)^2 + 3 \cdot (1)^2 \right] = \frac{9 + 0 + 3}{6} = \frac{12}{6} = 2 \neq 1.
+\]
+Como $\langle \chi_D | \chi_D \rangle = 2 \neq 1$, la representación $D$ \textbf{es reducible}. Calculamos las multiplicidades $n_a = \langle \chi^{(a)} | \chi_D \rangle$ mediante la \textbf{Ecuación (2.65) (pág. 31)}:
+\begin{align*}
+n_1 &= \frac{1}{6} \left[ 1(1)(3) + 2(1)(0) + 3(1)(1) \right] = \frac{3 + 0 + 3}{6} = 1 \\
+n_2 &= \frac{1}{6} \left[ 1(1)(3) + 2(1)(0) + 3(-1)(1) \right] = \frac{3 + 0 - 3}{6} = 0 \\
+n_3 &= \frac{1}{6} \left[ 1(2)(3) + 2(-1)(0) + 3(0)(1) \right] = \frac{6 + 0 + 0}{6} = 1
+\end{align*}
+\textbf{Conclusión b):} La descomposición en irreps es $D = D^{(1)} \oplus D^{(3)}$ (el eje $z$ genera el submódulo invariante unidimensional $D^{(1)}$ y el plano $xy$ genera el submódulo irreducible bidimensional $D^{(3)}$).
+
+\vspace{2mm}
+\noindent \textbf{Desarrollo parte c): Producto tensorial y Serie de Clebsch-Gordan}
+Por la \textbf{Proposición 73 (Ec. 2.124, pág. 38)}, el carácter del producto tensorial $D^{(3)} \otimes D^{(3)}$ en cada clase es el cuadrado de los caracteres de $D^{(3)}$:
+\[
+\chi_{D^{(3)}\otimes D^{(3)}}(K_1) = 2^2 = 4, \qquad \chi_{D^{(3)}\otimes D^{(3)}}(K_2) = (-1)^2 = 1, \qquad \chi_{D^{(3)}\otimes D^{(3)}}(K_3) = 0^2 = 0.
+\]
+Aplicamos la \textbf{Ecuación (2.128) (pág. 39)} para hallar los coeficientes de la Serie de Clebsch-Gordan:
+\begin{align*}
+n_1^{3\otimes 3} &= \frac{1}{6} \left[ 1(1)(4) + 2(1)(1) + 3(1)(0) \right] = \frac{4 + 2 + 0}{6} = 1 \\
+n_2^{3\otimes 3} &= \frac{1}{6} \left[ 1(1)(4) + 2(1)(1) + 3(-1)(0) \right] = \frac{4 + 2 + 0}{6} = 1 \\
+n_3^{3\otimes 3} &= \frac{1}{6} \left[ 1(2)(4) + 2(-1)(1) + 3(0)(0) \right] = \frac{8 - 2 + 0}{6} = 1
+\end{align*}
+\textbf{Conclusión c):} La Serie de Clebsch-Gordan (\textbf{Ec. 2.127}) es:
+\[
+D^{(3)} \otimes D^{(3)} = D^{(1)} \oplus D^{(2)} \oplus D^{(3)}
+\]
+Verificando dimensiones: $2 \times 2 = 1 + 1 + 2 = 4$.
+
+\end{document}

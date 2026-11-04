@@ -1,0 +1,284 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{\textbf{Certamen de Práctica: Teoría de Grupos y Representaciones}\\ \large Física Matemática III}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Parte I: Enunciados}
+
+\subsection*{Pregunta 1: Estructura de Grupo, Subgrupos y Espacio Cociente (35 puntos)}
+\begin{enumerate}
+    \item \textbf{Conjuntos numéricos y de operadores:}
+    \begin{itemize}
+        \item Determine si el conjunto de operadores unitarios $\mathcal{U}(H) = \{U \in \mathcal{L}(H) \mid U^\dagger = U^{-1}\}$ sobre un espacio de Hilbert $H$ forma un grupo bajo la operación de composición (multiplicación) de operadores. Justifique verificando cada uno de los cuatro axiomas de grupo ($G_1, G_2, G_3, G_4$).
+        \item Compare los conjuntos $\mathbb{Z}_4 = \{(0)_4, (1)_4, (2)_4, (3)_4\}$ y $\mathbb{Z}_5^* = \{(1)_5, (2)_5, (3)_5, (4)_5\}$ bajo la operación de multiplicación modular $(a)_m \cdot (b)_m = (a \cdot b \pmod m)_m$. Demuestre por qué uno de ellos \textbf{no} cumple la estructura de grupo mientras que el otro sí lo hace, identificando el inverso de cada elemento en el caso afirmativo.
+    \end{itemize}
+    \item \textbf{Subgrupos normales y espacio cociente en $D_3$:}
+    Considere el grupo diédrico $D_3$ de orden $O(D_3) = 6$, cuya presentación viene dada por $D_3 = \langle c, x \mid c^3 = x^2 = (xc)^2 = e \rangle$, con elementos $\{e, c, c^2, x, y, z\}$ según su tabla de multiplicación ($cx = y$, $c^2x = z$, $xc = z$, $xc^2 = y$):
+    \begin{itemize}
+        \item Determine las clases de conjugación de $D_3$ utilizando la definición $b = gag^{-1}$.
+        \item Considere el subconjunto $H = \{e, x\} \subset D_3$. Verifique que $H$ es un subgrupo acorde al Teorema de Lagrange, obtenga las clases laterales por la izquierda del espacio cociente $D_3/H$ y compruebe por qué $D_3/H$ \textbf{no} forma un grupo.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Pregunta 2: Tabla de Caracteres y Relaciones de Ortogonalidad (35 puntos)}
+Considere el grupo simétrico $S_4$, cuyo orden es $O(S_4) = 4! = 24$.
+\begin{enumerate}
+    \item \textbf{Clases de conjugación:} Utilizando las particiones de $n = 4$ en estructuras de ciclos $[l_1^{\nu_1} l_2^{\nu_2} \dots l_r^{\nu_r}]$ tales que $\sum_{k=1}^r \nu_k l_k = 4$, encuentre todas las clases de conjugación de $S_4$ y calcule el número de elementos $k_\alpha$ (u $O_\alpha$) en cada clase mediante la fórmula combinatoria:
+    \[
+    O_\alpha = \frac{n!}{\prod_{k=1}^r \nu_k! \, l_k^{\nu_k}}
+    \]
+    \item \textbf{Construcción de la tabla de caracteres:} Complete la siguiente tabla de caracteres de $S_4$ aplicando la relación dimensional $\sum_{a=1}^r d_a^2 = O(G)$ y las relaciones de ortogonalidad de filas y columnas:
+
+    \begin{center}
+    \begin{tabular}{lccccc}
+    \toprule
+    $S_4$ & $K_{[1^4]}$ ($k_1 = 1$) & $K_{[1^2, 2]}$ ($k_2 = 6$) & $K_{[1, 3]}$ ($k_3 = 8$) & $K_{[4]}$ ($k_4 = 6$) & $K_{[2^2]}$ ($k_5 = 3$) \\
+    \midrule
+    $D^{(1)}$ (Trivial) & $1$ & $1$ & $1$ & $1$ & $1$ \\
+    $D^{(2)}$ (Alternante) & $1$ & $-1$ & $1$ & $-1$ & $1$ \\
+    $D^{(3)}$ & $d_3$ & $0$ & $a$ & $0$ & $b$ \\
+    $D^{(4)}$ & $d_4$ & $1$ & $0$ & $-1$ & $c$ \\
+    $D^{(5)}$ & $d_5$ & $x$ & $y$ & $z$ & $w$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{Producto tensorial y Serie de Clebsch-Gordan:} Utilizando la tabla completada, calcule los caracteres de la representación producto tensorial $D^{(3)} \otimes D^{(3)}$ para cada clase de conjugación y descompóngala en suma directa de representaciones irreducibles (irreps) empleando los coeficientes de la Serie de Clebsch-Gordan.
+\end{enumerate}
+
+\subsection*{Pregunta 3: Teoría de Representaciones y Aplicaciones en Mecánica Cuántica (30 puntos)}
+\begin{enumerate}
+    \item \textbf{Núcleo y fidelidad de una representación:} Sea $D : G \to \text{GL}(V)$ una representación de un grupo finito $G$ sobre un $G$-módulo $V$.
+    \begin{itemize}
+        \item Demuestre que el núcleo de la representación, $\ker D = \{g \in G \mid D(g) = I\}$, es un subgrupo normal de $G$.
+        \item Demuestre que la representación $D$ es fiel (inyectiva) si y sólo si $\ker D = \{e\}$. Analice, a partir de la tabla de caracteres de la Pregunta 2, cuáles de las representaciones irreducibles de $S_4$ son fieles y cuáles no lo son.
+    \end{itemize}
+    \item \textbf{Simetría del Hamiltoniano y degeneración espectral:} Sea $H$ el operador Hamiltoniano de un sistema cuántico independiente del tiempo que es invariante bajo las transformaciones de simetría de un grupo $G$, satisfaciendo $D(g) H D(g^{-1}) = H$ para todo $g \in G$.
+    \begin{itemize}
+        \item Demuestre que el operador $H$ conmuta con todos los operadores de la representación, es decir, $[H, D(g)] = 0$ para todo $g \in G$.
+        \item Utilizando el Lema de Schur, explique por qué si el espacio de estados se descompone en una suma directa de subespacios irreducibles asociados a las irreps $D^{(a)}$, cada subespacio invariante tiene un autovalor de energía con una degeneración igual a la dimensión $d_a$ de dicha irrep.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section*{Parte II: Pauta de Corrección y Solucionario Paso a Paso}
+
+\subsection*{Solución Pregunta 1}
+
+\subsubsection*{1.a) El conjunto de operadores unitarios $\mathcal{U}(H)$ bajo la composición}
+Para demostrar que $\mathcal{U}(H) = \{U \in \mathcal{L}(H) \mid U^\dagger = U^{-1}\}$ es un grupo con la multiplicación (composición) de operadores, verificamos los cuatro axiomas de grupo:
+\begin{itemize}
+    \item \textbf{G1 (Ley de composición interna / Cierre):} Sean $U_1, U_2 \in \mathcal{U}(H)$, lo que significa que son invertibles y cumplen $U_1^\dagger = U_1^{-1}$ y $U_2^\dagger = U_2^{-1}$. Como la operación adjunto invierte el orden de los factores, tenemos que:
+    \[
+    (U_1 U_2)^\dagger = U_2^\dagger U_1^\dagger = U_2^{-1} U_1^{-1} = (U_1 U_2)^{-1}
+    \]
+    Por lo tanto, el producto $U_1 U_2$ también es unitario y pertenece a $\mathcal{U}(H)$, cumpliéndose el cierre.
+    \item \textbf{G2 (Asociatividad):} La composición de operadores lineales en $\mathcal{L}(H)$ es intrínsecamente asociativa, cumpliéndose $(U_1 U_2) U_3 = U_1 (U_2 U_3)$ para cualesquiera $U_1, U_2, U_3 \in \mathcal{U}(H)$.
+    \item \textbf{G3 (Existencia de elemento neutro):} El operador identidad $I \in \mathcal{L}(H)$ verifica $I U = U I = U$ para todo $U \in \mathcal{U}(H)$. Además, dado que $I^\dagger = I$ e $I^{-1} = I$, se cumple $I^\dagger = I^{-1}$, por lo que $I \in \mathcal{U}(H)$.
+    \item \textbf{G4 (Existencia de elemento inverso):} Todo operador unitario $U \in \mathcal{U}(H)$ es invertible por definición y su inverso es $U^{-1} = U^\dagger$. Para confirmar que $U^{-1} \in \mathcal{U}(H)$, calculamos su adjunto:
+    \[
+    (U^{-1})^\dagger = (U^\dagger)^\dagger = U = (U^{-1})^{-1}
+    \]
+    Por ende, $U^{-1}$ también es unitario y pertenece al conjunto.
+\end{itemize}
+
+\subsubsection*{1.b) Comparación entre $(\mathbb{Z}_4, \cdot)$ y $(\mathbb{Z}_5^*, \cdot)$}
+\begin{itemize}
+    \item \textbf{Análisis de $(\mathbb{Z}_4, \cdot)$:} El conjunto $\mathbb{Z}_4 = \{(0)_4, (1)_4, (2)_4, (3)_4\}$ con la multiplicación módulo $4$ cumple el cierre, la asociatividad y posee elemento neutro $(1)_4$. Sin embargo, \textbf{no es un grupo} porque falla el axioma del elemento inverso:
+    \begin{itemize}
+        \item La clase $(0)_4$ absorbe cualquier elemento ($(0)_4 \cdot (x)_4 = (0)_4 \neq (1)_4$), por lo que carece de inverso.
+        \item La clase $(2)_4$ tampoco posee inverso multiplicativo porque $2$ no es coprimo con $4$: al multiplicar $(2)_4$ por todos los elementos de $\mathbb{Z}_4$ se obtiene $(2)_4 \cdot (0)_4 = (0)_4$, $(2)_4 \cdot (1)_4 = (2)_4$, $(2)_4 \cdot (2)_4 = (4)_4 = (0)_4$ y $(2)_4 \cdot (3)_4 = (6)_4 = (2)_4$, nunca alcanzando el neutro $(1)_4$.
+    \end{itemize}
+    \item \textbf{Análisis de $(\mathbb{Z}_5^*, \cdot)$:} El conjunto $\mathbb{Z}_5^* = \mathbb{Z}_5 \setminus \{(0)_5\} = \{(1)_5, (2)_5, (3)_5, (4)_5\}$ excluye la clase del cero. Al ser $5$ un número primo, todos los elementos del $1$ al $4$ son coprimos con $5$, lo que garantiza el cierre (ningún producto cae en $(0)_5$), la asociatividad, el elemento neutro $(1)_5$ y la existencia de un único inverso para cada elemento:
+    \begin{itemize}
+        \item $(1)_5^{-1} = (1)_5$, ya que $1 \cdot 1 = 1 \equiv 1 \pmod 5$.
+        \item $(2)_5^{-1} = (3)_5$ y $(3)_5^{-1} = (2)_5$, ya que $2 \cdot 3 = 6 \equiv 1 \pmod 5$.
+        \item $(4)_5^{-1} = (4)_5$, ya que $4 \cdot 4 = 16 \equiv 1 \pmod 5$.
+    \end{itemize}
+    Por lo tanto, $(\mathbb{Z}_5^*, \cdot)$ \textbf{sí es un grupo} (abeliano y cíclico de orden $4$).
+\end{itemize}
+
+\subsubsection*{1.c) Clases de conjugación y espacio cociente $D_3/H$}
+\begin{itemize}
+    \item \textbf{Clases de conjugación de $D_3$:} Dos elementos $a, b \in D_3$ son conjugados si existe $g \in D_3$ tal que $b = gag^{-1}$:
+    \begin{itemize}
+        \item La identidad siempre forma su propia clase: $K_1 = (e) = \{e\}$ ($k_1 = 1$).
+        \item Para las rotaciones $\{c, c^2\}$: usando $x^{-1} = x$, vemos que $xcx^{-1} = xcx = (xc)x = zx = c^2$. Por lo tanto, $K_2 = (c) = \{c, c^2\}$ ($k_2 = 2$).
+        \item Para las reflexiones $\{x, y, z\}$: conjugando $x$ con $c$ (donde $c^{-1} = c^2$) se obtiene $cxc^2 = yc^2 = z$, y conjugando con $c^2$ se obtiene $c^2xc = zc = y$. Por lo tanto, forman una sola clase: $K_3 = (x) = \{x, y, z\}$ ($k_3 = 3$).
+    \end{itemize}
+    \item \textbf{Subgrupo $H = \{e, x\}$ y espacio cociente $D_3/H$:}
+    \begin{itemize}
+        \item Como $x^2 = e$, el subconjunto $H = \{e, x\}$ es cerrado, contiene al neutro $e$ y cada elemento es su propio inverso, por lo que es un subgrupo de orden $O(H) = 2$, el cual divide al orden del grupo $O(D_3) = 6$ cumpliendo el Teorema de Lagrange ($\text{card}(D_3/H) = 6/2 = 3$).
+        \item Calculamos las clases laterales por la izquierda $gH = \{ge, gx\}$:
+        \[
+        eH = xH = \{e, x\}, \quad cH = \{c, cx\} = \{c, y\} = yH, \quad c^2H = \{c^2, c^2x\} = \{c^2, z\} = zH
+        \]
+        Así, el espacio cociente por la izquierda es $D_3/H = \{\{e, x\}, \{c, y\}, \{c^2, z\}\}$.
+        \item \textbf{¿Por qué $D_3/H$ no forma un grupo?} Para que la multiplicación entre clases laterales $(g_i H)(g_j H) = (g_i g_j)H$ esté bien definida y el espacio cociente forme un grupo, es condición necesaria y suficiente que $H$ sea un \textbf{subgrupo normal} ($gH = Hg$ para todo $g \in D_3$). Sin embargo, la clase lateral por la derecha para $c$ es $Hc = \{ec, xc\} = \{c, z\} \neq cH = \{c, y\}$. Al no ser $H$ un subgrupo normal, $D_3/H$ no posee una ley de composición interna bien definida y no forma grupo.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Solución Pregunta 2}
+
+\subsubsection*{2.a) Clases de conjugación de $S_4$}
+Las clases de conjugación de $S_4$ corresponden a las particiones de $n = 4$ de la forma $[l_1^{\nu_1} \dots l_r^{\nu_r}]$ con $\sum_{k=1}^r \nu_k l_k = 4$, y el tamaño de cada clase viene dado por la ecuación (1.92):
+\[
+O_\alpha = \frac{4!}{\prod_{k=1}^r \nu_k! \, l_k^{\nu_k}}
+\]
+\begin{enumerate}
+    \item \textbf{Partición $4 = 1 + 1 + 1 + 1 \to [1^4]$ (Identidad):}
+    \[
+    O_{[1^4]} = \frac{24}{4! \cdot 1^4} = \frac{24}{24} = 1 \quad (k_1 = 1)
+    \]
+    \item \textbf{Partición $4 = 1 + 1 + 2 \to [1^2, 2]$ (Transposiciones):}
+    \[
+    O_{[1^2, 2]} = \frac{24}{(2! \cdot 1^2)(1! \cdot 2^1)} = \frac{24}{2 \cdot 2} = 6 \quad (k_2 = 6)
+    \]
+    \item \textbf{Partición $4 = 1 + 3 \to [1, 3]$ (Triciclos):}
+    \[
+    O_{[1, 3]} = \frac{24}{(1! \cdot 1^1)(1! \cdot 3^1)} = \frac{24}{3} = 8 \quad (k_3 = 8)
+    \]
+    \item \textbf{Partición $4 = 4 \to [4]$ (Tetraciclos):}
+    \[
+    O_{[4]} = \frac{24}{1! \cdot 4^1} = \frac{24}{4} = 6 \quad (k_4 = 6)
+    \]
+    \item \textbf{Partición $4 = 2 + 2 \to [2^2]$ (Producto de dos transposiciones disjuntas):}
+    \[
+    O_{[2^2]} = \frac{24}{2! \cdot 2^2} = \frac{24}{2 \cdot 4} = 3 \quad (k_5 = 3)
+    \]
+\end{enumerate}
+Verificación: $1 + 6 + 8 + 6 + 3 = 24 = O(S_4)$.
+
+\subsubsection*{2.b) Determinación de las incógnitas de la tabla de caracteres}
+\begin{enumerate}
+    \item \textbf{Cálculo de las dimensiones $d_3, d_4, d_5$:}
+    Por el Teorema 70, como hay $s = 5$ clases de conjugación, existen $r = 5$ representaciones irreducibles. El carácter en la clase de la identidad $K_{[1^4]}$ coincide con la dimensión de cada irrep ($\chi_1^{(a)} = d_a$) y cumple $\sum_{a=1}^5 d_a^2 = O(S_4) = 24$:
+    \[
+    1^2 + 1^2 + d_3^2 + d_4^2 + d_5^2 = 24 \implies d_3^2 + d_4^2 + d_5^2 = 22
+    \]
+    La única suma de tres cuadrados de enteros positivos igual a $22$ es $2^2 + 3^2 + 3^2 = 4 + 9 + 9 = 22$. De la estructura de la tabla dada, identificamos $\mathbf{d_3 = 2}$, $\mathbf{d_4 = 3}$ y $\mathbf{d_5 = 3}$.
+    \item \textbf{Cálculo de $x$ y $z$ (ortogonalidad de columnas contra la primera columna):}
+    Aplicamos $\sum_{a=1}^5 d_a \chi_\alpha^{(a)} = 0$ para $\alpha \neq 1$:
+    \begin{itemize}
+        \item Columna $K_{[1^2, 2]}$ ($\alpha = 2$): $(1)(1) + (1)(-1) + (2)(0) + (3)(1) + 3x = 0 \implies 3 + 3x = 0 \implies \mathbf{x = -1}$.
+        \item Columna $K_{[4]}$ ($\alpha = 4$): $(1)(1) + (1)(-1) + (2)(0) + (3)(-1) + 3z = 0 \implies -3 + 3z = 0 \implies \mathbf{z = 1}$.
+    \end{itemize}
+    \item \textbf{Cálculo de $a$ y $b$ en la fila $D^{(3)}$:}
+    Aplicamos la relación de ortogonalidad de filas de $D^{(3)}$ con $D^{(1)}$ y su condición de normalización:
+    \begin{itemize}
+        \item Ortogonalidad con $D^{(1)}$: $\sum_{\alpha=1}^5 k_\alpha \chi_\alpha^{(1)*} \chi_\alpha^{(3)} = 1(1)(2) + 6(1)(0) + 8(1)(a) + 6(1)(0) + 3(1)(b) = 0 \implies 2 + 8a + 3b = 0$.
+        \item Normalización de $D^{(3)}$: $\sum_{\alpha=1}^5 k_\alpha |\chi_\alpha^{(3)}|^2 = 1(4) + 8a^2 + 3b^2 = 24 \implies 8a^2 + 3b^2 = 20$.
+    \end{itemize}
+    Sustituyendo $3b = -2 - 8a$ en la segunda ecuación obtenemos $24a^2 + (-2-8a)^2 = 60 \implies 88a^2 + 32a - 56 = 0 \implies 11a^2 + 4a - 7 = 0$. La solución entera es $\mathbf{a = -1}$, de donde $3b = -2 - 8(-1) = 6 \implies \mathbf{b = 2}$.
+    \item \textbf{Cálculo de $y$ en la columna $K_{[1, 3]}$:}
+    Por ortogonalidad de la tercera columna ($\alpha = 3$) contra la primera columna ($\alpha = 1$):
+    \[
+    \sum_{a=1}^5 d_a \chi_3^{(a)} = (1)(1) + (1)(1) + (2)(-1) + (3)(0) + 3y = 0 \implies 2 - 2 + 3y = 0 \implies \mathbf{y = 0}
+    \]
+    \item \textbf{Cálculo de $c$ y $w$ en la columna $K_{[2^2]}$:}
+    \begin{itemize}
+        \item Ortogonalidad de la fila $D^{(4)}$ con $D^{(1)}$: $1(3) + 6(1) + 8(0) + 6(-1) + 3c = 0 \implies 3 + 3c = 0 \implies \mathbf{c = -1}$.
+        \item Ortogonalidad de la quinta columna ($\alpha = 5$) contra la primera columna ($\alpha = 1$):
+        \[
+        (1)(1) + (1)(1) + (2)(2) + (3)(-1) + 3w = 0 \implies 3 + 3w = 0 \implies \mathbf{w = -1}
+        \]
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Tabla de Caracteres Completada de $S_4$:}
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+$S_4$ & $K_{[1^4]}$ ($1$) & $K_{[1^2, 2]}$ ($6$) & $K_{[1, 3]}$ ($8$) & $K_{[4]}$ ($6$) & $K_{[2^2]}$ ($3$) \\
+\midrule
+$D^{(1)}$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+$D^{(2)}$ & $1$ & $-1$ & $1$ & $-1$ & $1$ \\
+$D^{(3)}$ & $\mathbf{2}$ & $0$ & $\mathbf{-1}$ & $0$ & $\mathbf{2}$ \\
+$D^{(4)}$ & $\mathbf{3}$ & $1$ & $0$ & $-1$ & $\mathbf{-1}$ \\
+$D^{(5)}$ & $\mathbf{3}$ & $\mathbf{-1}$ & $\mathbf{0}$ & $\mathbf{1}$ & $\mathbf{-1}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{2.c) Descomposición de $D^{(3)} \otimes D^{(3)}$}
+\begin{itemize}
+    \item \textbf{Caracteres del producto tensorial:} Multiplicamos término a término la fila de $D^{(3)} = (2, 0, -1, 0, 2)$ por sí misma ($\chi_{D^{(3)}\otimes D^{(3)}}(K_\alpha) = (\chi_\alpha^{(3)})^2$):
+    \[
+    \chi_{D^{(3)}\otimes D^{(3)}} = (4, 0, 1, 0, 4)
+    \]
+    \item \textbf{Coeficientes de Clebsch-Gordan ($n^{(a)}$):} Usamos $n^{(a)} = \frac{1}{24} \sum_{\alpha=1}^5 k_\alpha \chi_\alpha^{(a)*} \chi_{D^{(3)}\otimes D^{(3)}}(K_\alpha)$:
+    \begin{align*}
+        n^{(1)} &= \frac{1}{24} [1(1)(4) + 6(1)(0) + 8(1)(1) + 6(1)(0) + 3(1)(4)] = \frac{24}{24} = 1 \\
+        n^{(2)} &= \frac{1}{24} [1(1)(4) + 6(-1)(0) + 8(1)(1) + 6(-1)(0) + 3(1)(4)] = \frac{24}{24} = 1 \\
+        n^{(3)} &= \frac{1}{24} [1(2)(4) + 6(0)(0) + 8(-1)(1) + 6(0)(0) + 3(2)(4)] = \frac{8 - 8 + 24}{24} = 1 \\
+        n^{(4)} &= \frac{1}{24} [1(3)(4) + 6(1)(0) + 8(0)(1) + 6(-1)(0) + 3(-1)(4)] = \frac{12 - 12}{24} = 0 \\
+        n^{(5)} &= \frac{1}{24} [1(3)(4) + 6(-1)(0) + 8(0)(1) + 6(1)(0) + 3(-1)(4)] = \frac{12 - 12}{24} = 0
+    \end{align*}
+    \item \textbf{Resultado final:}
+    \[
+    D^{(3)} \otimes D^{(3)} = D^{(1)} \oplus D^{(2)} \oplus D^{(3)}
+    \]
+\end{itemize}
+
+\subsection*{Solución Pregunta 3}
+
+\subsubsection*{3.a) Núcleo y fidelidad de una representación}
+\begin{itemize}
+    \item \textbf{Demostración de que $\ker D$ es subgrupo normal:}
+    Como una representación $D : G \to \text{GL}(V)$ es un homomorfismo de grupos, respeta el producto: $D(g_1 g_2) = D(g_1) D(g_2)$.
+    \begin{itemize}
+        \item \textit{Cierre:} Si $a, b \in \ker D$, entonces $D(ab) = D(a)D(b) = I \cdot I = I \implies ab \in \ker D$.
+        \item \textit{Neutro:} $D(e) = I \implies e \in \ker D$.
+        \item \textit{Inverso:} Si $x \in \ker D$, entonces $D(x^{-1}) = (D(x))^{-1} = I^{-1} = I \implies x^{-1} \in \ker D$.
+        \item \textit{Normalidad:} Para todo $g \in G$ y $x \in \ker D$, se tiene $D(gxg^{-1}) = D(g)D(x)D(g^{-1}) = D(g) I D(g)^{-1} = I$, por lo que $gxg^{-1} \in \ker D$ y $\ker D$ es un subgrupo normal.
+    \end{itemize}
+    \item \textbf{Demostración de que $D$ es fiel $\iff \ker D = \{e\}$:}
+    \begin{itemize}
+        \item $[\Rightarrow]$ Si $D$ es fiel (inyectiva), entonces $D(g) = D(h) \implies g = h$. Sea $u \in \ker D$; entonces $D(u) = I = D(e) \implies u = e$, luego $\ker D = \{e\}$.
+        \item $[\Leftarrow]$ Supongamos que $\ker D = \{e\}$ y sean $g, h \in G$ tales que $D(g) = D(h)$. Multiplicando por $D(h)^{-1} = D(h^{-1})$ obtenemos $I = D(g)D(h^{-1}) = D(gh^{-1})$. Esto implica que $gh^{-1} \in \ker D = \{e\}$, de modo que $gh^{-1} = e \implies g = h$, probando que $D$ es inyectiva.
+    \end{itemize}
+    \item \textbf{Fidelidad de las irreps de $S_4$:}
+    En una representación unitaria, $D^{(a)}(g) = I_{d_a}$ si y sólo si $\chi^{(a)}(g) = d_a = \chi^{(a)}(e)$. Observando la tabla de caracteres de la Pregunta 2:
+    \begin{itemize}
+        \item $D^{(1)}$ tiene $\chi^{(1)} = 1 = d_1$ en todas las clases ($\ker D^{(1)} = S_4$), no es fiel.
+        \item $D^{(2)}$ tiene $\chi^{(2)} = 1 = d_2$ en $K_{[1^4]}, K_{[1,3]}, K_{[2^2]}$ ($\ker D^{(2)} = A_4$), no es fiel.
+        \item $D^{(3)}$ tiene $\chi^{(3)} = 2 = d_3$ en $K_{[1^4]}$ y en $K_{[2^2]}$ ($\ker D^{(3)} = K_{[1^4]} \cup K_{[2^2]}$), no es fiel.
+        \item $\mathbf{D^{(4)}}$ \textbf{y} $\mathbf{D^{(5)}}$ tienen $\chi^{(a)}(K_\alpha) = 3 = d_a$ \textbf{únicamente} en la clase de la identidad $K_{[1^4]}$, por lo que $\ker D^{(4)} = \ker D^{(5)} = \{e\}$ y \textbf{ambas son representaciones fieles}.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{3.b) Invariancia del Hamiltoniano y degeneración de los niveles de energía}
+\begin{itemize}
+    \item \textbf{Conmutatividad $[H, D(g)] = 0$:}
+    Partiendo de la condición de invariancia $D(g) H D(g^{-1}) = H$ para todo $g \in G$ y utilizando que $D(g^{-1}) = D(g)^{-1}$, multiplicamos por $D(g)$ por la derecha:
+    \[
+    D(g) H D(g)^{-1} D(g) = H D(g) \implies D(g) H = H D(g) \implies [H, D(g)] = 0 \quad \forall g \in G
+    \]
+    \item \textbf{Subespacios invariantes y degeneración según el Lema de Schur:}
+    \begin{itemize}
+        \item Sea $|\psi\rangle$ un autoestado de $H$ con autovalor de energía $E$, es decir, $H |\psi\rangle = E |\psi\rangle$. Aplicando $D(g)$ a ambos lados y usando que $H D(g) = D(g) H$, obtenemos:
+        \[
+        H \left(D(g) |\psi\rangle\right) = D(g) H |\psi\rangle = D(g) (E |\psi\rangle) = E \left(D(g) |\psi\rangle\right)
+        \]
+        Esto demuestra que para todo $g \in G$, el estado transformado $D(g) |\psi\rangle$ también es un autoestado de $H$ con el mismo autovalor $E$, por lo que cada subespacio propio de $H$ es un $G$-submódulo invariante bajo la representación $D$.
+        \item Al descomponer el espacio de representación en suma directa de subespacios irreducibles $V = \bigoplus_a V^{(a)}$ donde actúa cada irrep $D^{(a)}$ de dimensión $d_a$, la restricción de $H$ al subespacio $V^{(a)}$ cumple $H D^{(a)}(g) = D^{(a)}(g) H$ para todo $g \in G$.
+        \item Por el \textbf{Lema 61 (consecuencia del Lema de Schur)}, todo operador lineal que conmuta con todas las matrices de una representación irreducible $D^{(a)}$ en un espacio de dimensión finita es proporcional a la identidad en dicho subespacio: $\left. H \right|_{V^{(a)}} = E_a I_{d_a}$.
+        \item Dado que la matriz identidad $I_{d_a}$ tiene dimensión $d_a \times d_a$, los $d_a$ vectores linealmente independientes de la base de $V^{(a)}$ comparten exactamente el mismo autovalor de energía $E_a$, lo que significa que el nivel de energía tiene una degeneración igual a la dimensión $d_a$ de la irrep correspondiente.
+    \end{itemize}
+\end{itemize}
+
+\end{document}

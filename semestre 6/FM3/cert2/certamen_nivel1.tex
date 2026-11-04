@@ -1,0 +1,797 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.2cm]{geometry}
+\usepackage{fontspec}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\setlength{\emergencystretch}{3em}
+
+\title{\textbf{Certamen de Práctica: Teoría de Grupos y Representaciones}\\ \large Física Matemática III — Solucionario Detallado y Formulario}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Parte I: Enunciados}
+
+\subsection*{Pregunta 1: Estructura de Grupo, Subgrupos y Espacio Cociente (35 puntos)}
+\begin{enumerate}
+    \item \textbf{Conjuntos numéricos y de operadores:}
+    \begin{itemize}
+        \item Determine si el conjunto de operadores unitarios $\mathcal{U}(H) = \{U \in \mathcal{L}(H) \mid U^\dagger = U^{-1}\}$ sobre un espacio de Hilbert $H$ forma un grupo bajo la operación de composición (multiplicación) de operadores. Justifique verificando cada uno de los cuatro axiomas de grupo ($G_1, G_2, G_3, G_4$).
+        \item Compare los conjuntos $\mathbb{Z}_4 = \{(0)_4, (1)_4, (2)_4, (3)_4\}$ y $\mathbb{Z}_5^* = \{(1)_5, (2)_5, (3)_5, (4)_5\}$ bajo la operación de multiplicación modular $(a)_m \cdot (b)_m = (a \cdot b \pmod m)_m$. Demuestre por qué uno de ellos \textbf{no} cumple la estructura de grupo mientras que el otro sí lo hace, construyendo sus Tablas de Cayley e identificando el inverso de cada elemento en el caso afirmativo.
+    \end{itemize}
+    \item \textbf{Subgrupos normales y espacio cociente en $D_3$:}
+    Considere el grupo diédrico $D_3$ de orden $O(D_3) = 6$, cuya presentación viene dada por $D_3 = \langle c, x \mid c^3 = x^2 = (xc)^2 = e \rangle$, con elementos $\{e, c, c^2, x, y, z\}$ según su tabla de multiplicación:
+    \begin{center}
+    \begin{tabular}{c|cccccc}
+    $\cdot$ & $e$ & $c$ & $c^2$ & $x$ & $y$ & $z$ \\
+    \hline
+    $e$ & $e$ & $c$ & $c^2$ & $x$ & $y$ & $z$ \\
+    $c$ & $c$ & $c^2$ & $e$ & $y$ & $z$ & $x$ \\
+    $c^2$ & $c^2$ & $e$ & $c$ & $z$ & $x$ & $y$ \\
+    $x$ & $x$ & $z$ & $y$ & $e$ & $c^2$ & $c$ \\
+    $y$ & $y$ & $x$ & $z$ & $c$ & $e$ & $c^2$ \\
+    $z$ & $z$ & $y$ & $x$ & $c^2$ & $c$ & $e$
+    \end{tabular}
+    \end{center}
+    \begin{itemize}
+        \item Determine las clases de conjugación de $D_3$ utilizando explícitamente la definición $b = gag^{-1}$.
+        \item Considere el subconjunto $H = \{e, x\} \subset D_3$. Verifique que $H$ es un subgrupo acorde al Teorema de Lagrange, obtenga las clases laterales por la izquierda y por la derecha del espacio cociente $D_3/H$ y compruebe detalladamente por qué $D_3/H$ \textbf{no} forma un grupo.
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{Pregunta 2: Tabla de Caracteres y Relaciones de Ortogonalidad (35 puntos)}
+Considere el grupo simétrico $S_4$, cuyo orden es $O(S_4) = 4! = 24$.
+\begin{enumerate}
+    \item \textbf{Clases de conjugación:} Utilizando las particiones de $n = 4$ en estructuras de ciclos $[l_1^{\nu_1} l_2^{\nu_2} \dots l_r^{\nu_r}]$ tales que $\sum_{k=1}^r \nu_k l_k = 4$, encuentre todas las clases de conjugación de $S_4$ y calcule el número de elementos $k_\alpha$ (u $O_\alpha$) en cada clase mediante la fórmula combinatoria:
+    \[
+    O_\alpha = \frac{n!}{\prod_{k=1}^r \nu_k! \, l_k^{\nu_k}}
+    \]
+    \item \textbf{Construcción de la tabla de caracteres:} Complete la siguiente tabla de caracteres de $S_4$ aplicando la relación dimensional $\sum_{a=1}^r d_a^2 = O(G)$ y las relaciones de ortogonalidad de filas y columnas:
+
+    \begin{center}
+    \begin{tabular}{lccccc}
+    \toprule
+    $S_4$ & $K_{[1^4]}$ ($k_1 = 1$) & $K_{[1^2, 2]}$ ($k_2 = 6$) & $K_{[1, 3]}$ ($k_3 = 8$) & $K_{[4]}$ ($k_4 = 6$) & $K_{[2^2]}$ ($k_5 = 3$) \\
+    \midrule
+    $D^{(1)}$ (Trivial) & $1$ & $1$ & $1$ & $1$ & $1$ \\
+    $D^{(2)}$ (Alternante) & $1$ & $-1$ & $1$ & $-1$ & $1$ \\
+    $D^{(3)}$ & $d_3$ & $0$ & $a$ & $0$ & $b$ \\
+    $D^{(4)}$ & $d_4$ & $1$ & $0$ & $-1$ & $c$ \\
+    $D^{(5)}$ & $d_5$ & $x$ & $y$ & $z$ & $w$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{Producto tensorial y Serie de Clebsch-Gordan:} Utilizando la tabla completada, calcule los caracteres de la representación producto tensorial $D^{(3)} \otimes D^{(3)}$ para cada clase de conjugación y descompóngala en suma directa de representaciones irreducibles (irreps) empleando los coeficientes de la Serie de Clebsch-Gordan.
+\end{enumerate}
+
+\subsection*{Pregunta 3: Teoría de Representaciones y Aplicaciones en Mecánica Cuántica (30 puntos)}
+\begin{enumerate}
+    \item \textbf{Núcleo y fidelidad de una representación:} Sea $D : G \to \text{GL}(V)$ una representación de un grupo finito $G$ sobre un $G$-módulo $V$.
+    \begin{itemize}
+        \item Demuestre que el núcleo de la representación, $\ker D = \{g \in G \mid D(g) = I\}$, es un subgrupo normal de $G$.
+        \item Demuestre que la representación $D$ es fiel (inyectiva) si y sólo si $\ker D = \{e\}$. Analice, a partir de la tabla de caracteres de la Pregunta 2, cuáles de las representaciones irreducibles de $S_4$ son fieles y cuáles no lo son.
+    \end{itemize}
+    \item \textbf{Simetría del Hamiltoniano y degeneración espectral:} Sea $H$ el operador Hamiltoniano de un sistema cuántico independiente del tiempo que es invariante bajo las transformaciones de simetría de un grupo $G$, satisfaciendo $D(g) H D(g^{-1}) = H$ para todo $g \in G$.
+    \begin{itemize}
+        \item Demuestre que el operador $H$ conmuta con todos los operadores de la representación, es decir, $[H, D(g)] = 0$ para todo $g \in G$.
+        \item Utilizando el Lema de Schur, explique por qué si el espacio de estados se descompone en una suma directa de subespacios irreducibles asociados a las irreps $D^{(a)}$, cada subespacio invariante tiene un autovalor de energía con una degeneración igual a la dimensión $d_a$ de dicha irrep.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section*{Parte II: Pauta de Corrección y Solucionario Paso a Paso}
+
+\subsection*{Solución Pregunta 1}
+
+\subsubsection*{1.a) El conjunto de operadores unitarios $\mathcal{U}(H)$ bajo la composición}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.1 (págs. 1--2):} Definición de grupo y axiomas $G_1$ (cierre/ley de composición interna), $G_2$ (asociatividad), $G_3$ (elemento neutro) y $G_4$ (elemento inverso).
+    \item \textit{Apunte de Operadores Lineales, Sección 2.2 (págs. 44--45, Definición 75 y ec. 2.64):} Definición de operador invertible ($A A^{-1} = A^{-1} A = I$), propiedades del operador adjunto ($(AB)^\dagger = B^\dagger A^\dagger$, $(A^\dagger)^\dagger = A$) y definición de operador unitario ($U^\dagger = U^{-1}$).
+\end{itemize}
+
+\textbf{Desarrollo paso a paso (explicando cada detalle):}
+Queremos probar que el conjunto $\mathcal{U}(H) = \{U \in \mathcal{L}(H) \mid U^\dagger = U^{-1}\}$ equipado con la multiplicación (composición) de operadores cumple los cuatro axiomas de grupo:
+
+\begin{enumerate}
+    \item \textbf{Axioma $G_1$ (Ley de composición interna o Cierre):}
+    \begin{itemize}
+        \item \textit{¿Qué debemos probar?} Que si tomamos dos operadores unitarios cualesquiera $U_1, U_2 \in \mathcal{U}(H)$ y los multiplicamos, el operador resultante $U_1 U_2$ también pertenece a $\mathcal{U}(H)$.
+        \item \textit{¿Cuál es la condición para pertenecer a $\mathcal{U}(H)$?} Que el adjunto del operador sea exactamente igual a su inverso. Es decir, debemos comprobar si $(U_1 U_2)^\dagger = (U_1 U_2)^{-1}$.
+        \item \textit{Hipótesis:} Como $U_1 \in \mathcal{U}(H)$ y $U_2 \in \mathcal{U}(H)$, sabemos que por separado cumplen $U_1^\dagger = U_1^{-1}$ y $U_2^\dagger = U_2^{-1}$.
+        \item \textit{Propiedad algebraica clave:} Tanto el operador adjunto $(\cdot)^\dagger$ como el operador inverso $(\cdot)^{-1}$ de un producto \textbf{invierten el orden de los factores} (Sección 2.2 de Operadores Lineales, pág. 44). Es decir, $(U_1 U_2)^\dagger = U_2^\dagger U_1^\dagger$ y $(U_1 U_2)^{-1} = U_2^{-1} U_1^{-1}$ (puesto que $(U_1 U_2)(U_2^{-1} U_1^{-1}) = U_1 (U_2 U_2^{-1}) U_1^{-1} = U_1 I U_1^{-1} = U_1 U_1^{-1} = I$).
+        \item \textit{Cálculo directo:} Tomamos el adjunto del producto y sustituimos la hipótesis paso a paso:
+        \[
+        (U_1 U_2)^\dagger = U_2^\dagger U_1^\dagger = U_2^{-1} U_1^{-1} = (U_1 U_2)^{-1}
+        \]
+        Como el adjunto de $U_1 U_2$ es igual a su inverso, concluimos que $U_1 U_2 \in \mathcal{U}(H)$. ¡Se cumple el cierre!
+    \end{itemize}
+
+    \item \textbf{Axioma $G_2$ (Asociatividad):}
+    \begin{itemize}
+        \item \textit{¿Qué debemos probar?} Que para cualesquiera tres operadores $U_1, U_2, U_3 \in \mathcal{U}(H)$ se cumple $(U_1 U_2) U_3 = U_1 (U_2 U_3)$.
+        \item \textit{Justificación:} Los operadores unitarios son aplicaciones lineales de $H$ en $H$. Para cualquier vector $|v\rangle \in H$, aplicar $((U_1 U_2) U_3)|v\rangle$ significa aplicar $U_1 U_2$ al vector $(U_3|v\rangle)$, lo que da $U_1(U_2(U_3|v\rangle))$. Por otro lado, aplicar $(U_1(U_2 U_3))|v\rangle$ significa aplicar $U_1$ al vector $(U_2 U_3)|v\rangle = U_2(U_3|v\rangle)$, dando exactamente el mismo vector $U_1(U_2(U_3|v\rangle))$. Por lo tanto, la composición de operadores es siempre asociativa.
+    \end{itemize}
+
+    \item \textbf{Axioma $G_3$ (Existencia del elemento neutro):}
+    \begin{itemize}
+        \item \textit{¿Qué debemos probar?} Que existe un operador identidad $I$ que deja intacto a cualquier $U$ ($I U = U I = U$) \textbf{y que además $I$ pertenece al conjunto $\mathcal{U}(H)$}.
+        \item \textit{Verificación:} El operador identidad $I \in \mathcal{L}(H)$ cumple $I|v\rangle = |v\rangle$, por lo que $I U = U I = U$. Para ver si $I \in \mathcal{U}(H)$, revisamos si cumple $I^\dagger = I^{-1}$:
+        \begin{itemize}
+            \item El inverso de la identidad es ella misma ($I^{-1} = I$) porque $I \cdot I = I$.
+            \item El adjunto de la identidad es ella misma ($I^\dagger = I$) porque para todo par de vectores $\langle w | I^\dagger | v \rangle = \langle I w | v \rangle = \langle w | v \rangle = \langle w | I | v \rangle$.
+        \end{itemize}
+        Por ende, $I^\dagger = I = I^{-1}$, lo que garantiza que $I \in \mathcal{U}(H)$.
+    \end{itemize}
+
+    \item \textbf{Axioma $G_4$ (Existencia del elemento inverso):}
+    \begin{itemize}
+        \item \textit{¿Qué debemos probar?} Que para cada $U \in \mathcal{U}(H)$ existe un operador $U^{-1}$ tal que $U U^{-1} = U^{-1} U = I$, \textbf{y que dicho $U^{-1}$ también está dentro de $\mathcal{U}(H)$}.
+        \item \textit{Verificación:} Por la propia definición de $\mathcal{U}(H)$, todo $U \in \mathcal{U}(H)$ es invertible y su inverso es $U^{-1} = U^\dagger$. Ahora debemos comprobar si $U^{-1}$ cumple la condición de unitariedad, es decir, si $(U^{-1})^\dagger = (U^{-1})^{-1}$:
+        \begin{itemize}
+            \item Por un lado, como $U^{-1} = U^\dagger$, al tomar adjunto otra vez usamos que el adjunto del adjunto devuelve el operador original: $(U^{-1})^\dagger = (U^\dagger)^\dagger = U$.
+            \item Por otro lado, el inverso del inverso de cualquier operador invertible es el operador original: $(U^{-1})^{-1} = U$.
+        \end{itemize}
+        Igualando ambos resultados tenemos $(U^{-1})^\dagger = U = (U^{-1})^{-1}$. Esto demuestra que $U^{-1} \in \mathcal{U}(H)$.
+    \end{itemize}
+\end{enumerate}
+Al cumplirse $G_1, G_2, G_3$ y $G_4$, queda demostrado que $(\mathcal{U}(H), \cdot)$ es un grupo.
+
+\subsubsection*{1.b) Comparación entre $(\mathbb{Z}_4, \cdot)$ y $(\mathbb{Z}_5^*, \cdot)$}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.4.1 ``El grupo $\mathbb{Z}_m$'' (págs. 10--12, Definición 24, ecs. 1.38 y 1.39):} Definición de congruencia módulo $m$, clases de equivalencia $(r)_m = \{a \in \mathbb{Z} \mid a \equiv r \pmod m\}$, y propiedades del producto modular $(a)_m \cdot (b)_m = (a \cdot b)_m$. En la página 11 se señala explícitamente: \textit{``la existencia del elemento inverso respecto del producto no está asegurada para todos los elementos de $\mathbb{Z}_m$ y por ello $(\mathbb{Z}_m, \cdot)$ no forma un grupo''}.
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.1 (pág. 2, Definición 2):} Tabla de Cayley (en un grupo, el elemento neutro debe aparecer exactamente una vez en cada fila y en cada columna).
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+Recordemos primero cómo se opera: para multiplicar $(a)_m \cdot (b)_m$, multiplicamos los números enteros $a \cdot b$ de forma normal y luego dividimos ese resultado entre $m$ (o le restamos $m$ sucesivamente) para quedarnos únicamente con el \textbf{resto} (que siempre es un número entre $0$ y $m-1$).
+
+\begin{enumerate}
+    \item \textbf{¿Por qué $(\mathbb{Z}_4, \cdot)$ NO es un grupo?}
+    El conjunto es $\mathbb{Z}_4 = \{(0)_4, (1)_4, (2)_4, (3)_4\}$ con multiplicación módulo $m = 4$. Construyamos su tabla de multiplicación calculando cada producto y restando múltiplos de $4$:
+    \begin{itemize}
+        \item Fila del $(0)_4$: $0$ por cualquier número es $0 \implies (0)_4$.
+        \item Fila del $(1)_4$: $1$ por cualquier número deja el número igual (por lo que $\mathbf{e = (1)_4}$ es el elemento neutro multiplicativo).
+        \item Fila del $(2)_4$: $(2)_4 \cdot (0)_4 = (0)_4$; $(2)_4 \cdot (1)_4 = (2)_4$; $(2)_4 \cdot (2)_4 = (4)_4 = (0)_4$ (porque $4 - 4 = 0$); y $(2)_4 \cdot (3)_4 = (6)_4 = (2)_4$ (porque $6 - 4 = 2$).
+        \item Fila del $(3)_4$: $(3)_4 \cdot (0)_4 = (0)_4$; $(3)_4 \cdot (1)_4 = (3)_4$; $(3)_4 \cdot (2)_4 = (6)_4 = (2)_4$; y $(3)_4 \cdot (3)_4 = (9)_4 = (1)_4$ (porque $9 - 8 = 1$).
+    \end{itemize}
+    \begin{center}
+    \begin{tabular}{c|cccc}
+    $\cdot$ & $(0)_4$ & $(1)_4$ & $(2)_4$ & $(3)_4$ \\
+    \hline
+    $(0)_4$ & $(0)_4$ & $(0)_4$ & $(0)_4$ & $(0)_4$ \\
+    $(1)_4$ & $(0)_4$ & $\mathbf{(1)_4}$ & $(2)_4$ & $(3)_4$ \\
+    $(2)_4$ & $(0)_4$ & $(2)_4$ & $(0)_4$ & $(2)_4$ \\
+    $(3)_4$ & $(0)_4$ & $(3)_4$ & $(2)_4$ & $\mathbf{(1)_4}$
+    \end{tabular}
+    \end{center}
+    \textbf{Conclusión para $\mathbb{Z}_4$:} Para que sea un grupo (Axioma $G_4$), cada fila debería tener al elemento neutro $(1)_4$. Sin embargo, en la fila del $(0)_4$ y en la fila del $(2)_4$ \textbf{nunca aparece el $(1)_4$}. Es decir, ni $(0)_4$ ni $(2)_4$ tienen elemento inverso (el $2$ no tiene inverso porque no es coprimo con $4$, ya que comparten el factor $2$). Por lo tanto, \textbf{$(\mathbb{Z}_4, \cdot)$ no es un grupo}.
+
+    \item \textbf{¿Por qué $(\mathbb{Z}_5^*, \cdot)$ SÍ es un grupo?}
+    Aquí el conjunto es $\mathbb{Z}_5^* = \mathbb{Z}_5 \setminus \{(0)_5\} = \{(1)_5, (2)_5, (3)_5, (4)_5\}$ con multiplicación módulo $m = 5$ (el asterisco significa que hemos quitado la clase del cero). Como $5$ es un número primo, todos los elementos del conjunto son coprimos con $5$. Calculamos todos los productos restando múltiplos de $5$ ($5, 10, 15$) cuando el resultado supere a $4$:
+    \begin{itemize}
+        \item $(2)_5 \cdot (2)_5 = (4)_5$.
+        \item $(2)_5 \cdot (3)_5 = (6)_5 = (6 - 5)_5 = \mathbf{(1)_5}$.
+        \item $(2)_5 \cdot (4)_5 = (8)_5 = (8 - 5)_5 = (3)_5$.
+        \item $(3)_5 \cdot (3)_5 = (9)_5 = (9 - 5)_5 = (4)_5$.
+        \item $(3)_5 \cdot (4)_5 = (12)_5 = (12 - 10)_5 = (2)_5$.
+        \item $(4)_5 \cdot (4)_5 = (16)_5 = (16 - 15)_5 = \mathbf{(1)_5}$.
+    \end{itemize}
+    Armamos la Tabla de Cayley de $(\mathbb{Z}_5^*, \cdot)$:
+    \begin{center}
+    \begin{tabular}{c|cccc}
+    $\cdot$ & $(1)_5$ & $(2)_5$ & $(3)_5$ & $(4)_5$ \\
+    \hline
+    $(1)_5$ & $\mathbf{(1)_5}$ & $(2)_5$ & $(3)_5$ & $(4)_5$ \\
+    $(2)_5$ & $(2)_5$ & $(4)_5$ & $\mathbf{(1)_5}$ & $(3)_5$ \\
+    $(3)_5$ & $(3)_5$ & $\mathbf{(1)_5}$ & $(4)_5$ & $(2)_5$ \\
+    $(4)_5$ & $(4)_5$ & $(3)_5$ & $(2)_5$ & $\mathbf{(1)_5}$
+    \end{tabular}
+    \end{center}
+    \textbf{Verificación de los 4 axiomas en $(\mathbb{Z}_5^*, \cdot)$:}
+    \begin{itemize}
+        \item \textbf{$G_1$ (Cierre):} Todos los resultados de la tabla son elementos de $\mathbb{Z}_5^*$ (nunca aparece el $(0)_5$).
+        \item \textbf{$G_2$ (Asociatividad):} Se hereda de la asociatividad de la multiplicación de números enteros (pág. 11 del apunte).
+        \item \textbf{$G_3$ (Neutro):} El elemento neutro es $e = (1)_5$, cuya fila y columna replican los encabezados.
+        \item \textbf{$G_4$ (Inverso):} El neutro $(1)_5$ aparece exactamente una vez en cada fila y columna. Buscando la posición del $(1)_5$ en cada fila obtenemos el inverso de cada elemento:
+        \[
+        (1)_5^{-1} = (1)_5, \qquad (2)_5^{-1} = (3)_5, \qquad (3)_5^{-1} = (2)_5, \qquad (4)_5^{-1} = (4)_5
+        \]
+    \end{itemize}
+    Por lo tanto, \textbf{$(\mathbb{Z}_5^*, \cdot)$ sí forma un grupo} (abeliano y cíclico de orden $4$).
+\end{enumerate}
+
+\subsubsection*{1.c) Clases de conjugación y espacio cociente $D_3/H$}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.3.1 (pág. 5, ec. 1.10):} Definición de elementos conjugados ($a \sim b \iff a = gbg^{-1}$) y descomposición del grupo en clases de conjugación $G = \bigcup_i (g_i)$.
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.3.2 (págs. 6--7, Teorema de Lagrange ec. 1.19):} Clases laterales $gH$, orden del espacio cociente $\text{card}(G/H) = O(G)/O(H)$ y condición de subgrupo normal ($gH = Hg \iff ghg^{-1} \in H$) para que el espacio cociente $G/H$ sea un grupo.
+    \item \textit{Guía de Ejercicios ``Teoría de Grupos'' (Ejercicio 4):} Tabla de multiplicación y presentación de $D_3$.
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+\begin{enumerate}
+    \item \textbf{Cálculo detallado de los inversos en $D_3$:}
+    Antes de conjugar ($gag^{-1}$), necesitamos saber cuál es el inverso $g^{-1}$ de cada elemento mirando dónde aparece la identidad $e$ en la tabla de multiplicación de $D_3$:
+    \begin{itemize}
+        \item $e \cdot e = e \implies e^{-1} = e$.
+        \item $c \cdot c^2 = c^2 \cdot c = e \implies c^{-1} = c^2$ y $(c^2)^{-1} = c$.
+        \item $x \cdot x = e$, $y \cdot y = e$, $z \cdot z = e \implies x^{-1} = x$, $y^{-1} = y$, $z^{-1} = z$ (las tres reflexiones son sus propios inversos).
+    \end{itemize}
+
+    \item \textbf{Cálculo de las clases de conjugación $(a) = \{gag^{-1} \mid g \in D_3\}$:}
+    \begin{itemize}
+        \item \textbf{Clase de la identidad $(e)$:} Para cualquier $g \in D_3$, $geg^{-1} = gg^{-1} = e$. Por tanto, la identidad siempre está sola en su clase:
+        \[
+        K_1 = (e) = \{e\} \quad (k_1 = 1)
+        \]
+        \item \textbf{Clase de $c$:} Conjugamos $c$ con los elementos del grupo usando la tabla de $D_3$:
+        \begin{itemize}
+            \item Con $g = e, c, c^2$ (que conmutan con $c$): $ece^{-1} = c$, $ccc^{-1} = c$, $c^2 c (c^2)^{-1} = c$.
+            \item Con $g = x$ ($x^{-1} = x$): Buscamos en la tabla $x \cdot c = z$, y luego multiplicamos ese resultado por $x$: $(xc)x = z \cdot x = c^2$.
+            \item Con $g = y$ ($y^{-1} = y$): En la tabla $y \cdot c = x$, y luego $(yc)y = x \cdot y = c^2$.
+            \item Con $g = z$ ($z^{-1} = z$): En la tabla $z \cdot c = y$, y luego $(zc)z = y \cdot z = c^2$.
+        \end{itemize}
+        Por lo tanto, al conjugar $c$ con todo el grupo solo obtenemos $c$ y $c^2$:
+        \[
+        K_2 = (c) = \{c, c^2\} \quad (k_2 = 2)
+        \]
+        \item \textbf{Clase de $x$:} Conjugamos $x$ con las rotaciones:
+        \begin{itemize}
+            \item Con $g = e$: $exe^{-1} = x$.
+            \item Con $g = c$ ($c^{-1} = c^2$): Miramos en la tabla $c \cdot x = y$, y luego multiplicamos por $c^2$: $(cx)c^2 = y \cdot c^2 = z$.
+            \item Con $g = c^2$ ($(c^2)^{-1} = c$): Miramos en la tabla $c^2 \cdot x = z$, y luego multiplicamos por $c$: $(c^2 x)c = z \cdot c = y$.
+        \end{itemize}
+        Así, las tres reflexiones se transforman entre sí bajo conjugación y forman la tercera clase:
+        \[
+        K_3 = (x) = \{x, y, z\} \quad (k_3 = 3)
+        \]
+        *(Verificación: $k_1 + k_2 + k_3 = 1 + 2 + 3 = 6 = O(D_3)$).*
+    \end{itemize}
+
+    \item \textbf{Verificación de que $H = \{e, x\}$ es subgrupo y cálculo del espacio cociente $D_3/H$:}
+    \begin{itemize}
+        \item \textbf{¿Por qué $H = \{e, x\}$ es subgrupo?} Sus productos internos son $e \cdot e = e \in H$, $e \cdot x = x \cdot e = x \in H$ y $x \cdot x = e \in H$ (cumple cierre), contiene al neutro $e$, y el inverso de $x$ es $x \in H$. Su orden es $O(H) = 2$, el cual divide exactamente al orden del grupo $O(D_3) = 6$, cumpliendo el \textbf{Teorema de Lagrange} (ec. 1.19 del apunte, pág. 7), según el cual el número de clases laterales es:
+        \[
+        \text{card}(D_3/H) = \frac{O(D_3)}{O(H)} = \frac{6}{2} = 3
+        \]
+        \item \textbf{Clases laterales por la izquierda ($gH = \{g \cdot e, g \cdot x\}$):} Multiplicamos cada elemento $g \in D_3$ por la izquierda de $\{e, x\}$ leyendo la tabla de $D_3$:
+        \begin{align*}
+            eH &= \{e \cdot e, e \cdot x\} = \{e, x\} \\
+            xH &= \{x \cdot e, x \cdot x\} = \{x, e\} = \{e, x\} \quad (\text{es la misma clase } eH) \\
+            cH &= \{c \cdot e, c \cdot x\} = \{c, y\} \\
+            yH &= \{y \cdot e, y \cdot x\} = \{y, c\} = \{c, y\} \quad (\text{es la misma clase } cH) \\
+            c^2H &= \{c^2 \cdot e, c^2 \cdot x\} = \{c^2, z\} \\
+            zH &= \{z \cdot e, z \cdot x\} = \{z, c^2\} = \{c^2, z\} \quad (\text{es la misma clase } c^2H)
+        \end{align*}
+        Por lo tanto, el conjunto cociente por la izquierda tiene exactamente las 3 clases laterales predichas por Lagrange:
+        \[
+        D_3/H = \big\{ \{e, x\}, \, \{c, y\}, \, \{c^2, z\} \big\}
+        \]
+        \item \textbf{¿Por qué $D_3/H$ NO forma un grupo?}
+        Según la Sección 1.3.2 del apunte (pág. 7), para que las clases laterales puedan multiplicarse entre sí mediante la regla $(g_i H)(g_j H) = (g_i g_j)H$ y formen un grupo cociente, es \textbf{condición necesaria y suficiente que $H$ sea un subgrupo normal} de $D_3$, lo cual significa que las clases laterales por la izquierda deben coincidir con las clases laterales por la derecha ($gH = Hg$ para todo $g \in D_3$).
+        Calculemos las clases laterales \textbf{por la derecha} $Hg = \{e \cdot g, x \cdot g\}$ para comparar:
+        \[
+        Hc = \{e \cdot c, x \cdot c\} = \{c, z\} \neq cH = \{c, y\}
+        \]
+        Como $cH \neq Hc$, $H$ \textbf{no es un subgrupo normal}.
+        Además, podemos comprobar directamente que el producto entre dos clases laterales de $D_3/H$ está \textbf{mal definido} (depende del representante que elijas): si intentamos multiplicar todos los elementos de la clase $cH = \{c, y\}$ por todos los de la clase $c^2H = \{c^2, z\}$, obtenemos:
+        \[
+        \{c, y\} \cdot \{c^2, z\} = \{c \cdot c^2, \, c \cdot z, \, y \cdot c^2, \, y \cdot z\} = \{e, \, x, \, z, \, c^2\}
+        \]
+        El resultado $\{e, x, z, c^2\}$ tiene 4 elementos y mezcla dos clases laterales distintas ($\{e, x\}$ y $\{c^2, z\}$), por lo que \textbf{no es una clase lateral de $D_3/H$}. Así queda completamente demostrado que $D_3/H$ no cumple la ley de composición interna y no es un grupo.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\subsection*{Solución Pregunta 2}
+
+\subsubsection*{2.a) Clases de conjugación de $S_4$}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.4.2 ``El grupo simétrico $S_n$'' (pág. 16, ec. 1.92 y Ejemplo 46):} Estructura de ciclos disjuntos, particiones de $n$ como $\sum_{k=1}^r \nu_k l_k = n$ y fórmula para el orden (tamaño) de cada clase de conjugación $O_\alpha$.
+    \item \textit{Guía ``Teoría de Grupos III'' (Ejercicio 5):} Obtener las clases de conjugación de $S_4$ y el número de elementos en cada una.
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+En el grupo simétrico $S_4$ ($n = 4$, con orden total $O(S_4) = 4! = 24$), dos permutaciones pertenecen a la misma clase de conjugación si y sólo si tienen exactamente la misma estructura de ciclos disjuntos. Para hallar todas las estructuras posibles, buscamos todas las formas de sumar números enteros positivos que den $4$ ($\sum_{k=1}^r \nu_k l_k = 4$), donde $l_k$ es la longitud del ciclo y $\nu_k$ es cuántas veces se repite un ciclo de longitud $l_k$. Luego aplicamos la ecuación (1.92) del apunte:
+\[
+O_\alpha = \frac{4!}{\prod_{k=1}^r \nu_k! \, l_k^{\nu_k}} = \frac{24}{\nu_1! \, l_1^{\nu_1} \cdot \nu_2! \, l_2^{\nu_2} \cdots}
+\]
+*(Recordatorio trivial: $0! = 1$, $1! = 1$, $2! = 2$, $3! = 6$, $4! = 24$).*
+
+\begin{enumerate}
+    \item \textbf{Partición $4 = 1 + 1 + 1 + 1 \longrightarrow$ Notación $[1^4]$:}
+    \begin{itemize}
+        \item \textit{Significado:} Hay cuatro ciclos de longitud $1$ ($\Rightarrow l_1 = 1$ se repite $\nu_1 = 4$ veces). Deja fijos los 4 elementos, por lo que es la permutación identidad $e = (1)(2)(3)(4)$.
+        \item \textit{Cálculo de elementos:}
+        \[
+        k_1 = O_{[1^4]} = \frac{4!}{4! \cdot 1^4} = \frac{24}{24 \cdot 1} = \mathbf{1}
+        \]
+    \end{itemize}
+
+    \item \textbf{Partición $4 = 1 + 1 + 2 \longrightarrow$ Notación $[1^2, 2]$:}
+    \begin{itemize}
+        \item \textit{Significado:} Hay dos ciclos de longitud $1$ ($l_1 = 1, \nu_1 = 2$) y un ciclo de longitud $2$ ($l_2 = 2, \nu_2 = 1$). Corresponde a las transposiciones simples como $(12)(3)(4) \equiv (12)$.
+        \item \textit{Cálculo de elementos:}
+        \[
+        k_2 = O_{[1^2, 2]} = \frac{4!}{(2! \cdot 1^2) \cdot (1! \cdot 2^1)} = \frac{24}{(2 \cdot 1) \cdot (1 \cdot 2)} = \frac{24}{4} = \mathbf{6}
+        \]
+    \end{itemize}
+
+    \item \textbf{Partición $4 = 1 + 3 \longrightarrow$ Notación $[1, 3]$:}
+    \begin{itemize}
+        \item \textit{Significado:} Hay un ciclo de longitud $1$ ($l_1 = 1, \nu_1 = 1$) y un ciclo de longitud $3$ ($l_2 = 3, \nu_2 = 1$). Corresponde a los triciclos como $(123)(4) \equiv (123)$.
+        \item \textit{Cálculo de elementos:}
+        \[
+        k_3 = O_{[1, 3]} = \frac{4!}{(1! \cdot 1^1) \cdot (1! \cdot 3^1)} = \frac{24}{(1 \cdot 1) \cdot (1 \cdot 3)} = \frac{24}{3} = \mathbf{8}
+        \]
+    \end{itemize}
+
+    \item \textbf{Partición $4 = 4 \longrightarrow$ Notación $[4]$:}
+    \begin{itemize}
+        \item \textit{Significado:} Hay un solo ciclo de longitud $4$ ($l_1 = 4, \nu_1 = 1$). Corresponde a los tetraciclos como $(1234)$.
+        \item \textit{Cálculo de elementos:}
+        \[
+        k_4 = O_{[4]} = \frac{4!}{1! \cdot 4^1} = \frac{24}{1 \cdot 4} = \mathbf{6}
+        \]
+    \end{itemize}
+
+    \item \textbf{Partición $4 = 2 + 2 \longrightarrow$ Notación $[2^2]$:}
+    \begin{itemize}
+        \item \textit{Significado:} Hay dos ciclos disjuntos de longitud $2$ ($l_1 = 2, \nu_1 = 2$), como $(12)(34)$.
+        \item \textit{Cálculo de elementos:}
+        \[
+        k_5 = O_{[2^2]} = \frac{4!}{2! \cdot 2^2} = \frac{24}{2 \cdot 4} = \frac{24}{8} = \mathbf{3}
+        \]
+    \end{itemize}
+\end{enumerate}
+\textbf{Comprobación obligatoria:} Sumamos los elementos de todas las clases para verificar que no falta ninguna: $k_1 + k_2 + k_3 + k_4 + k_5 = 1 + 6 + 8 + 6 + 3 = 24 = O(S_4)$.
+
+\subsubsection*{2.b) Determinación de las incógnitas de la tabla de caracteres}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Representaciones, Sección 2.5 ``Tabla de caracteres'' (págs. 37--38, Teorema 70 y Definición 71):}
+    \begin{itemize}
+        \item \textbf{Regla 1 (Teorema 70):} El número de representaciones irreducibles $r$ es igual al número de clases de conjugación $s$ ($r = s = 5$).
+        \item \textbf{Regla 3 (ecs. 2.114 y 2.115):} El carácter de la identidad ($\alpha = 1$) es la dimensión de la irrep ($\chi_1^{(a)} = d_a$), cumple $\sum_{a=1}^r d_a^2 = O(G)$, y para cualquier clase $\alpha \neq 1$ distinta de la identidad cumple la ortogonalidad contra la primera columna: $\sum_{a=1}^r d_a \chi_\alpha^{(a)} = 0$.
+        \item \textbf{Regla 4 (ec. 2.116 - Ortogonalidad de filas):} $\sum_{\alpha=1}^s k_\alpha \chi_\alpha^{(a)*} \chi_\alpha^{(b)} = O(G) \delta_{ab}$.
+        \item \textbf{Regla 4 (ec. 2.117 - Ortogonalidad de columnas):} $k_\alpha \sum_{a=1}^r \chi_\alpha^{(a)*} \chi_\beta^{(a)} = O(G) \delta_{\alpha\beta}$.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+Vamos a despejar las incógnitas una por una indicando exactamente qué ecuación usamos:
+
+\begin{enumerate}
+    \item \textbf{Paso 1: Hallar las dimensiones $d_3, d_4$ y $d_5$ (Primera columna $K_{[1^4]}$):}
+    En la primera columna ($K_{[1^4]} = \{e\}$), toda matriz de representación es la matriz identidad $I_{d_a \times d_a}$, cuya traza (suma de los $1$ en la diagonal) es su dimensión $d_a$. Por la ecuación (2.114) del apunte (pág. 37):
+    \[
+    \sum_{a=1}^5 d_a^2 = O(S_4) \implies d_1^2 + d_2^2 + d_3^2 + d_4^2 + d_5^2 = 24
+    \]
+    Sabemos por la tabla que $d_1 = 1$ y $d_2 = 1$. Sustituyendo:
+    \[
+    1^2 + 1^2 + d_3^2 + d_4^2 + d_5^2 = 24 \implies 2 + d_3^2 + d_4^2 + d_5^2 = 24 \implies d_3^2 + d_4^2 + d_5^2 = 22
+    \]
+    Como las dimensiones $d_a$ son números enteros positivos ($\ge 1$), buscamos tres cuadrados perfectos ($1, 4, 9, 16\dots$) que sumen $22$. La única combinación posible es $4 + 9 + 9 = 22$, es decir, $2^2 + 3^2 + 3^2 = 22$.
+    ¿Cómo sabemos cuál vale $2$ y cuáles valen $3$ sin adivinar? Usamos la condición de normalización de la cuarta columna $K_{[4]}$ ($\alpha = \beta = 4, k_4 = 6$) en la ecuación de ortogonalidad de columnas (ec. 2.117):
+    \[
+    k_4 \sum_{a=1}^5 \left|\chi_4^{(a)}\right|^2 = O(S_4) \implies 6 \left[ 1^2 + (-1)^2 + 0^2 + (-1)^2 + z^2 \right] = 24 \implies 6(3 + z^2) = 24 \implies z^2 = 1 \implies z = \pm 1
+    \]
+    Ahora aplicamos la ortogonalidad de la cuarta columna ($\alpha = 4$) contra la primera columna (ec. 2.115):
+    \[
+    \sum_{a=1}^5 d_a \chi_4^{(a)} = 0 \implies (1)(1) + (1)(-1) + d_3(0) + d_4(-1) + d_5 z = 0 \implies -d_4 + d_5 z = 0 \implies d_4 = d_5 z
+    \]
+    Como las dimensiones $d_4$ y $d_5$ son estrictamente positivas, obligatoriamente $\mathbf{z = 1}$ y $\mathbf{d_4 = d_5}$. Como teníamos un $2$ y dos $3$, concluimos con total rigor que:
+    \[
+    \mathbf{d_4 = 3}, \qquad \mathbf{d_5 = 3}, \qquad \mathbf{d_3 = 2}, \qquad \mathbf{z = 1}
+    \]
+
+    \item \textbf{Paso 2: Hallar $x$ usando la ortogonalidad de la columna $K_{[1^2, 2]}$ ($\alpha = 2$) con la primera columna:}
+    Aplicamos la ecuación (2.115) $\sum_{a=1}^5 d_a \chi_2^{(a)} = 0$ multiplicando cada elemento de la primera columna ($d_a$) por el de la segunda columna ($\chi_2^{(a)}$):
+    \[
+    (1)(1) + (1)(-1) + (2)(0) + (3)(1) + (3)(x) = 0
+    \]
+    Simplificando paso a paso:
+    \[
+    1 - 1 + 0 + 3 + 3x = 0 \implies 3 + 3x = 0 \implies 3x = -3 \implies \mathbf{x = -1}
+    \]
+
+    \item \textbf{Paso 3: Hallar $a$ y $b$ en la fila $D^{(3)}$ usando ortogonalidad de filas (ec. 2.116):}
+    En la fila $D^{(3)}$ tenemos los valores $(2, 0, a, 0, b)$. Necesitamos dos ecuaciones para dos incógnitas:
+    \begin{itemize}
+        \item \textit{Ecuación 1 (Ortogonalidad entre la fila $D^{(3)}$ y la fila trivial $D^{(1)}$):}
+        Según la ec. (2.116) con $a=1, b=3$ ($\delta_{13} = 0$), sumamos sobre todas las clases multiplicando por el número de elementos $k_\alpha$ de cada clase (que está arriba de cada columna: $1, 6, 8, 6, 3$):
+        \[
+        \sum_{\alpha=1}^5 k_\alpha \chi_\alpha^{(1)} \chi_\alpha^{(3)} = 0 \implies 1(1)(2) + 6(1)(0) + 8(1)(a) + 6(1)(0) + 3(1)(b) = 0
+        \]
+        \[
+        2 + 0 + 8a + 0 + 3b = 0 \implies 3b = -2 - 8a \quad \text{(Ecuación A)}
+        \]
+        \item \textit{Ecuación 2 (Normalización de la fila $D^{(3)}$ consigo misma):}
+        Según la ec. (2.116) con $a=b=3$ ($\delta_{33} = 1$), la suma ponderada por $k_\alpha$ de los cuadrados de la fila $D^{(3)}$ debe dar $O(S_4) = 24$:
+        \[
+        \sum_{\alpha=1}^5 k_\alpha \left(\chi_\alpha^{(3)}\right)^2 = 24 \implies 1(2)^2 + 6(0)^2 + 8(a)^2 + 6(0)^2 + 3(b)^2 = 24
+        \]
+        \[
+        4 + 8a^2 + 3b^2 = 24 \implies 8a^2 + 3b^2 = 20 \quad \text{(Ecuación B)}
+        \]
+        \item \textit{Resolución del sistema:} Multiplicamos la Ecuación B por $3$ para poder sustituir $3b = -2 - 8a$ directamente:
+        \[
+        24a^2 + (3b)^2 = 60 \implies 24a^2 + (-2 - 8a)^2 = 60
+        \]
+        Desarrollamos el binomio al cuadrado $(-2 - 8a)^2 = 4 + 32a + 64a^2$:
+        \[
+        24a^2 + 4 + 32a + 64a^2 = 60 \implies 88a^2 + 32a - 56 = 0
+        \]
+        Dividimos toda la ecuación entre $8$ para simplificar:
+        \[
+        11a^2 + 4a - 7 = 0 \implies a = \frac{-4 \pm \sqrt{4^2 - 4(11)(-7)}}{22} = \frac{-4 \pm \sqrt{16 + 308}}{22} = \frac{-4 \pm \sqrt{324}}{22} = \frac{-4 \pm 18}{22}
+        \]
+        Como el carácter en $S_n$ debe ser un número entero, tomamos la raíz entera $a = \frac{-4 - 18}{22} = \frac{-22}{22} = \mathbf{-1}$.
+        Sustituyendo $a = -1$ en la Ecuación A:
+        \[
+        3b = -2 - 8(-1) = -2 + 8 = 6 \implies b = \frac{6}{3} = \mathbf{2}
+        \]
+    \end{itemize}
+
+    \item \textbf{Paso 4: Hallar $y$ usando la ortogonalidad de la columna $K_{[1, 3]}$ ($\alpha = 3$) con la primera columna:}
+    Ya sabemos que $a = -1$. Aplicamos la ec. (2.115) $\sum_{a=1}^5 d_a \chi_3^{(a)} = 0$ a la tercera columna:
+    \[
+    (1)(1) + (1)(1) + (2)(-1) + (3)(0) + (3)(y) = 0 \implies 1 + 1 - 2 + 0 + 3y = 0 \implies 3y = 0 \implies \mathbf{y = 0}
+    \]
+
+    \item \textbf{Paso 5: Hallar $c$ y $w$ en la última columna $K_{[2^2]}$ ($\alpha = 5$):}
+    \begin{itemize}
+        \item Para hallar $c$, aplicamos ortogonalidad de filas (ec. 2.116) entre $D^{(4)} = (3, 1, 0, -1, c)$ y la trivial $D^{(1)} = (1, 1, 1, 1, 1)$:
+        \[
+        \sum_{\alpha=1}^5 k_\alpha \chi_\alpha^{(1)} \chi_\alpha^{(4)} = 0 \implies 1(1)(3) + 6(1)(1) + 8(1)(0) + 6(1)(-1) + 3(1)(c) = 0
+        \]
+        \[
+        3 + 6 + 0 - 6 + 3c = 0 \implies 3 + 3c = 0 \implies \mathbf{c = -1}
+        \]
+        \item Para hallar $w$, aplicamos ortogonalidad de la quinta columna ($\alpha = 5$) con la primera columna (ec. 2.115):
+        \[
+        \sum_{a=1}^5 d_a \chi_5^{(a)} = 0 \implies (1)(1) + (1)(1) + (2)(2) + (3)(-1) + (3)(w) = 0
+        \]
+        \[
+        1 + 1 + 4 - 3 + 3w = 0 \implies 3 + 3w = 0 \implies \mathbf{w = -1}
+        \]
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Tabla de Caracteres Completada de $S_4$:}
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+$S_4$ & $K_{[1^4]}$ ($k_1 = 1$) & $K_{[1^2, 2]}$ ($k_2 = 6$) & $K_{[1, 3]}$ ($k_3 = 8$) & $K_{[4]}$ ($k_4 = 6$) & $K_{[2^2]}$ ($k_5 = 3$) \\
+\midrule
+$D^{(1)}$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+$D^{(2)}$ & $1$ & $-1$ & $1$ & $-1$ & $1$ \\
+$D^{(3)}$ & $\mathbf{2}$ & $0$ & $\mathbf{-1}$ & $0$ & $\mathbf{2}$ \\
+$D^{(4)}$ & $\mathbf{3}$ & $1$ & $0$ & $-1$ & $\mathbf{-1}$ \\
+$D^{(5)}$ & $\mathbf{3}$ & $\mathbf{-1}$ & $\mathbf{0}$ & $\mathbf{1}$ & $\mathbf{-1}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{2.c) Producto tensorial $D^{(3)} \otimes D^{(3)}$ y Serie de Clebsch-Gordan}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Representaciones, Sección 2.6 ``Producto tensorial de representaciones'' (págs. 38--39, Proposición 73, ec. 2.124 y ec. 2.128):} El carácter del producto tensorial es el producto de los caracteres ($\chi_{T \otimes S}(g) = \chi_T(g) \chi_S(g)$) y su descomposición en suma directa de irreps (Serie de Clebsch-Gordan) viene dada por $n^{(a)} = \frac{1}{O(G)} \sum_{\alpha=1}^s k_\alpha \chi_\alpha^{(a)*} \chi_{T \otimes S}(K_\alpha)$.
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+\begin{enumerate}
+    \item \textbf{Cálculo de los caracteres del producto tensorial $\chi_{D^{(3)} \otimes D^{(3)}}(K_\alpha)$:}
+    Leemos en la tabla la fila de $D^{(3)}$: $\chi^{(3)} = (2, \, 0, \, -1, \, 0, \, 2)$. Según la Proposición 73 (ec. 2.124), para obtener el carácter de $D^{(3)} \otimes D^{(3)}$ en cada clase $K_\alpha$, simplemente multiplicamos el carácter de $D^{(3)}$ por sí mismo columna por columna:
+    \begin{itemize}
+        \item En $K_{[1^4]}$ ($k_1 = 1$): $\chi_{D^{(3)} \otimes D^{(3)}}(K_1) = 2 \times 2 = \mathbf{4}$.
+        \item En $K_{[1^2, 2]}$ ($k_2 = 6$): $\chi_{D^{(3)} \otimes D^{(3)}}(K_2) = 0 \times 0 = \mathbf{0}$.
+        \item En $K_{[1, 3]}$ ($k_3 = 8$): $\chi_{D^{(3)} \otimes D^{(3)}}(K_3) = (-1) \times (-1) = \mathbf{1}$.
+        \item En $K_{[4]}$ ($k_4 = 6$): $\chi_{D^{(3)} \otimes D^{(3)}}(K_4) = 0 \times 0 = \mathbf{0}$.
+        \item En $K_{[2^2]}$ ($k_5 = 3$): $\chi_{D^{(3)} \otimes D^{(3)}}(K_5) = 2 \times 2 = \mathbf{4}$.
+    \end{itemize}
+    Así, el vector de caracteres del producto tensorial es:
+    \[
+    \chi_{D^{(3)} \otimes D^{(3)}} = (4, \, 0, \, 1, \, 0, \, 4)
+    \]
+
+    \item \textbf{Cálculo de las multiplicidades $n^{(a)}$ con la fórmula de descomposición (ec. 2.128 / ec. 2.65):}
+    Calculamos cuántas veces ($n^{(a)}$) está contenida cada irrep $D^{(a)}$ dentro de $D^{(3)} \otimes D^{(3)}$ aplicando:
+    \[
+    n^{(a)} = \frac{1}{24} \sum_{\alpha=1}^5 k_\alpha \, \chi_\alpha^{(a)*} \, \chi_{D^{(3)} \otimes D^{(3)}}(K_\alpha)
+    \]
+    \begin{itemize}
+        \item \textbf{Para $D^{(1)}$:}
+        \[
+        n^{(1)} = \frac{1}{24} \big[ 1(1)(4) + 6(1)(0) + 8(1)(1) + 6(1)(0) + 3(1)(4) \big] = \frac{4 + 0 + 8 + 0 + 12}{24} = \frac{24}{24} = \mathbf{1}
+        \]
+        \item \textbf{Para $D^{(2)}$:}
+        \[
+        n^{(2)} = \frac{1}{24} \big[ 1(1)(4) + 6(-1)(0) + 8(1)(1) + 6(-1)(0) + 3(1)(4) \big] = \frac{4 + 0 + 8 + 0 + 12}{24} = \frac{24}{24} = \mathbf{1}
+        \]
+        \item \textbf{Para $D^{(3)}$:}
+        \[
+        n^{(3)} = \frac{1}{24} \big[ 1(2)(4) + 6(0)(0) + 8(-1)(1) + 6(0)(0) + 3(2)(4) \big] = \frac{8 + 0 - 8 + 0 + 24}{24} = \frac{24}{24} = \mathbf{1}
+        \]
+        \item \textbf{Para $D^{(4)}$:}
+        \[
+        n^{(4)} = \frac{1}{24} \big[ 1(3)(4) + 6(1)(0) + 8(0)(1) + 6(-1)(0) + 3(-1)(4) \big] = \frac{12 + 0 + 0 + 0 - 12}{24} = \frac{0}{24} = \mathbf{0}
+        \]
+        \item \textbf{Para $D^{(5)}$:}
+        \[
+        n^{(5)} = \frac{1}{24} \big[ 1(3)(4) + 6(-1)(0) + 8(0)(1) + 6(1)(0) + 3(-1)(4) \big] = \frac{12 + 0 + 0 + 0 - 12}{24} = \frac{0}{24} = \mathbf{0}
+        \]
+    \end{itemize}
+    Por lo tanto, la Serie de Clebsch-Gordan es:
+    \[
+    \mathbf{D^{(3)} \otimes D^{(3)} = D^{(1)} \oplus D^{(2)} \oplus D^{(3)}}
+    \]
+    *(Comprobación dimensional: a la izquierda tenemos dimensión $2 \times 2 = 4$; a la derecha tenemos $d_1 + d_2 + d_3 = 1 + 1 + 2 = 4$).*
+\end{enumerate}
+
+\newpage
+
+\subsection*{Solución Pregunta 3}
+
+\subsubsection*{3.a) Núcleo y fidelidad de una representación}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Apunte de Teoría de Grupos, Sección 1.3.3 (págs. 7--8, Teorema de Homomorfismos, ecs. 1.21 a 1.24):} Demostración de que el núcleo $\ker f$ de cualquier homomorfismo de grupos es un subgrupo normal.
+    \item \textit{Apunte de Teoría de Representaciones, Sección 2.1 (págs. 20--21, Lema 49):} Definición de representación como homomorfismo $D : G \to \text{GL}(V)$ y demostración de que una representación $D$ es fiel (inyectiva) si y sólo si $\ker D = \{e\}$.
+    \item \textit{Apunte de Teoría de Representaciones, Sección 2.5 (pág. 38, Regla 5 de la Definición 71):} Los autovalores de $D(g)$ son raíces $m$-ésimas de la unidad ($|\lambda_i| = 1$).
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+\begin{enumerate}
+    \item \textbf{Demostración de que $\ker D = \{g \in G \mid D(g) = I\}$ es un subgrupo normal de $G$:}
+    Por definición (Sección 2.1, pág. 20), una representación $D : G \to \text{GL}(V)$ es un \textbf{homomorfismo de grupos}, lo que significa que para cualesquiera $g_1, g_2 \in G$ se cumple $D(g_1 g_2) = D(g_1) D(g_2)$, además de $D(e) = I$ y $D(g^{-1}) = (D(g))^{-1}$. Siguiendo las ecuaciones (1.21) a (1.24) de la página 8 del apunte:
+    \begin{itemize}
+        \item \textit{Cierre ($G_1$):} Sean $a, b \in \ker D$. Por definición del núcleo, $D(a) = I$ y $D(b) = I$. Evaluamos $D$ en el producto $ab$:
+        \[
+        D(ab) = D(a) D(b) = I \cdot I = I
+        \]
+        Como $D(ab) = I$, el producto $ab$ cumple la condición para estar en $\ker D$ ($ab \in \ker D$).
+        \item \textit{Asociatividad ($G_2$):} Se cumple automáticamente porque los elementos de $\ker D$ son elementos de $G$, donde el producto ya es asociativo.
+        \item \textit{Elemento neutro ($G_3$):} Para todo $x \in G$, $D(x) D(e) = D(xe) = D(x)$. Multiplicando por $(D(x))^{-1}$ a la izquierda obtenemos $D(e) = I$. Por lo tanto, el neutro $e$ siempre pertenece a $\ker D$.
+        \item \textit{Elemento inverso ($G_4$):} Sea $x \in \ker D$ (es decir, $D(x) = I$). Sabemos que $D(x) D(x^{-1}) = D(xx^{-1}) = D(e) = I$. Sustituyendo $D(x) = I$, queda $I \cdot D(x^{-1}) = I \implies D(x^{-1}) = I$. Por lo tanto, $x^{-1} \in \ker D$. Con esto queda probado que $\ker D$ es un subgrupo.
+        \item \textit{Normalidad:} Para que $\ker D$ sea un subgrupo normal, debemos probar que si tomamos cualquier elemento $x \in \ker D$ ($D(x) = I$) y cualquier elemento $g \in G$, el conjugado $gxg^{-1}$ también cae dentro de $\ker D$. Evaluamos $D(gxg^{-1})$ usando la propiedad de homomorfismo (ec. 1.24):
+        \[
+        D(gxg^{-1}) = D(g) D(x) D(g^{-1}) = D(g) \, I \, D(g^{-1}) = D(g) D(g^{-1}) = D(gg^{-1}) = D(e) = I
+        \]
+        Como $D(gxg^{-1}) = I$, entonces $gxg^{-1} \in \ker D$ para todo $g \in G$, demostrando que $\ker D$ es un subgrupo normal.
+    \end{itemize}
+
+    \item \textbf{Demostración de que $D$ es fiel (inyectiva) $\iff \ker D = \{e\}$ (Lema 49, págs. 20--21):}
+    Recordemos que una función $D$ es inyectiva si elementos distintos tienen imágenes distintas, o equivalentemente, si $D(g) = D(h) \implies g = h$.
+    \begin{itemize}
+        \item \textit{Implicación hacia la derecha $[\Rightarrow]$:} Supongamos que $D$ es fiel (inyectiva). Queremos probar que el único elemento dentro de $\ker D$ es $e$. Sea $u \in \ker D$; por definición de núcleo, $D(u) = I$. Pero también sabemos que $D(e) = I$. Entonces tenemos $D(u) = D(e)$. Como $D$ es inyectiva, esto obliga a que $u = e$. Por lo tanto, $\ker D = \{e\}$.
+        \item \textit{Implicación hacia la izquierda $[\Leftarrow]$:} Supongamos ahora que $\ker D = \{e\}$, y tomemos dos elementos $g, h \in G$ tales que $D(g) = D(h)$. Queremos demostrar que $g = h$.
+        Multiplicamos ambos lados de la igualdad $D(g) = D(h)$ por la derecha por $(D(h))^{-1}$:
+        \[
+        D(g) (D(h))^{-1} = D(h) (D(h))^{-1} \implies D(g) D(h^{-1}) = I
+        \]
+        Usando que $D$ es un homomorfismo ($D(g) D(h^{-1}) = D(gh^{-1})$), obtenemos:
+        \[
+        D(gh^{-1}) = I
+        \]
+        Por definición del núcleo, que la imagen de $gh^{-1}$ sea $I$ significa que $gh^{-1} \in \ker D$. Pero por nuestra hipótesis $\ker D = \{e\}$, así que la única posibilidad es:
+        \[
+        gh^{-1} = e
+        \]
+        Multiplicando por $h$ a la derecha en ambos lados obtenemos $(gh^{-1})h = eh \implies g = h$. ¡Queda demostrado que $D$ es inyectiva (fiel)!
+    \end{itemize}
+
+    \item \textbf{Identificación de las irreps fieles de $S_4$ desde la tabla de caracteres:}
+    \begin{itemize}
+        \item \textit{¿Cómo se lee el núcleo $\ker D^{(a)}$ directamente en una tabla de caracteres?}
+        Por el Teorema 58 (pág. 24) y la Regla 5 (pág. 38), toda representación de un grupo finito es equivalente a una unitaria y sus $d_a$ autovalores son fases de módulo $1$ ($\lambda_j = e^{i\phi_j}$). La traza $\chi^{(a)}(g) = \sum_{j=1}^{d_a} \lambda_j$ es la suma de $d_a$ números complejos de módulo $1$. La única forma de que la suma de $d_a$ números complejos de módulo $1$ sea igual a $d_a$ es que \textbf{todos los autovalores sean iguales a $+1$}, lo que significa que la matriz es la identidad $D^{(a)}(g) = I_{d_a}$. Por lo tanto:
+        \[
+        \ker D^{(a)} = \big\{ g \in G \;\big|\; \chi^{(a)}(g) = \chi^{(a)}(e) = d_a \big\}
+        \]
+        Es decir, para encontrar el núcleo de $D^{(a)}$, simplemente buscamos en su fila en qué columnas se repite el primer número de la fila ($d_a$):
+        \item En $D^{(1)}$ ($d_1 = 1$): El $1$ se repite en las 5 columnas $\implies \ker D^{(1)} = S_4 \neq \{e\}$ (\textbf{no es fiel}).
+        \item En $D^{(2)}$ ($d_2 = 1$): El $1$ aparece en $K_{[1^4]}, K_{[1, 3]}$ y $K_{[2^2]} \implies \ker D^{(2)} = K_{[1^4]} \cup K_{[1, 3]} \cup K_{[2^2]} = A_4 \neq \{e\}$ (\textbf{no es fiel}).
+        \item En $D^{(3)}$ ($d_3 = 2$): El $2$ aparece en $K_{[1^4]}$ y también en $K_{[2^2]} \implies \ker D^{(3)} = K_{[1^4]} \cup K_{[2^2]} \neq \{e\}$ (\textbf{no es fiel}).
+        \item En $\mathbf{D^{(4)}}$ ($d_4 = 3$) y $\mathbf{D^{(5)}}$ ($d_5 = 3$): El valor $3$ aparece \textbf{única y exclusivamente en la primera columna} $K_{[1^4]} = \{e\}$. Por lo tanto, $\ker D^{(4)} = \{e\}$ y $\ker D^{(5)} = \{e\}$, lo que demuestra que \textbf{$D^{(4)}$ y $D^{(5)}$ son las únicas representaciones irreducibles fieles de $S_4$}.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection*{3.b) Invariancia del Hamiltoniano y degeneración de los niveles de energía}
+\textbf{Fuente en el apunte:}
+\begin{itemize}
+    \item \textit{Guía de Ejercicios ``Teoría de Grupos III'' (Ejercicio 6):} Problema exacto sobre la invariancia del Hamiltoniano $D(g) H D(g^{-1}) = H$ y degeneración de los subespacios irreducibles.
+    \item \textit{Apunte de Operadores Lineales, Sección 2.3 (pág. 49) y Sección 2.4.1 (pág. 54, Definición 93 y Proposición 94):} Conmutador $[A, B] = AB - BA$ y subespacios propios invariantes $M_\lambda$.
+    \item \textit{Apunte de Teoría de Representaciones, Sección 2.2 (págs. 25--26, Teorema 60 [Lema de Schur] y Lema 61):} Todo operador que conmuta con todas las matrices de una representación irreducible es un múltiplo escalar de la identidad ($A = \lambda I$).
+\end{itemize}
+
+\textbf{Desarrollo paso a paso:}
+\begin{enumerate}
+    \item \textbf{Demostración de que $[H, D(g)] = 0$ para todo $g \in G$:}
+    \begin{itemize}
+        \item Partimos de la ecuación de invariancia dada en el enunciado:
+        \[
+        D(g) H D(g^{-1}) = H, \qquad \forall g \in G
+        \]
+        \item Como $D$ es una representación (homomorfismo), sabemos que la matriz asociada al elemento inverso $g^{-1}$ es la matriz inversa de $D(g)$, es decir, $D(g^{-1}) = (D(g))^{-1}$, la cual cumple $D(g^{-1}) D(g) = D(g^{-1}g) = D(e) = I$.
+        \item Multiplicamos ambos miembros de la ecuación por $D(g)$ \textbf{por la derecha}:
+        \[
+        D(g) H \underbrace{D(g^{-1}) D(g)}_{=\, I} = H D(g) \implies D(g) H I = H D(g) \implies D(g) H = H D(g)
+        \]
+        \item Restando $D(g) H$ a ambos lados recordamos la definición de conmutador $[H, D(g)] = H D(g) - D(g) H$:
+        \[
+        H D(g) - D(g) H = 0 \implies \mathbf{[H, D(g)] = 0, \qquad \forall g \in G}
+        \]
+    \end{itemize}
+
+    \item \textbf{Explicación detallada de la degeneración energética mediante el Lema de Schur:}
+    \begin{itemize}
+        \item \textit{Paso 1 (Los espacios propios de $H$ son invariantes bajo el grupo $G$):}
+        Consideremos un estado propio $|\psi\rangle$ del Hamiltoniano con energía $E$, es decir, $H|\psi\rangle = E|\psi\rangle$. Si le aplicamos cualquier transformación de simetría $D(g)$ del grupo y luego calculamos su energía actuando con $H$, como $H$ y $D(g)$ conmutan ($H D(g) = D(g) H$), tenemos:
+        \[
+        H \big( D(g)|\psi\rangle \big) = D(g) \big( H|\psi\rangle \big) = D(g) \big( E|\psi\rangle \big) = E \big( D(g)|\psi\rangle \big)
+        \]
+        Esto significa que el vector transformado $D(g)|\psi\rangle$ \textbf{tiene exactamente la misma energía $E$} que $|\psi\rangle$. Por lo tanto, el conjunto de todos los estados con energía $E$ (el subespacio propio $\mathcal{H}_E$) es cerrado bajo la acción de $D(g)$, es decir, es un $G$-submódulo invariante.
+        \item \textit{Paso 2 (Descomposición en subespacios irreducibles y aplicación del Lema de Schur):}
+        Por el Lema 59 (pág. 24 del apunte de Representaciones), todo $G$-módulo de un grupo finito es completamente reducible en una suma directa de subespacios irreducibles $V = \bigoplus_a V^{(a)}$, donde sobre cada subespacio $V^{(a)}$ (de dimensión $d_a$) actúa una representación irreducible $D^{(a)}$ de dimensión $d_a \times d_a$.
+        Si restringimos el Hamiltoniano $H$ a uno de estos subespacios irreducibles $V^{(a)}$, la relación de conmutación sigue cumpliéndose dentro de ese subespacio:
+        \[
+        \left. H \right|_{V^{(a)}} D^{(a)}(g) = D^{(a)}(g) \left. H \right|_{V^{(a)}}, \qquad \forall g \in G
+        \]
+        \item \textit{Paso 3 (Conclusión con el Lema 61 / Lema de Schur, pág. 26):}
+        El \textbf{Lema 61} (corolario directo del Lema de Schur, Teorema 60) establece que si un operador lineal conmuta con todas las matrices $D^{(a)}(g)$ de una representación irreducible sobre un espacio complejo, entonces dicho operador \textbf{es necesariamente proporcional al operador identidad}:
+        \[
+        \left. H \right|_{V^{(a)}} = E_a \, I_{d_a}
+        \]
+        En forma matricial, dentro de la base ortonormal $\big\{ |u_1^{(a)}\rangle, |u_2^{(a)}\rangle, \dots, |u_{d_a}^{(a)}\rangle \big\}$ del subespacio $V^{(a)}$, el Hamiltoniano es una caja diagonal con el mismo valor $E_a$ repetido $d_a$ veces:
+        \[
+        \left. H \right|_{V^{(a)}} = \begin{pmatrix}
+        E_a & 0 & \cdots & 0 \\
+        0 & E_a & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & E_a
+        \end{pmatrix}_{d_a \times d_a}
+        \]
+        Como existen $d_a$ estados propios ortonormales linealmente independientes ($|u_i^{(a)}\rangle$ para $i = 1, \dots, d_a$) que satisfacen $H |u_i^{(a)}\rangle = E_a |u_i^{(a)}\rangle$, el nivel de energía $E_a$ posee una \textbf{degeneración igual a la dimensión $d_a$ de la representación irreducible $D^{(a)}$}.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section*{Parte III: Formulario General y Guía Estratégica de Uso}
+
+A continuación se resumen todas las definiciones, teoremas y fórmulas esenciales del curso indicando explícitamente \textbf{para qué tipo de pregunta de certamen sirve cada una}.
+
+\subsection*{1. Estructura de Grupos, Subgrupos y Espacios Cocientes}
+
+\begin{itemize}
+    \item \textbf{Axiomas de Grupo $(G, \cdot)$} \textit{(Apunte Grupos, Sección 1.1, pág. 1)}:
+    \begin{enumerate}
+        \item[$G_1$] \textbf{Cierre:} $\forall a, b \in G \implies a \cdot b \in G$.
+        \item[$G_2$] \textbf{Asociatividad:} $(a \cdot b) \cdot c = a \cdot (b \cdot c)$.
+        \item[$G_3$] \textbf{Neutro:} $\exists e \in G \mid e \cdot a = a \cdot e = a$.
+        \item[$G_4$] \textbf{Inverso:} $\forall a \in G, \exists a^{-1} \in G \mid a \cdot a^{-1} = a^{-1} \cdot a = e$.
+    \end{enumerate}
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para resolver cualquier pregunta del tipo \textit{``Demuestre que el conjunto $X$ (de matrices, operadores, funciones o números con una operación especial) forma o no forma un grupo''}. Si piden demostrar que \textbf{no} es grupo, el $95\%$ de las veces falla $G_4$ (algún elemento no tiene inverso, como el $0$ o los divisores de cero en $\mathbb{Z}_m$, o matrices con determinante cero) o falla $G_1$ (el producto se sale del conjunto).
+
+    \item \textbf{Operaciones en Aritmética Modular $\mathbb{Z}_m$} \textit{(Apunte Grupos, Sección 1.4.1, págs. 10--12)}:
+    \[
+    \mathbb{Z}_m = \{(0)_m, (1)_m, \dots, (m-1)_m\}, \qquad (a)_m + (b)_m = (a + b \pmod m)_m, \qquad (a)_m \cdot (b)_m = (a \cdot b \pmod m)_m
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para preguntas sobre conjuntos de restos módulo $m$. Recuerda siempre: $(\mathbb{Z}_m, +)$ \textbf{siempre} es un grupo abeliano (neutro $(0)_m$, inverso de $(a)_m$ es $(m-a)_m$). En cambio, con la multiplicación, $(\mathbb{Z}_m, \cdot)$ \textbf{nunca} es grupo porque $(0)_m$ no tiene inverso; y si quitas el cero formando $\mathbb{Z}_m^*$, solo será grupo si todos los elementos tienen máximo común divisor $1$ con $m$ (lo cual ocurre para todo $\mathbb{Z}_p^*$ cuando $p$ es un \textbf{número primo}).
+
+    \item \textbf{Clases de Conjugación $(a)$} \textit{(Apunte Grupos, Sección 1.3.1, pág. 5, ec. 1.10)}:
+    \[
+    K_a = (a) = \big\{ gag^{-1} \;\big|\; g \in G \big\}, \qquad G = \bigcup_{\alpha=1}^s K_\alpha, \qquad \sum_{\alpha=1}^s k_\alpha = O(G)
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve cuando te dan una tabla de multiplicación (como la de $D_3$) o un grupo matricial y te piden \textit{``Hallar las clases de conjugación del grupo''}. También es el primer paso obligatorio si te piden armar una tabla de caracteres desde cero, porque las columnas de la tabla son las clases $K_\alpha$ y el número total de clases $s$ te dice cuántas filas ($r=s$) tendrá la tabla.
+
+    \item \textbf{Teorema de Lagrange y Clases Laterales (Espacio Cociente $G/H$)} \textit{(Apunte Grupos, Sección 1.3.2, págs. 6--7, ec. 1.19)}:
+    \[
+    gH = \{gh \mid h \in H\}, \qquad Hg = \{hg \mid h \in H\}, \qquad \text{card}(G/H) = \frac{O(G)}{O(H)} \in \mathbb{N}
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?}
+    \begin{enumerate}
+        \item Para encontrar todos los posibles órdenes de los subgrupos de un grupo finito: el orden $O(H)$ de cualquier subgrupo \textbf{debe ser divisor exacto} de $O(G)$.
+        \item Para construir el conjunto cociente por la izquierda $G/H = \{g_1 H, g_2 H, \dots\}$ sabiendo de antemano cuántas clases distintas deben salirte ($\text{card}(G/H) = O(G)/O(H)$).
+    \end{enumerate}
+
+    \item \textbf{Condición de Subgrupo Normal y Grupo Cociente} \textit{(Apunte Grupos, Sección 1.3.2, pág. 7)}:
+    \[
+    H \text{ es subgrupo normal de } G \iff gH = Hg \quad (\forall g \in G) \iff ghg^{-1} \in H \quad (\forall g \in G, \forall h \in H)
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para responder la pregunta clásica: \textit{``Determine si el espacio cociente $G/H$ forma o no forma un grupo''}. Si encuentras aunque sea un elemento $g \in G$ donde $gH \neq Hg$, entonces $H$ no es normal y $G/H$ \textbf{no forma grupo}. Si para todos se cumple $gH = Hg$ (por ejemplo, si $H$ es unión de clases de conjugación completas, como $C_3 = \{e, c, c^2\} = K_1 \cup K_2$ en $D_3$), entonces $H$ es normal y $G/H$ \textbf{sí forma grupo} con la ley $(g_i H)(g_j H) = (g_i g_j)H$.
+\end{itemize}
+
+\subsection*{2. Grupo Simétrico $S_n$ y Permutaciones}
+
+\begin{itemize}
+    \item \textbf{Fórmula del Número de Elementos en cada Clase de Conjugación de $S_n$} \textit{(Apunte Grupos, Sección 1.4.2, pág. 16, ec. 1.92)}:
+    Dada una partición de $n$ en ciclos $[l_1^{\nu_1} l_2^{\nu_2} \dots l_r^{\nu_r}]$ tal que $\sum_{k=1}^r \nu_k l_k = n$:
+    \[
+    k_\alpha = O_\alpha = \frac{n!}{\prod_{k=1}^r \nu_k! \, l_k^{\nu_k}}
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para resolver preguntas del tipo \textit{``Encuentre las clases de conjugación de $S_n$ (como $S_3, S_4, S_5$) y calcule cuántos elementos tiene cada clase''}, sin tener que escribir las $n!$ permutaciones a mano.
+\end{itemize}
+
+\subsection*{3. Teoría de Representaciones y Tablas de Caracteres}
+
+\begin{itemize}
+    \item \textbf{Núcleo ($\ker D$) y Fidelidad de una Representación} \textit{(Apunte Representaciones, Sección 2.1, pág. 20, Lema 49)}:
+    \[
+    \ker D = \{g \in G \mid D(g) = I\} = \{g \in G \mid \chi(g) = \chi(e) = d\}, \qquad D \text{ es fiel (inyectiva)} \iff \ker D = \{e\}
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para preguntas teóricas de demostración sobre homomorfismos y para preguntas prácticas donde te dan una tabla de caracteres y te preguntan \textit{``¿Cuáles de estas representaciones son fieles?''} (solo aquellas filas donde el valor de la primera columna no vuelve a repetirse en ninguna otra columna).
+
+    \item \textbf{Igualdad entre Número de Irreps y Clases de Conjugación} \textit{(Sección 2.5, pág. 37, Teorema 70)}:
+    \[
+    r = s \quad (\text{Número de representaciones irreducibles } = \text{ Número de clases de conjugación})
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Para saber inmediatamente que toda tabla de caracteres es una matriz cuadrada de tamaño $s \times s$.
+
+    \item \textbf{Relación Dimensional (Suma de los Cuadrados de las Dimensiones)} \textit{(Sección 2.5, pág. 37, Definición 71, ec. 2.114)}:
+    \[
+    \sum_{a=1}^r d_a^2 = O(G), \qquad \text{donde } d_a = \chi_1^{(a)} = \chi^{(a)}(e) \in \mathbb{N}
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Es la fórmula número 1 para \textbf{empezar a completar la primera columna de una tabla de caracteres}. Te permite hallar las dimensiones $d_a$ de todas las irreps buscando qué números enteros elevados al cuadrado suman el orden del grupo $O(G)$ (sabiendo que $d_1 = 1$ siempre corresponde a la irrep trivial).
+
+    \item \textbf{Relación de Ortogonalidad de Filas} \textit{(Sección 2.5, pág. 37, ec. 2.108 y ec. 2.116)}:
+    \[
+    \sum_{\alpha=1}^s k_\alpha \, \chi_\alpha^{(a)*} \, \chi_\alpha^{(b)} = O(G) \, \delta_{ab}
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Es la herramienta principal para \textbf{despejar incógnitas dentro de una fila de la tabla de caracteres}:
+    \begin{enumerate}
+        \item Si tomas dos filas distintas ($a \neq b \implies \delta_{ab} = 0$), la suma ponderada por los tamaños de clase $k_\alpha$ da $0$. (Truco: úsala siempre contra la primera fila trivial $\chi^{(1)} = (1, 1, \dots, 1)$, lo que te da directamente $\sum_{\alpha=1}^s k_\alpha \chi_\alpha^{(a)} = 0$).
+        \item Si tomas una fila consigo misma ($a = b \implies \delta_{aa} = 1$), te da la ecuación cuadrática de normalización $\sum_{\alpha=1}^s k_\alpha |\chi_\alpha^{(a)}|^2 = O(G)$, ideal cuando tienes dos incógnitas en la misma fila.
+    \end{enumerate}
+
+    \item \textbf{Relación de Ortogonalidad de Columnas} \textit{(Sección 2.5, pág. 37, ec. 2.115 y ec. 2.117)}:
+    \[
+    \sum_{a=1}^r \chi_\alpha^{(a)*} \, \chi_\beta^{(a)} = \frac{O(G)}{k_\alpha} \, \delta_{\alpha\beta} \qquad \text{y en particular contra la 1ª columna ($\beta = 1, \alpha \neq 1$):} \quad \sum_{a=1}^r d_a \, \chi_\alpha^{(a)} = 0
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Es la forma más rápida de \textbf{hallar una incógnita cuando te falta un solo dato en una columna}: no necesitas multiplicar por los $k_\alpha$, simplemente multiplicas verticalmente la columna incompleta por la primera columna ($d_a$) e igualas la suma a $0$. Si necesitas hallar el módulo de una incógnita en la columna $\alpha$, usas la columna consigo misma ($\alpha = \beta$): $\sum_{a=1}^r |\chi_\alpha^{(a)}|^2 = O(G)/k_\alpha$.
+
+    \item \textbf{Criterio de Irreducibilidad de una Representación} \textit{(Sección 2.4, pág. 30, Proposición 67, ec. 2.66)}:
+    \[
+    \langle \chi \mid \chi \rangle = \frac{1}{O(G)} \sum_{\alpha=1}^s k_\alpha \left|\chi(K_\alpha)\right|^2 = \sum_{a=1}^r n_a^2 \quad \implies \quad D \text{ es irreducible } \iff \langle \chi \mid \chi \rangle = 1
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve cuando te dan las matrices o los caracteres $\chi$ de una representación desconocida y te preguntan: \textit{``Determine si esta representación es irreducible o reducible''}. Si al calcular la suma te da $1$, es irreducible; si te da un entero mayor que $1$ (por ejemplo, $2$ o $3$), es reducible.
+
+    \item \textbf{Producto Tensorial y Serie de Clebsch-Gordan (Descomposición en Irreps)} \textit{(Sección 2.4, pág. 30, ec. 2.65 y Sección 2.6, págs. 38--39, Proposición 73)}:
+    \[
+    \chi_{A \otimes B}(K_\alpha) = \chi_A(K_\alpha) \cdot \chi_B(K_\alpha), \qquad D = \bigoplus_{a=1}^r n^{(a)} D^{(a)} \quad \text{con} \quad n^{(a)} = \frac{1}{O(G)} \sum_{\alpha=1}^s k_\alpha \, \chi_\alpha^{(a)*} \, \chi(K_\alpha)
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para resolver dos preguntas clásicas:
+    \begin{enumerate}
+        \item \textit{``Descomponga una representación reducible $D$ en suma directa de representaciones irreducibles''}: calculas la traza $\chi(K_\alpha)$ de las matrices dadas y aplicas la fórmula de $n^{(a)}$.
+        \item \textit{``Descomponga el producto tensorial $D^{(i)} \otimes D^{(j)}$ en serie de Clebsch-Gordan''}: primero multiplicas las filas $i$ y $j$ de la tabla de caracteres columna por columna para obtener $\chi_{i \otimes j}(K_\alpha)$, y luego metes ese resultado en la fórmula de $n^{(a)}$.
+    \end{enumerate}
+
+    \item \textbf{Operadores de Proyección sobre Subespacios Irreducibles} \textit{(Guía Teoría de Grupos III, Ejercicios 2 y 3)}:
+    \[
+    T^{(a)}(ij) = \frac{d_a}{O(G)} \sum_{g \in G} D_{ij}^{(a)*}(g) \, D(g), \qquad P^{(a)} = \sum_{i=1}^{d_a} T^{(a)}(ii) = \frac{d_a}{O(G)} \sum_{g \in G} \chi^{(a)*}(g) \, D(g), \qquad \sum_{a=1}^r P^{(a)} = I
+    \]
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve cuando te piden \textit{``Encontrar los vectores base simétricos/antisimétricos que generan el subespacio invariante asociado a la irrep $D^{(a)}$''} o demostrar propiedades de los proyectores ortogonales en teoría de representaciones.
+
+    \item \textbf{Lema de Schur y Degeneración del Hamiltoniano} \textit{(Sección 2.2, págs. 25--26, Teorema 60 y Lema 61; Guía III, Ejercicio 6)}:
+    \begin{enumerate}
+        \item \textbf{Teorema 60 (Lema de Schur 1):} Si $A D^{(a)}(g) = D^{(b)}(g) A$ para todo $g \in G$, entonces si $a \neq b \implies A = 0$ (si no son equivalentes), o bien $A$ es un isomorfismo.
+        \item \textbf{Lema 61 (Lema de Schur 2):} Si $A D^{(a)}(g) = D^{(a)}(g) A$ para todo $g \in G$ (con $D^{(a)}$ irreducible), entonces $A = \lambda I_{d_a}$.
+    \end{enumerate}
+    \textbf{$\rightarrow$ ¿Para qué sirve?} Sirve para demostrar las relaciones de ortogonalidad de las matrices de representación y para resolver cualquier problema de física cuántica donde un Hamiltoniano $H$ tiene un grupo de simetría $G$ ($D(g) H D(g^{-1}) = H \implies [H, D(g)] = 0$), demostrando que en cada subespacio irreducible $V^{(a)}$ se cumple $\left. H \right|_{V^{(a)}} = E_a I_{d_a}$ y, por ende, que la degeneración del nivel de energía $E_a$ es igual a la dimensión $d_a$ de la irrep.
+\end{itemize}
+
+\end{document}
