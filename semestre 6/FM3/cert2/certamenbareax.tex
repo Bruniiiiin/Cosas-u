@@ -1,0 +1,247 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[a4paper, margin=2.2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+
+\title{\textbf{Física Matemática III -- Ejercicio Integrador de Certamen}\\ \large Teoría de Grupos y Representaciones}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Perfil de Evaluación del Profesor}
+A partir del estilo de su apunte (\textit{Fm3}) y de las guías \textit{Teoría de Grupos I, II y III}, su forma de evaluar se caracteriza por tres pilares:
+\begin{itemize}
+    \item \textbf{Álgebra directa con ``truco'' conceptual:} No busca demostraciones abstractas interminables, sino problemas como la ley algebraica con parámetro (Guía I, Ej. 5) o el contraste entre subgrupos normales y no normales en $D_3$ (Guía I, Ej. 4), donde un paso algebraico preciso resuelve el problema.
+    \item \textbf{Convención estricta de derecha a izquierda en $S_n$:} Al multiplicar permutaciones en forma canónica o encadenar ciclos (Sección 1.5, págs. 13--17), evalúa siempre de derecha a izquierda reordenando las columnas de la primera permutación según la fila inferior de la segunda (ec. 1.45).
+    \item \textbf{Conexión entre $D_3 \cong S_3$, representación regular y diagramas de Young:} Utiliza grupos manejables a mano ($O(G) = 6$) para exigir la construcción de la tabla de caracteres desde cero, su vínculo con la representación regular y el chequeo dimensional obligatorio en productos externos de Young.
+\end{itemize}
+
+\hrulefill
+
+\section*{Enunciado del Ejercicio}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{Estructuras algebraicas y espacio cociente:}
+    \begin{enumerate}[label=\alph*)]
+        \item Considérese sobre los números reales $\mathbb{R}$ la ley de composición interna $x \times y = x + y + 2xy$. Sabiendo que es asociativa, determine el elemento neutro $e$, encuentre la expresión del inverso $x^{-1}$ y demuestre que existe un único número real $x_0$ tal que $\mathbb{R} \setminus \{x_0\}$ forma un grupo bajo el producto $\times$.
+        \item Considere el grupo diédrico $D_3 = \big| \{c, x\} ; c^3 = x^2 = (xc)^2 = e \big|$ de orden $O(D_3) = 6$, cuya tabla de multiplicación con elementos $\{e, c, c^2, x, y, z\}$ viene dada por:
+        \begin{center}
+        \begin{tabular}{c|cccccc}
+        $\cdot$ & $e$ & $c$ & $c^2$ & $x$ & $y$ & $z$ \\
+        \hline
+        $e$ & $e$ & $c$ & $c^2$ & $x$ & $y$ & $z$ \\
+        $c$ & $c$ & $c^2$ & $e$ & $y$ & $z$ & $x$ \\
+        $c^2$ & $c^2$ & $e$ & $c$ & $z$ & $x$ & $y$ \\
+        $x$ & $x$ & $z$ & $y$ & $e$ & $c^2$ & $c$ \\
+        $y$ & $y$ & $x$ & $z$ & $c$ & $e$ & $c^2$ \\
+        $z$ & $z$ & $y$ & $x$ & $c^2$ & $c$ & $e$
+        \end{tabular}
+        \end{center}
+        Tomando el subgrupo cíclico $C_3 = \{e, c, c^2\}$, obtenga el espacio cociente $D_3/C_3$ y compruebe que sí forma un grupo, explicando por qué ocurre lo contrario al tomar $H = \{e, x\}$.
+    \end{enumerate}
+
+    \item \textbf{Permutaciones y el grupo simétrico $S_n$:}
+    Considere en $S_4$ las permutaciones:
+    \[
+    \pi_1 = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 1 & 4 \end{pmatrix}, \qquad \pi_2 = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 2 & 4 \end{pmatrix}
+    \]
+    \begin{enumerate}[label=\alph*)]
+        \item Calcule el producto $\pi_1 \pi_2$ y la inversa $\pi_1^{-1}$ en forma canónica.
+        \item Exprese $\pi_1$, $\pi_2$ y $\pi_1 \pi_2$ en notación de ciclos disjuntos y determine la paridad de cada una.
+        \item Considerando el subgrupo $S_3 \subset S_4$ (que deja fijo al índice $4$), obtenga sus clases de conjugación mediante las particiones de $n = 3$ y calcule el orden $O_\alpha$ de cada clase.
+    \end{enumerate}
+
+    \item \textbf{Representación regular y caracteres:}
+    Para el grupo $S_3 \cong D_3$ ($O(G) = 6$):
+    \begin{enumerate}[label=\alph*)]
+        \item Determine los caracteres $\chi_R(g)$ de la representación regular $D_R$ en cada clase de conjugación.
+        \item Construya la tabla de caracteres completa de $S_3$ utilizando las relaciones de ortogonalidad de filas y columnas.
+        \item Descomponga la representación regular $D_R$ en suma directa de representaciones irreducibles (irreps) y compruebe que cada irrep aparece un número de veces igual a su dimensión ($n_a^R = d_a$).
+    \end{enumerate}
+
+    \item \textbf{Diagramas de Young y producto externo:}
+    \begin{enumerate}[label=\alph*)]
+        \item Dibuje los diagramas de Young asociados a las irreps de $S_3$ y calcule sus dimensiones aplicando la regla de los ganchos.
+        \item Calcule diagramáticamente el producto externo $(2,1) \otimes (2)$ entre el diagrama $(2,1)$ de $S_3$ y el diagrama $(2)$ de $S_2$, verificando el resultado mediante la fórmula de dimensiones de las irreps en $S_5$.
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\section*{Solucionario Paso a Paso (con Referencias al Apunte)}
+
+\subsection*{1. Estructuras algebraicas y espacio cociente}
+\textbf{Referencias del apunte:} \textit{Sección 1.1} (pág. 1, axiomas $G_1$--$G_4$), \textit{Sección 1.3.3} (págs. 6--7, Definición 17 ecs. 1.13--1.15, Teorema de Lagrange ec. 1.19, Definición 20 ec. 1.18 y Definición 21 ec. 1.20) y \textit{Guía I} (Ejercicios 4 y 5).
+
+\begin{itemize}
+    \item \textbf{a) Estructura de grupo en $(\mathbb{R} \setminus \{-1/2\}, \times)$:}
+    \begin{itemize}
+        \item \textit{Elemento neutro ($G_3$):} Buscamos $e \in \mathbb{R}$ tal que $x \times e = x$ para todo $x$:
+        \[
+        x + e + 2xe = x \implies e(1 + 2x) = 0 \implies \mathbf{e = 0}
+        \]
+        \item \textit{Elemento inverso ($G_4$) y punto excluido:} Buscamos $x^{-1}$ tal que $x \times x^{-1} = e = 0$:
+        \[
+        x + x^{-1} + 2xx^{-1} = 0 \implies x^{-1}(1 + 2x) = -x \implies \mathbf{x^{-1} = \frac{-x}{1 + 2x}}
+        \]
+        Esta expresión está bien definida para todo real salvo cuando el denominador se anula: $1 + 2x = 0 \implies \mathbf{x_0 = -1/2}$.
+        \item \textit{Cierre ($G_1$):} Siguiendo el Ejercicio 5b de la Guía I, comprobamos que el producto de dos elementos distintos de $-1/2$ nunca cae en $-1/2$:
+        \[
+        x \times y = -\frac{1}{2} \iff x + y + 2xy + \frac{1}{2} = 0 \iff \frac{1}{2}(1 + 2x)(1 + 2y) = 0 \iff x = -\frac{1}{2} \;\lor\; y = -\frac{1}{2}
+        \]
+        Por tanto, si $x, y \in \mathbb{R} \setminus \{-1/2\}$, entonces $x \times y \in \mathbb{R} \setminus \{-1/2\}$, cumpliéndose los cuatro axiomas de grupo.
+    \end{itemize}
+
+    \item \textbf{b) Espacio cociente $D_3/C_3$ vs. $D_3/H$:}
+    \begin{itemize}
+        \item Por el \textbf{Teorema de Lagrange} (pág. 7, ec. 1.19), el número de clases laterales de $C_3 = \{e, c, c^2\}$ es $\text{card}(D_3/C_3) = O(D_3)/O(C_3) = 6/3 = 2$.
+        \item Calculamos las clases laterales por la izquierda $gC_3$ (ec. 1.13) y por la derecha $C_3g$ (ec. 1.14) leyendo la tabla de $D_3$:
+        \begin{align*}
+            eC_3 &= cC_3 = c^2C_3 = \{e, c, c^2\} = C_3e \\
+            xC_3 &= \{xe, xc, xc^2\} = \{x, z, y\} = \{x, y, z\} \\
+            C_3x &= \{ex, cx, c^2x\} = \{x, y, z\}
+        \end{align*}
+        Así, el espacio cociente (Definición 20, ec. 1.18) es:
+        \[
+        D_3/C_3 = \big\{ \{e, c, c^2\}, \, \{x, y, z\} \big\}
+        \]
+        \item \textbf{¿Por qué $D_3/C_3$ sí forma grupo y $D_3/H$ no?} Según la ec. (1.15) (pág. 6) y la Definición 21 (pág. 7), para que la ley $(g_i C_3)(g_j C_3) = (g_i g_j)C_3$ (ec. 1.20) esté bien definida, el subgrupo debe ser \textbf{normal} ($gN = Ng, \forall g \in G$). Para $C_3$ se cumple $gC_3 = C_3g$ para todo elemento, luego $C_3$ es subgrupo normal y $D_3/C_3$ es un grupo cociente de orden $2$. En cambio, para $H = \{e, x\}$ se tiene $cH = \{c, cx\} = \{c, y\}$ mientras que $Hc = \{c, xc\} = \{c, z\} \neq cH$, por lo que $H$ no es normal y $D_3/H$ no forma grupo.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Permutaciones y el grupo simétrico $S_n$}
+\textbf{Referencias del apunte:} \textit{Sección 1.5} (págs. 13--14, Ejemplo 33 ecs. 1.45--1.47), \textit{Sección 1.5.1} (págs. 15--18, Definición 36 ec. 1.60 y Definición 44) y \textit{Sección 1.5.2} (págs. 19--20, ecs. 1.90--1.98, Ejemplo 46).
+
+\begin{itemize}
+    \item \textbf{a) Producto $\pi_1 \pi_2$ e inversa $\pi_1^{-1}$ en forma canónica:}
+    \begin{itemize}
+        \item Aplicando el método del Ejemplo 33 (pág. 13, ec. 1.45), reordenamos las columnas de $\pi_1$ para que su fila superior coincida con la fila inferior de $\pi_2$ ($1, 3, 2, 4$):
+        \[
+        \pi_1 \pi_2 = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 1 & 4 \end{pmatrix} \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 2 & 4 \end{pmatrix} = \begin{pmatrix} 1 & 3 & 2 & 4 \\ 2 & 1 & 3 & 4 \end{pmatrix} \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 2 & 4 \end{pmatrix} = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 1 & 3 & 4 \end{pmatrix}
+        \]
+        \item Para la inversa $\pi_1^{-1}$ intercambiamos las filas de $\pi_1$ y reordenamos las columnas de $1$ a $4$ (pág. 14, ec. 1.47):
+        \[
+        \pi_1^{-1} = \begin{pmatrix} 2 & 3 & 1 & 4 \\ 1 & 2 & 3 & 4 \end{pmatrix} = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 3 & 1 & 2 & 4 \end{pmatrix}
+        \]
+    \end{itemize}
+
+    \item \textbf{b) Ciclos disjuntos y paridad:}
+    Siguiendo la Definición 36 (pág. 15, ec. 1.60) y la Definición 44 de paridad (pág. 18):
+    \begin{itemize}
+        \item $\pi_1 = (123)(4) = (123) = (13)(12) \implies$ Producto de $2$ transposiciones $\implies$ \textbf{Permutación par}.
+        \item $\pi_2 = (1)(23)(4) = (23) \implies$ $1$ transposición $\implies$ \textbf{Permutación impar}.
+        \item $\pi_1 \pi_2 = (12)(3)(4) = (12) \implies$ $1$ transposición $\implies$ \textbf{Permutación impar} (además, operando en ciclos de derecha a izquierda según el Ejemplo 41 de la pág. 16: $(123)(23) = (12)$).
+    \end{itemize}
+
+    \item \textbf{c) Clases de conjugación de $S_3$ y sus órdenes $O_\alpha$:}
+    Por las ecuaciones (1.90)--(1.92) y el Ejemplo 46 (págs. 19--20), las particiones de $n = 3$ ($\sum_{k=1}^r \nu_k l_k = 3$) y el número de elementos $O_\alpha = \frac{3!}{\prod_k \nu_k! \, l_k^{\nu_k}}$ son:
+    \begin{enumerate}
+        \item $3 = 1 + 1 + 1 \to$ Clase $[1^3]$ (identidad): $O_{[1^3]} = \dfrac{3!}{3! \cdot 1^3} = \mathbf{1}$ (ec. 1.96).
+        \item $3 = 2 + 1 \to$ Clase $[1, 2]$ (transposiciones): $O_{[1,2]} = \dfrac{3!}{(1! \cdot 1^1)(1! \cdot 2^1)} = \dfrac{6}{2} = \mathbf{3}$ (ec. 1.97).
+        \item $3 = 3 \to$ Clase $[3]$ (triciclos): $O_{[3]} = \dfrac{3!}{1! \cdot 3^1} = \dfrac{6}{3} = \mathbf{2}$ (ec. 1.98).
+    \end{enumerate}
+\end{itemize}
+
+\subsection*{3. Representación regular y caracteres}
+\textbf{Referencias del apunte:} \textit{Sección 2.4} (págs. 30--32, ec. 2.65, Definición 68 y Propiedades 1--5 ecs. 2.72--2.77) y \textit{Sección 2.5} (págs. 37--38, Teorema 70 y Definición 71 ecs. 2.113--2.117).
+
+\begin{itemize}
+    \item \textbf{a) Caracteres de la representación regular $D_R$:}
+    Por la Propiedad 1 de la representación regular (pág. 32, ec. 2.72), $\chi_R(e) = O(G) = 6$ y $\chi_R(g) = 0$ para todo $g \neq e$:
+    \[
+    \chi_R = (6, \, 0, \, 0)
+    \]
+
+    \item \textbf{b) Construcción de la tabla de caracteres de $S_3$:}
+    Siguiendo las reglas de la Definición 71 (págs. 37--38):
+    \begin{itemize}
+        \item \textit{Número de irreps y dimensiones (ecs. 2.113 y 2.114):} Como hay $s = 3$ clases, existen $r = 3$ irreps cuyas dimensiones cumplen $d_1^2 + d_2^2 + d_3^2 = O(S_3) = 6$. Con $d_1 = 1$ (irrep trivial $D^{(1)} = (1, 1, 1)$), la única solución entera es $1^2 + 1^2 + 2^2 = 6 \implies \mathbf{d_2 = 1}$ y $\mathbf{d_3 = 2}$.
+        \item \textit{Segunda fila $D^{(2)}$ (Reglas 4 y 5, ec. 2.116):} Para $g \in K_{[1,2]}$ ($g^2 = e \implies m = 2$), las raíces cuadradas de la unidad son $\pm 1$, mientras que en $K_{[3]}$ (producto de dos transposiciones) vale $(\pm 1)^2 = 1$. Por ortogonalidad de filas (ec. 2.116) contra $D^{(1)}$:
+        \begin{align*}
+            \sum_{\alpha=1}^3 k_\alpha \chi_\alpha^{(1)*} \chi_\alpha^{(2)}
+            &= 1(1)(1) + 3(1)\chi_{[1,2]}^{(2)} + 2(1)(1) = 0 \\
+            &\implies \mathbf{\chi_{[1,2]}^{(2)} = -1}
+        \end{align*}
+        \item \textit{Tercera fila $D^{(3)}$ (Ortogonalidad con la 1ª columna, ec. 2.115):}\par
+        Aplicamos
+        $\sum_{a=1}^3 d_a \chi^{(a)}(g) = 0$ para $g \neq e$:
+        \begin{align*}
+            \text{Columna } K_{[1,2]}: &\quad (1)(1) + (1)(-1) + 2\chi_{[1,2]}^{(3)} = 0 \implies \mathbf{\chi_{[1,2]}^{(3)} = 0} \\
+            \text{Columna } K_{[3]}: &\quad (1)(1) + (1)(1) + 2\chi_{[3]}^{(3)} = 0 \implies \mathbf{\chi_{[3]}^{(3)} = -1}
+        \end{align*}
+    \end{itemize}
+
+    \begin{center}
+    \begin{tabular}{lccc}
+    \toprule
+    $S_3 \cong D_3$ & $K_{[1^3]}$ ($k_1 = 1$) & $K_{[1,2]}$ ($k_2 = 3$) & $K_{[3]}$ ($k_3 = 2$) \\
+    \midrule
+    $D^{(1)}$ (Trivial) & $1$ & $1$ & $1$ \\
+    $D^{(2)}$ (Alternante) & $1$ & $-1$ & $1$ \\
+    $D^{(3)}$ (Bidimensional) & $2$ & $0$ & $-1$ \\
+    \midrule
+    $D_R$ (Regular) & $6$ & $0$ & $0$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{c) Descomposición de la representación regular $D_R$:}
+    Por la ec. (2.65) (pág. 30) y la Propiedad 2 (pág. 32, ecs. 2.73--2.75), la multiplicidad $n_a^R$ de cada irrep en $D_R$ es:
+    \[
+    n_a^R = \langle \chi^{(a)} \mid \chi_R \rangle = \frac{1}{6} \sum_{\alpha=1}^3 k_\alpha \chi_\alpha^{(a)*} \chi_R(K_\alpha) = \frac{1}{6} \big( 1 \cdot d_a \cdot 6 + 0 + 0 \big) = d_a
+    \]
+    Por tanto, $n_1^R = 1$, $n_2^R = 1$ y $n_3^R = 2$, verificando que $\mathbf{D_R = D^{(1)} \oplus D^{(2)} \oplus 2 D^{(3)}}$ (y en caracteres: $\chi^{(1)} + \chi^{(2)} + 2\chi^{(3)} = (1+1+4, \, 1-1+0, \, 1+1-2) = (6, 0, 0) = \chi_R$, ec. 2.77).
+\end{itemize}
+
+\subsection*{4. Diagramas de Young y producto externo}
+\textbf{Referencias del apunte:} \textit{Sección 2.7} (págs. 40--43, Ejemplo 76, Definición 77, Ejemplo 78 ecs. 2.133--2.135, Definición 79 ec. 2.136, Ejemplo 80 ecs. 2.137--2.139 y Producto externo ecs. 2.140--2.149).
+
+\begin{itemize}
+    \item \textbf{a) Diagramas de Young de $S_3$ y Regla de los Ganchos:}
+    Para cada partición ordenada de $n = 3$, escribimos dentro de cada caja $i$ la longitud de su gancho $L_i = (\text{cajas a la derecha}) + (\text{cajas debajo}) + 1$ y aplicamos la ec. (2.136) (pág. 41), $d = \frac{n!}{\prod_i L_i}$:
+    \[
+    (3): \;\; \begin{array}{|c|c|c|} \hline 3 & 2 & 1 \\ \hline \end{array} \implies d_{(3)} = \frac{3!}{3 \cdot 2 \cdot 1} = \mathbf{1} \quad \text{(ec. 2.139)}
+    \]
+    \[
+    (2,1): \;\; \begin{array}{|c|c|} \hline 3 & 1 \\ \hline 1 & \multicolumn{1}{c}{} \\ \cline{1-1} \end{array} \implies d_{(2,1)} = \frac{3!}{3 \cdot 1 \cdot 1} = \mathbf{2} \quad \text{(ec. 2.138)}
+    \]
+    \[
+    (1,1,1): \;\; \begin{array}{|c|} \hline 3 \\ \hline 2 \\ \hline 1 \\ \hline \end{array} \implies d_{(1,1,1)} = \frac{3!}{3 \cdot 2 \cdot 1} = \mathbf{1} \quad \text{(ec. 2.137)}
+    \]
+
+    \item \textbf{b) Producto externo $(2,1) \otimes (2)$ en $S_5$:}
+    Siguiendo el método de las páginas 41--42 (ecs. 2.142--2.148), etiquetamos con `$1$' las dos cajas de la primera fila del segundo diagrama:
+    \[
+    \begin{array}{|c|c|} \hline \phantom{1} & \phantom{1} \\ \hline \phantom{1} & \multicolumn{1}{c}{} \\ \cline{1-1} \end{array} \;\otimes\; \begin{array}{|c|c|} \hline 1 & 1 \\ \hline \end{array}
+    \;\; = \;\;
+    \underbrace{\begin{array}{|c|c|c|c|} \hline \phantom{1} & \phantom{1} & 1 & 1 \\ \hline \phantom{1} & \multicolumn{3}{c}{} \\ \cline{1-1} \end{array}}_{(4,1)}
+    \;\oplus\;
+    \underbrace{\begin{array}{|c|c|c|} \hline \phantom{1} & \phantom{1} & 1 \\ \hline \phantom{1} & 1 & \multicolumn{1}{c}{} \\ \cline{1-2} \end{array}}_{(3,2)}
+    \;\oplus\;
+    \underbrace{\begin{array}{|c|c|c|} \hline \phantom{1} & \phantom{1} & 1 \\ \hline \phantom{1} & \multicolumn{2}{c}{} \\ \cline{1-1} 1 & \multicolumn{2}{c}{} \\ \cline{1-1} \end{array}}_{(3,1,1)}
+    \;\oplus\;
+    \underbrace{\begin{array}{|c|c|} \hline \phantom{1} & \phantom{1} \\ \hline \phantom{1} & 1 \\ \hline 1 & \multicolumn{1}{c}{} \\ \cline{1-1} \end{array}}_{(2,2,1)}
+    \]
+    *(En ninguno de los 4 diagramas aparecen dos cajas `$1$' en la misma columna)*. Calculamos la dimensión de cada irrep resultante en $S_5$ ($5! = 120$) con la regla de los ganchos (ec. 2.136):
+    \begin{align*}
+        d_{(4,1)} &= \frac{5!}{5 \cdot 3 \cdot 2 \cdot 1 \cdot 1} = \frac{120}{30} = \mathbf{4}, &
+        d_{(3,2)} &= \frac{5!}{4 \cdot 3 \cdot 1 \cdot 2 \cdot 1} = \frac{120}{24} = \mathbf{5}, \\[4pt]
+        d_{(3,1,1)} &= \frac{5!}{5 \cdot 2 \cdot 1 \cdot 2 \cdot 1} = \frac{120}{20} = \mathbf{6}, &
+        d_{(2,2,1)} &= \frac{5!}{4 \cdot 2 \cdot 3 \cdot 1 \cdot 1} = \frac{120}{24} = \mathbf{5}.
+    \end{align*}
+    \textbf{Comprobación de dimensiones (ecs. 2.140 y 2.141, pág. 42):}
+    Con $n = 3$, $m = 2$, $d_{(2,1)} = 2$ y $d_{(2)} = 1$:
+    \[
+    \frac{(n+m)!}{n! \, m!} d_a d_b = \frac{5!}{3! \, 2!} \times 2 \times 1 = 10 \times 2 = \mathbf{20} \;\; = \;\; 4 + 5 + 6 + 5 = \sum_c n_c^{a \otimes b} d_c
+    \]
+\end{itemize}
+
+\end{document}

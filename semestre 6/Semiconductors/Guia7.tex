@@ -1,0 +1,1195 @@
+\documentclass[11pt,a4paper]{article}
+
+% Paquetes esenciales para español, matemáticas y diseño
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{left=2.2cm, right=2.2cm, top=2.5cm, bottom=2.5cm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing, patterns, calc, babel}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Configuración de encabezado y pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{Curso 510318-1: Dispositivos Semiconductores}}
+\rhead{Uniones Metal-Semiconductor}
+\cfoot{Página \thepage}
+
+% Cajas didácticas para conceptos y resultados
+\newtcolorbox{teoriabox}[1]{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  fonttitle=\bfseries,
+  title=#1,
+  breakable
+}
+
+\newtcolorbox{ejerciciobox}[1]{
+  colback=gray!8!white,
+  colframe=black!75!white,
+  fonttitle=\bfseries,
+  title=#1,
+  breakable
+}
+
+\newtcolorbox{respuestabox}{
+  colback=green!5!white,
+  colframe=green!60!black,
+  fonttitle=\bfseries,
+  title=Resumen de Resultados,
+  breakable
+}
+
+\title{\textbf{Solucionario Didáctico Paso a Paso\\Actividad Práctica 7: Uniones Metal-Semiconductor}}
+\author{Curso: 510318-1 Dispositivos Semiconductores \\ Departamento de Física -- Universidad de Concepción}
+\date{Semestre 2-2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{teoriabox}{Guía Teórica desde Cero: ¿Cómo funciona una Unión Metal-Semiconductor?}
+Para resolver cualquier problema de uniones Metal-Semiconductor (M-S), primero debemos comprender qué significan las energías y los niveles dentro de los materiales:
+
+\textbf{1. Niveles de Energía Fundamentales:}
+\begin{itemize}
+    \item \textbf{Nivel de vacío ($E_{\text{vac}}$ o $E_0$):} Es el techo de referencia. Representa la energía que tiene un electrón que ha escapado completamente del material y está libre en el espacio.
+    \item \textbf{Nivel de Fermi ($E_F$):} Imagínalo como el ``nivel del agua'' de los electrones. Es la energía máxima de referencia estadística de los electrones. \textbf{Regla de oro del equilibrio térmico:} Cuando dos materiales se unen y no se les aplica voltaje externo, sus niveles de Fermi se igualan y forman una sola línea horizontal recta ($E_{Fm} = E_{Fs}$).
+    \item \textbf{Banda de Conducción ($E_c$) y Banda de Valencia ($E_v$):} En un semiconductor, los electrones libres se mueven en $E_c$ y los huecos (ausencias de electrones, con carga positiva) en $E_v$. La distancia entre ambas es la brecha de energía o \textit{Band Gap}: $E_g = E_c - E_v$.
+    \item \textbf{Nivel Intrínseco ($E_i$):} Es el nivel de Fermi de un semiconductor puro (sin dopar), ubicado casi exactamente a la mitad del Band Gap: $E_c - E_i \approx E_g/2$.
+    \item \textbf{Función de trabajo del metal ($q\Phi_m$):} Energía necesaria para llevar un electrón desde el nivel de Fermi del metal ($E_{Fm}$) hasta el vacío ($E_{\text{vac}}$). Si nos dan $\Phi_m$ en voltios (V), su energía es $q\Phi_m$ en electronvoltios (eV). Numéricamente valen lo mismo (ej. $\Phi_m = 4.6\text{ V} \Leftrightarrow q\Phi_m = 4.6\text{ eV}$).
+    \item \textbf{Afinidad electrónica del semiconductor ($q\chi$):} Energía desde el borde de la banda de conducción ($E_c$) hasta el nivel de vacío ($E_{\text{vac}}$). \textbf{¡Importante!} $q\chi$ es una propiedad fija de la superficie del semiconductor; por lo tanto, la distancia entre $E_{\text{vac}}$ y $E_c$ es constante en todo punto. Si $E_c$ se curva, $E_{\text{vac}}$ y $E_v$ se curvan exactamente con la misma forma.
+\end{itemize}
+
+\textbf{2. Función de Trabajo del Semiconductor ($q\Phi_s$):}
+Es la distancia desde el nivel de Fermi del semiconductor ($E_{Fs}$) hasta el nivel de vacío ($E_{\text{vac}}$). Depende de si el material es tipo-$n$ (exceso de electrones, $E_F$ cerca de $E_c$) o tipo-$p$ (exceso de huecos, $E_F$ cerca de $E_v$):
+\begin{itemize}
+    \item \textbf{Semiconductor Tipo-$n$:} Definimos $q\phi_n = E_c - E_F$. Entonces:
+    \[
+    q\Phi_s = q\chi + q\phi_n \quad \text{donde} \quad \phi_n = \frac{kT}{q}\ln\left(\frac{N_c}{N_d}\right) \quad \text{o bien} \quad E_F - E_i = \frac{kT}{q}\ln\left(\frac{N_d}{n_i}\right)
+    \]
+    \item \textbf{Semiconductor Tipo-$p$:} Definimos $q\phi_p = E_F - E_v$. Entonces:
+    \[
+    q\Phi_s = q\chi + E_g - q\phi_p \quad \text{donde} \quad \phi_p = \frac{kT}{q}\ln\left(\frac{N_v}{N_a}\right) \quad \text{o bien} \quad E_i - E_F = \frac{kT}{q}\ln\left(\frac{N_a}{n_i}\right)
+    \]
+\end{itemize}
+
+\textbf{3. Clasificación del Contacto (Schottky vs. Óhmico):}
+Al unir el metal y el semiconductor, los electrones fluyen del material con \textbf{menor función de trabajo} (mayor energía de Fermi) hacia el de \textbf{mayor función de trabajo} (menor energía de Fermi) hasta igualar $E_F$:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Relación entre $\Phi_m$ y $\Phi_s$} & \textbf{Semiconductor Tipo-$n$} & \textbf{Semiconductor Tipo-$p$} \\
+\midrule
+$\Phi_m > \Phi_s$ & \textbf{Rectificante (Schottky)} & \textbf{Óhmico} \\
+& (Bandas suben hacia el metal) & (Bandas suben hacia el metal) \\
+\addlinespace
+$\Phi_m < \Phi_s$ & \textbf{Óhmico} & \textbf{Rectificante (Schottky)} \\
+& (Bandas bajan hacia el metal) & (Bandas bajan hacia el metal) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{4. Ecuaciones Clave de una Barrera Schottky:}
+\begin{itemize}
+    \item \textbf{Altura de la barrera Schottky ideal ($\Phi_B$):} Es el muro de potencial que ven los portadores desde el metal hacia el semiconductor:
+    \[
+    \text{Para tipo-$n$: } \Phi_{Bn} = \Phi_m - \chi \qquad \text{Para tipo-$p$: } \Phi_{Bp} = \left(\chi + \frac{E_g}{q}\right) - \Phi_m
+    \]
+    \item \textbf{Potencial de contacto o potencial interno ($V_0$ o $V_{bi}$):} Es cuánto se curvan las bandas en el semiconductor en equilibrio:
+    \[
+    \text{Para tipo-$n$: } V_0 = \Phi_m - \Phi_s = \Phi_{Bn} - \phi_n \qquad \text{Para tipo-$p$: } V_0 = \Phi_s - \Phi_m = \Phi_{Bp} - \phi_p
+    \]
+    \item \textbf{Ancho de la zona de vaciamiento ($x_n$ o $W$) y Campo Eléctrico Máximo ($|\mathcal{E}_{\text{máx}}|$):} Con polarización inversa $V_R$:
+    \[
+    x_n = \sqrt{\frac{2\varepsilon_s (V_0 + V_R)}{q N_d}}, \qquad |\mathcal{E}_{\text{máx}}| = \frac{q N_d x_n}{\varepsilon_s} = \frac{2(V_0 + V_R)}{x_n}
+    \]
+    \item \textbf{Constantes físicas estándar a $T = 300\text{ K}$ (Textos de Neamen / Streetman):}
+    \begin{itemize}
+        \item Carga elemental: $q = 1.6 \times 10^{-19}\text{ C}$, Voltaje térmico: $V_t = \frac{kT}{q} = 0.0259\text{ V}$ ($25.9\text{ mV}$).
+        \item Permitividad del vacío: $\varepsilon_0 = 8.85 \times 10^{-14}\text{ F/cm}$.
+        \item \textbf{Silicio (Si):} $E_g = 1.12\text{ eV}$, $\chi = 4.01\text{ V}$, $N_c = 2.8 \times 10^{19}\text{ cm}^{-3}$, $N_v = 1.04 \times 10^{19}\text{ cm}^{-3}$, $n_i = 1.5 \times 10^{10}\text{ cm}^{-3}$, $\varepsilon_r = 11.7$.
+        \item \textbf{Arseniuro de Galio (GaAs):} $E_g = 1.42\text{ eV}$, $\chi = 4.07\text{ V}$, $N_c = 4.7 \times 10^{17}\text{ cm}^{-3}$, $n_i = 1.8 \times 10^6\text{ cm}^{-3}$, $\varepsilon_r = 13.1$.
+        \item \textbf{Germanio (Ge):} $E_g = 0.66\text{ eV}$, $\chi = 4.13\text{ V}$, $N_c = 1.04 \times 10^{19}\text{ cm}^{-3}$, $N_v = 6.0 \times 10^{18}\text{ cm}^{-3}$, $n_i = 2.4 \times 10^{13}\text{ cm}^{-3}$.
+    \end{itemize}
+\end{itemize}
+\end{teoriabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 1
+% ============================================================================
+\section*{Ejercicio 1}
+\begin{ejerciciobox}{Enunciado 1}
+Se deposita un metal con función de trabajo de $4.6\text{ eV}$ sobre silicio (afinidad electrónica $4.01\text{ eV}$) dopado tipo-$p$ con $N_a = 10^{18}\text{ cm}^{-3}$. Dibuje el diagrama de bandas de equilibrio de la unión etiquetando el nivel de Fermi, los bordes de bandas y el nivel de vacío. ¿Es un contacto óhmico o Schottky? ¿Por cuánto debería ser alterada la función de trabajo del metal para cambiar el tipo de contacto?
+\end{ejerciciobox}
+
+\subsection*{1. Datos y Parámetros del Material}
+\begin{itemize}
+    \item Función de trabajo del metal: $q\Phi_m = 4.6\text{ eV}$ ($\Phi_m = 4.6\text{ V}$).
+    \item Afinidad electrónica del Silicio: $q\chi = 4.01\text{ eV}$.
+    \item Concentración de aceptores (dopaje tipo-$p$): $N_a = 10^{18}\text{ cm}^{-3}$.
+    \item Parámetros del Silicio a $T = 300\text{ K}$: $E_g = 1.12\text{ eV}$, $N_v = 1.04 \times 10^{19}\text{ cm}^{-3}$ (o usando $n_i = 1.5 \times 10^{10}\text{ cm}^{-3}$), $kT = 0.0259\text{ eV}$.
+\end{itemize}
+
+\subsection*{2. Cálculo Paso a Paso}
+\textbf{Paso 1: Ubicación del nivel de Fermi en el silicio tipo-$p$ ($q\phi_p = E_F - E_v$).}
+En un semiconductor tipo-$p$, el nivel de Fermi está muy cerca de la banda de valencia $E_v$. Calculamos la distancia $E_F - E_v$ usando la densidad efectiva de estados en la banda de valencia ($N_v$):
+\[
+q\phi_p = E_F - E_v = kT \ln\left(\frac{N_v}{N_a}\right) = (0.0259\text{ eV}) \ln\left(\frac{1.04 \times 10^{19}}{10^{18}}\right) = 0.0259 \times \ln(10.4) = 0.0259 \times 2.3418 = 0.0607\text{ eV} \approx 0.061\text{ eV}
+\]
+\textit{Nota alternativa (usando $n_i$):} Si en tu curso calculan primero la distancia respecto al nivel intrínseco:
+\[
+E_i - E_F = kT \ln\left(\frac{N_a}{n_i}\right) = 0.0259 \ln\left(\frac{10^{18}}{1.5 \times 10^{10}}\right) = 0.467\text{ eV} \implies E_F - E_v = \frac{E_g}{2} - 0.467 = 0.56 - 0.467 = 0.093\text{ eV}
+\]
+Ambas formas son válidas; usaremos el método estándar de $N_v$ ($q\phi_p = 0.061\text{ eV}$) e indicaremos también el valor con $n_i$.
+
+\textbf{Paso 2: Cálculo de la función de trabajo del semiconductor ($q\Phi_s$).}
+Para ir desde $E_F$ hasta el nivel de vacío ($E_{\text{vac}}$), subimos desde $E_F$ hasta $E_c$ (que vale $E_g - q\phi_p$) y luego sumamos la afinidad electrónica $q\chi$:
+\[
+q\Phi_s = q\chi + E_g - q\phi_p = 4.01\text{ eV} + 1.12\text{ eV} - 0.061\text{ eV} = 5.069\text{ eV} \approx 5.07\text{ eV}
+\]
+(Con el método de $n_i$, sería $q\Phi_s = 4.01 + 0.56 + 0.467 = 5.037\text{ eV}$).
+
+\textbf{Paso 3: Determinar el tipo de contacto y el potencial de contacto ($V_0$).}
+Comparamos las funciones de trabajo:
+\[
+q\Phi_m = 4.6\text{ eV} \quad < \quad q\Phi_s = 5.07\text{ eV}
+\]
+Como $\Phi_m < \Phi_s$, antes del contacto el nivel de Fermi del metal está \textbf{más arriba} (mayor energía) que el del semiconductor tipo-$p$. Al unirlos:
+\begin{enumerate}
+    \item Los electrones pasan del metal hacia el semiconductor para igualar los niveles de Fermi.
+    \item Estos electrones se recombinan con los huecos mayoritarios cerca de la unión, dejando iones aceptores negativos descubiertos ($N_a^-$) y formando una \textbf{región de agotamiento (vaciamiento)}.
+    \item Las bandas del semiconductor bajan hacia la interfaz en una cantidad igual a:
+    \[
+    qV_0 = q\Phi_s - q\Phi_m = 5.07\text{ eV} - 4.60\text{ eV} = 0.47\text{ eV} \implies V_0 = 0.47\text{ V}
+    \]
+    \item La altura de la barrera Schottky para los huecos es:
+    \[
+    q\Phi_{Bp} = q\chi + E_g - q\Phi_m = 4.01 + 1.12 - 4.60 = 0.53\text{ eV}
+    \]
+\end{enumerate}
+Al existir una región de vaciamiento y una barrera de potencial para los huecos mayoritarios, se trata de un \textbf{contacto rectificante o barrera Schottky}.
+
+\textbf{Paso 4: ¿Por cuánto debe alterarse $q\Phi_m$ para cambiar a contacto óhmico?}
+Para que un semiconductor tipo-$p$ forme un contacto óhmico, no debe haber barrera para los huecos; esto requiere que las bandas se curven hacia arriba al acercarse al metal, lo cual ocurre cuando:
+\[
+q\Phi_m > q\Phi_s \implies q\Phi_m > 5.07\text{ eV}
+\]
+Por lo tanto, la función de trabajo del metal debe \textbf{aumentarse en más de}:
+\[
+\Delta(q\Phi_m) = q\Phi_s - q\Phi_m = 5.07\text{ eV} - 4.60\text{ eV} = 0.47\text{ eV} \quad (\text{o } 0.44\text{ eV usando } n_i)
+\]
+
+\subsection*{3. Diagrama de Bandas en Equilibrio}
+\begin{center}
+\begin{tikzpicture}[scale=1.05, >=Stealth]
+    % Línea de interfaz Metal-Semiconductor
+    \draw[thick] (0,0) -- (0,6.8);
+    \node[above] at (-2.2, 6.8) {\textbf{Metal}};
+    \node[above] at (3.2, 6.8) {\textbf{Silicio tipo-$p$ ($N_a = 10^{18}\text{ cm}^{-3}$)}};
+
+    % Nivel de Fermi (constante en equilibrio)
+    \draw[dashed, thick, blue!80!black] (-3.5, 1.5) -- (6.5, 1.5);
+    \node[left, blue!80!black] at (-3.5, 1.5) {$E_{Fm}$};
+    \node[right, blue!80!black] at (6.5, 1.5) {$E_{Fs}$};
+
+    % Nivel de vacío en el metal: Evac = EF + 4.6 -> 1.5 + 4.6 = 6.1 (escala ajustada)
+    % Usemos coordenadas visuales proporcionadas:
+    % EF = 1.5
+    % En el bulk (x >= 2.5):
+    % Ev_bulk = 1.5 - 0.3 = 1.2 (representa 0.061 eV debajo de EF)
+    % Ei_bulk = 2.4
+    % Ec_bulk = 3.6 (Ec - Ev = 2.4 unidades visuales = 1.12 eV)
+    % Evac_bulk = 6.3 (Evac - Ec = 2.7 unidades visuales = 4.01 eV)
+    % En la interfaz (x = 0): las bandas bajan 0.47 eV (1.0 unidad visual)
+    % Ev(0) = 0.2, Ei(0) = 1.4, Ec(0) = 2.6, Evac(0) = 5.3
+
+    % Sombreado del metal
+    \fill[gray!25] (-3.5, 0) rectangle (0, 1.5);
+
+    % Nivel de vacío (Evac)
+    \draw[thick, black] (-3.5, 5.3) -- (0, 5.3);
+    \draw[thick, black] (0, 5.3) parabola bend (2.5, 6.3) (6.0, 6.3);
+    \node[right] at (6.0, 6.3) {$E_{\text{vac}}$ (Nivel de vacío)};
+
+    % Banda de conducción (Ec)
+    \draw[thick, red!80!black] (0, 2.6) parabola bend (2.5, 3.6) (6.0, 3.6);
+    \node[right, red!80!black] at (6.0, 3.6) {$E_c$};
+
+    % Nivel intrínseco (Ei)
+    \draw[dotted, thick, black!70] (0, 1.4) parabola bend (2.5, 2.4) (6.0, 2.4);
+    \node[right, black!70] at (6.0, 2.4) {$E_i$};
+
+    % Banda de valencia (Ev)
+    \draw[thick, teal!80!black] (0, 0.2) parabola bend (2.5, 1.2) (6.0, 1.2);
+    \node[right, teal!80!black] at (6.0, 1.2) {$E_v$};
+
+    % Líneas de referencia horizontal desde la interfaz y el bulk
+    \draw[densely dotted] (0, 2.6) -- (3.2, 2.6);
+    \draw[densely dotted] (0, 0.2) -- (2.5, 0.2);
+
+    % Cotas de energía
+    % Phi_m
+    \draw[<->, thick] (-2.0, 1.5) -- (-2.0, 5.3) node[midway, fill=white, inner sep=1pt] {$q\Phi_m = 4.6\text{ eV}$};
+    % Afinidad chi
+    \draw[<->, thick] (4.8, 3.6) -- (4.8, 6.3) node[midway, fill=white, inner sep=1pt] {$q\chi = 4.01\text{ eV}$};
+    % Eg
+    \draw[<->, thick] (5.5, 1.2) -- (5.5, 3.6) node[midway, fill=white, inner sep=1pt] {$E_g = 1.12\text{ eV}$};
+    % qV0 (curvatura de banda)
+    \draw[<->, thick, purple] (2.5, 2.6) -- (2.5, 3.6) node[midway, right, inner sep=2pt] {$qV_0 = 0.47\text{ eV}$};
+    % qPhi_Bp (barrera para huecos)
+    \draw[<->, thick, orange!85!black] (-0.4, 0.2) -- (-0.4, 1.5) node[midway, left, inner sep=2pt] {$q\Phi_{Bp} = 0.53\text{ eV}$};
+    % qphi_p
+    \draw[<->, thick] (4.0, 1.2) -- (4.0, 1.5);
+    \node[below, font=\footnotesize] at (4.1, 1.2) {$q\phi_p = 0.061\text{ eV}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{Tipo de contacto:} Es un \textbf{contacto rectificante (Schottky)} porque se trata de un semiconductor tipo-$p$ con $\Phi_m < \Phi_s$ ($4.6\text{ eV} < 5.07\text{ eV}$).
+    \item \textbf{Modificación necesaria:} La función de trabajo del metal debe \textbf{incrementarse en al menos $0.47\text{ eV}$} (para superar $5.07\text{ eV}$) de modo que se convierta en un contacto óhmico.
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 2
+% ============================================================================
+\section*{Ejercicio 2}
+\begin{ejerciciobox}{Enunciado 2}
+Una barrera Schottky se forma entre un metal que tiene una función de trabajo de $4.3\text{ eV}$ y silicio tipo-$p$ (afinidad electrónica $= 4.01\text{ eV}$), $N_a = 10^{17}\text{ cm}^{-3}$. (a) Dibujar el diagrama de bandas de equilibrio de la unión, mostrando el valor numérico de $V_0$. (b) Dibujar el diagrama de bandas de energía con una polarización directa de $0.3\text{ V}$. Repetir para una polarización inversa de $2\text{ V}$.
+\end{ejerciciobox}
+
+\subsection*{1. Datos y Parámetros del Material}
+\begin{itemize}
+    \item Metal: $q\Phi_m = 4.3\text{ eV}$.
+    \item Silicio tipo-$p$: $q\chi = 4.01\text{ eV}$, $E_g = 1.12\text{ eV}$, $N_a = 10^{17}\text{ cm}^{-3}$, $N_v = 1.04 \times 10^{19}\text{ cm}^{-3}$ ($T = 300\text{ K}$).
+\end{itemize}
+
+\subsection*{2. Parte (a): Equilibrio Térmico y Cálculo de $V_0$}
+\textbf{Paso 1: Posición del nivel de Fermi respecto a $E_v$ ($q\phi_p$).}
+\[
+q\phi_p = E_F - E_v = kT \ln\left(\frac{N_v}{N_a}\right) = 0.0259 \ln\left(\frac{1.04 \times 10^{19}}{10^{17}}\right) = 0.0259 \ln(104) = 0.0259 \times 4.6444 = 0.120\text{ eV}
+\]
+\textit{(Nota: Si se calcula con $n_i = 1.5 \times 10^{10}\text{ cm}^{-3}$, $E_i - E_F = 0.0259\ln(10^{17}/1.5\times 10^{10}) = 0.407\text{ eV} \implies q\phi_p = 0.56 - 0.407 = 0.153\text{ eV}$).}
+
+\textbf{Paso 2: Función de trabajo del semiconductor ($q\Phi_s$).}
+\[
+q\Phi_s = q\chi + E_g - q\phi_p = 4.01 + 1.12 - 0.12 = 5.01\text{ eV}
+\]
+
+\textbf{Paso 3: Altura de la barrera Schottky ($\Phi_{Bp}$) y potencial de contacto ($V_0$).}
+\[
+q\Phi_{Bp} = q\chi + E_g - q\Phi_m = 4.01 + 1.12 - 4.30 = 0.83\text{ eV} \implies \Phi_{Bp} = 0.83\text{ V}
+\]
+\[
+qV_0 = q\Phi_s - q\Phi_m = 5.01\text{ eV} - 4.30\text{ eV} = 0.71\text{ eV} \implies \mathbf{V_0 = 0.71\text{ V}}
+\]
+\textit{(Con $n_i$, $V_0 = 0.68\text{ V}$).}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    \draw[thick] (0,0) -- (0,6.5);
+    \node[above] at (-2.0, 6.5) {\textbf{Metal}};
+    \node[above] at (3.0, 6.5) {\textbf{Si tipo-$p$ (Equilibrio, $V_a = 0\text{ V}$)}};
+
+    % EF constante
+    \draw[dashed, thick, blue!80!black] (-3.2, 1.8) -- (6.0, 1.8);
+    \node[left, blue!80!black] at (-3.2, 1.8) {$E_{Fm}$};
+    \node[right, blue!80!black] at (6.0, 1.8) {$E_{Fs}$};
+    \fill[gray!25] (-3.2, 0) rectangle (0, 1.8);
+
+    % Evac
+    \draw[thick] (-3.2, 4.9) -- (0, 4.9);
+    \draw[thick] (0, 4.9) parabola bend (2.5, 6.1) (5.8, 6.1);
+    \node[right] at (5.8, 6.1) {$E_{\text{vac}}$};
+
+    % Ec, Ei, Ev
+    \draw[thick, red!80!black] (0, 2.5) parabola bend (2.5, 3.7) (5.8, 3.7);
+    \node[right, red!80!black] at (5.8, 3.7) {$E_c$};
+    \draw[dotted, thick, black!70] (0, 1.4) parabola bend (2.5, 2.6) (5.8, 2.6);
+    \node[right, black!70] at (5.8, 2.6) {$E_i$};
+    \draw[thick, teal!80!black] (0, 0.3) parabola bend (2.5, 1.5) (5.8, 1.5);
+    \node[right, teal!80!black] at (5.8, 1.5) {$E_v$};
+
+    \draw[densely dotted] (0, 0.3) -- (2.8, 0.3);
+    \draw[<->, thick, purple] (2.5, 0.3) -- (2.5, 1.5) node[midway, right] {$qV_0 = 0.71\text{ eV}$ ($V_0 = 0.71\text{ V}$)};
+    \draw[<->, thick, orange!85!black] (-0.3, 0.3) -- (-0.3, 1.8) node[midway, left] {$q\Phi_{Bp} = 0.83\text{ eV}$};
+    \draw[<->, thick] (-2.0, 1.8) -- (-2.0, 4.9) node[midway, fill=white, inner sep=1pt] {$q\Phi_m = 4.3\text{ eV}$};
+    \draw[<->, thick] (4.8, 3.7) -- (4.8, 6.1) node[midway, fill=white, inner sep=1pt] {$q\chi = 4.01\text{ eV}$};
+    \draw[<->, thick] (4.3, 1.5) -- (4.3, 1.8) node[midway, right, font=\footnotesize] {$0.12\text{ eV}$};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{3. Parte (b): Polarización Directa ($V_F = 0.3\text{ V}$) e Inversa ($V_R = 2\text{ V}$)}
+\textbf{¿Cómo afecta el voltaje externo a un diodo Schottky tipo-$p$?}
+Recuerda que la energía de los electrones es $E = -qV$ (un voltaje positivo \textbf{baja} los niveles de energía en el diagrama):
+\begin{itemize}
+    \item \textbf{Polarización Directa ($V_F = 0.3\text{ V}$):} En un semiconductor tipo-$p$, polarizar en directa significa aplicar el terminal \textbf{positivo ($+$) al semiconductor tipo-$p$} y el negativo ($-$) al metal. Como el lado $p$ tiene voltaje positivo, sus niveles de energía ($E_{Fs}, E_c, E_v$) \textbf{bajan} respecto a $E_{Fm}$ en $qV_F = 0.3\text{ eV}$. Esto reduce la curvatura de las bandas a:
+    \[
+    q(V_0 - V_F) = 0.71\text{ eV} - 0.30\text{ eV} = 0.41\text{ eV}
+    \]
+    La barrera desde el metal ($q\Phi_{Bp} = 0.83\text{ eV}$) permanece constante en la interfaz.
+    \item \textbf{Polarización Inversa ($V_R = 2.0\text{ V}$):} Se aplica voltaje \textbf{negativo ($-$) al semiconductor tipo-$p$} (o positivo al metal). Los niveles de energía del semiconductor \textbf{suben} respecto a $E_{Fm}$ en $qV_R = 2.0\text{ eV}$. La curvatura total de la banda aumenta a:
+    \[
+    q(V_0 + V_R) = 0.71\text{ eV} + 2.00\text{ eV} = 2.71\text{ eV}
+    \]
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.88, >=Stealth]
+    % --- DIAGRAMA IZQUIERDO: POLARIZACIÓN DIRECTA (VF = 0.3 V) ---
+    \begin{scope}[xshift=0cm]
+        \draw[thick] (0,0) -- (0,5.5);
+        \node[above, font=\bfseries\small] at (1.5, 5.5) {Polarización Directa ($V_F = 0.3\text{ V}$)};
+
+        % EFm = 2.2, EFs = 1.6 (baja 0.3 eV respecto a EFm)
+        \draw[dashed, thick, blue!80!black] (-2.5, 2.2) -- (0, 2.2);
+        \node[left, blue!80!black] at (-2.5, 2.2) {$E_{Fm}$};
+        \fill[gray!25] (-2.5, 0) rectangle (0, 2.2);
+
+        \draw[dashed, thick, blue!80!black] (0, 1.6) -- (5.0, 1.6);
+        \node[right, blue!80!black] at (5.0, 1.6) {$E_{Fs}$};
+
+        % En interfaz (x=0): Ev(0) = 0.7, Ec(0) = 2.9
+        % En bulk (x>=2.0): Ev_bulk = 1.3, Ec_bulk = 3.5 (curvatura menor = 0.41 eV)
+        \draw[thick, red!80!black] (0, 2.9) parabola bend (1.8, 3.5) (5.0, 3.5) node[right] {$E_c$};
+        \draw[thick, teal!80!black] (0, 0.7) parabola bend (1.8, 1.3) (5.0, 1.3) node[right] {$E_v$};
+
+        \draw[densely dotted] (0, 0.7) -- (2.2, 0.7);
+        \draw[densely dotted] (0, 2.2) -- (3.8, 2.2);
+
+        % Cotas
+        \draw[<->, thick, orange!85!black] (-0.3, 0.7) -- (-0.3, 2.2) node[midway, left, font=\footnotesize] {$q\Phi_{Bp}=0.83\text{ eV}$};
+        \draw[<->, thick, purple] (2.0, 0.7) -- (2.0, 1.3) node[midway, right, font=\footnotesize] {$q(V_0 - V_F) = 0.41\text{ eV}$};
+        \draw[<->, thick, blue!80!black] (3.6, 1.6) -- (3.6, 2.2) node[midway, right, font=\footnotesize] {$qV_F = 0.3\text{ eV}$};
+    \end{scope}
+
+    % --- DIAGRAMA DERECHO: POLARIZACIÓN INVERSA (VR = 2.0 V) ---
+    \begin{scope}[xshift=9.2cm]
+        \draw[thick] (0,0) -- (0,6.2);
+        \node[above, font=\bfseries\small] at (1.5, 6.2) {Polarización Inversa ($V_R = 2.0\text{ V}$)};
+
+        % EFm = 1.8, EFs = 3.8 (sube 2.0 eV respecto a EFm)
+        \draw[dashed, thick, blue!80!black] (-2.5, 1.8) -- (0, 1.8);
+        \node[left, blue!80!black] at (-2.5, 1.8) {$E_{Fm}$};
+        \fill[gray!25] (-2.5, 0) rectangle (0, 1.8);
+
+        \draw[dashed, thick, blue!80!black] (0, 3.8) -- (5.2, 3.8);
+        \node[right, blue!80!black] at (5.2, 3.8) {$E_{Fs}$};
+
+        % En interfaz (x=0): Ev(0) = 0.4, Ec(0) = 2.4
+        % En bulk (x>=3.2): Ev_bulk = 3.5, Ec_bulk = 5.5 (curvatura grande = 2.71 eV)
+        \draw[thick, red!80!black] (0, 2.4) parabola bend (3.2, 5.5) (5.2, 5.5) node[right] {$E_c$};
+        \draw[thick, teal!80!black] (0, 0.4) parabola bend (3.2, 3.5) (5.2, 3.5) node[right] {$E_v$};
+
+        \draw[densely dotted] (0, 0.4) -- (3.4, 0.4);
+        \draw[densely dotted] (0, 1.8) -- (4.3, 1.8);
+
+        % Cotas
+        \draw[<->, thick, orange!85!black] (-0.3, 0.4) -- (-0.3, 1.8) node[midway, left, font=\footnotesize] {$q\Phi_{Bp}=0.83\text{ eV}$};
+        \draw[<->, thick, purple] (3.2, 0.4) -- (3.2, 3.5) node[midway, left, font=\footnotesize] {$q(V_0 + V_R) = 2.71\text{ eV}$};
+        \draw[<->, thick, blue!80!black] (4.2, 1.8) -- (4.2, 3.8) node[midway, right, font=\footnotesize] {$qV_R = 2.0\text{ eV}$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{(a) Potencial de contacto en equilibrio:} $V_0 = 0.71\text{ V}$ (con $q\Phi_{Bp} = 0.83\text{ eV}$).
+    \item \textbf{(b) Con polarización directa ($V_F = 0.3\text{ V}$):} La barrera vista por los huecos en el semiconductor disminuye a $q(V_0 - V_F) = 0.41\text{ eV}$ y $E_{Fs}$ se ubica $0.3\text{ eV}$ por debajo de $E_{Fm}$.
+    \item \textbf{(b) Con polarización inversa ($V_R = 2\text{ V}$):} La barrera total de curvatura aumenta a $q(V_0 + V_R) = 2.71\text{ eV}$ y $E_{Fs}$ se ubica $2.0\text{ eV}$ por encima de $E_{Fm}$.
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 3
+% ============================================================================
+\section*{Ejercicio 3}
+\begin{ejerciciobox}{Enunciado 3}
+Se quiere fabricar un diodo Schottky sobre una superficie de un semiconductor tipo-$n$, y un contacto óhmico sobre el otro lado. La afinidad electrónica es $5\text{ eV}$, band gap $1.5\text{ eV}$, y la posición del nivel de Fermi con respecto al nivel intrínseco es $0.25\text{ eV}$. (a) ¿Cuáles deberían ser los valores de las funciones de trabajo de los dos metales? (Dar su respuesta como ``mayor que'' o ``menor que'' ciertos valores). (b) Dibuje el diagrama de bandas de equilibrio para cuando M1 es un contacto Schottky y M2 es un contacto óhmico; para esto, escoja dos metales apropiados que cumplan con el requerimiento de la parte (a).
+\end{ejerciciobox}
+
+\subsection*{1. Datos del Semiconductor Tipo-$n$}
+\begin{itemize}
+    \item Afinidad electrónica: $q\chi = 5.0\text{ eV}$.
+    \item Band gap: $E_g = 1.5\text{ eV} \implies E_c - E_i = \frac{E_g}{2} = 0.75\text{ eV}$.
+    \item Como es tipo-$n$, el nivel de Fermi está \textbf{por encima} del nivel intrínseco: $E_F - E_i = 0.25\text{ eV}$.
+\end{itemize}
+
+\subsection*{2. Parte (a): Condiciones para las Funciones de Trabajo de M1 y M2}
+\textbf{Paso 1: Calcular la distancia desde $E_F$ hasta $E_c$ ($q\phi_n$).}
+Sabemos que la mitad superior del band gap mide $E_c - E_i = 0.75\text{ eV}$. Si $E_F$ está $0.25\text{ eV}$ por encima de $E_i$, entonces la distancia desde $E_F$ hasta $E_c$ es:
+\[
+q\phi_n = E_c - E_F = (E_c - E_i) - (E_F - E_i) = 0.75\text{ eV} - 0.25\text{ eV} = 0.50\text{ eV}
+\]
+
+\textbf{Paso 2: Calcular la función de trabajo del semiconductor ($q\Phi_s$).}
+\[
+q\Phi_s = q\chi + q\phi_n = 5.0\text{ eV} + 0.50\text{ eV} = 5.50\text{ eV}
+\]
+
+\textbf{Paso 3: Establecer las desigualdades para un semiconductor tipo-$n$.}
+\begin{itemize}
+    \item Para el \textbf{contacto Schottky (Metal M1)}: Se necesita una región de agotamiento de electrones (que las bandas suban hacia el metal), lo cual exige que la función de trabajo del metal sea \textbf{mayor que} la del semiconductor:
+    \[
+    q\Phi_{M1} > q\Phi_s \implies \mathbf{q\Phi_{M1} > 5.50\text{ eV}}
+    \]
+    \item Para el \textbf{contacto Óhmico (Metal M2)}: Se necesita acumulación de electrones en la interfaz (que las bandas bajen hacia el metal sin presentar barrera), lo cual exige que la función de trabajo del metal sea \textbf{menor que} la del semiconductor:
+    \[
+    q\Phi_{M2} < q\Phi_s \implies \mathbf{q\Phi_{M2} < 5.50\text{ eV}}
+    \]
+\end{itemize}
+
+\subsection*{3. Parte (b): Selección de Metales y Diagrama de Bandas M1 -- Tipo-$n$ -- M2}
+Escogemos dos metales que cumplan las desigualdades de la parte (a):
+\begin{itemize}
+    \item \textbf{Metal M1 (Schottky):} Platino (Pt) o Se/óxido conductor de alta función de trabajo con $q\Phi_{M1} = 5.80\text{ eV}$ ($> 5.50\text{ eV}$).
+    \begin{itemize}
+        \item Potencial de contacto en M1: $qV_{01} = q\Phi_{M1} - q\Phi_s = 5.80 - 5.50 = 0.30\text{ eV}$ (las bandas \textbf{suben} $0.30\text{ eV}$ hacia M1).
+        \item Altura de barrera en M1: $q\Phi_{Bn1} = q\Phi_{M1} - q\chi = 5.80 - 5.00 = 0.80\text{ eV}$.
+    \end{itemize}
+    \item \textbf{Metal M2 (Óhmico):} Aluminio (Al) o Titanio (Ti) con $q\Phi_{M2} = 4.30\text{ eV}$ ($< 5.50\text{ eV}$).
+    \begin{itemize}
+        \item Curvatura de acumulación en M2: $q\Phi_s - q\Phi_{M2} = 5.50 - 4.30 = 1.20\text{ eV}$ (las bandas \textbf{bajan} hacia M2, permitiendo que los electrones crucen libremente en ambos sentidos).
+    \end{itemize}
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    % Interfaces en x = 0 (M1 - Semicond) y x = 7 (Semicond - M2)
+    \draw[thick] (0,0) -- (0,6.5);
+    \draw[thick] (7,0) -- (7,6.5);
+
+    \node[above] at (-1.5, 6.5) {\textbf{M1 (Schottky)}};
+    \node[above] at (3.5, 6.5) {\textbf{Semiconductor Tipo-$n$}};
+    \node[above] at (8.5, 6.5) {\textbf{M2 (Óhmico)}};
+
+    % Nivel de Fermi único en todo el sistema
+    \draw[dashed, thick, blue!80!black] (-2.8, 2.5) -- (9.8, 2.5);
+    \node[left, blue!80!black] at (-2.8, 2.5) {$E_{F,M1}$};
+    \node[above, blue!80!black] at (3.5, 2.5) {$E_{Fs}$};
+    \node[right, blue!80!black] at (9.8, 2.5) {$E_{F,M2}$};
+
+    % Sombreado de metales
+    \fill[gray!25] (-2.8, 0) rectangle (0, 2.5);
+    \fill[gray!25] (7, 0) rectangle (9.8, 2.5);
+
+    % En el bulk del semiconductor (x entre 2.0 y 5.0):
+    % EF = 2.5
+    % Ec_bulk = 3.2 (0.5 eV sobre EF)
+    % Ei_bulk = 2.15 (0.25 eV bajo EF)
+    % Ev_bulk = 1.1 (1.5 eV bajo Ec)
+    % Evac_bulk = 5.7 (5.0 eV sobre Ec)
+
+    % En x = 0 (M1 Schottky, sube 0.3 eV -> +0.5 unidades):
+    % Ec(0) = 3.7, Ei(0) = 2.65, Ev(0) = 1.6, Evac(0) = 6.2
+    % En x = 7 (M2 Óhmico, baja -> -0.7 unidades):
+    % Ec(7) = 2.5, Ei(7) = 1.45, Ev(7) = 0.4, Evac(7) = 5.0
+
+    % Nivel de vacío Evac
+    \draw[thick] (-2.8, 6.2) -- (0, 6.2);
+    \draw[thick] (0, 6.2) parabola bend (1.8, 5.7) (3.5, 5.7);
+    \draw[thick] (3.5, 5.7) -- (5.2, 5.7);
+    \draw[thick] (7, 5.0) parabola bend (5.2, 5.7) (5.2, 5.7);
+    \draw[thick] (7, 5.0) -- (9.8, 5.0);
+    \node[above] at (3.5, 5.7) {$E_{\text{vac}}$};
+
+    % Banda de conducción Ec
+    \draw[thick, red!80!black] (0, 3.7) parabola bend (1.8, 3.2) (3.5, 3.2);
+    \draw[thick, red!80!black] (3.5, 3.2) -- (5.2, 3.2);
+    \draw[thick, red!80!black] (7, 2.5) parabola bend (5.2, 3.2) (5.2, 3.2);
+    \node[above, red!80!black] at (4.2, 3.2) {$E_c$};
+
+    % Nivel intrínseco Ei
+    \draw[dotted, thick, black!70] (0, 2.65) parabola bend (1.8, 2.15) (3.5, 2.15);
+    \draw[dotted, thick, black!70] (3.5, 2.15) -- (5.2, 2.15);
+    \draw[dotted, thick, black!70] (7, 1.45) parabola bend (5.2, 2.15) (5.2, 2.15);
+    \node[below, black!70] at (4.2, 2.15) {$E_i$};
+
+    % Banda de valencia Ev
+    \draw[thick, teal!80!black] (0, 1.6) parabola bend (1.8, 1.1) (3.5, 1.1);
+    \draw[thick, teal!80!black] (3.5, 1.1) -- (5.2, 1.1);
+    \draw[thick, teal!80!black] (7, 0.4) parabola bend (5.2, 1.1) (5.2, 1.1);
+    \node[below, teal!80!black] at (4.2, 1.1) {$E_v$};
+
+    % Cotas
+    \draw[<->, thick] (-1.6, 2.5) -- (-1.6, 6.2) node[midway, fill=white, inner sep=1pt, font=\footnotesize] {$q\Phi_{M1} > 5.5\text{ eV}$};
+    \draw[<->, thick] (8.4, 2.5) -- (8.4, 5.0) node[midway, fill=white, inner sep=1pt, font=\footnotesize] {$q\Phi_{M2} < 5.5\text{ eV}$};
+    \draw[<->, thick] (2.6, 3.2) -- (2.6, 5.7) node[midway, fill=white, inner sep=1pt, font=\footnotesize] {$q\chi = 5\text{ eV}$};
+    \draw[<->, thick] (2.6, 1.1) -- (2.6, 3.2) node[midway, fill=white, inner sep=1pt, font=\footnotesize] {$E_g = 1.5\text{ eV}$};
+    \draw[<->, thick, orange!85!black] (0.3, 2.5) -- (0.3, 3.7) node[midway, right, font=\footnotesize] {$q\Phi_{Bn}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{(a) Funciones de trabajo requeridas:}
+    \begin{itemize}
+        \item Para el contacto Schottky (M1): $\mathbf{q\Phi_{M1} > 5.50\text{ eV}}$.
+        \item Para el contacto Óhmico (M2): $\mathbf{q\Phi_{M2} < 5.50\text{ eV}}$.
+    \end{itemize}
+    \item \textbf{(b) Metales escogidos para el diagrama:} M1 con $q\Phi_{M1} = 5.8\text{ eV}$ (curva las bandas hacia arriba creando barrera Schottky) y M2 con $q\Phi_{M2} = 4.3\text{ eV}$ (curva las bandas hacia abajo creando acumulación óhmica).
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 4
+% ============================================================================
+\section*{Ejercicio 4}
+\begin{ejerciciobox}{Enunciado 4}
+Un diodo Schottky formado sobre silicio tipo-$n$ tiene una concentración de dopante $N_d = 5 \times 10^{15}\text{ cm}^{-3}$ y una altura de la barrera $\Phi_B = 0.65\text{ V}$. (a) Determinar el potencial de contacto. (b) Si la concentración de dopante cambia a $N_d = 10^{16}\text{ cm}^{-3}$, determine los valores de $\Phi_B$ y $V_0$. ¿Estos valores aumentan, disminuyen o quedan igual? (c) Repetir la parte (b) si la concentración de dopante es $N_d = 10^{15}\text{ cm}^{-3}$.
+\end{ejerciciobox}
+
+\subsection*{1. Conceptos Clave y Parámetros}
+En el modelo ideal de Schottky-Mott para un semiconductor tipo-$n$:
+\begin{enumerate}
+    \item \textbf{La altura de la barrera ($\Phi_{Bn}$)} depende \textbf{únicamente} de la función de trabajo del metal ($\Phi_m$) y la afinidad electrónica del semiconductor ($\chi$):
+    \[
+    \Phi_{Bn} = \Phi_m - \chi
+    \]
+    Por lo tanto, si solo cambiamos el dopaje $N_d$ (sin cambiar el metal ni el semiconductor), \textbf{$\Phi_B$ permanece constante} ($\Phi_B = 0.65\text{ V}$).
+    \item \textbf{El potencial de contacto ($V_0$)} sí depende del dopaje porque cambiar $N_d$ mueve la posición del nivel de Fermi ($\phi_n$):
+    \[
+    V_0 = \Phi_B - \phi_n \quad \text{donde} \quad \phi_n = \frac{kT}{q}\ln\left(\frac{N_c}{N_d}\right)
+    \]
+\end{enumerate}
+Para el Silicio a $T = 300\text{ K}$: $V_t = \frac{kT}{q} = 0.0259\text{ V}$ y $N_c = 2.8 \times 10^{19}\text{ cm}^{-3}$.
+
+\subsection*{2. Parte (a): Potencial de Contacto para $N_d = 5 \times 10^{15}\text{ cm}^{-3}$}
+\textbf{Paso 1: Calcular $\phi_n$.}
+\[
+\phi_n = (0.0259\text{ V}) \ln\left(\frac{2.8 \times 10^{19}}{5 \times 10^{15}}\right) = 0.0259 \ln(5600) = 0.0259 \times 8.6305 = 0.2235\text{ V} \approx 0.224\text{ V}
+\]
+\textbf{Paso 2: Calcular el potencial de contacto $V_0$.}
+\[
+V_0 = \Phi_B - \phi_n = 0.65\text{ V} - 0.2235\text{ V} = \mathbf{0.4265\text{ V} \approx 0.426\text{ V}}
+\]
+
+\subsection*{3. Parte (b): Cambio de Dopaje a $N_d = 10^{16}\text{ cm}^{-3}$}
+\textbf{Paso 1: Valor de $\Phi_B$.}
+Como el metal y la afinidad electrónica no cambian:
+\[
+\mathbf{\Phi_B = 0.65\text{ V}} \quad (\text{queda igual})
+\]
+\textbf{Paso 2: Nuevo valor de $\phi_n$ y $V_0$.}
+\[
+\phi_n = (0.0259\text{ V}) \ln\left(\frac{2.8 \times 10^{19}}{10^{16}}\right) = 0.0259 \ln(2800) = 0.0259 \times 7.9374 = 0.2056\text{ V}
+\]
+\[
+V_0 = \Phi_B - \phi_n = 0.65\text{ V} - 0.2056\text{ V} = \mathbf{0.4444\text{ V} \approx 0.444\text{ V}}
+\]
+\textbf{Análisis físico:} Al aumentar el dopaje $N_d$, hay más electrones libres y el nivel de Fermi $E_F$ se acerca más a $E_c$ ($\phi_n$ disminuye de $0.224\text{ V}$ a $0.206\text{ V}$). Como consecuencia, el potencial de contacto $V_0$ \textbf{aumenta} (de $0.426\text{ V}$ a $0.444\text{ V}$).
+
+\subsection*{4. Parte (c): Cambio de Dopaje a $N_d = 10^{15}\text{ cm}^{-3}$}
+\textbf{Paso 1: Valor de $\Phi_B$.}
+\[
+\mathbf{\Phi_B = 0.65\text{ V}} \quad (\text{queda igual})
+\]
+\textbf{Paso 2: Nuevo valor de $\phi_n$ y $V_0$.}
+\[
+\phi_n = (0.0259\text{ V}) \ln\left(\frac{2.8 \times 10^{19}}{10^{15}}\right) = 0.0259 \ln(28000) = 0.0259 \times 10.23996 = 0.2652\text{ V}
+\]
+\[
+V_0 = \Phi_B - \phi_n = 0.65\text{ V} - 0.2652\text{ V} = \mathbf{0.3848\text{ V} \approx 0.385\text{ V}}
+\]
+\textbf{Análisis físico:} Al disminuir $N_d$, el nivel de Fermi se aleja de $E_c$ ($\phi_n$ aumenta a $0.265\text{ V}$), por lo que el potencial de contacto $V_0$ \textbf{disminuye} (de $0.426\text{ V}$ a $0.385\text{ V}$).
+
+\begin{respuestabox}
+\begin{center}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Caso} & \textbf{Dopaje $N_d$ ($\text{cm}^{-3}$)} & \textbf{$\phi_n$ (V)} & \textbf{Barrera $\Phi_B$ (V)} & \textbf{Potencial $V_0$ (V)} \\
+\midrule
+(a) Base & $5 \times 10^{15}$ & $0.224\text{ V}$ & $0.65\text{ V}$ & $0.426\text{ V}$ \\
+(b) Mayor dopaje & $1 \times 10^{16}$ & $0.206\text{ V}$ & $0.65\text{ V}$ (Igual) & $0.444\text{ V}$ (Aumenta) \\
+(c) Menor dopaje & $1 \times 10^{15}$ & $0.265\text{ V}$ & $0.65\text{ V}$ (Igual) & $0.385\text{ V}$ (Disminuye) \\
+\bottomrule
+\end{tabular}
+}%
+\end{center}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 5
+% ============================================================================
+\section*{Ejercicio 5}
+\begin{ejerciciobox}{Enunciado 5}
+Un diodo Schottky se forma al depositar oro sobre GaAs tipo-$n$ que está dopado a una concentración $N_d = 5 \times 10^{15}\text{ cm}^{-3}$. Para $T = 300\text{ K}$, determine los valores teóricos de (a) $\Phi_B$, (b) $V_0$, (c) $x_n$ y $|\mathcal{E}_{\text{máx}}|$ en (i) $V_R = 1\text{ V}$ y (ii) $V_R = 5\text{ V}$.
+\end{ejerciciobox}
+
+\subsection*{1. Datos y Parámetros Físicos Tabulados ($T = 300\text{ K}$)}
+\begin{itemize}
+    \item \textbf{Oro (Au):} Función de trabajo teórica $\Phi_m = 5.10\text{ V}$ ($q\Phi_m = 5.10\text{ eV}$). \textit{(Nota: En algunas tablas se usa $\Phi_m = 4.8\text{ V}$ o $5.1\text{ V}$; desarrollaremos con el valor estándar de Neamen $\Phi_m = 5.10\text{ V}$).}
+    \item \textbf{GaAs tipo-$n$:}
+    \begin{itemize}
+        \item Afinidad electrónica: $\chi = 4.07\text{ V}$ ($q\chi = 4.07\text{ eV}$).
+        \item Densidad efectiva de estados en banda de conducción: $N_c = 4.7 \times 10^{17}\text{ cm}^{-3}$.
+        \item Constante dieléctrica relativa: $\varepsilon_r = 13.1 \implies \varepsilon_s = \varepsilon_r \varepsilon_0 = 13.1 \times (8.85 \times 10^{-14}\text{ F/cm}) = 1.159 \times 10^{-12}\text{ F/cm}$.
+        \item Concentración de donadores: $N_d = 5 \times 10^{15}\text{ cm}^{-3}$.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{2. Parte (a): Altura Teórica de la Barrera ($\Phi_B$)}
+Usamos la relación de Schottky-Mott para un semiconductor tipo-$n$:
+\[
+\Phi_{Bn} = \Phi_m - \chi = 5.10\text{ V} - 4.07\text{ V} = \mathbf{1.03\text{ V}}
+\]
+
+\subsection*{3. Parte (b): Potencial de Contacto ($V_0$)}
+\textbf{Paso 1: Calcular la posición del nivel de Fermi respecto a $E_c$ ($\phi_n$).}
+\[
+\phi_n = \frac{kT}{q}\ln\left(\frac{N_c}{N_d}\right) = (0.0259\text{ V}) \ln\left(\frac{4.7 \times 10^{17}}{5 \times 10^{15}}\right) = 0.0259 \ln(94) = 0.0259 \times 4.5433 = 0.1177\text{ V} \approx 0.118\text{ V}
+\]
+\textbf{Paso 2: Calcular el potencial interno $V_0$.}
+\[
+V_0 = \Phi_{Bn} - \phi_n = 1.03\text{ V} - 0.1177\text{ V} = \mathbf{0.9123\text{ V} \approx 0.912\text{ V}}
+\]
+
+\subsection*{4. Parte (c): Ancho de Vaciamiento ($x_n$) y Campo Eléctrico Máximo ($|\mathcal{E}_{\text{máx}}|$)}
+Las ecuaciones de electrostática para la región de carga espacial son:
+\[
+x_n = \sqrt{\frac{2\varepsilon_s (V_0 + V_R)}{q N_d}}, \qquad |\mathcal{E}_{\text{máx}}| = \frac{q N_d x_n}{\varepsilon_s} = \frac{2(V_0 + V_R)}{x_n}
+\]
+Calculamos primero el prefactor constante dentro de la raíz para simplificar:
+\[
+\frac{2\varepsilon_s}{q N_d} = \frac{2 \times (1.15935 \times 10^{-12}\text{ F/cm})}{(1.6 \times 10^{-19}\text{ C})(5 \times 10^{15}\text{ cm}^{-3})} = \frac{2.3187 \times 10^{-12}}{8.0 \times 10^{-4}} = 2.8984 \times 10^{-9}\text{ cm}^2/\text{V}
+\]
+
+\subsubsection*{Caso (i): Para $V_R = 1\text{ V}$}
+\begin{itemize}
+    \item Voltaje total en la barrera: $V_0 + V_R = 0.9123\text{ V} + 1.0\text{ V} = 1.9123\text{ V}$.
+    \item \textbf{Ancho de la zona de vaciamiento ($x_n$):}
+    \[
+    x_n = \sqrt{(2.8984 \times 10^{-9}\text{ cm}^2/\text{V}) \times (1.9123\text{ V})} = \sqrt{5.5426 \times 10^{-9}\text{ cm}^2} = \mathbf{7.445 \times 10^{-5}\text{ cm}} = \mathbf{0.745\text{ }\mu\text{m}}
+    \]
+    \item \textbf{Magnitud del campo eléctrico máximo ($|\mathcal{E}_{\text{máx}}|$):}
+    \[
+    |\mathcal{E}_{\text{máx}}| = \frac{2(V_0 + V_R)}{x_n} = \frac{2 \times 1.9123\text{ V}}{7.445 \times 10^{-5}\text{ cm}} = \mathbf{5.137 \times 10^4\text{ V/cm}} \quad (51.4\text{ kV/cm})
+    \]
+\end{itemize}
+
+\subsubsection*{Caso (ii): Para $V_R = 5\text{ V}$}
+\begin{itemize}
+    \item Voltaje total en la barrera: $V_0 + V_R = 0.9123\text{ V} + 5.0\text{ V} = 5.9123\text{ V}$.
+    \item \textbf{Ancho de la zona de vaciamiento ($x_n$):}
+    \[
+    x_n = \sqrt{(2.8984 \times 10^{-9}\text{ cm}^2/\text{V}) \times (5.9123\text{ V})} = \sqrt{1.7136 \times 10^{-8}\text{ cm}^2} = \mathbf{1.309 \times 10^{-4}\text{ cm}} = \mathbf{1.31\text{ }\mu\text{m}}
+    \]
+    \item \textbf{Magnitud del campo eléctrico máximo ($|\mathcal{E}_{\text{máx}}|$):}
+    \[
+    |\mathcal{E}_{\text{máx}}| = \frac{2(V_0 + V_R)}{x_n} = \frac{2 \times 5.9123\text{ V}}{1.309 \times 10^{-4}\text{ cm}} = \mathbf{9.033 \times 10^4\text{ V/cm}} \quad (90.3\text{ kV/cm})
+    \]
+\end{itemize}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{(a)} $\Phi_B = 1.03\text{ V}$
+    \item \textbf{(b)} $V_0 = 0.912\text{ V}$
+    \item \textbf{(c-i) En $V_R = 1\text{ V}$:} $x_n = 7.45 \times 10^{-5}\text{ cm}$ ($0.745\text{ }\mu\text{m}$) y $|\mathcal{E}_{\text{máx}}| = 5.14 \times 10^4\text{ V/cm}$.
+    \item \textbf{(c-ii) En $V_R = 5\text{ V}$:} $x_n = 1.31 \times 10^{-4}\text{ cm}$ ($1.31\text{ }\mu\text{m}$) y $|\mathcal{E}_{\text{máx}}| = 9.03 \times 10^4\text{ V/cm}$.
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 6
+% ============================================================================
+\section*{Ejercicio 6}
+\begin{ejerciciobox}{Enunciado 6}
+Las densidades de corriente inversa de saturación en un diodo de unión $p$-$n$ y un diodo Schottky son $10^{-11}\text{ A/cm}^2$ y $6 \times 10^{-8}\text{ A/cm}^2$, respectivamente, a $T = 300\text{ K}$. El área de sección transversal del diodo Schottky es $A_S = 10^{-4}\text{ cm}^2$. La corriente en cada diodo es $0.80\text{ mA}$. La diferencia en los voltajes de polarización directa entre los dos diodos es $0.285\text{ V}$. Determine (a) el voltaje aplicado a cada diodo y (b) el área de la sección transversal del diodo de unión $p$-$n$.
+\end{ejerciciobox}
+
+\subsection*{1. Datos y Ecuación Ideal del Diodo}
+\begin{itemize}
+    \item Densidad de corriente inversa de saturación unión $p$-$n$: $J_{S,pn} = 10^{-11}\text{ A/cm}^2$.
+    \item Densidad de corriente inversa de saturación diodo Schottky: $J_{S,Sch} = 6 \times 10^{-8}\text{ A/cm}^2$.
+    \item Área del diodo Schottky: $A_{Sch} = 10^{-4}\text{ cm}^2$.
+    \item Corriente directa en ambos diodos: $I_D = 0.80\text{ mA} = 8.0 \times 10^{-4}\text{ A}$.
+    \item Diferencia de voltajes directos: $\Delta V_D = 0.285\text{ V}$.
+    \item Voltaje térmico a $T = 300\text{ K}$: $V_t = \frac{kT}{q} = 0.0259\text{ V}$.
+\end{itemize}
+La ecuación de corriente para cualquier diodo en polarización directa ($V_D \gg V_t$) es:
+\[
+I_D = I_S \left( e^{V_D/V_t} - 1 \right) \approx A \cdot J_S \cdot e^{V_D/V_t} \implies V_D = V_t \ln\left(\frac{I_D}{A \cdot J_S}\right)
+\]
+
+\subsection*{2. Parte (a): Voltaje Aplicado a cada Diodo}
+\textbf{Paso 1: Calcular la corriente inversa de saturación del diodo Schottky ($I_{S,Sch}$).}
+\[
+I_{S,Sch} = A_{Sch} \cdot J_{S,Sch} = (10^{-4}\text{ cm}^2)(6 \times 10^{-8}\text{ A/cm}^2) = 6.0 \times 10^{-12}\text{ A}
+\]
+
+\textbf{Paso 2: Calcular el voltaje directo en el diodo Schottky ($V_{D,Sch}$).}
+Despejamos $V_{D,Sch}$ de la ecuación del diodo:
+\[
+V_{D,Sch} = V_t \ln\left(\frac{I_D}{I_{S,Sch}}\right) = (0.0259\text{ V}) \ln\left(\frac{8.0 \times 10^{-4}\text{ A}}{6.0 \times 10^{-12}\text{ A}}\right) = 0.0259 \ln(1.3333 \times 10^8)
+\]
+\[
+V_{D,Sch} = 0.0259 \times 18.70836 = \mathbf{0.4845\text{ V} \approx 0.485\text{ V}}
+\]
+
+\textbf{Paso 3: Calcular el voltaje directo en el diodo de unión $p$-$n$ ($V_{D,pn}$).}
+\textbf{¿Cuál de los dos diodos necesita mayor voltaje para conducir la misma corriente?}
+Como el diodo de unión $p$-$n$ tiene una densidad de corriente inversa de saturación miles de veces \textbf{menor} que el diodo Schottky ($10^{-11}$ frente a $6 \times 10^{-8}\text{ A/cm}^2$), el diodo $p$-$n$ requiere un \textbf{voltaje directo mayor} para alcanzar los mismos $0.80\text{ mA}$. Por lo tanto:
+\[
+V_{D,pn} - V_{D,Sch} = 0.285\text{ V} \implies V_{D,pn} = V_{D,Sch} + 0.285\text{ V} = 0.4845\text{ V} + 0.285\text{ V} = \mathbf{0.7695\text{ V} \approx 0.770\text{ V}}
+\]
+
+\subsection*{3. Parte (b): Área de la Sección Transversal del Diodo de Unión $p$-$n$ ($A_{pn}$)}
+\textbf{Paso 1: Hallar la corriente de saturación del diodo $p$-$n$ ($I_{S,pn}$).}
+Sabemos que en el diodo $p$-$n$ se cumple:
+\[
+I_D = I_{S,pn} e^{V_{D,pn}/V_t} \implies I_{S,pn} = I_D e^{-V_{D,pn}/V_t}
+\]
+También podemos usar directamente la diferencia de voltajes entre ambos diodos. Como ambos conducen la misma corriente $I_D$:
+\[
+I_{S,pn} e^{V_{D,pn}/V_t} = I_{S,Sch} e^{V_{D,Sch}/V_t} \implies \frac{I_{S,pn}}{I_{S,Sch}} = e^{-(V_{D,pn} - V_{D,Sch})/V_t} = e^{-0.285 / 0.0259} = e^{-11.00386} = 1.6637 \times 10^{-5}
+\]
+Por lo tanto:
+\[
+I_{S,pn} = (6.0 \times 10^{-12}\text{ A}) \times (1.6637 \times 10^{-5}) = 9.982 \times 10^{-17}\text{ A} \approx 1.0 \times 10^{-16}\text{ A}
+\]
+
+\textbf{Paso 2: Despejar el área $A_{pn}$.}
+\[
+A_{pn} = \frac{I_{S,pn}}{J_{S,pn}} = \frac{9.982 \times 10^{-17}\text{ A}}{10^{-11}\text{ A/cm}^2} = \mathbf{9.98 \times 10^{-6}\text{ cm}^2 \approx 1.0 \times 10^{-5}\text{ cm}^2}
+\]
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{(a) Voltajes aplicados:} $V_{D,\text{Schottky}} = 0.485\text{ V}$ y $V_{D,pn} = 0.770\text{ V}$.
+    \item \textbf{(b) Área de la unión $p$-$n$:} $A_{pn} = 1.0 \times 10^{-5}\text{ cm}^2$.
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 7
+% ============================================================================
+\section*{Ejercicio 7}
+\begin{ejerciciobox}{Enunciado 7}
+Un diodo de unión $p$-$n$ y un diodo Schottky tienen áreas de sección transversal $A = 8 \times 10^{-4}\text{ cm}^2$. Las densidades de corriente inversa de saturación a $T = 300\text{ K}$ para el diodo de unión $p$-$n$ y diodo Schottky son $8 \times 10^{-13}\text{ A/cm}^2$ y $6 \times 10^{-9}\text{ A/cm}^2$. Determine el voltaje de polarización directa requerido en cada diodo para producir corrientes de (a) $150\text{ }\mu\text{A}$, (b) $700\text{ }\mu\text{A}$ y (c) $1.2\text{ mA}$.
+\end{ejerciciobox}
+
+\subsection*{1. Cálculo Previo de las Corrientes Inversas de Saturación ($I_S$)}
+Para ambos diodos el área es $A = 8 \times 10^{-4}\text{ cm}^2$ y el voltaje térmico a $300\text{ K}$ es $V_t = 0.0259\text{ V}$:
+\begin{itemize}
+    \item \textbf{Diodo de unión $p$-$n$:}
+    \[
+    I_{S,pn} = A \cdot J_{S,pn} = (8 \times 10^{-4}\text{ cm}^2)(8 \times 10^{-13}\text{ A/cm}^2) = 6.4 \times 10^{-16}\text{ A}
+    \]
+    \item \textbf{Diodo Schottky:}
+    \[
+    I_{S,Sch} = A \cdot J_{S,Sch} = (8 \times 10^{-4}\text{ cm}^2)(6 \times 10^{-9}\text{ A/cm}^2) = 4.8 \times 10^{-12}\text{ A}
+    \]
+\end{itemize}
+La fórmula para despejar el voltaje directo en todos los casos es:
+\[
+V_D = V_t \ln\left(\frac{I_D}{I_S} + 1\right) \approx V_t \ln\left(\frac{I_D}{I_S}\right)
+\]
+
+\subsection*{2. Parte (a): Para $I_D = 150\text{ }\mu\text{A} = 1.5 \times 10^{-4}\text{ A}$}
+\begin{itemize}
+    \item \textbf{Unión $p$-$n$:}
+    \[
+    V_{D,pn} = 0.0259 \ln\left(\frac{1.5 \times 10^{-4}}{6.4 \times 10^{-16}}\right) = 0.0259 \ln(2.34375 \times 10^{11}) = 0.0259 \times 26.1802 = \mathbf{0.678\text{ V}}
+    \]
+    \item \textbf{Diodo Schottky:}
+    \[
+    V_{D,Sch} = 0.0259 \ln\left(\frac{1.5 \times 10^{-4}}{4.8 \times 10^{-12}}\right) = 0.0259 \ln(3.125 \times 10^7) = 0.0259 \times 17.2575 = \mathbf{0.447\text{ V}}
+    \]
+\end{itemize}
+
+\subsection*{3. Parte (b): Para $I_D = 700\text{ }\mu\text{A} = 7.0 \times 10^{-4}\text{ A}$}
+\begin{itemize}
+    \item \textbf{Unión $p$-$n$:}
+    \[
+    V_{D,pn} = 0.0259 \ln\left(\frac{7.0 \times 10^{-4}}{6.4 \times 10^{-16}}\right) = 0.0259 \ln(1.09375 \times 10^{12}) = 0.0259 \times 27.7207 = \mathbf{0.718\text{ V}}
+    \]
+    \item \textbf{Diodo Schottky:}
+    \[
+    V_{D,Sch} = 0.0259 \ln\left(\frac{7.0 \times 10^{-4}}{4.8 \times 10^{-12}}\right) = 0.0259 \ln(1.4583 \times 10^8) = 0.0259 \times 18.7980 = \mathbf{0.487\text{ V}}
+    \]
+\end{itemize}
+
+\subsection*{4. Parte (c): Para $I_D = 1.2\text{ mA} = 1.2 \times 10^{-3}\text{ A}$}
+\begin{itemize}
+    \item \textbf{Unión $p$-$n$:}
+    \[
+    V_{D,pn} = 0.0259 \ln\left(\frac{1.2 \times 10^{-3}}{6.4 \times 10^{-16}}\right) = 0.0259 \ln(1.875 \times 10^{12}) = 0.0259 \times 28.2597 = \mathbf{0.732\text{ V}}
+    \]
+    \item \textbf{Diodo Schottky:}
+    \[
+    V_{D,Sch} = 0.0259 \ln\left(\frac{1.2 \times 10^{-3}}{4.8 \times 10^{-12}}\right) = 0.0259 \ln(2.5 \times 10^8) = 0.0259 \times 19.3370 = \mathbf{0.501\text{ V}}
+    \]
+\end{itemize}
+
+\begin{respuestabox}
+\begin{center}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{cccc}
+\toprule
+\textbf{Corriente Directa ($I_D$)} & \textbf{Voltaje Unión $p$-$n$ ($V_{D,pn}$)} & \textbf{Voltaje Schottky ($V_{D,Sch}$)} & \textbf{Diferencia ($V_{pn} - V_{Sch}$)} \\
+\midrule
+(a) $150\text{ }\mu\text{A}$ & $0.678\text{ V}$ & $0.447\text{ V}$ & $0.231\text{ V}$ \\
+(b) $700\text{ }\mu\text{A}$ & $0.718\text{ V}$ & $0.487\text{ V}$ & $0.231\text{ V}$ \\
+(c) $1.2\text{ mA}$ & $0.732\text{ V}$ & $0.501\text{ V}$ & $0.231\text{ V}$ \\
+\bottomrule
+\end{tabular}
+}%
+\end{center}
+\textit{Observación didáctica:} Nota que la diferencia de voltaje entre ambos diodos es constante ($0.231\text{ V}$) para cualquier corriente, porque $\Delta V_D = V_t \ln(J_{S,Sch}/J_{S,pn}) = 0.0259 \ln(6\times 10^{-9} / 8\times 10^{-13}) = 0.231\text{ V}$.
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 8
+% ============================================================================
+\section*{Ejercicio 8}
+\begin{ejerciciobox}{Enunciado 8}
+Un diodo de unión $p$-$n$ y un diodo Schottky tienen áreas de sección transversal $A = 7 \times 10^{-4}\text{ cm}^2$. Las densidades de corriente inversa de saturación a $T = 300\text{ K}$ para el diodo de unión $p$-$n$ y diodo Schottky son $3 \times 10^{-12}\text{ A/cm}^2$ y $4 \times 10^{-8}\text{ A/cm}^2$. Una corriente directa de $0.80\text{ mA}$ es requerida en cada diodo. (a) Determine el voltaje de polarización directa requerido en cada diodo. (b) Si el voltaje en la parte (a) se mantiene en cada diodo, determine la corriente en cada diodo si la temperatura aumenta a $400\text{ K}$. (Tome en cuenta la dependencia de la temperatura de las corrientes inversas de saturación). Suponga $E_g = 1.12\text{ eV}$ para la unión $p$-$n$ y $\Phi_{Bn} = 0.82\text{ V}$ para el diodo Schottky.
+\end{ejerciciobox}
+
+\subsection*{1. Parte (a): Voltaje Directo Requerido a $T_1 = 300\text{ K}$}
+Con $A = 7 \times 10^{-4}\text{ cm}^2$, $I_D = 0.80\text{ mA} = 8.0 \times 10^{-4}\text{ A}$ y $V_t(300\text{ K}) = 0.0259\text{ V}$:
+\begin{itemize}
+    \item \textbf{Diodo de unión $p$-$n$:}
+    \[
+    I_{S,pn}(300\text{ K}) = A \cdot J_{S,pn} = (7 \times 10^{-4}\text{ cm}^2)(3 \times 10^{-12}\text{ A/cm}^2) = 2.1 \times 10^{-15}\text{ A}
+    \]
+    \[
+    V_{D,pn} = 0.0259 \ln\left(\frac{8.0 \times 10^{-4}}{2.1 \times 10^{-15}}\right) = 0.0259 \ln(3.8095 \times 10^{11}) = 0.0259 \times 26.6659 = \mathbf{0.6906\text{ V} \approx 0.691\text{ V}}
+    \]
+    \item \textbf{Diodo Schottky:}
+    \[
+    I_{S,Sch}(300\text{ K}) = A \cdot J_{S,Sch} = (7 \times 10^{-4}\text{ cm}^2)(4 \times 10^{-8}\text{ A/cm}^2) = 2.8 \times 10^{-11}\text{ A}
+    \]
+    \[
+    V_{D,Sch} = 0.0259 \ln\left(\frac{8.0 \times 10^{-4}}{2.8 \times 10^{-11}}\right) = 0.0259 \ln(2.8571 \times 10^7) = 0.0259 \times 17.1679 = \mathbf{0.4446\text{ V} \approx 0.445\text{ V}}
+    \]
+\end{itemize}
+
+\subsection*{2. Parte (b): Corriente Directa al Aumentar la Temperatura a $T_2 = 400\text{ K}$}
+\textbf{¿Cómo depende la corriente inversa de saturación ($I_S$) de la temperatura?}
+\begin{enumerate}
+    \item \textbf{En un diodo de unión $p$-$n$:} La corriente de saturación es proporcional a $n_i^2$. A su vez, $n_i^2 \propto T^3 e^{-E_g / kT}$ (o en la aproximación exponencial dominante, $I_{S,pn} \propto e^{-E_g / kT}$). Presentaremos tanto el cálculo con el factor exacto de emisión/difusión como con la aproximación exponencial pura para que tengas ambas referencias:
+    \begin{itemize}
+        \item \textbf{Voltaje térmico a $T_2 = 400\text{ K}$:}
+        \[
+        V_t(400\text{ K}) = \frac{k T_2}{q} = 0.0259\text{ V} \times \left(\frac{400\text{ K}}{300\text{ K}}\right) = 0.03453\text{ V}
+        \]
+        \item \textbf{Para el Diodo Schottky (Teoría de emisión termoiónica):}
+        La densidad de corriente de saturación en un diodo Schottky viene dada por la ecuación de Richardson:
+        \[
+        J_{S,Sch} = A^* T^2 e^{-q\Phi_{Bn} / kT} \implies \frac{I_{S,Sch}(T_2)}{I_{S,Sch}(T_1)} = \left(\frac{T_2}{T_1}\right)^2 \exp\left[ -\frac{q\Phi_{Bn}}{k}\left(\frac{1}{T_2} - \frac{1}{T_1}\right) \right]
+        \]
+        Calculamos el exponente para $\Phi_{Bn} = 0.82\text{ V}$:
+        \[
+        -\frac{q\Phi_{Bn}}{k}\left(\frac{1}{T_2} - \frac{1}{T_1}\right) = \frac{0.82\text{ V}}{0.0259\text{ V}} - \frac{0.82\text{ V}}{0.034533\text{ V}} = 31.6602 - 23.7452 = 7.9150
+        \]
+        Por lo tanto, a $T_2 = 400\text{ K}$:
+        \[
+        I_{S,Sch}(400\text{ K}) = (2.8 \times 10^{-11}\text{ A}) \left(\frac{400}{300}\right)^2 e^{7.9150} = (2.8 \times 10^{-11}) (1.7778) (2738.1) = 1.363 \times 10^{-7}\text{ A}
+        \]
+        Con el voltaje mantenido en $V_{D,Sch} = 0.4446\text{ V}$, la nueva corriente en el diodo Schottky es:
+        \[
+        I_{D,Sch}(400\text{ K}) = I_{S,Sch}(400\text{ K}) e^{V_{D,Sch} / V_t(400)} = (1.363 \times 10^{-7}\text{ A}) \exp\left(\frac{0.44465}{0.034533}\right)
+        \]
+        \[
+        I_{D,Sch}(400\text{ K}) = (1.363 \times 10^{-7}) \times e^{12.876} = (1.363 \times 10^{-7})(3.908 \times 10^5) = \mathbf{0.0533\text{ A} = 53.3\text{ mA}}
+        \]
+        \textit{(Nota: Si en clase desprecian el prefactor $(T_2/T_1)^2$, entonces $I_{D,Sch}(400\text{ K}) = 53.3\text{ mA} / 1.7778 = \mathbf{30.0\text{ mA}}$).}
+
+        \item \textbf{Para el Diodo de Unión $p$-$n$:}
+        Como $I_{S,pn} \propto n_i^2 \propto T^3 e^{-E_g / kT}$:
+        \[
+        -\frac{E_g}{k}\left(\frac{1}{T_2} - \frac{1}{T_1}\right) = \frac{1.12\text{ eV}}{0.0259\text{ eV}} - \frac{1.12\text{ eV}}{0.034533\text{ eV}} = 43.2432 - 32.4324 = 10.8108
+        \]
+        \begin{itemize}
+            \item \textbf{Con prefactor $(T_2/T_1)^3$ (Dependencia completa de $n_i^2$):}
+            \[
+            I_{S,pn}(400\text{ K}) = (2.1 \times 10^{-15}\text{ A}) \left(\frac{400}{300}\right)^3 e^{10.8108} = (2.1 \times 10^{-15})(2.3704)(49553) = 2.467 \times 10^{-10}\text{ A}
+            \]
+            Con $V_{D,pn} = 0.69065\text{ V}$:
+            \[
+            I_{D,pn}(400\text{ K}) = (2.467 \times 10^{-10}\text{ A}) \exp\left(\frac{0.69065}{0.034533}\right) = (2.467 \times 10^{-10})(4.849 \times 10^8) = \mathbf{0.1196\text{ A} \approx 120\text{ mA}}
+            \]
+            \item \textbf{Sin prefactor $T^3$ (Aproximación exponencial $I_{S,pn} \propto e^{-E_g/kT}$):}
+            \[
+            I_{S,pn}(400\text{ K}) = (2.1 \times 10^{-15}\text{ A}) e^{10.8108} = 1.041 \times 10^{-10}\text{ A} \implies I_{D,pn}(400\text{ K}) = \mathbf{50.5\text{ mA}}
+            \]
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{(a) Voltajes a $300\text{ K}$:} $V_{D,pn} = 0.691\text{ V}$ y $V_{D,Sch} = 0.445\text{ V}$.
+    \item \textbf{(b) Corrientes a $400\text{ K}$:}
+    \begin{itemize}
+        \item Diodo Schottky: $\mathbf{I_{D,Sch} = 53.3\text{ mA}}$ (o $30.0\text{ mA}$ sin prefactor $T^2$).
+        \item Diodo unión $p$-$n$: $\mathbf{I_{D,pn} = 119.6\text{ mA}}$ (con $T^3$) o $\mathbf{50.5\text{ mA}}$ (solo exponencial $e^{-E_g/kT}$).
+    \end{itemize}
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 9
+% ============================================================================
+\section*{Ejercicio 9}
+\begin{ejerciciobox}{Enunciado 9}
+Considere una unión metal-semiconductor formada entre un metal con función de trabajo de $4.65\text{ eV}$ y Ge con una afinidad electrónica de $4.13\text{ eV}$. La concentración de dopante en Ge es $N_d = 6 \times 10^{13}\text{ cm}^{-3}$ y $N_a = 3 \times 10^{13}\text{ cm}^{-3}$. Suponga $T = 300\text{ K}$. (a) Dibuje el diagrama de bandas de energía de la unión en equilibrio y determine la altura de la barrera Schottky. (b) Repita la parte (a) si la función de trabajo del metal es $4.35\text{ eV}$.
+\end{ejerciciobox}
+
+\subsection*{1. ¡Cuidado Especial en el Germanio!: Semiconductor Compensado y Casi Intrínseco}
+\textbf{Paso 1: Determinar el tipo de semiconductor y el dopaje neto.}
+El Germanio tiene tanto donadores ($N_d = 6 \times 10^{13}\text{ cm}^{-3}$) como aceptores ($N_a = 3 \times 10^{13}\text{ cm}^{-3}$). Como $N_d > N_a$, es un semiconductor \textbf{tipo-$n$ compensado} con concentración efectiva de donadores:
+\[
+N_d^{\text{neto}} = N_d - N_a = 6 \times 10^{13} - 3 \times 10^{13} = 3 \times 10^{13}\text{ cm}^{-3}
+\]
+
+\textbf{Paso 2: Calcular la concentración real de electrones $n_0$ en el Germanio.}
+¡Aquí está el detalle no trivial! En el Germanio a $T = 300\text{ K}$, la concentración intrínseca de portadores es muy alta:
+\[
+n_i(\text{Ge}) = 2.4 \times 10^{13}\text{ cm}^{-3}, \quad E_g(\text{Ge}) = 0.66\text{ eV}, \quad N_c(\text{Ge}) = 1.04 \times 10^{19}\text{ cm}^{-3}
+\]
+Observa que $N_d - N_a = 3 \times 10^{13}\text{ cm}^{-3}$ es del mismo orden de magnitud que $n_i = 2.4 \times 10^{13}\text{ cm}^{-3}$. Por lo tanto, no podemos usar simplemente $n_0 \approx N_d - N_a$, sino la ecuación exacta de neutralidad de carga:
+\[
+n_0 = \frac{N_d - N_a}{2} + \sqrt{\left(\frac{N_d - N_a}{2}\right)^2 + n_i^2}
+\]
+Sustituyendo los valores (en unidades de $10^{13}\text{ cm}^{-3}$):
+\[
+\frac{N_d - N_a}{2} = 1.5 \times 10^{13}\text{ cm}^{-3} \implies n_0 = \left( 1.5 + \sqrt{(1.5)^2 + (2.4)^2} \right) \times 10^{13} = \left( 1.5 + \sqrt{2.25 + 5.76} \right) \times 10^{13}
+\]
+\[
+n_0 = \left( 1.5 + \sqrt{8.01} \right) \times 10^{13} = (1.5 + 2.8302) \times 10^{13} = \mathbf{4.33 \times 10^{13}\text{ cm}^{-3}}
+\]
+
+\textbf{Paso 3: Ubicación del nivel de Fermi ($q\phi_n = E_c - E_F$) y función de trabajo del Ge ($q\Phi_s$).}
+Usando $N_c = 1.04 \times 10^{19}\text{ cm}^{-3}$:
+\[
+q\phi_n = E_c - E_F = kT \ln\left(\frac{N_c}{n_0}\right) = (0.0259\text{ eV}) \ln\left(\frac{1.04 \times 10^{19}}{4.33 \times 10^{13}}\right) = 0.0259 \ln(2.4018 \times 10^5) = 0.3208\text{ eV} \approx 0.321\text{ eV}
+\]
+\textit{(Nota: Si se calcula con $E_F - E_i = kT \ln(n_0/n_i) = 0.0259 \ln(4.33/2.4) = 0.0153\text{ eV}$, como $E_g/2 = 0.33\text{ eV}$, entonces $E_c - E_F = 0.33 - 0.0153 = 0.315\text{ eV}$. Si se hubiera ignorado $n_i$ y usado $n_0 \approx N_d - N_a = 3 \times 10^{13}\text{ cm}^{-3}$, daría $q\phi_n = 0.330\text{ eV}$. Todos estos valores rondan $0.32\text{ eV}$).}
+
+Por lo tanto, la función de trabajo del Germanio es:
+\[
+q\Phi_s = q\chi + q\phi_n = 4.13\text{ eV} + 0.321\text{ eV} = \mathbf{4.451\text{ eV} \approx 4.45\text{ eV}}
+\]
+
+\subsection*{2. Parte (a): Metal con $q\Phi_m = 4.65\text{ eV}$}
+\begin{itemize}
+    \item Comparamos funciones de trabajo: $q\Phi_m = 4.65\text{ eV} > q\Phi_s = 4.45\text{ eV}$ (Contacto Schottky sobre Ge tipo-$n$, las bandas suben hacia el metal).
+    \item \textbf{Altura de la barrera Schottky ($\Phi_{Bn}$):}
+    \[
+    q\Phi_{Bn} = q\Phi_m - q\chi = 4.65\text{ eV} - 4.13\text{ eV} = \mathbf{0.52\text{ eV}} \quad (\Phi_{Bn} = 0.52\text{ V})
+    \]
+    \item \textbf{Potencial de contacto ($V_0$):}
+    \[
+    qV_0 = q\Phi_{Bn} - q\phi_n = 0.52\text{ eV} - 0.321\text{ eV} = \mathbf{0.199\text{ eV} \approx 0.20\text{ eV}}
+    \]
+\end{itemize}
+
+\subsection*{3. Parte (b): Metal con $q\Phi_m = 4.35\text{ eV}$}
+\begin{itemize}
+    \item \textbf{Altura de la barrera vista desde el metal hacia la banda de conducción ($q\Phi_{Bn}$):}
+    \[
+    q\Phi_{Bn} = q\Phi_m - q\chi = 4.35\text{ eV} - 4.13\text{ eV} = \mathbf{0.22\text{ eV}} \quad (\Phi_{Bn} = 0.22\text{ V})
+    \]
+    \item \textbf{Análisis de la curvatura de bandas:}
+    Observa que ahora $q\Phi_m = 4.35\text{ eV} < q\Phi_s = 4.45\text{ eV}$ (o equivalentemente, $q\Phi_{Bn} = 0.22\text{ eV} < q\phi_n = 0.321\text{ eV}$). Esto significa que el nivel de Fermi del metal estaba inicialmente $0.10\text{ eV}$ \textbf{por encima} del nivel de Fermi del Germanio. Al unirlos, pasan electrones del metal al Ge y las bandas \textbf{bajan hacia el metal} en $0.10\text{ eV}$, formando un \textbf{contacto óhmico} (acumulación para electrones) o, si se mira respecto a la banda de valencia $E_v$, una barrera para huecos de $q\Phi_{Bp} = E_g - q\Phi_{Bn} = 0.66 - 0.22 = 0.44\text{ eV}$.
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.88, >=Stealth]
+    % --- DIAGRAMA (a): Phi_m = 4.65 eV ---
+    \begin{scope}[xshift=0cm]
+        \draw[thick] (0,0) -- (0,6.2);
+        \node[above, font=\bfseries\small] at (1.5, 6.2) {Parte (a): $q\Phi_m = 4.65\text{ eV}$ (Schottky)};
+
+        % EF = 2.0
+        \draw[dashed, thick, blue!80!black] (-2.5, 2.0) -- (5.2, 2.0);
+        \node[left, blue!80!black] at (-2.5, 2.0) {$E_{Fm}$};
+        \node[right, blue!80!black] at (5.2, 2.0) {$E_{Fs}$};
+        \fill[gray!25] (-2.5, 0) rectangle (0, 2.0);
+
+        % En bulk (x>=2.2): Ec = 2.8, Ei = 1.95, Ev = 1.1, Evac = 5.5
+        % En interfaz (x=0): suben 0.20 eV (+0.6 unidades): Ec(0)=3.4, Ev(0)=1.7, Evac(0)=6.1
+        \draw[thick] (-2.5, 6.1) -- (0, 6.1);
+        \draw[thick] (0, 6.1) parabola bend (2.2, 5.5) (5.0, 5.5) node[right] {$E_{\text{vac}}$};
+
+        \draw[thick, red!80!black] (0, 3.4) parabola bend (2.2, 2.8) (5.0, 2.8) node[right] {$E_c$};
+        \draw[thick, teal!80!black] (0, 1.7) parabola bend (2.2, 1.1) (5.0, 1.1) node[right] {$E_v$};
+
+        \draw[densely dotted] (0, 3.4) -- (2.4, 3.4);
+        \draw[<->, thick, orange!85!black] (-0.3, 2.0) -- (-0.3, 3.4) node[midway, left, font=\footnotesize] {$q\Phi_{Bn}=0.52\text{ eV}$};
+        \draw[<->, thick, purple] (2.2, 2.8) -- (2.2, 3.4) node[midway, right, font=\footnotesize] {$qV_0=0.20\text{ eV}$};
+        \draw[<->, thick] (4.0, 2.0) -- (4.0, 2.8) node[midway, right, font=\footnotesize] {$0.32\text{ eV}$};
+    \end{scope}
+
+    % --- DIAGRAMA (b): Phi_m = 4.35 eV ---
+    \begin{scope}[xshift=9.2cm]
+        \draw[thick] (0,0) -- (0,6.2);
+        \node[above, font=\bfseries\small] at (1.8, 6.2) {Parte (b): $q\Phi_m = 4.35\text{ eV}$ ($\Phi_m < \Phi_s$)};
+
+        % EF = 2.0
+        \draw[dashed, thick, blue!80!black] (-2.5, 2.0) -- (5.2, 2.0);
+        \node[left, blue!80!black] at (-2.5, 2.0) {$E_{Fm}$};
+        \node[right, blue!80!black] at (5.2, 2.0) {$E_{Fs}$};
+        \fill[gray!25] (-2.5, 0) rectangle (0, 2.0);
+
+        % En bulk (x>=2.2): Ec = 2.8, Ev = 1.1, Evac = 5.5
+        % En interfaz (x=0): bajan 0.10 eV (-0.3 unidades): Ec(0)=2.5, Ev(0)=0.8, Evac(0)=5.2
+        \draw[thick] (-2.5, 5.2) -- (0, 5.2);
+        \draw[thick] (0, 5.2) parabola bend (2.2, 5.5) (5.0, 5.5) node[right] {$E_{\text{vac}}$};
+
+        \draw[thick, red!80!black] (0, 2.5) parabola bend (2.2, 2.8) (5.0, 2.8) node[right] {$E_c$};
+        \draw[thick, teal!80!black] (0, 0.8) parabola bend (2.2, 1.1) (5.0, 1.1) node[right] {$E_v$};
+
+        \draw[densely dotted] (0, 2.5) -- (2.4, 2.5);
+        \draw[<->, thick, orange!85!black] (-0.3, 2.0) -- (-0.3, 2.5) node[midway, left, font=\footnotesize] {$q\Phi_{Bn}=0.22\text{ eV}$};
+        \draw[<->, thick, purple] (2.2, 2.5) -- (2.2, 2.8) node[midway, right, font=\footnotesize] {$\Delta E = 0.10\text{ eV}$};
+        \draw[<->, thick] (4.0, 2.0) -- (4.0, 2.8) node[midway, right, font=\footnotesize] {$0.32\text{ eV}$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{(a) Para $q\Phi_m = 4.65\text{ eV}$:} Altura de barrera Schottky $\mathbf{\Phi_{Bn} = 0.52\text{ V}}$ ($0.52\text{ eV}$) y potencial de contacto $V_0 = 0.20\text{ V}$.
+    \item \textbf{(b) Para $q\Phi_m = 4.35\text{ eV}$:} $\mathbf{\Phi_{Bn} = 0.22\text{ V}}$ ($0.22\text{ eV}$). Como $\Phi_m < \Phi_s$ ($4.35\text{ eV} < 4.45\text{ eV}$), las bandas se curvan hacia abajo en $0.10\text{ eV}$ hacia el metal (contacto óhmico para electrones, o barrera para huecos $\Phi_{Bp} = 0.44\text{ V}$).
+\end{itemize}
+\end{respuestabox}
+
+\newpage
+
+% ============================================================================
+% EJERCICIO 10
+% ============================================================================
+\section*{Ejercicio 10}
+\begin{ejerciciobox}{Enunciado 10}
+La capacitancia de un diodo de barrera Schottky con GaAs tipo-$n$ está dada por la relación:
+\[
+\frac{1}{C^2} = 1.57 \times 10^{15} - 2.12 \times 10^{15} V
+\]
+donde $C$ está expresada en faradios y $V$ en volts. Considere el área del diodo igual a $0.1\text{ cm}^2$, calcule el potencial de contacto, la altura de la barrera y la concentración de dopante. Dibuje el diagrama de bandas en el equilibrio.
+\end{ejerciciobox}
+
+\subsection*{1. Teoría de la Capacitancia de Vaciamiento en un Diodo Schottky}
+La región de vaciamiento de ancho $x_n$ actúa como un capacitor de placas paralelas de área $A$ y permitividad $\varepsilon_s$:
+\[
+C = \frac{\varepsilon_s A}{x_n} = A \sqrt{\frac{q \varepsilon_s N_d}{2(V_0 - V)}}
+\]
+donde $V$ es el voltaje aplicado en polarización directa ($V > 0$ en directa, $V = -V_R < 0$ en inversa). Si elevamos al cuadrado e invertimos la ecuación:
+\[
+\frac{1}{C^2} = \frac{2(V_0 - V)}{q \varepsilon_s N_d A^2} = \underbrace{\left(\frac{2 V_0}{q \varepsilon_s N_d A^2}\right)}_{\text{Término independiente}} - \underbrace{\left(\frac{2}{q \varepsilon_s N_d A^2}\right)}_{\text{Pendiente } |m|} V
+\]
+Comparando término a término con la ecuación empírica del enunciado:
+\[
+\frac{1}{C^2} = 1.57 \times 10^{15} - 2.12 \times 10^{15} V \quad [\text{F}^{-2}]
+\]
+Identificamos inmediatamente:
+\begin{enumerate}
+    \item $\dfrac{2 V_0}{q \varepsilon_s N_d A^2} = 1.57 \times 10^{15}\text{ F}^{-2}$
+    \item $\dfrac{2}{q \varepsilon_s N_d A^2} = 2.12 \times 10^{15}\text{ F}^{-2}\text{V}^{-1}$
+\end{enumerate}
+
+\subsection*{2. Cálculo Paso a Paso}
+\textbf{Paso 1: Calcular el potencial de contacto ($V_0$).}
+Cuando $1/C^2 = 0$, tenemos $V = V_0$ (o dividiendo la ecuación 1 entre la ecuación 2):
+\[
+V_0 = \frac{1.57 \times 10^{15}}{2.12 \times 10^{15}} = \mathbf{0.7406\text{ V} \approx 0.741\text{ V}}
+\]
+
+\textbf{Paso 2: Calcular la concentración de dopante ($N_d$).}
+Para el GaAs a $T = 300\text{ K}$, sabemos que $\varepsilon_r = 13.1$, por lo que:
+\[
+\varepsilon_s = \varepsilon_r \varepsilon_0 = 13.1 \times (8.85 \times 10^{-14}\text{ F/cm}) = 1.15935 \times 10^{-12}\text{ F/cm}
+\]
+Con $A = 0.1\text{ cm}^2 \implies A^2 = 0.01\text{ cm}^4 = 10^{-2}\text{ cm}^4$, despejamos $N_d$ de la pendiente $|m| = 2.12 \times 10^{15}\text{ F}^{-2}\text{V}^{-1}$:
+\[
+N_d = \frac{2}{q \varepsilon_s A^2 |m|} = \frac{2}{(1.6 \times 10^{-19}\text{ C})(1.15935 \times 10^{-12}\text{ F/cm})(10^{-2}\text{ cm}^4)(2.12 \times 10^{15}\text{ F}^{-2}\text{V}^{-1})}
+\]
+Calculamos el denominador:
+\[
+(1.6 \times 10^{-19}) \times (1.15935 \times 10^{-12}) \times 10^{-2} \times (2.12 \times 10^{15}) = 3.9325 \times 10^{-18}
+\]
+Por lo tanto:
+\[
+N_d = \frac{2}{3.9325 \times 10^{-18}} = \mathbf{5.086 \times 10^{17}\text{ cm}^{-3} \approx 5.09 \times 10^{17}\text{ cm}^{-3}}
+\]
+
+\textbf{Paso 3: Calcular la altura de la barrera Schottky ($\Phi_{Bn}$).}
+Para el GaAs a $300\text{ K}$, la densidad efectiva de estados en la banda de conducción es $N_c = 4.7 \times 10^{17}\text{ cm}^{-3}$. Calculamos $\phi_n$:
+\[
+\phi_n = \frac{kT}{q}\ln\left(\frac{N_c}{N_d}\right) = (0.0259\text{ V}) \ln\left(\frac{4.7 \times 10^{17}}{5.086 \times 10^{17}}\right) = 0.0259 \ln(0.9241) = -0.0020\text{ V} \approx 0\text{ V}
+\]
+\textit{Observación física importante:} Como $N_d \approx 5.09 \times 10^{17}\text{ cm}^{-3}$ es prácticamente igual (ligeramente superior) a $N_c = 4.7 \times 10^{17}\text{ cm}^{-3}$, el GaAs está fuertemente dopado y el nivel de Fermi $E_F$ coincide prácticamente con el borde de la banda de conducción $E_c$ ($\phi_n \approx -0.002\text{ V} \approx 0\text{ V}$). Por consiguiente, la altura de la barrera es:
+\[
+\Phi_{Bn} = V_0 + \phi_n = 0.7406\text{ V} + (-0.0020\text{ V}) = \mathbf{0.7386\text{ V} \approx 0.739\text{ V}} \quad (\text{o } \mathbf{0.741\text{ V}}\text{ tomando } \phi_n \approx 0)
+\]
+
+\subsection*{3. Diagrama de Bandas en Equilibrio (GaAs Tipo-$n$)}
+\begin{center}
+\begin{tikzpicture}[scale=1.0, >=Stealth]
+    \draw[thick] (0,0) -- (0,6.2);
+    \node[above] at (-2.0, 6.2) {\textbf{Metal}};
+    \node[above] at (3.0, 6.2) {\textbf{GaAs tipo-$n$ ($N_d = 5.09 \times 10^{17}\text{ cm}^{-3}$)}};
+
+    % EF = 2.5 (coincide casi exactamente con Ec en el bulk por el alto dopaje)
+    \draw[dashed, thick, blue!80!black] (-3.0, 2.5) -- (6.0, 2.5);
+    \node[left, blue!80!black] at (-3.0, 2.5) {$E_{Fm}$};
+    \node[right, blue!80!black] at (6.0, 2.5) {$E_{Fs} \approx E_c$};
+    \fill[gray!25] (-3.0, 0) rectangle (0, 2.5);
+
+    % En bulk (x>=2.2): Ec = 2.5, Ev = 0.7, Evac = 5.2
+    % En interfaz (x=0): suben 0.74 eV (+1.3 unidades): Ec(0)=3.8, Ev(0)=2.0, Evac(0)=6.5
+    \draw[thick] (-3.0, 6.0) -- (0, 6.0);
+    \draw[thick] (0, 6.0) parabola bend (2.2, 4.8) (5.8, 4.8) node[right] {$E_{\text{vac}}$};
+
+    \draw[thick, red!80!black] (0, 3.7) parabola bend (2.2, 2.5) (5.8, 2.5);
+    \node[above, red!80!black] at (5.3, 2.5) {$E_c$};
+
+    \draw[thick, teal!80!black] (0, 1.9) parabola bend (2.2, 0.7) (5.8, 0.7) node[right] {$E_v$};
+
+    \draw[densely dotted] (0, 3.7) -- (2.5, 3.7);
+    \draw[<->, thick, orange!85!black] (-0.3, 2.5) -- (-0.3, 3.7) node[midway, left] {$q\Phi_{Bn} = 0.739\text{ eV}$};
+    \draw[<->, thick, purple] (2.2, 2.5) -- (2.2, 3.7) node[midway, right] {$qV_0 = 0.741\text{ eV}$};
+    \draw[<->, thick] (4.5, 0.7) -- (4.5, 2.5) node[midway, fill=white, inner sep=1pt] {$E_g = 1.42\text{ eV}$};
+    \draw[<->, thick] (4.5, 2.5) -- (4.5, 4.8) node[midway, fill=white, inner sep=1pt] {$q\chi = 4.07\text{ eV}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{respuestabox}
+\begin{itemize}
+    \item \textbf{Potencial de contacto:} $V_0 = 0.741\text{ V}$.
+    \item \textbf{Concentración de dopante:} $N_d = 5.09 \times 10^{17}\text{ cm}^{-3}$.
+    \item \textbf{Altura de la barrera Schottky:} $\Phi_{Bn} = 0.739\text{ V}$ ($\approx 0.741\text{ V}$).
+\end{itemize}
+\end{respuestabox}
+
+\end{document}
